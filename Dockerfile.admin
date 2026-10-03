@@ -2,10 +2,12 @@
 # SK Enterprises website admin — settings, content, enquiries, SEO report, publishing.
 FROM node:22-alpine
 WORKDIR /app
-ENV ASTRO_TELEMETRY_DISABLED=1 NODE_ENV=production PROJECT_DIR=/app SITE_ROOT=/srv/site DATA_DIR=/app/data PORT=8787
+ENV ASTRO_TELEMETRY_DISABLED=1 NODE_ENV=production PROJECT_DIR=/app SITE_ROOT=/srv/site DATA_DIR=/app/data PORT=8787 SEED_DIR=/app/seed-content
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --no-audit --no-fund
 COPY . .
+# The repository's content becomes the seed for ./live/content on the server (see admin/lib/seed.mjs)
+RUN cp -r src/content /app/seed-content
 EXPOSE 8787
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1:8787/api/health || exit 1
 CMD ["node", "admin/server.mjs"]

@@ -8,8 +8,9 @@
 # galleryflow's Docker network and Traefik discovers them from the labels — no ports are
 # published and nothing in galleryflow changes.
 #
-#   docker compose up -d --build
+#   git pull && docker compose up -d --build        (or: ./scripts/update.sh)
 #
+# Live content and enquiries are kept in ./live (ignored by git).
 # Required in .env (see .env.example): ADMIN_PASSWORD, ADMIN_SECRET
 
 name: skmagnetic
@@ -75,8 +76,10 @@ services:
       SMTP_FROM: ${SMTP_FROM:-}
     volumes:
       - site:/srv/site # published releases, shared with nginx
-      - ./src/content:/app/src/content # editable content & settings (persist on the server)
-      - ./data:/app/data # enquiries, uploads, SEO report
+      # Live data stays OUTSIDE git, so `git pull` never clashes with admin edits.
+      # On first start ./live/content is filled from the repository (admin/lib/seed.mjs).
+      - ./live/content:/app/src/content # pages, settings, uploaded photos
+      - ./live/data:/app/data # enquiries, SEO report
     networks:
       - proxy
     labels:

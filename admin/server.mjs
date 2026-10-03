@@ -14,7 +14,8 @@ import { bodyLimit } from 'hono/body-limit';
 import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 
-import { BUILD_ON_START, CONTENT_DIR, DATA_DIR, MEDIA_DIR, PORT, PROJECT_DIR, SERVE_SITE, SITE_ROOT, assertConfig } from './lib/config.mjs';
+import { BUILD_ON_START, CONTENT_DIR, DATA_DIR, MEDIA_DIR, PORT, PROJECT_DIR, SEED_DIR, SERVE_SITE, SITE_ROOT, assertConfig } from './lib/config.mjs';
+import { seedContent } from './lib/seed.mjs';
 import {
   checkCredentials,
   clearLoginFailures,
@@ -32,6 +33,8 @@ import { attachmentPath, createEnquiry, deleteEnquiry, getEnquiry, listEnquiries
 import { currentRelease, lastPublish, listReleases, publish, publishState, rollback, seoReport } from './lib/publish.mjs';
 import * as V from './lib/views.mjs';
 
+const seeded = await seedContent(SEED_DIR, CONTENT_DIR);
+if (seeded.added.length) console.log(`Content: added ${seeded.added.length} file(s) from the repository (existing content untouched).`);
 assertConfig();
 await mkdir(DATA_DIR, { recursive: true });
 

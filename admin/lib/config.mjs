@@ -29,6 +29,8 @@ export const NOTIFY_EMAIL = env.NOTIFY_EMAIL || '';
 /** Build automatically when the service starts (keeps the live site in sync after a code deploy) */
 export const BUILD_ON_START = env.BUILD_ON_START !== '0';
 export const KEEP_RELEASES = Number(env.KEEP_RELEASES || 5);
+/** Docker only: the repository's content baked into the image, used to fill ./live/content */
+export const SEED_DIR = env.SEED_DIR || '';
 
 export function assertConfig() {
   const errors = [];
