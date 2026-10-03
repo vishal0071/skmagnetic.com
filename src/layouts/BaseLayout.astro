@@ -52,7 +52,13 @@ const pageTitle = stripPlaceholders(title);
 const pageDescription = stripPlaceholders(description);
 const canonical = absoluteUrl(Astro.url.pathname);
 const ogImage = absoluteUrl(image);
-const robots = noindex || !site.isLive ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1';
+// Until the site is set to LIVE (admin → Company & contact → Launch) search engines get nothing:
+// no indexing, no link following, no snippets, no cached copies, no image indexing.
+const robots = !site.isLive
+  ? 'noindex, nofollow, noarchive, nosnippet, noimageindex'
+  : noindex
+    ? 'noindex, follow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1';
 
 const graph = {
   '@context': 'https://schema.org',

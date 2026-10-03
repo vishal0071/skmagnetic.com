@@ -20,7 +20,7 @@ const NAV = [
   { href: '/admin/publish', label: 'Publish & history', key: 'publish' },
 ];
 
-export function layout({ title, active, body, flash, newEnquiries = 0, publish }) {
+export function layout({ title, active, body, flash, newEnquiries = 0, publish, isLive = false }) {
   const building = publish?.running;
   return html`<!doctype html>
 <html lang="en">
@@ -51,6 +51,9 @@ export function layout({ title, active, body, flash, newEnquiries = 0, publish }
         <header class="topbar">
           <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">☰</button>
           <h1>${title}</h1>
+          <a class="${`seo-status ${isLive ? 'seo-status--live' : ''}`}" href="/admin/settings" title="Change in Company & contact → Launch">
+            ${isLive ? '● Live on Google' : '● Hidden from Google'}
+          </a>
           <div class="topbar__actions">
             <a class="btn btn--ghost" href="/" target="_blank" rel="noopener">View website ↗</a>
             <form method="post" action="/admin/publish" data-publish-form>

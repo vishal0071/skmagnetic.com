@@ -103,8 +103,8 @@ app.use(
 
 /** Common page data (new-enquiry badge, publish state) */
 async function page(c, opts) {
-  const enquiries = await listEnquiries();
-  const html = V.layout({ ...opts, newEnquiries: enquiries.filter((e) => e.status === 'new').length, publish: publishState() });
+  const [enquiries, settings] = await Promise.all([listEnquiries(), readJson('settings.json')]);
+  const html = V.layout({ ...opts, newEnquiries: enquiries.filter((e) => e.status === 'new').length, publish: publishState(), isLive: !!settings.isLive });
   return c.html(String(html), opts.status || 200);
 }
 const savedFlash = (c, text = 'Saved. Press “Publish changes” to update the live website.') => (c.req.query('saved') ? { type: 'ok', text } : null);

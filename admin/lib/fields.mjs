@@ -118,7 +118,12 @@ export const SETTINGS_FIELDS = [
     type: 'section',
     label: 'Launch',
     fields: [
-      { key: 'isLive', type: 'bool', label: 'Website is LIVE — visible to Google (turn on only when contact details and content are confirmed)' },
+      {
+        key: 'isLive',
+        type: 'bool',
+        label: 'Website is LIVE — let Google index it',
+        help: 'Leave OFF until all real data is in. While OFF: every page is noindex/nofollow, robots.txt blocks all search engines and the sitemap is empty. Turn ON, then Publish changes.',
+      },
       { key: 'showContentNotices', type: 'bool', label: 'Enable review mode (open any page with ?review=1 to highlight unfinished content)' },
     ],
   },

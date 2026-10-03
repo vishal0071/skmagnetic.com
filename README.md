@@ -67,6 +67,9 @@ The site starts in **safe pre-launch mode**. The admin **Dashboard** shows the c
 7. **Go live:** tick **"Website is LIVE"** in Company & contact → Publish. Then submit
    `https://skmagnetic.com/sitemap.xml` in Google Search Console.
 
+Until step 7, **search engines are fully blocked**: every page is `noindex, nofollow, noarchive`, `robots.txt` disallows
+everything and the sitemap is empty. The admin header shows "● Hidden from Google" / "● Live on Google".
+
 **Placeholders and review mode:** text in `{{double braces}}` is something SK Enterprises still has to confirm. Visitors never
 see it: the sentence reads as finished and missing values show sensible fallbacks (e.g. spec tables say "On request").
 Open any page with **`?review=1`** to highlight every placeholder and "sample" notice; `?review=0` turns this off.
@@ -115,6 +118,8 @@ No one can guarantee a #1 position. These steps, done consistently, are what mov
 ---
 
 ## Deployment — same server as galleryflow
+
+➡️ **Step-by-step guide: [DEPLOYMENT.md](DEPLOYMENT.md)**
 
 Two containers run on the galleryflow server, behind galleryflow's existing **Traefik** (ports 80/443, Let's Encrypt
 resolver `le`, network `galleryflow_galleryflow`). **Nothing in galleryflow changes.**

@@ -11,11 +11,10 @@ Disallow: /api/
 
 Sitemap: ${site.url}/sitemap.xml
 `
-    : `# Pre-launch: crawling disabled. Set isLive: true in src/config/site.ts to open the site to search engines.
+    : `# Pre-launch: search engines are blocked until the website is set to LIVE
+# (admin → Company & contact → Launch → "Website is LIVE", then Publish).
 User-agent: *
 Disallow: /
-
-Sitemap: ${site.url}/sitemap.xml
 `;
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

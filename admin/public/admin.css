@@ -172,6 +172,20 @@ h2 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.seo-status {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff4c2;
+  color: #7a5200;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.seo-status--live {
+  background: #e6f4ec;
+  color: var(--ok);
+}
 .topbar__actions {
   display: flex;
   gap: 10px;
