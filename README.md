@@ -30,12 +30,12 @@ npm run assets              # regenerate logo files, favicons and the social sha
 | **SEO report** | Every page's Google title and description, broken links, pages hidden from Google, placeholders left |
 | **Publish & history** | Rebuild the live site (takes seconds) and restore an earlier version with one click |
 
-How it works: edits are saved to `src/content/` (Markdown and JSON). **Publish changes** runs the Astro build. It then switches
+How it works: edits are saved as Markdown and JSON files (`src/content/` locally, `live/content/` on the server). **Publish changes** runs the Astro build. It then switches
 the live site to the new version in one atomic step, so visitors never see a half-built page, and keeps the last 5 versions.
 If a build fails, the live site doesn't change and the error log is shown.
 
 The website's enquiry form posts to `/api/enquiry`, which is served by the admin service. Enquiries are stored on the server
-(`data/enquiries/`) and, if SMTP is configured, emailed to `NOTIFY_EMAIL`. If the API can't be reached, the form offers
+(`live/data/enquiries/`) and, if SMTP is configured, emailed to `NOTIFY_EMAIL`. If the API can't be reached, the form offers
 one-tap WhatsApp or email with everything the visitor typed, so no lead is lost.
 
 **Security:**
@@ -122,7 +122,8 @@ No one can guarantee a #1 position. These steps, done consistently, are what mov
 ➡️ **Step-by-step guide: [DEPLOYMENT.md](DEPLOYMENT.md)**
 
 Two containers run on the galleryflow server, behind galleryflow's existing **Traefik** (ports 80/443, Let's Encrypt
-resolver `le`, network `galleryflow_galleryflow`). **Nothing in galleryflow changes.**
+resolver `le`, network `galleryflow_galleryflow`). **Nothing in galleryflow changes.** The server gets the code from
+GitHub.
 
 ```
 Internet ─▶ Traefik (galleryflow, :80/:443)
@@ -131,31 +132,21 @@ Internet ─▶ Traefik (galleryflow, :80/:443)
               └─ skmagnetic.com, www (301)    ─▶ skmagnetic-web    (nginx: /srv/site/current)
 ```
 
-**One-time setup**
-1. DNS: A records for `skmagnetic.com` and `www.skmagnetic.com` pointing to the galleryflow server's IP.
-2. galleryflow must be running in production mode (`docker-compose.prod.yml`). Check the network name with
-   `docker network ls | grep galleryflow`.
-3. On the server, in `~/skmagnetic.com`: `cp .env.example .env`, then set `ADMIN_PASSWORD` and `ADMIN_SECRET`. Optionally set SMTP and `NOTIFY_EMAIL` for enquiry emails.
-
-**Deploy or update code** (from your machine):
-
 ```bash
-DEPLOY_HOST=ubuntu@<server-ip> ./scripts/deploy.sh
+# first time, on the server
+git clone https://github.com/vishal0071/skmagnetic.com.git && cd skmagnetic.com
+# create .env (ADMIN_PASSWORD, ADMIN_SECRET), then:
+docker compose up -d --build
+
+# every update: git push from your computer, then on the server
+./scripts/update.sh          # git pull + rebuild
 ```
 
-The script builds and audits locally, uploads the code, then runs `docker compose up -d --build` on the server. On start, the
-admin service rebuilds the site, so code changes go live automatically.
-
-**Content lives on the server once you use the admin.** The deploy script only *adds* content files that don't exist on the
-server yet; it never overwrites admin edits. Before changing content locally, run
-`DEPLOY_HOST=… ./scripts/pull-content.sh` to download the live content.
-
-Data on the server:
-- `~/skmagnetic.com/src/content/`: pages, settings and uploaded photos
-- `~/skmagnetic.com/data/`: enquiries and the SEO report
-- the `skmagnetic_site` Docker volume: published versions
-
-Back up the first two folders together with galleryflow's backups.
+**Live data stays outside git.** On the server, pages, settings, photos and enquiries edited in the admin live in
+`~/skmagnetic.com/live/`, which git ignores, so `git pull` never clashes with admin edits. On first start the admin
+fills `live/content/` from the repository. Later updates only add pages that are new in the repository; edits are never
+overwritten and deleted pages don't come back. To copy live content back into the repository, run
+`DEPLOY_HOST=… ./scripts/pull-content.sh` and commit. Back up `live/`.
 
 ---
 
@@ -168,9 +159,10 @@ src/content/
   trust.json              Why choose us, process, testimonials…        (admin → Trust & process)
   products/ categories/ industries/ applications/ blog/   Markdown pages (admin → content sections)
   media/                  Uploaded photos
+                          (on the server, live content is in ./live/content — see Deployment)
 src/pages/                Routes, policies, sitemap.xml, robots.txt
 src/components/ layouts/ styles/   Design system and templates
-scripts/                  Assets, audits, deploy and pull-content
+scripts/                  Assets, audits, update.sh (server), pull-content, deploy (rsync alternative)
 Dockerfile                nginx image (website)
 Dockerfile.admin          Node image (admin)
 docker-compose.yml        Both services + Traefik labels

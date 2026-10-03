@@ -1,7 +1,8 @@
 # Deploying skmagnetic.com
 
 The site runs on the **same server as galleryflow**, behind galleryflow's existing **Traefik**, which already handles
-ports 80/443 and free HTTPS certificates. Two extra containers are added. **Nothing in galleryflow changes.**
+ports 80/443 and free HTTPS certificates. Two extra containers are added. **Nothing in galleryflow changes.** The
+server gets the code straight from GitHub: **https://github.com/vishal0071/skmagnetic.com** (public, no keys needed).
 
 ```
 Internet ─▶ Traefik (galleryflow, :80/:443)
@@ -10,16 +11,23 @@ Internet ─▶ Traefik (galleryflow, :80/:443)
               └─ skmagnetic.com, www (301)    ─▶ skmagnetic-web    (nginx, the website)
 ```
 
-**What you need**
-- SSH access to the galleryflow server (for example `ubuntu@<server-ip>`)
-- Access to the domain's DNS settings
-- This project on your Mac with `npm install` done
+**Where things live on the server** (in `~/skmagnetic.com`):
 
-Commands marked **Mac** run on your computer. Commands marked **server** run after `ssh ubuntu@<server-ip>`.
+| Folder | Contents | In git? |
+|---|---|---|
+| code (everything except `live/`) | website, admin, Docker setup | ✅ — updated with `git pull` |
+| `live/content/` | pages, settings and photos edited in the admin | ❌ — never touched by git |
+| `live/data/` | enquiries and the SEO report | ❌ — never touched by git |
+| `.env` | admin password and settings | ❌ |
+
+On first start, `live/content/` is filled from the repository. After that, only pages that are new in the repository are
+added; admin edits are never overwritten, and pages deleted in the admin don't come back.
 
 ---
 
-## 1. Point the domain at the server (DNS)
+## First-time setup
+
+### 1. Point the domain at the server (DNS)
 
 At your domain registrar, add two **A records** pointing to the galleryflow server's IP:
 
@@ -28,28 +36,34 @@ At your domain registrar, add two **A records** pointing to the galleryflow serv
 | `@` (skmagnetic.com) | A | `<server IP>` |
 | `www` | A | `<server IP>` |
 
-**Mac** — wait until both print the server IP. This can take a few minutes to an hour.
+Check from your computer; both should print the server IP (this can take a few minutes to an hour):
 ```bash
 dig +short skmagnetic.com
 dig +short www.skmagnetic.com
 ```
 
-## 2. Check the server (server)
+### 2. On the server: check galleryflow is running
 
 ```bash
 ssh ubuntu@<server-ip>
 docker network ls | grep galleryflow     # expect: galleryflow_galleryflow
 docker ps | grep traefik                 # Traefik must be running
-which rsync || sudo apt install -y rsync
 ```
 
-Galleryflow must be running in **production mode**, which is what issues the HTTPS certificates:
-`docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d` (run in the galleryflow folder).
+Galleryflow must run in **production mode**, which is what issues the HTTPS certificates. In the galleryflow folder:
+`docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
 
-## 3. Create the admin login (server)
+### 3. On the server: get the code
 
 ```bash
-mkdir -p ~/skmagnetic.com && cd ~/skmagnetic.com
+cd ~
+git clone https://github.com/vishal0071/skmagnetic.com.git
+cd skmagnetic.com
+```
+
+### 4. On the server: create `.env` (the admin login)
+
+```bash
 cat > .env <<EOF
 ADMIN_USER=admin
 ADMIN_PASSWORD=<choose a strong password, 12+ characters>
@@ -59,57 +73,60 @@ TRAEFIK_NETWORK=galleryflow_galleryflow
 CERT_RESOLVER=le
 EOF
 chmod 600 .env
-exit
 ```
 
 Optional: to get an email for every new enquiry, also add `NOTIFY_EMAIL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
 `SMTP_PASS` and `SMTP_FROM` (see `.env.example`).
 
-## 4. Deploy (Mac, in the project folder)
+### 5. On the server: start it
 
-One time only, if SSH still asks for a password:
 ```bash
-ssh-copy-id ubuntu@<server-ip>
+docker compose up -d --build
+docker compose ps        # both containers "running"; admin becomes "healthy" after its first build
 ```
 
-Then deploy:
-```bash
-cd ~/Documents/Project/skmagnetic.com
-DEPLOY_HOST=ubuntu@<server-ip> ./scripts/deploy.sh
-```
+Traefik picks the containers up automatically and issues the HTTPS certificate within about a minute.
 
-The script:
-1. Builds and checks the site on your Mac. It stops if there are broken links or SEO problems.
-2. Uploads the code to `~/skmagnetic.com` on the server.
-3. Starts the `skmagnetic-web` and `skmagnetic-admin` containers.
+### 6. Check it works
 
-The admin then builds the website on the server. Traefik picks the containers up automatically and issues the
-HTTPS certificate within about a minute.
-
-## 5. Check it works
-
-**Mac**
 ```bash
 curl -I https://skmagnetic.com              # HTTP/2 200
 curl -I https://www.skmagnetic.com          # 301 → https://skmagnetic.com/
 curl https://skmagnetic.com/api/health      # {"ok":true,"release":"..."}
 ```
 
-Open **https://skmagnetic.com/admin** and log in with the username and password from step 3.
+Then open **https://skmagnetic.com/admin** and log in with the username and password from step 4.
 
-**server** — logs, if something looks wrong:
+---
+
+## Update the site after code changes
+
+On your computer, push the changes to GitHub (`git push`). Then on the server:
+
 ```bash
-cd ~/skmagnetic.com && docker compose ps && docker compose logs --tail=50
+ssh ubuntu@<server-ip>
+cd ~/skmagnetic.com
+./scripts/update.sh
 ```
 
-## 6. Add your real data, then switch SEO on (in the admin)
+`update.sh` does `git pull`, then rebuilds and restarts both containers, and the admin rebuilds the website. Your admin
+edits and enquiries in `live/` are not affected.
+
+Or in one line from your computer:
+```bash
+ssh ubuntu@<server-ip> 'cd ~/skmagnetic.com && ./scripts/update.sh'
+```
+
+---
+
+## Add your real data, then switch SEO on (in the admin)
 
 Until you go live, **Google is completely blocked**:
 - every page is `noindex, nofollow`
 - `robots.txt` blocks all search engines
 - the sitemap is empty
 
-The admin header shows **"● Hidden from Google"**, so it is safe to deploy early.
+The admin header shows **"● Hidden from Google"**.
 
 1. **Company & contact:** enter the real phone, WhatsApp, email (tick "confirmed"), address, city, PIN, GSTIN and hours.
 2. **Products** (and the other sections): review each page, upload real photos, then untick **Sample content**.
@@ -120,23 +137,20 @@ The admin header shows **"● Hidden from Google"**, so it is safe to deploy ear
 
 ---
 
-## Later
+## Day-to-day
 
 | Task | How |
 |---|---|
 | Change content, prices, contact details | Admin → edit → **Publish changes** |
 | Undo a bad publish | Admin → **Publish & history** → *Restore this version* |
-| Deploy code changes | **Mac:** `DEPLOY_HOST=ubuntu@<server-ip> ./scripts/deploy.sh` (never overwrites admin edits) |
-| Copy live content back to your Mac | **Mac:** `DEPLOY_HOST=ubuntu@<server-ip> ./scripts/pull-content.sh` (do this before editing content files locally) |
-| Save live content to GitHub | After pull-content: `git add src/content && git commit -m "Update content" && git push` |
-| Restart | **server:** `cd ~/skmagnetic.com && docker compose restart` |
-| Stop | **server:** `cd ~/skmagnetic.com && docker compose down` |
+| Deploy code changes | `git push`, then on the server `./scripts/update.sh` |
+| Save live content to GitHub | On your computer: `DEPLOY_HOST=ubuntu@<server-ip> ./scripts/pull-content.sh`, then `git add src/content && git commit -m "Update content" && git push` |
+| View logs | **server:** `cd ~/skmagnetic.com && docker compose logs --tail=50` |
+| Restart | **server:** `docker compose restart` |
+| Stop | **server:** `docker compose down` |
 
-**Backups:** copy these two folders on the server regularly, for example together with galleryflow's backups:
-- `~/skmagnetic.com/src/content/` — pages, settings and photos
-- `~/skmagnetic.com/data/` — enquiries
-
-No database is needed.
+**Backups:** copy `~/skmagnetic.com/live/` regularly, for example together with galleryflow's backups. It holds all
+pages, settings, photos and enquiries. The code is safe on GitHub. No database is needed.
 
 ---
 
@@ -144,10 +158,15 @@ No database is needed.
 
 | Problem | Fix |
 |---|---|
-| `network … not found` | Run `docker network ls` on the server, put the correct name in `TRAEFIK_NETWORK` in `.env`, then deploy again |
+| `network … not found` | Run `docker network ls`, put the correct name in `TRAEFIK_NETWORK` in `.env`, then `docker compose up -d` |
 | Browser shows a certificate error | DNS doesn't point to the server yet, or galleryflow isn't running with `docker-compose.prod.yml` |
-| `Missing .env on the server` | Do step 3 |
-| Admin container keeps restarting | `.env` is missing `ADMIN_PASSWORD` (10+ characters) or `ADMIN_SECRET`. Check `docker compose logs admin` |
+| `Missing .env` / `Set ADMIN_PASSWORD in .env` | Do step 4 |
+| Admin container keeps restarting | `ADMIN_PASSWORD` must be 10+ characters and `ADMIN_SECRET` must be set. Check `docker compose logs admin` |
 | 404 from Traefik | The containers aren't on galleryflow's network. Check `docker compose ps` and `docker network inspect galleryflow_galleryflow` |
+| `git pull` fails with "local changes" | Someone edited code files directly on the server. Run `git status` to see them; `git checkout -- <file>` discards them (`live/` is never affected) |
 | Publish failed | Admin → **Publish & history** shows the build log. The live site is unchanged until a publish succeeds |
 | Enquiry emails not arriving | Check the SMTP settings in `.env`, then run `docker compose up -d` |
+
+### Alternative: deploy without git on the server
+`DEPLOY_HOST=ubuntu@<server-ip> ./scripts/deploy.sh` (run on your computer) copies the code over SSH instead of using
+`git pull`. It needs `.env` on the server (step 4). Use one method or the other, not both.
