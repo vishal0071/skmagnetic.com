@@ -1,0 +1,169 @@
+---
+import { site } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { breadcrumbs as breadcrumbSchema, localBusiness, webPage } from '@/lib/schema';
+import { telHref, whatsappHref, mailHref } from '@/lib/links';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Ph from '@/components/ui/Ph.astro';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+import EnquiryForm from '@/components/forms/EnquiryForm.astro';
+import ContactDetails from '@/components/sections/ContactDetails.astro';
+import MapEmbed from '@/components/sections/MapEmbed.astro';
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Contact', href: '/contact/' },
+];
+const title = 'Contact SK Enterprises | Magnetizer Manufacturer, Maharashtra';
+const description =
+  'Contact SK Enterprises, magnetizer manufacturer in Maharashtra. Call, WhatsApp, email or send an enquiry about magnet charging machines and fixtures.';
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[webPage({ type: 'ContactPage', name: 'Contact SK Enterprises', description, url: '/contact/' }), breadcrumbSchema(crumbs), localBusiness()]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Contact SK Enterprises</h1>
+      <p class="lead">Questions about a magnetizer, a fixture or a price? Reach our team the way that suits you — we respond <Ph text={site.contact.responseTime} fallback="quickly" />.</p>
+      <div class="quick-contact">
+        <a class="qc" href={telHref()} data-track="phone_click" data-location="contact_quick">
+          <span class="icon-tile icon-tile--red"><Icon name="phone" size={22} /></span>
+          <span><small>Call us</small><strong>{site.contact.phone.display}</strong></span>
+        </a>
+        <a class="qc" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="contact_quick">
+          <span class="icon-tile qc__wa"><Icon name="whatsapp" size={22} /></span>
+          <span><small>WhatsApp</small><strong>{site.contact.whatsapp.display}</strong></span>
+        </a>
+        <a class="qc" href={mailHref('Enquiry from website')} data-track="email_click" data-location="contact_quick">
+          <span class="icon-tile"><Icon name="mail" size={22} /></span>
+          <span><small>Email</small><strong>{site.contact.email.address}</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="form-title">
+    <div class="container split">
+      <div class="form-card">
+        <p class="eyebrow">Send an enquiry</p>
+        <h2 id="form-title">Tell us what you need</h2>
+        <p class="text-muted mt-1 mb-form">Share as much detail as you can — part, magnet material, pole pattern and output help us reply faster.</p>
+        <EnquiryForm id="contact-enquiry" location="contact_page" submitLabel="Submit Enquiry" />
+      </div>
+      <div class="contact-side">
+        <h2 class="h3">Business location</h2>
+        <MapEmbed />
+        <ContactDetails location="contact_page" />
+        <div class="biz">
+          <p class="biz__title">Business details</p>
+          <dl>
+            <div><dt>Company</dt><dd>{site.legalName}</dd></div>
+            <div><dt>Business</dt><dd>Magnetizer manufacturer</dd></div>
+            <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.gstin) }]}><dt>GSTIN</dt><dd><Ph text={site.business.gstin} /></dd></div>
+            <div><dt>Service area</dt><dd>{site.location.state} &amp; across {site.location.country} <Ph text="{{confirm}}" /></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quick-contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .qc {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink-900);
+    text-decoration: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+  .qc:hover {
+    border-color: var(--ink-900);
+    box-shadow: var(--shadow);
+    color: var(--ink-900);
+  }
+  .qc small {
+    display: block;
+    color: var(--subtle);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+  }
+  .qc strong {
+    font-size: 1.0625rem;
+    word-break: break-word;
+  }
+  .qc__wa {
+    background: #e6f4ec;
+    border-color: #cde8d7;
+    color: var(--wa);
+  }
+  .form-card {
+    padding: clamp(22px, 4vw, 40px);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .form-card h2 {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  }
+  .mb-form {
+    margin-bottom: 24px;
+  }
+  .contact-side {
+    display: grid;
+    gap: 28px;
+  }
+  .h3 {
+    font-size: var(--fs-h3);
+  }
+  .biz {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--steel-50);
+  }
+  .biz__title {
+    color: var(--ink-900);
+    font-weight: 720;
+    margin-bottom: 10px;
+  }
+  .biz dl {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+  .biz dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .biz dt {
+    color: var(--muted);
+  }
+  .biz dd {
+    margin: 0;
+    color: var(--ink-900);
+    font-weight: 600;
+    text-align: right;
+  }
+</style>

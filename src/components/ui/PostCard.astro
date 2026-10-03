@@ -1,0 +1,23 @@
+---
+import type { Post } from '@/lib/content';
+import { formatDate } from '@/lib/content';
+import { blogUrl } from '@/lib/links';
+import ProductVisual from '@/components/product/ProductVisual.astro';
+
+interface Props {
+  post: Post;
+  headingLevel?: 'h2' | 'h3';
+}
+const { post, headingLevel: H = 'h3' } = Astro.props;
+const d = post.data;
+const images = d.cover ? [{ src: d.cover, alt: d.coverAlt ?? d.title }] : [];
+---
+
+<article class="card card--hover card--link" data-reveal>
+  <ProductVisual illustration={d.illustration} images={images} alt={d.coverAlt ?? `Illustration for ${d.title}`} wide />
+  <div class="card__body">
+    <p class="card__meta">{d.type} · <time datetime={d.published.toISOString()}>{formatDate(d.published)}</time></p>
+    <H class="card__title"><a href={blogUrl(post.id)}>{d.title}</a></H>
+    <p class="card__text">{d.excerpt}</p>
+  </div>
+</article>

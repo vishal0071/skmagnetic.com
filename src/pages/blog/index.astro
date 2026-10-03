@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts } from '@/lib/content';
+import { blogUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, itemList, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import PostCard from '@/components/ui/PostCard.astro';
+
+const posts = await getPosts();
+const types = [...new Set(posts.map((p) => p.data.type))];
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog/' },
+];
+const title = 'Magnetizer Guides & Technical Articles | SK Enterprises Blog';
+const description =
+  'Practical guides on magnetizers, magnet charging, magnetizing fields, multi-pole fixtures and magnetizer safety — for engineers, buyers and production teams.';
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[
+    webPage({ type: 'CollectionPage', name: 'Knowledge centre', description, url: '/blog/' }),
+    breadcrumbSchema(crumbs),
+    itemList(
+      'Articles',
+      posts.map((p) => ({ name: p.data.title, url: blogUrl(p.id) })),
+    ),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Knowledge centre</h1>
+      <p class="lead">Buying guides and technical explainers to help you choose, use and maintain magnetizing equipment with confidence.</p>
+      <ul class="chips mt-3" aria-label="Article types">
+        {types.map((t) => <li class="chip">{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        {posts.map((p) => <PostCard post={p} headingLevel="h2" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand title="Have a technical question?" text="Our engineers can help you choose the right magnetizer and fixture for your part." location="blog_index" />
+    </div>
+  </section>
+</BaseLayout>

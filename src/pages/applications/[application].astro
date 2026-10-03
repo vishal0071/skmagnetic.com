@@ -1,0 +1,48 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getApplications, isNoindex, resolve, type Application } from '@/lib/content';
+import { applicationUrl, industryUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, faqPage, webPage } from '@/lib/schema';
+import TopicPage from '@/components/sections/TopicPage.astro';
+
+export async function getStaticPaths() {
+  return (await getApplications()).map((application) => ({ params: { application: application.id }, props: { application } }));
+}
+interface Props {
+  application: Application;
+}
+const { application } = Astro.props;
+const d = application.data;
+const { Content } = await render(application);
+const [products, industries] = await Promise.all([resolve(d.products), resolve(d.industries)]);
+const url = applicationUrl(application.id);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Applications', href: '/applications/' },
+  { label: d.title, href: url },
+];
+---
+
+<BaseLayout
+  footerCta={false}
+  title={d.seo.title}
+  description={d.seo.description}
+  noindex={isNoindex(application)}
+  schema={[webPage({ name: d.title, description: d.seo.description, url }), breadcrumbSchema(crumbs), faqPage(d.faqs)]}
+>
+  <TopicPage
+    eyebrow="Application"
+    title={d.title}
+    intro={d.intro}
+    icon={d.icon}
+    crumbs={crumbs}
+    sample={d.sample}
+    products={products}
+    links={industries.map((i) => ({ label: i.data.title, href: industryUrl(i.id), icon: i.data.icon }))}
+    linksTitle="Industries"
+    faqs={d.faqs}
+  >
+    <Content />
+  </TopicPage>
+</BaseLayout>

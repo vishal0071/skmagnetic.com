@@ -1,0 +1,458 @@
+---
+/**
+ * B2B enquiry / quote form.
+ *
+ * Submits multipart/form-data (so file uploads work) to site.forms.endpoint.
+ * Until an endpoint is configured — or if sending fails — the visitor is offered
+ * a one-tap WhatsApp / email fallback that carries everything they typed, so
+ * no lead is lost.
+ *
+ * Analytics (dataLayer): generate_lead on every successful submission, plus
+ * quote_request (quote forms) and product_enquiry (when a product is chosen).
+ */
+import { site } from '@/config/site';
+import { getCatalogue } from '@/lib/content';
+import Ph from '@/components/ui/Ph.astro';
+import { telHref } from '@/lib/links';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  id: string;
+  /** 'quote' fires quote_request in addition to generate_lead */
+  type?: 'enquiry' | 'quote';
+  variant?: 'full' | 'compact';
+  /** Product slug to preselect */
+  product?: string;
+  /** Analytics label for where the form sits, e.g. "product_page" */
+  location: string;
+  submitLabel?: string;
+  /** Pre-filled message text */
+  message?: string;
+}
+
+const { id, type = 'enquiry', variant = 'full', product, location, submitLabel = 'Submit Enquiry', message = '' } = Astro.props;
+const catalogue = await getCatalogue();
+const { endpoint, hiddenFields, maxUploadMB, acceptedFiles } = site.forms;
+const compact = variant === 'compact';
+const f = (name: string) => `${id}-${name}`;
+---
+
+<div class:list={['enquiry', { 'enquiry--compact': compact }]} data-enquiry-root>
+  <form
+    id={id}
+    class="enquiry__form"
+    action={endpoint || undefined}
+    method="post"
+    enctype="multipart/form-data"
+    data-enquiry
+    data-endpoint={endpoint}
+    data-type={type}
+    data-location={location}
+    data-max-mb={maxUploadMB}
+    data-brand={site.brand}
+    data-wa={site.contact.whatsapp.number}
+    data-email={site.contact.email.address}
+    novalidate
+  >
+    {Object.entries(hiddenFields).map(([name, value]) => <input type="hidden" name={name} value={value} />)}
+    <input type="hidden" name="form_type" value={type === 'quote' ? 'Quote request' : 'Enquiry'} />
+    <input type="hidden" name="subject" value={`New ${type === 'quote' ? 'quote request' : 'enquiry'} — ${site.brand} website`} />
+    <input type="hidden" name="page_url" value="" data-page-url />
+    <!-- Honeypot: humans never see or fill this -->
+    <div class="enquiry__hp" aria-hidden="true">
+      <label for={f('website')}>Website</label>
+      <input id={f('website')} type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class:list={['form-grid', { 'form-grid--2': !compact }]}>
+      <div class="field">
+        <label for={f('name')}>Name <span class="req" aria-hidden="true">*</span></label>
+        <input class="input" id={f('name')} name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your full name" />
+      </div>
+      {
+        !compact && (
+          <div class="field">
+            <label for={f('company')}>Company name</label>
+            <input class="input" id={f('company')} name="company" type="text" autocomplete="organization" maxlength="120" placeholder="Company / firm name" />
+          </div>
+        )
+      }
+      <div class="field">
+        <label for={f('mobile')}>Mobile number <span class="req" aria-hidden="true">*</span></label>
+        <input
+          class="input"
+          id={f('mobile')}
+          name="mobile"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          required
+          pattern="[0-9+()\-\s]{10,18}"
+          maxlength="18"
+          placeholder="+91 98XXX XXXXX"
+          aria-describedby={f('mobile-hint')}
+        />
+        <span class="hint" id={f('mobile-hint')}>We’ll call or WhatsApp you on this number.</span>
+      </div>
+      {
+        !compact && (
+          <div class="field">
+            <label for={f('email')}>Email</label>
+            <input class="input" id={f('email')} name="email" type="email" autocomplete="email" maxlength="120" placeholder="name@company.com" />
+          </div>
+        )
+      }
+      <div class:list={['field', { 'field--full': !compact }]}>
+        <label for={f('product')}>Product interested in</label>
+        <select class="input" id={f('product')} name="product" data-product-select>
+          <option value="">Select a product (optional)</option>
+          {
+            catalogue.map(({ category, products }) => (
+              <optgroup label={category.data.title}>
+                {products.map((p) => (
+                  <option value={p.data.title} data-slug={p.id} selected={product === p.id}>
+                    {p.data.title}
+                  </option>
+                ))}
+              </optgroup>
+            ))
+          }
+          <option value="Other / not sure">Other / not sure</option>
+        </select>
+      </div>
+      {
+        !compact && (
+          <>
+            <div class="field">
+              <label for={f('quantity')}>Quantity</label>
+              <input class="input" id={f('quantity')} name="quantity" type="text" maxlength="60" placeholder="e.g. 1 machine + 2 fixtures" />
+            </div>
+            <div class="field">
+              <label for={f('location')}>Location</label>
+              <input class="input" id={f('location')} name="location" type="text" autocomplete="address-level2" maxlength="80" placeholder="City, State" />
+            </div>
+            <div class="field field--full">
+              <label for={f('message')}>Requirement details</label>
+              <textarea
+                class="input"
+                id={f('message')}
+                name="message"
+                maxlength="2000"
+                placeholder="Part to magnetize, magnet material & grade, size, pole pattern, parts per hour…"
+                set:text={message}
+              />
+            </div>
+            <div class="field field--full">
+              <label for={f('file')}>
+                Upload part drawing / specification <span class="hint">(optional)</span>
+              </label>
+              <input class="input" id={f('file')} name="attachment" type="file" accept={acceptedFiles} aria-describedby={f('file-hint')} data-file />
+              <span class="hint" id={f('file-hint')}>
+                PDF, Word, Excel or image — max {maxUploadMB} MB.
+              </span>
+            </div>
+          </>
+        )
+      }
+    </div>
+
+    {
+      !compact && (
+        <label class="check mt-3">
+          <input type="checkbox" name="consent" value="yes" required />
+          <span>
+            I agree to be contacted by {site.brand} about this enquiry by phone, WhatsApp or email. See our <a href="/privacy-policy/">Privacy Policy</a>.
+          </span>
+        </label>
+      )
+    }
+
+    <p class="enquiry__error" role="alert" data-error hidden></p>
+
+    <button class:list={['btn btn--primary btn--lg btn--block', compact ? 'mt-2' : 'mt-3']} type="submit" data-submit>
+      <span data-submit-label>{submitLabel}</span>
+      <Icon name="arrow-right" size={18} />
+    </button>
+    {
+      compact && (
+        <p class="enquiry__fine">
+          By submitting, you agree to be contacted about your enquiry. <a href="/privacy-policy/">Privacy</a>
+        </p>
+      )
+    }
+  </form>
+
+  <!-- Success -->
+  <div class="enquiry__done" data-success hidden tabindex="-1">
+    <span class="enquiry__done-icon"><Icon name="check" size={28} /></span>
+    <h3>Thank you<span data-success-name></span>! Your enquiry has been received.</h3>
+    <p>
+      Our team will review your requirement and get back to you <Ph text={site.contact.responseTime} fallback="shortly" />. For anything urgent, call us
+      or message us on WhatsApp.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--dark" href={telHref()} data-track="phone_click" data-location="form_success"><Icon name="phone" size={18} />Call Now</a>
+      <a class="btn btn--wa" href="#" target="_blank" rel="noopener" data-wa-link data-track="whatsapp_click" data-location="form_success"
+        ><Icon name="whatsapp" size={18} />WhatsApp Us</a
+      >
+    </div>
+  </div>
+
+  <!-- Fallback: endpoint not configured or network error -->
+  <div class="enquiry__fallback" data-fallback hidden tabindex="-1">
+    <span class="enquiry__done-icon enquiry__done-icon--wa"><Icon name="whatsapp" size={26} /></span>
+    <h3>Send your enquiry instantly</h3>
+    <p data-fallback-text>
+      Tap below to send the details you entered to our team on WhatsApp or by email — nothing needs to be typed again.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--wa btn--lg" href="#" target="_blank" rel="noopener" data-fallback-wa data-track="generate_lead" data-location="form_fallback_whatsapp"
+        ><Icon name="whatsapp" size={18} />Send via WhatsApp</a
+      >
+      <a class="btn btn--outline btn--lg" href="#" data-fallback-mail data-track="generate_lead" data-location="form_fallback_email"
+        ><Icon name="mail" size={18} />Send via Email</a
+      >
+    </div>
+    <p class="enquiry__fine" data-fallback-file hidden>Please attach your drawing/specification in the chat or email.</p>
+    {
+      site.showContentNotices && !endpoint && (
+        <p class="content-notice review-only mt-2">
+          <span>
+            <strong>Developer note:</strong> set <code>forms.endpoint</code> in <code>src/config/site.ts</code> to receive submissions directly.
+          </span>
+        </p>
+      )
+    }
+    <button type="button" class="enquiry__back" data-back>← Edit my enquiry</button>
+  </div>
+</div>
+
+<style>
+  .enquiry__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .enquiry__error {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--red-50);
+    color: var(--red-700);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+  .enquiry__fine {
+    margin-top: 10px;
+    color: var(--subtle);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  .enquiry--compact .form-grid {
+    gap: 14px;
+  }
+  .enquiry--compact .hint {
+    display: none;
+  }
+  .enquiry__done,
+  .enquiry__fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    outline: none;
+  }
+  .enquiry__done[hidden],
+  .enquiry__fallback[hidden],
+  .enquiry__form[hidden] {
+    display: none;
+  }
+  .enquiry__done h3,
+  .enquiry__fallback h3 {
+    font-size: 1.375rem;
+  }
+  .enquiry__done p,
+  .enquiry__fallback p {
+    color: var(--muted);
+  }
+  .enquiry__done-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e6f4ec;
+    color: var(--ok);
+  }
+  .enquiry__done-icon--wa {
+    color: var(--wa);
+  }
+  .enquiry__back {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+  }
+</style>
+
+<script>
+  import { track } from '@/scripts/track';
+
+  const params = new URLSearchParams(location.search);
+
+  document.querySelectorAll<HTMLFormElement>('form[data-enquiry]').forEach((form) => {
+    const root = form.closest<HTMLElement>('[data-enquiry-root]')!;
+    const success = root.querySelector<HTMLElement>('[data-success]')!;
+    const fallback = root.querySelector<HTMLElement>('[data-fallback]')!;
+    const errorEl = form.querySelector<HTMLElement>('[data-error]')!;
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]')!;
+    const select = form.querySelector<HTMLSelectElement>('[data-product-select]');
+    const fileInput = form.querySelector<HTMLInputElement>('[data-file]');
+    const { endpoint, type, brand, wa, email } = form.dataset;
+    const maxBytes = Number(form.dataset.maxMb || 5) * 1024 * 1024;
+    const location_ = form.dataset.location;
+    const defaultLabel = submitLabel.textContent;
+
+    form.querySelector<HTMLInputElement>('[data-page-url]')!.value = window.location.href;
+
+    // Preselect product from ?product=slug (e.g. links from product pages)
+    const slug = params.get('product');
+    if (select && slug && !select.value) {
+      const opt = select.querySelector<HTMLOptionElement>(`option[data-slug="${CSS.escape(slug)}"]`);
+      if (opt) opt.selected = true;
+    }
+
+    const showError = (msg: string) => {
+      errorEl.textContent = msg;
+      errorEl.hidden = !msg;
+    };
+
+    const summary = (data: FormData) => {
+      const get = (k: string) => String(data.get(k) || '').trim();
+      const lines = [
+        `Hello ${brand}, I would like ${type === 'quote' ? 'a quotation' : 'more information'}.`,
+        '',
+        `Name: ${get('name')}`,
+        get('company') && `Company: ${get('company')}`,
+        `Mobile: ${get('mobile')}`,
+        get('email') && `Email: ${get('email')}`,
+        get('product') && `Product: ${get('product')}`,
+        get('quantity') && `Quantity: ${get('quantity')}`,
+        get('location') && `Location: ${get('location')}`,
+        get('message') && `Requirement: ${get('message')}`,
+      ].filter((l) => l !== '' && l !== false && l !== undefined);
+      return lines.join('\n');
+    };
+
+    const leadParams = (data: FormData, method: string) => ({
+      form_id: form.id,
+      form_type: type,
+      form_location: location_,
+      product_name: String(data.get('product') || '') || undefined,
+      method,
+    });
+
+    const reportConversions = (data: FormData, method: string) => {
+      const p = leadParams(data, method);
+      track('generate_lead', p);
+      if (type === 'quote') track('quote_request', p);
+      if (p.product_name && p.product_name !== 'Other / not sure') track('product_enquiry', p);
+    };
+
+    const openFallback = (data: FormData, reason: 'not_configured' | 'error') => {
+      const text = summary(data);
+      const waUrl = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+      const mailUrl = `mailto:${email}?subject=${encodeURIComponent(`Enquiry — ${data.get('product') || brand}`)}&body=${encodeURIComponent(text)}`;
+      fallback.querySelector<HTMLAnchorElement>('[data-fallback-wa]')!.href = waUrl;
+      fallback.querySelector<HTMLAnchorElement>('[data-fallback-mail]')!.href = mailUrl;
+      fallback.querySelector<HTMLElement>('[data-fallback-file]')!.hidden = !(fileInput?.files?.length);
+      if (reason === 'error') {
+        fallback.querySelector('[data-fallback-text]')!.textContent =
+          'We could not send your enquiry online just now. Tap below to send the same details on WhatsApp or by email.';
+      }
+      form.hidden = true;
+      fallback.hidden = false;
+      fallback.focus();
+    };
+
+    fallback.querySelector('[data-back]')?.addEventListener('click', () => {
+      fallback.hidden = true;
+      form.hidden = false;
+      form.querySelector<HTMLElement>('input:not([type=hidden])')?.focus();
+    });
+
+    // Fallback clicks are leads too — report the conversion with the method used
+    fallback.querySelectorAll<HTMLAnchorElement>('[data-fallback-wa], [data-fallback-mail]').forEach((a) => {
+      a.addEventListener('click', () => {
+        const data = new FormData(form);
+        const p = leadParams(data, a.hasAttribute('data-fallback-wa') ? 'whatsapp' : 'email');
+        if (type === 'quote') track('quote_request', p);
+        if (p.product_name && p.product_name !== 'Other / not sure') track('product_enquiry', p);
+      });
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      showError('');
+
+      if (!form.checkValidity()) {
+        const firstInvalid = form.querySelector<HTMLElement>(':invalid');
+        form.reportValidity();
+        firstInvalid?.focus();
+        return;
+      }
+      const mobileDigits = String(new FormData(form).get('mobile') || '').replace(/\D/g, '');
+      if (mobileDigits.length < 10) {
+        showError('Please enter a valid mobile number with at least 10 digits.');
+        return;
+      }
+      const file = fileInput?.files?.[0];
+      if (file && file.size > maxBytes) {
+        showError(`The attached file is larger than ${form.dataset.maxMb} MB. Please upload a smaller file or send it on WhatsApp.`);
+        return;
+      }
+
+      const data = new FormData(form);
+      // Spam bots fill the hidden field — pretend success, send nothing
+      if (String(data.get('website') || '')) {
+        form.hidden = true;
+        success.hidden = false;
+        return;
+      }
+
+      if (!endpoint) {
+        openFallback(data, 'not_configured');
+        return;
+      }
+
+      submit.disabled = true;
+      submitLabel.textContent = 'Sending…';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        reportConversions(data, 'form');
+        const name = String(data.get('name') || '').trim().split(' ')[0];
+        success.querySelector('[data-success-name]')!.textContent = name ? `, ${name}` : '';
+        const product = String(data.get('product') || '');
+        success.querySelector<HTMLAnchorElement>('[data-wa-link]')!.href =
+          `https://wa.me/${wa}?text=${encodeURIComponent(
+            `Hello ${brand}, I have just sent an enquiry${product ? ` for ${product}` : ''} on your website. My name is ${data.get('name')}.`,
+          )}`;
+        form.reset();
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      } catch {
+        openFallback(data, 'error');
+      } finally {
+        submit.disabled = false;
+        submitLabel.textContent = defaultLabel;
+      }
+    });
+  });
+</script>

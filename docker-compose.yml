@@ -1,0 +1,99 @@
+# SK Enterprises website — runs on the same server as galleryflow, behind its Traefik.
+#
+#   web    nginx serving the published static site               → https://skmagnetic.com/*
+#   admin  admin panel + enquiry API + site builder (Node)        → https://skmagnetic.com/admin, /api/
+#
+# Traefik (from the galleryflow stack, started with docker-compose.prod.yml) owns ports
+# 80/443 and issues Let's Encrypt certificates with the `le` resolver. Both containers join
+# galleryflow's Docker network and Traefik discovers them from the labels — no ports are
+# published and nothing in galleryflow changes.
+#
+#   docker compose up -d --build
+#
+# Required in .env (see .env.example): ADMIN_PASSWORD, ADMIN_SECRET
+
+name: skmagnetic
+
+services:
+  web:
+    build: .
+    image: skmagnetic-web:latest
+    container_name: skmagnetic-web
+    restart: unless-stopped
+    volumes:
+      - site:/srv/site
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_NETWORK:-galleryflow_galleryflow}
+      - traefik.http.services.skmagnetic.loadbalancer.server.port=80
+
+      # https://skmagnetic.com — HTTP→HTTPS is already redirected by Traefik's entrypoint
+      - traefik.http.routers.skmagnetic.rule=Host(`${SITE_DOMAIN:-skmagnetic.com}`)
+      - traefik.http.routers.skmagnetic.entrypoints=websecure
+      - traefik.http.routers.skmagnetic.tls.certresolver=${CERT_RESOLVER:-le}
+      - traefik.http.routers.skmagnetic.service=skmagnetic
+      - traefik.http.routers.skmagnetic.middlewares=skmagnetic-headers,skmagnetic-compress
+
+      # https://www.skmagnetic.com → https://skmagnetic.com (301)
+      - traefik.http.routers.skmagnetic-www.rule=Host(`www.${SITE_DOMAIN:-skmagnetic.com}`)
+      - traefik.http.routers.skmagnetic-www.entrypoints=websecure
+      - traefik.http.routers.skmagnetic-www.tls.certresolver=${CERT_RESOLVER:-le}
+      - traefik.http.routers.skmagnetic-www.service=skmagnetic
+      - traefik.http.routers.skmagnetic-www.middlewares=skmagnetic-www-redirect
+      - traefik.http.middlewares.skmagnetic-www-redirect.redirectregex.regex=^https?://www\.(.+)
+      - traefik.http.middlewares.skmagnetic-www-redirect.redirectregex.replacement=https://$${1}
+      - traefik.http.middlewares.skmagnetic-www-redirect.redirectregex.permanent=true
+
+      # Security headers + Brotli/gzip compression
+      - traefik.http.middlewares.skmagnetic-headers.headers.stsSeconds=31536000
+      - traefik.http.middlewares.skmagnetic-headers.headers.contentTypeNosniff=true
+      - traefik.http.middlewares.skmagnetic-headers.headers.referrerPolicy=strict-origin-when-cross-origin
+      - traefik.http.middlewares.skmagnetic-headers.headers.customFrameOptionsValue=SAMEORIGIN
+      - traefik.http.middlewares.skmagnetic-headers.headers.permissionsPolicy=camera=(), microphone=(), geolocation=()
+      - traefik.http.middlewares.skmagnetic-compress.compress=true
+
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
+    image: skmagnetic-admin:latest
+    container_name: skmagnetic-admin
+    restart: unless-stopped
+    environment:
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env}
+      ADMIN_SECRET: ${ADMIN_SECRET:?Set ADMIN_SECRET in .env (openssl rand -hex 32)}
+      PUBLIC_ORIGIN: https://${SITE_DOMAIN:-skmagnetic.com}
+      NOTIFY_EMAIL: ${NOTIFY_EMAIL:-}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-0}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+    volumes:
+      - site:/srv/site # published releases, shared with nginx
+      - ./src/content:/app/src/content # editable content & settings (persist on the server)
+      - ./data:/app/data # enquiries, uploads, SEO report
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=${TRAEFIK_NETWORK:-galleryflow_galleryflow}
+      - traefik.http.services.skmagnetic-admin.loadbalancer.server.port=8787
+      - traefik.http.routers.skmagnetic-admin.rule=Host(`${SITE_DOMAIN:-skmagnetic.com}`) && (PathPrefix(`/admin`) || PathPrefix(`/api/`))
+      - traefik.http.routers.skmagnetic-admin.priority=100
+      - traefik.http.routers.skmagnetic-admin.entrypoints=websecure
+      - traefik.http.routers.skmagnetic-admin.tls.certresolver=${CERT_RESOLVER:-le}
+      - traefik.http.routers.skmagnetic-admin.service=skmagnetic-admin
+      - traefik.http.routers.skmagnetic-admin.middlewares=skmagnetic-headers
+
+volumes:
+  site:
+
+networks:
+  proxy:
+    external: true
+    name: ${TRAEFIK_NETWORK:-galleryflow_galleryflow}

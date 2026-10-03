@@ -1,0 +1,25 @@
+---
+/**
+ * Renders a value that may contain {{placeholders}}.
+ *  - before / after: text that belongs to the value (e.g. ", ") — hidden with it while it is a placeholder
+ *  - fallback: what visitors see while the value is still a placeholder
+ */
+import { hasPlaceholder, isPlaceholderOnly, placeholderHtml } from '@/lib/placeholders';
+interface Props {
+  text: string;
+  before?: string;
+  after?: string;
+  fallback?: string;
+}
+const { text, before = '', after = '', fallback } = Astro.props;
+const esc = (v: string) => v.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+let html: string;
+if (!hasPlaceholder(text)) html = esc(before + text + after);
+else if (isPlaceholderOnly(text))
+  html =
+    `<span class="ph" title="Placeholder — replace before launch">${esc(before + text.replace(/\{\{|\}\}/g, '') + after)}</span>` +
+    (fallback ? `<span class="ph-alt">${esc(before + fallback + after)}</span>` : '');
+else html = esc(before) + placeholderHtml(text) + esc(after);
+---
+
+<Fragment set:html={html} />

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getRoutes } from '@/lib/routes';
+import { breadcrumbs as breadcrumbSchema } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+
+const routes = await getRoutes();
+const groups = [...new Set(routes.map((r) => r.group))].map((g) => ({ name: g, routes: routes.filter((r) => r.group === g) }));
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Sitemap', href: '/sitemap/' },
+];
+---
+
+<BaseLayout
+  title="Sitemap | All Pages on skmagnetic.com | SK Enterprises"
+  description="A list of every page on the SK Enterprises website — magnetizers, fixtures, industries, applications, guides and company pages."
+  schema={[breadcrumbSchema(crumbs)]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Sitemap</h1>
+      <p class="lead">Every page on the {`SK Enterprises`} website in one place.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container sitemap-grid">
+      {
+        groups.map((g) => (
+          <nav aria-label={g.name}>
+            <h2>{g.name}</h2>
+            <ul>
+              {g.routes.map((r) => (
+                <li>
+                  <a href={r.url}>{r.title}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px 32px;
+  }
+  .sitemap-grid h2 {
+    font-size: 1.125rem;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--ink-900);
+  }
+  .sitemap-grid ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    font-size: var(--fs-sm);
+  }
+</style>

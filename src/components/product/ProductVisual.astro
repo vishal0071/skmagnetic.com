@@ -1,0 +1,41 @@
+---
+/**
+ * Shows the first real product photo (AVIF/WebP, responsive) when available,
+ * otherwise the built-in illustration for the product type.
+ */
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { renderIllustration, type IllustrationKind } from '@/lib/illustrations';
+
+interface Props {
+  illustration: IllustrationKind;
+  images?: { src: ImageMetadata; alt: string }[];
+  /** Used as the illustration's accessible label */
+  alt: string;
+  eager?: boolean;
+  sizes?: string;
+  class?: string;
+  wide?: boolean;
+}
+const { illustration, images = [], alt, eager = false, sizes = '(min-width: 1100px) 380px, (min-width: 640px) 50vw, 100vw', class: className, wide } = Astro.props;
+const photo = images[0];
+---
+
+<div class:list={['media', { 'media--wide': wide }, className]}>
+  {
+    photo ? (
+      <Picture
+        src={photo.src}
+        alt={photo.alt}
+        formats={['avif', 'webp']}
+        widths={[400, 640, 960, 1280]}
+        sizes={sizes}
+        loading={eager ? 'eager' : 'lazy'}
+        fetchpriority={eager ? 'high' : 'auto'}
+        decoding="async"
+      />
+    ) : (
+      <svg viewBox="0 0 400 300" role="img" aria-label={alt} preserveAspectRatio="xMidYMid meet" set:html={renderIllustration(illustration)} />
+    )
+  }
+</div>

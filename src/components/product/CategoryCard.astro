@@ -1,0 +1,60 @@
+---
+import type { Category, Product } from '@/lib/content';
+import { productHref } from '@/lib/content';
+import { categoryUrl } from '@/lib/links';
+import ProductVisual from './ProductVisual.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  category: Category;
+  products: Product[];
+}
+const { category, products } = Astro.props;
+const d = category.data;
+---
+
+<article class="card card--hover category-card" data-reveal>
+  <ProductVisual illustration={d.illustration} images={d.images} alt={`${d.title} — category illustration`} wide />
+  <div class="card__body">
+    <p class="card__meta">{products.length} {products.length === 1 ? 'product' : 'products'}</p>
+    <h3 class="card__title"><a href={categoryUrl(category.id)}>{d.title}</a></h3>
+    <p class="card__text">{d.summary}</p>
+    <ul class="category-card__list">
+      {
+        products.map((p) => (
+          <li>
+            <a href={productHref(p)}>
+              {p.data.title}
+              <Icon name="chevron-right" size={16} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="card__actions">
+      <a class="link-arrow" href={categoryUrl(category.id)}>Explore {d.navLabel} <Icon name="arrow-right" size={16} /></a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .category-card__list {
+    list-style: none;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+  .category-card__list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-800);
+    font-size: var(--fs-sm);
+    font-weight: 560;
+    text-decoration: none;
+  }
+  .category-card__list a:hover {
+    color: var(--red);
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+/** Visible only while site.showContentNotices is on — flags sample / unconfirmed content. */
+import { site } from '@/config/site';
+import Icon from './Icon.astro';
+interface Props {
+  title?: string;
+  class?: string;
+}
+const { title = 'Sample content — confirm before launch.', class: className } = Astro.props;
+---
+
+{
+  site.showContentNotices && (
+    <div class:list={['content-notice', 'review-only', className]} role="note">
+      <Icon name="info" size={18} />
+      <p>
+        <strong>{title}</strong> <slot>This page was written as a starting point. Check every detail with SK Enterprises, then set <code>sample: false</code> in the content file.</slot>
+      </p>
+    </div>
+  )
+}

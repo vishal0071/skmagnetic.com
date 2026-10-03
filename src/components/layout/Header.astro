@@ -1,0 +1,466 @@
+---
+import { mainNav, site, whatsappMessages } from '@/config/site';
+import { getCatalogue, productHref } from '@/lib/content';
+import { categoryUrl, mailHref, telHref, whatsappHref } from '@/lib/links';
+import Logo from './Logo.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+const catalogue = await getCatalogue();
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <p class="topbar__note">
+      <strong>{site.brand}</strong>
+      <span aria-hidden="true">·</span>
+      Manufacturer of industrial magnetizers &amp; magnet charging machines — {site.location.state}, {site.location.country}
+    </p>
+    <ul class="topbar__links">
+      <li>
+        <a href={telHref()} data-track="phone_click" data-location="topbar"><Icon name="phone" size={14} />{site.contact.phone.display}</a>
+      </li>
+      <li>
+        <a href={mailHref()} data-track="email_click" data-location="topbar"><Icon name="mail" size={14} />{site.contact.email.address}</a>
+      </li>
+      <li>
+        <a href={whatsappHref(whatsappMessages.general)} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="topbar"
+          ><Icon name="whatsapp" size={14} />WhatsApp</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<header class="site-header" data-header>
+  <div class="container site-header__inner">
+    <Logo />
+
+    <nav class="nav" aria-label="Main">
+      <ul class="nav__list">
+        {
+          mainNav.map((item) =>
+            'hasMenu' in item && item.hasMenu ? (
+              <li class="nav__item nav__item--menu">
+                <a class="nav__link" href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} aria-haspopup="true">
+                  {item.label}
+                  <Icon name="chevron-down" size={16} />
+                </a>
+                <div class="mega" role="region" aria-label="Product categories">
+                  <div class="mega__grid" style={`--cols: ${catalogue.length}`}>
+                    {catalogue.map(({ category, products }) => (
+                      <div class="mega__col">
+                        <a class="mega__cat" href={categoryUrl(category.id)}>
+                          {category.data.title}
+                          <Icon name="arrow-right" size={16} />
+                        </a>
+                        <ul>
+                          {products.map((p) => (
+                            <li>
+                              <a href={productHref(p)}>{p.data.title}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                    <div class="mega__cta">
+                      <p class="mega__cta-title">Need a magnetizer for your part?</p>
+                      <p>Share your part drawing and magnet material — we’ll recommend the right machine and fixture.</p>
+                      <a class="btn btn--primary btn--sm" href="/get-quote/" data-track="cta_click" data-location="mega_menu">
+                        Get a Quote
+                      </a>
+                      <a class="link-arrow" href="/products/">
+                        All products <Icon name="arrow-right" size={16} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ) : (
+              <li class="nav__item">
+                <a class="nav__link" href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ),
+          )
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="header-phone" href={telHref()} data-track="phone_click" data-location="header">
+        <span class="header-phone__icon"><Icon name="phone" size={18} /></span>
+        <span class="header-phone__text">
+          <span>Call our team</span>
+          <strong>{site.contact.phone.display}</strong>
+        </span>
+      </a>
+      <a class="btn btn--primary header-quote" href="/get-quote/" data-track="cta_click" data-location="header">Get a Quote</a>
+      <a class="icon-btn mobile-only" href={telHref()} data-track="phone_click" data-location="header_mobile" aria-label="Call SK Enterprises">
+        <Icon name="phone" size={20} />
+      </a>
+      <button class="icon-btn mobile-only" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
+        <span class="sr-only" data-nav-label>Open menu</span>
+        <Icon name="menu" size={22} class="icon-open" />
+        <Icon name="close" size={22} class="icon-close" />
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <nav class="container" aria-label="Mobile">
+      <ul class="mobile-nav__list">
+        {
+          mainNav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+                <Icon name="chevron-right" size={18} />
+              </a>
+              {'hasMenu' in item && item.hasMenu && (
+                <ul class="mobile-nav__sub">
+                  {catalogue.map(({ category }) => (
+                    <li>
+                      <a href={categoryUrl(category.id)}>{category.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+        <li><a href="/applications/">Applications <Icon name="chevron-right" size={18} /></a></li>
+      </ul>
+      <div class="mobile-nav__cta">
+        <a class="btn btn--primary btn--block btn--lg" href="/get-quote/" data-track="cta_click" data-location="mobile_menu">Get a Quote</a>
+        <div class="mobile-nav__row">
+          <a class="btn btn--outline" href={telHref()} data-track="phone_click" data-location="mobile_menu"><Icon name="phone" size={18} />Call</a>
+          <a class="btn btn--wa" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="mobile_menu"
+            ><Icon name="whatsapp" size={18} />WhatsApp</a
+          >
+        </div>
+        <p class="mobile-nav__mail">
+          <a href={mailHref()} data-track="email_click" data-location="mobile_menu">{site.contact.email.address}</a>
+        </p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    display: none;
+    background: var(--ink-900);
+    color: #a9b6c3;
+    font-size: var(--fs-xs);
+  }
+  @media (min-width: 1100px) {
+    .topbar {
+      display: block;
+    }
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 38px;
+  }
+  .topbar__note strong {
+    color: #fff;
+    font-weight: 650;
+  }
+  .topbar__note span {
+    margin-inline: 6px;
+  }
+  .topbar__links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+  }
+  .topbar__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #dbe3ea;
+    text-decoration: none;
+    font-weight: 550;
+  }
+  .topbar__links a:hover {
+    color: #fff;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgb(255 255 255 / 0.96);
+    backdrop-filter: saturate(1.6) blur(10px);
+    -webkit-backdrop-filter: saturate(1.6) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: var(--header-h);
+  }
+
+  .nav {
+    display: none;
+  }
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 12px;
+    color: var(--ink-800);
+    font-size: 0.96875rem;
+    font-weight: 580;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+  }
+  .nav__link::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s var(--ease);
+  }
+  .nav__link:hover,
+  .nav__link[aria-current] {
+    color: var(--ink-900);
+  }
+  .nav__link:hover::after,
+  .nav__link[aria-current]::after {
+    transform: scaleX(1);
+  }
+
+  .nav__item--menu {
+    position: static;
+  }
+  .mega {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    transition:
+      opacity 0.18s var(--ease),
+      transform 0.18s var(--ease),
+      visibility 0s linear 0.18s;
+  }
+  .nav__item--menu:hover .mega,
+  .nav__item--menu:focus-within .mega {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)) 300px;
+    gap: 32px;
+    max-width: calc(var(--container) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding: 32px var(--gutter) 36px;
+  }
+  .mega__cat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-900);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .mega__cat:hover {
+    color: var(--red);
+  }
+  .mega__col ul {
+    list-style: none;
+    display: grid;
+    gap: 2px;
+  }
+  .mega__col li a {
+    display: block;
+    padding: 6px 0;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .mega__col li a:hover {
+    color: var(--ink-900);
+  }
+  .mega__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 22px;
+    border-radius: var(--radius);
+    background: var(--steel-50);
+    border: 1px solid var(--line);
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+  .mega__cta-title {
+    color: var(--ink-900);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-phone {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-right: 8px;
+    color: var(--ink-900);
+    text-decoration: none;
+  }
+  .header-phone__icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--steel-100);
+    color: var(--red);
+  }
+  .header-phone__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+  .header-phone__text strong {
+    color: var(--ink-900);
+    font-size: 0.9375rem;
+  }
+  .header-quote {
+    display: none;
+  }
+  .icon-btn {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--ink-900);
+  }
+  .icon-btn :global(.icon-close) {
+    display: none;
+  }
+  [data-header][data-open] :global(.icon-open) {
+    display: none;
+  }
+  [data-header][data-open] :global(.icon-close) {
+    display: block;
+  }
+
+  @media (min-width: 640px) {
+    .header-quote {
+      display: inline-flex;
+    }
+  }
+  @media (min-width: 1100px) {
+    .nav {
+      display: block;
+    }
+    .mobile-only {
+      display: none;
+    }
+  }
+  @media (min-width: 1280px) {
+    .header-phone {
+      display: inline-flex;
+    }
+  }
+
+  .mobile-nav {
+    position: fixed;
+    inset: var(--header-h) 0 0;
+    overflow-y: auto;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding-bottom: 32px;
+  }
+  .mobile-nav__list {
+    list-style: none;
+  }
+  .mobile-nav__list > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-900);
+    font-size: 1.125rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .mobile-nav__list a[aria-current] {
+    color: var(--red);
+  }
+  .mobile-nav__sub {
+    list-style: none;
+    padding: 6px 0 10px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-nav__sub a {
+    display: block;
+    padding: 9px 0;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .mobile-nav__cta {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .mobile-nav__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .mobile-nav__mail {
+    text-align: center;
+    font-size: var(--fs-sm);
+  }
+  @media (min-width: 1100px) {
+    .mobile-nav {
+      display: none !important;
+    }
+  }
+</style>

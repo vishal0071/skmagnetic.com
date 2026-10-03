@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  text?: string;
+  align?: 'left' | 'center';
+  as?: 'h2' | 'h3';
+  id?: string;
+}
+const { eyebrow, title, text, align = 'left', as: Tag = 'h2', id } = Astro.props;
+const hasAction = Astro.slots.has('default');
+---
+
+<div class:list={['section-head', { 'section-head--center': align === 'center', 'section-head--row': hasAction }]}>
+  <div>
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <Tag id={id}>{title}</Tag>
+    {text && <p>{text}</p>}
+  </div>
+  {hasAction && <slot />}
+</div>

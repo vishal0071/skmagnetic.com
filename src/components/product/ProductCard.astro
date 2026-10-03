@@ -1,0 +1,93 @@
+---
+import type { Product } from '@/lib/content';
+import { productHref } from '@/lib/content';
+import { quoteUrl } from '@/lib/links';
+import ProductVisual from './ProductVisual.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  product: Product;
+  categoryName?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const { product, categoryName, headingLevel: H = 'h3' } = Astro.props;
+const d = product.data;
+const href = productHref(product);
+const uses = d.applications.slice(0, 3).map((a) => a.title);
+---
+
+<article class="card card--hover card--link product-card" data-reveal>
+  <ProductVisual illustration={d.illustration} images={d.images} alt={`${d.title} — product illustration`} />
+  <div class="card__body">
+    {categoryName && <p class="card__meta">{categoryName}</p>}
+    <H class="card__title"><a href={href}>{d.title}</a></H>
+    <p class="card__text product-card__summary">{d.summary}</p>
+    <dl class="spec-line">
+      <dt>{d.keySpec.label}</dt>
+      <dd>{d.keySpec.value}</dd>
+    </dl>
+    {
+      uses.length > 0 && (
+        <p class="product-card__uses">
+          <span>Applications</span>
+          {uses.join(' · ')}
+        </p>
+      )
+    }
+    <div class="card__actions product-card__actions">
+      <a class="link-arrow" href={href} aria-label={`View ${d.title}`} tabindex="-1">View product <Icon name="arrow-right" size={16} /></a>
+      <a
+        class="btn btn--outline-red btn--sm"
+        href={quoteUrl(product.id)}
+        data-track="cta_click"
+        data-location="product_card"
+        data-product={d.title}
+        aria-label={`Enquire about ${d.title}`}>Enquire Now</a
+      >
+    </div>
+  </div>
+</article>
+
+<style>
+  .product-card .card__body {
+    gap: 12px;
+    padding: 24px;
+  }
+  .product-card__summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .product-card__uses {
+    color: var(--muted);
+    font-size: var(--fs-xs);
+    line-height: 1.55;
+  }
+  .product-card__uses span {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--subtle);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .product-card__actions {
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+  }
+  .product-card__actions .btn {
+    flex: none;
+  }
+  .product-card :global(.media) {
+    border-bottom: 1px solid var(--line);
+  }
+  .product-card :global(.media svg) {
+    transition: transform 0.4s var(--ease);
+  }
+  .product-card:hover :global(.media svg) {
+    transform: scale(1.04);
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getApplications, productHref, resolve } from '@/lib/content';
+import { applicationUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, itemList, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import LinkCard from '@/components/ui/LinkCard.astro';
+
+const applications = await getApplications();
+const cards = await Promise.all(
+  applications.map(async (a) => ({
+    application: a,
+    products: (await resolve(a.data.products)).slice(0, 3),
+  })),
+);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Applications', href: '/applications/' },
+];
+const title = 'Magnetizing Applications: Rotors, Housings & Magnets';
+const description =
+  'Magnetizing applications: rotor magnetizing, motor housing and stator magnetizing, loose magnet charging, multi-pole magnetizing and magnet recharging.';
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[
+    webPage({ type: 'CollectionPage', name: 'Applications', description, url: '/applications/' }),
+    breadcrumbSchema(crumbs),
+    itemList(
+      'Applications',
+      applications.map((a) => ({ name: a.data.title, url: applicationUrl(a.id) })),
+    ),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Magnetizing applications</h1>
+      <p class="lead">
+        Start from the part you need to magnetize. Each guide explains the process, what to consider and which machine and fixture fit best.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid" style="--min: 320px">
+        {
+          cards.map(({ application, products }) => (
+            <LinkCard
+              href={applicationUrl(application.id)}
+              title={application.data.title}
+              text={application.data.summary}
+              icon={application.data.icon}
+              headingLevel="h2"
+              links={products.map((p) => ({ label: p.data.title, href: productHref(p) }))}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand location="applications_index" />
+    </div>
+  </section>
+</BaseLayout>

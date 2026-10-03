@@ -1,0 +1,264 @@
+---
+import { site } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCatalogue, getIndustries, productHref } from '@/lib/content';
+import { categoryUrl, industryUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Ph from '@/components/ui/Ph.astro';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import TrustSection from '@/components/sections/TrustSection.astro';
+import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+
+const [catalogue, industries] = await Promise.all([getCatalogue(), getIndustries()]);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about/' },
+];
+const title = 'About SK Enterprises | Magnetizer Manufacturer, Maharashtra';
+const description =
+  'SK Enterprises is a Maharashtra-based manufacturer of industrial magnetizers, magnet charging machines, magnetizing coils and custom fixtures.';
+const a = site.contact.address;
+
+const commitments = [
+  {
+    icon: 'badge',
+    title: 'Quality focus',
+    text: 'Every system is engineered around the customer’s part and magnet material, and checked before it leaves our workshop. {{Describe testing before dispatch, e.g. pulse, current and field checks on sample parts}}',
+  },
+  {
+    icon: 'headset',
+    title: 'Customer service',
+    text: 'One point of contact from first enquiry to commissioning, quick answers on phone and WhatsApp, and support with spares and fixtures afterwards.',
+  },
+  {
+    icon: 'shield',
+    title: 'Our commitment',
+    text: 'Accurate technical information, transparent quotations and dependable follow-through — whether it is a single fixture or a complete magnetizing system.',
+  },
+];
+---
+
+<BaseLayout footerCta={false} title={title} description={description} schema={[webPage({ type: 'AboutPage', name: 'About SK Enterprises', description, url: '/about/' }), breadcrumbSchema(crumbs)]}>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>About SK Enterprises</h1>
+      <p class="lead">
+        <strong>{site.brand}</strong> is a manufacturer of industrial magnetizers and magnet charging machines based in
+        <Ph text={a.locality} after=", " />{site.location.state}.
+      </p>
+    </div>
+  </section>
+
+  <!-- Who we are / Our business -->
+  <section class="section" aria-labelledby="who-title">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Who we are</p>
+        <h2 id="who-title">A manufacturer focused on magnetizing</h2>
+        <div class="prose mt-3">
+          <p>
+            <strong>{site.brand}</strong> designs and manufactures magnetizing equipment. Our customers are manufacturers
+            who magnetize parts on their own lines — motor rotors and housings, loudspeaker assemblies, sensor magnets and loose ferrite or NdFeB magnets — and
+            need a machine and fixture that deliver consistent results every shift.
+          </p>
+          <p class="ph-only">
+            <Ph
+              text="{{Add 2–3 sentences of your genuine story: when and why the business was started, who leads it, and what the team specialises in. Do not include anything that cannot be verified.}}"
+            />
+          </p>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Our business</p>
+        <h2>What we do</h2>
+        <ul class="check-list mt-3">
+          <li>Manufacture capacitor discharge magnetizers (magnet charging machines)</li>
+          <li>Design and build magnetizing coils and part-specific fixtures</li>
+          <li>Engineer complete systems for rotors, motor housings, speakers and loose magnets</li>
+          <li>Help customers choose the right energy, voltage and fixture for each part</li>
+          <li>Prepare quick, transparent quotations direct from the manufacturer</li>
+        </ul>
+        <dl class="about-facts mt-4">
+          <div><dt>Company</dt><dd>{site.legalName}</dd></div>
+          <div><dt>Location</dt><dd><Ph text={a.locality} after=", " />{site.location.state}</dd></div>
+          <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.established) }]}><dt>Established</dt><dd><Ph text={site.business.established} /></dd></div>
+          <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.gstin) }]}><dt>GSTIN</dt><dd><Ph text={site.business.gstin} /></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section section--alt" aria-labelledby="products-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Products"
+        title="What we manufacture"
+        text="Explore each category for specifications, applications and buying guidance."
+        id="products-title"
+      />
+      <div class="grid" style="--min: 420px">
+        {
+          catalogue.map(({ category, products }) => (
+            <div class="feature">
+              <h3>
+                <a class="plain-link" href={categoryUrl(category.id)}>
+                  {category.data.title}
+                </a>
+              </h3>
+              <p>{category.data.summary}</p>
+              <ul class="mini-links">
+                {products.map((p) => (
+                  <li>
+                    <a href={productHref(p)}>{p.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Commitment / Quality / Service -->
+  <section class="section" aria-labelledby="commit-title">
+    <div class="container">
+      <SectionHead eyebrow="How we work" title="Our commitment, quality focus and customer service" id="commit-title" />
+      <div class="grid" style="--min: 300px">
+        {
+          commitments.map((c) => (
+            <div class="feature">
+              <span class="icon-tile icon-tile--red">
+                <Icon name={c.icon} size={22} />
+              </span>
+              <h3>{c.title}</h3>
+              <p>
+                <Ph text={c.text} />
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="section section--alt" aria-labelledby="ind-title">
+    <div class="container">
+      <SectionHead eyebrow="Industries we serve" title="Who uses our products" id="ind-title">
+        <a class="link-arrow" href="/industries/">All industries <Icon name="arrow-right" size={16} /></a>
+      </SectionHead>
+      <ul class="industry-tiles">
+        {
+          industries.map((i) => (
+            <li>
+              <a href={industryUrl(i.id)}>
+                <span class="icon-tile">
+                  <Icon name={i.data.icon} size={22} />
+                </span>
+                <span>
+                  <strong>{i.data.title}</strong>
+                  <small>{i.data.summary}</small>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <WhyChooseUs title="Why customers choose us" />
+
+  <TrustSection alt />
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand title="Let’s discuss your requirement" location="about_cta" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--line);
+    overflow: hidden;
+  }
+  .about-facts div {
+    padding: 16px 18px;
+    background: #fff;
+  }
+  .about-facts dt {
+    color: var(--subtle);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .about-facts dd {
+    margin: 4px 0 0;
+    color: var(--ink-900);
+    font-weight: 620;
+  }
+  .plain-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .plain-link:hover {
+    color: var(--red);
+  }
+  .mini-links {
+    list-style: none;
+    display: grid;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: var(--fs-sm);
+  }
+  .industry-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 16px;
+    list-style: none;
+  }
+  .industry-tiles a {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    height: 100%;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .industry-tiles a:hover {
+    border-color: var(--ink-900);
+  }
+  .industry-tiles strong {
+    display: block;
+    color: var(--ink-900);
+  }
+  .industry-tiles small {
+    display: block;
+    margin-top: 4px;
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+  }
+  .industry-tiles .icon-tile {
+    color: var(--red);
+  }
+</style>

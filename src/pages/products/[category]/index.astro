@@ -1,0 +1,244 @@
+---
+import { render } from 'astro:content';
+import { site, whatsappMessages } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCategories, getPostsFor, getProducts, isNoindex, productHref, resolve, type Category, type Product } from '@/lib/content';
+import { applicationUrl, categoryUrl, industryUrl, whatsappHref } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, faqPage, itemList, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import ContentNotice from '@/components/ui/ContentNotice.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import PostCard from '@/components/ui/PostCard.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+
+export async function getStaticPaths() {
+  const [categories, products] = await Promise.all([getCategories(), getProducts()]);
+  return categories.map((category) => ({
+    params: { category: category.id },
+    props: { category, products: products.filter((p) => p.data.category.id === category.id) },
+  }));
+}
+
+interface Props {
+  category: Category;
+  products: Product[];
+}
+const { category, products } = Astro.props;
+const d = category.data;
+const { Content } = await render(category);
+const url = categoryUrl(category.id);
+
+// Applications & industries linked from this category's products (deduplicated)
+const uniq = <T extends { id: string }>(arr: T[]) => [...new Map(arr.map((x) => [x.id, x])).values()];
+const [applications, industries, posts] = await Promise.all([
+  resolve(uniq(products.flatMap((p) => p.data.relatedApplications))),
+  resolve(uniq(products.flatMap((p) => p.data.industries))),
+  getPostsFor({ category: category.id }),
+]);
+
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products/' },
+  { label: d.title, href: url },
+];
+---
+
+<BaseLayout
+  footerCta={false}
+  title={d.seo.title}
+  description={d.seo.description}
+  noindex={isNoindex(category)}
+  whatsappMessage={whatsappMessages.category(d.title)}
+  schema={[
+    webPage({ type: 'CollectionPage', name: d.title, description: d.seo.description, url }),
+    breadcrumbSchema(crumbs),
+    itemList(
+      d.title,
+      products.map((p) => ({ name: p.data.title, url: productHref(p) })),
+    ),
+    faqPage(d.faqs),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      {d.sample && <ContentNotice class="mt-2" />}
+      <h1>{d.title}</h1>
+      <p class="lead">{d.intro}</p>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--lg" href="/get-quote/" data-track="cta_click" data-location="category_hero">Get a Quote</a>
+        <a
+          class="btn btn--wa btn--lg"
+          href={whatsappHref(whatsappMessages.category(d.title))}
+          target="_blank"
+          rel="noopener"
+          data-track="whatsapp_click"
+          data-location="category_hero"><Icon name="whatsapp" size={18} />WhatsApp Us</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="range-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Product range"
+        title={`Our ${d.title.toLowerCase()} range`}
+        text={`${products.length} product ${products.length === 1 ? 'type' : 'types'} — open any product for specifications, applications and FAQs.`}
+        id="range-title"
+      />
+      <div class="grid">
+        {products.map((p) => <ProductCard product={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="guide-title">
+    <div class="container split split--sidebar">
+      <div>
+        <p class="eyebrow">Buying guide</p>
+        <h2 id="guide-title">Choosing {d.title.toLowerCase()}</h2>
+        <div class="prose mt-3">
+          <Content />
+        </div>
+      </div>
+      <aside class="guide-aside">
+        {
+          applications.length > 0 && (
+            <nav class="aside-box" aria-label="Applications">
+              <p class="aside-box__title">Applications</p>
+              <ul>
+                {applications.map((a) => (
+                  <li>
+                    <a href={applicationUrl(a.id)}>
+                      <Icon name={a.data.icon} size={18} />
+                      {a.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+        {
+          industries.length > 0 && (
+            <nav class="aside-box" aria-label="Industries">
+              <p class="aside-box__title">Industries served</p>
+              <ul>
+                {industries.map((i) => (
+                  <li>
+                    <a href={industryUrl(i.id)}>
+                      <Icon name={i.data.icon} size={18} />
+                      {i.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+        <div class="aside-box aside-box--dark">
+          <p class="aside-box__title">Not sure what you need?</p>
+          <p>Send your part and magnet details and our engineers will recommend a suitable configuration.</p>
+          <a class="btn btn--primary btn--block mt-2" href="/get-quote/" data-track="cta_click" data-location="category_sidebar">Send an Enquiry</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {
+    d.faqs.length > 0 && (
+      <section class="section" aria-labelledby="faq-title">
+        <div class="container container--narrow">
+          <SectionHead eyebrow="FAQs" title={`${d.title} — frequently asked questions`} id="faq-title" />
+          <Faq faqs={d.faqs} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    posts.length > 0 && (
+      <section class="section section--alt" aria-labelledby="posts-title">
+        <div class="container">
+          <SectionHead eyebrow="Knowledge centre" title={`Guides about ${d.title.toLowerCase()}`} id="posts-title">
+            <a class="link-arrow" href="/blog/">
+              All guides <Icon name="arrow-right" size={16} />
+            </a>
+          </SectionHead>
+          <div class="grid">
+            {posts.slice(0, 3).map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section">
+    <div class="container">
+      <CtaBand
+        title={`Get a quote for ${d.title.toLowerCase()}`}
+        text={`Share your part drawing and magnet details. ${site.brand} manufactures in ${site.location.state} for customers across ${site.location.country}.`}
+        location="category_cta_band"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .guide-aside {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 960px) {
+    .guide-aside {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+  }
+  .aside-box {
+    padding: 22px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .aside-box__title {
+    margin-bottom: 10px;
+    color: var(--ink-900);
+    font-weight: 720;
+  }
+  .aside-box ul {
+    list-style: none;
+    display: grid;
+    gap: 2px;
+  }
+  .aside-box ul a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    color: var(--ink-800);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .aside-box ul a :global(svg) {
+    color: var(--red);
+  }
+  .aside-box ul a:hover {
+    color: var(--red);
+  }
+  .aside-box--dark {
+    background: var(--ink-900);
+    border-color: var(--ink-900);
+    color: #a9b6c3;
+    font-size: var(--fs-sm);
+  }
+  .aside-box--dark .aside-box__title {
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getIndustries, productHref, resolve } from '@/lib/content';
+import { industryUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, itemList, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import LinkCard from '@/components/ui/LinkCard.astro';
+
+const industries = await getIndustries();
+const cards = await Promise.all(
+  industries.map(async (i) => ({
+    industry: i,
+    products: (await resolve(i.data.products)).slice(0, 3),
+  })),
+);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Industries', href: '/industries/' },
+];
+const title = 'Industries We Serve | Magnetizers by Sector | SK Enterprises';
+const description =
+  'Magnetizing machines and fixtures for electric motor, automotive, loudspeaker, magnet, appliance and sensor manufacturers. Find the right magnetizer for your sector.';
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[
+    webPage({ type: 'CollectionPage', name: 'Industries we serve', description, url: '/industries/' }),
+    breadcrumbSchema(crumbs),
+    itemList(
+      'Industries',
+      industries.map((i) => ({ name: i.data.title, url: industryUrl(i.id) })),
+    ),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Industries we serve</h1>
+      <p class="lead">
+        Every sector magnetizes different parts — rotors, motor housings, speaker assemblies, sensor magnets or loose magnets. Choose your industry to see
+        the machines, fixtures and applications that matter most.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid" style="--min: 320px">
+        {
+          cards.map(({ industry, products }) => (
+            <LinkCard
+              href={industryUrl(industry.id)}
+              title={industry.data.title}
+              text={industry.data.summary}
+              icon={industry.data.icon}
+              headingLevel="h2"
+              links={products.map((p) => ({ label: p.data.title, href: productHref(p) }))}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand title="Don’t see your industry?" text="Tell us what you need to magnetize — we’ll recommend a suitable machine and fixture." location="industries_index" />
+    </div>
+  </section>
+</BaseLayout>

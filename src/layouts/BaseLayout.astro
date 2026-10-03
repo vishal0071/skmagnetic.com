@@ -1,0 +1,185 @@
+---
+import '@fontsource-variable/archivo/wght.css';
+import '@/styles/global.css';
+import archivoLatin from '@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2?url';
+import { site } from '@/config/site';
+import { absoluteUrl } from '@/lib/links';
+import { stripPlaceholders } from '@/lib/placeholders';
+import { organization, website } from '@/lib/schema';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import MobileActionBar from '@/components/layout/MobileActionBar.astro';
+import WhatsAppFloat from '@/components/layout/WhatsAppFloat.astro';
+
+interface Props {
+  /** Full <title> — unique per page, ~50–60 characters */
+  title: string;
+  /** Meta description — unique per page, ~140–160 characters */
+  description: string;
+  /** Social share image (path in /public or absolute URL) */
+  image?: string;
+  imageAlt?: string;
+  type?: 'website' | 'article';
+  /** Force noindex (e.g. thank-you or sample pages). The site-wide launch switch also applies. */
+  noindex?: boolean;
+  /** Page-level JSON-LD nodes; Organization + WebSite are added automatically */
+  schema?: (Record<string, unknown> | null | undefined)[];
+  /** Product context for analytics + contextual WhatsApp */
+  product?: { name: string; category: string; slug: string };
+  whatsappMessage?: string;
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  /** Show the footer call-to-action box */
+  footerCta?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = site.seo.defaultOgImage,
+  imageAlt = `${site.brand} — ${site.tagline}`,
+  type = 'website',
+  noindex = false,
+  schema = [],
+  product,
+  whatsappMessage,
+  publishedTime,
+  modifiedTime,
+  footerCta = true,
+} = Astro.props;
+
+const pageTitle = stripPlaceholders(title);
+const pageDescription = stripPlaceholders(description);
+const canonical = absoluteUrl(Astro.url.pathname);
+const ogImage = absoluteUrl(image);
+const robots = noindex || !site.isLive ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1';
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [organization(), website(), ...schema.filter(Boolean)],
+};
+
+const { gtmId, ga4Id } = site.analytics;
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+    <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossorigin />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0b141d" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="geo.region" content="IN-MH" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.brand} />
+    <meta property="og:locale" content={site.seo.locale} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    {site.seo.twitterHandle && <meta name="twitter:site" content={site.seo.twitterHandle} />}
+
+    {site.seo.googleSiteVerification && <meta name="google-site-verification" content={site.seo.googleSiteVerification} />}
+    {site.seo.bingSiteVerification && <meta name="msvalidate.01" content={site.seo.bingSiteVerification} />}
+
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    {
+      site.showContentNotices && (
+        <script is:inline>
+          (function () {
+            try {
+              var q = new URLSearchParams(location.search).get('review');
+              if (q === '1') localStorage.setItem('skReview', '1');
+              if (q === '0') localStorage.removeItem('skReview');
+              if (localStorage.getItem('skReview')) document.documentElement.setAttribute('data-review', '');
+            } catch (e) {}
+          })();
+        </script>
+      )
+    }
+
+    {
+      gtmId && (
+        <script is:inline define:vars={{ gtmId }}>
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', gtmId);
+        </script>
+      )
+    }
+    {!gtmId && ga4Id && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />}
+    {
+      !gtmId && ga4Id && (
+        <script is:inline define:vars={{ ga4Id }}>
+          window.gtag = function () {
+            dataLayer.push(arguments);
+          };
+          gtag('js', new Date());
+          gtag('config', ga4Id);
+        </script>
+      )
+    }
+  </head>
+  <body data-product={product ? JSON.stringify(product) : undefined}>
+    {
+      gtmId && (
+        <noscript>
+          <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager" />
+        </noscript>
+      )
+    }
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer cta={footerCta} />
+    <MobileActionBar whatsappMessage={whatsappMessage} product={product} />
+    {
+      site.showContentNotices && (
+        <a class="review-badge review-only" href="?review=0">
+          Review mode — placeholders highlighted · Exit
+        </a>
+      )
+    }
+    <WhatsAppFloat message={whatsappMessage} product={product?.name} />
+    <script>
+      import '@/scripts/site';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+---
+import { site } from '@/config/site';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+import { mailHref, telHref, whatsappHref } from '@/lib/links';
+import Icon from '@/components/ui/Icon.astro';
+import Ph from '@/components/ui/Ph.astro';
+
+interface Props {
+  location?: string;
+}
+const { location = 'contact_details' } = Astro.props;
+const a = site.contact.address;
+const hoursKnown = site.contact.hours.some((h) => !isPlaceholderOnly(h.time));
+---
+
+<ul class="contact-list">
+  <li>
+    <span class="icon-tile icon-tile--red"><Icon name="phone" size={20} /></span>
+    <div>
+      <p class="contact-list__label">Phone</p>
+      <a href={telHref()} data-track="phone_click" data-location={location}>{site.contact.phone.display}</a>
+    </div>
+  </li>
+  <li>
+    <span class="icon-tile icon-tile--red"><Icon name="whatsapp" size={20} /></span>
+    <div>
+      <p class="contact-list__label">WhatsApp</p>
+      <a href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location={location}>{site.contact.whatsapp.display}</a>
+    </div>
+  </li>
+  <li>
+    <span class="icon-tile icon-tile--red"><Icon name="mail" size={20} /></span>
+    <div>
+      <p class="contact-list__label">Email</p>
+      <a href={mailHref('Enquiry from website')} data-track="email_click" data-location={location}>{site.contact.email.address}</a>
+    </div>
+  </li>
+  <li>
+    <span class="icon-tile icon-tile--red"><Icon name="map-pin" size={20} /></span>
+    <div>
+      <p class="contact-list__label">Business address</p>
+      <address>
+        <strong>{site.legalName}</strong><br />
+        <span class:list={[{ 'ph-only': isPlaceholderOnly(a.street) }]}><Ph text={a.street} /><br /></span>
+        <Ph text={a.locality} after=", " />{a.region}<Ph text={a.postalCode} before=" – " />, {a.country}
+      </address>
+      {site.contact.mapsLink && <a class="link-arrow mt-1" href={site.contact.mapsLink} target="_blank" rel="noopener">Get directions <Icon name="arrow-right" size={16} /></a>}
+    </div>
+  </li>
+  <li class:list={[{ 'ph-only': !hoursKnown }]}>
+    <span class="icon-tile icon-tile--red"><Icon name="clock" size={20} /></span>
+    <div>
+      <p class="contact-list__label">Business hours</p>
+      {
+        site.contact.hours.map((h) => (
+          <p>
+            {h.days}: <Ph text={h.time} />
+          </p>
+        ))
+      }
+    </div>
+  </li>
+</ul>
+
+<style>
+  .contact-list {
+    display: grid;
+    gap: 22px;
+    list-style: none;
+  }
+  .contact-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .contact-list__label {
+    color: var(--subtle);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .contact-list a {
+    color: var(--ink-900);
+    font-weight: 650;
+    text-decoration: none;
+    font-size: 1.0625rem;
+  }
+  .contact-list a:hover {
+    color: var(--red);
+  }
+  .contact-list address {
+    font-style: normal;
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,138 @@
+---
+import { site } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCatalogue, productHref } from '@/lib/content';
+import { categoryUrl } from '@/lib/links';
+import { breadcrumbs as breadcrumbSchema, faqPage, itemList, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+
+const catalogue = await getCatalogue();
+const all = catalogue.flatMap((c) => c.products);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products/' },
+];
+
+const title = 'Magnetizers, Coils & Fixtures | Products | SK Enterprises';
+const description =
+  'Magnet charging machines, rotor and speaker magnetizers, magnetizing coils and fixtures — specifications, applications and quotes direct from the manufacturer.';
+
+const faqs = [
+  {
+    q: 'How do I get the price of a magnetizer?',
+    a: 'The price depends on the energy rating, voltage, controls and the fixtures your parts need. Send an enquiry or WhatsApp us your part details and we will share a quotation.',
+  },
+  {
+    q: 'Can you help me choose the right machine?',
+    a: 'Yes. Tell us what you magnetize, the magnet material and grade, the pole pattern and your output per shift, and our engineers will recommend a machine and fixture.',
+  },
+  {
+    q: 'Do you supply magnetizers outside Maharashtra?',
+    a: '{{Confirm delivery and installation coverage — e.g. we deliver and commission machines across India.}}',
+  },
+  {
+    q: 'Can I buy only a fixture for my existing magnetizer?',
+    a: 'Fixtures can often be designed for an existing machine, provided its voltage and energy suit the part. Share your magnetizer details and part drawing. {{Confirm whether fixtures for other makes of magnetizer are supplied.}}',
+  },
+];
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[
+    webPage({ type: 'CollectionPage', name: 'Products', description, url: '/products/' }),
+    breadcrumbSchema(crumbs),
+    itemList(
+      'SK Enterprises products',
+      all.map((p) => ({ name: p.data.title, url: productHref(p) })),
+    ),
+    faqPage(faqs),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <h1>Magnetizers, coils &amp; magnetizing fixtures</h1>
+      <p class="lead">
+        Explore our magnet charging machines and the coils and fixtures they drive — with specifications, applications and buying guidance. Every product
+        page lets you request a quotation, WhatsApp our team or call directly.
+      </p>
+      <nav class="cat-jump" aria-label="Product categories">
+        {
+          catalogue.map(({ category, products }) => (
+            <a class="chip" href={`#${category.id}`}>
+              {category.data.title} <span class="cat-jump__n">{products.length}</span>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  {
+    catalogue.map(({ category, products }, i) => (
+      <section id={category.id} class:list={['section', { 'section--alt': i % 2 === 1 }]} aria-labelledby={`${category.id}-title`}>
+        <div class="container">
+          <SectionHead eyebrow={`Category ${String(i + 1).padStart(2, '0')}`} title={category.data.title} text={category.data.summary} id={`${category.id}-title`}>
+            <a class="link-arrow" href={categoryUrl(category.id)}>
+              View {category.data.navLabel.toLowerCase()} guide <Icon name="arrow-right" size={16} />
+            </a>
+          </SectionHead>
+          <div class="grid">
+            {products.map((p) => (
+              <ProductCard product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container container--narrow">
+      <SectionHead eyebrow="FAQs" title="Buying a magnetizer from SK Enterprises" id="faq-title" />
+      <Faq faqs={faqs} />
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand
+        title="Have a part that needs magnetizing?"
+        text={`Send a drawing or sample — ${site.brand} will recommend a magnetizer and fixture designed around it.`}
+        location="products_index"
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cat-jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .cat-jump .chip {
+    padding: 8px 14px;
+    font-size: var(--fs-sm);
+  }
+  .cat-jump__n {
+    display: inline-grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--steel-100);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+</style>

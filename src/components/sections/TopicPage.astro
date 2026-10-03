@@ -1,0 +1,203 @@
+---
+/** Shared template for industry and application landing pages. */
+import type { Product } from '@/lib/content';
+import { placeholderHtml } from '@/lib/placeholders';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import ContentNotice from '@/components/ui/ContentNotice.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  icon: string;
+  crumbs: { label: string; href: string }[];
+  sample: boolean;
+  products: Product[];
+  needs?: { title: string; text: string }[];
+  needsTitle?: string;
+  links: { label: string; href: string; icon: string }[];
+  linksTitle: string;
+  faqs: { q: string; a: string }[];
+}
+const { eyebrow, title, intro, icon, crumbs, sample, products, needs = [], needsTitle, links, linksTitle, faqs } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumbs items={crumbs} />
+    {sample && <ContentNotice class="mt-2" />}
+    <div class="topic-head">
+      <span class="icon-tile icon-tile--red topic-head__icon"><Icon name={icon} size={28} /></span>
+      <p class="eyebrow">{eyebrow}</p>
+    </div>
+    <h1>{title}</h1>
+    <p class="lead">{intro}</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--lg" href="/get-quote/" data-track="cta_click" data-location="topic_hero">Get a Quote</a>
+      <a class="btn btn--outline btn--lg" href="#products">View relevant products</a>
+    </div>
+  </div>
+</section>
+
+{
+  needs.length > 0 && (
+    <section class="section" aria-labelledby="needs-title">
+      <div class="container">
+        <SectionHead eyebrow="Key requirements" title={needsTitle ?? 'What buyers need'} id="needs-title" />
+        <div class="grid" style="--min: 250px">
+          {needs.map((n, i) => (
+            <div class="feature" data-reveal>
+              <span class="need-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{n.title}</h3>
+              <p set:html={placeholderHtml(n.text)} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<section class:list={['section', { 'section--alt': needs.length > 0 }]} aria-labelledby="body-title">
+  <div class="container split split--sidebar">
+    <div class="prose">
+      <slot />
+    </div>
+    <aside class="topic-aside">
+      {
+        links.length > 0 && (
+          <nav class="topic-box" aria-label={linksTitle}>
+            <p class="topic-box__title">{linksTitle}</p>
+            <ul>
+              {links.map((l) => (
+                <li>
+                  <a href={l.href}>
+                    <Icon name={l.icon} size={18} />
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+      <div class="topic-box topic-box--dark">
+        <p class="topic-box__title">Talk to our team</p>
+        <p>Share your part and magnet details and we’ll recommend a suitable magnetizer and fixture.</p>
+        <a class="btn btn--primary btn--block mt-2" href="/get-quote/" data-track="cta_click" data-location="topic_sidebar">Send an Enquiry</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{
+  products.length > 0 && (
+    <section id="products" class="section" aria-labelledby="products-title">
+      <div class="container">
+        <SectionHead eyebrow="Relevant products" title={`Products for ${title.toLowerCase()}`} id="products-title" />
+        <div class="grid">
+          {products.map((p) => (
+            <ProductCard product={p} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{
+  faqs.length > 0 && (
+    <section class="section section--alt" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <SectionHead eyebrow="FAQs" title="Frequently asked questions" id="faq-title" />
+        <Faq faqs={faqs} />
+      </div>
+    </section>
+  )
+}
+
+<section class="section">
+  <div class="container">
+    <CtaBand location="topic_cta_band" />
+  </div>
+</section>
+
+<style>
+  .topic-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .topic-head .eyebrow {
+    margin: 0;
+  }
+  .topic-head__icon {
+    width: 56px;
+    height: 56px;
+  }
+  .page-hero h1 {
+    margin-top: 14px;
+  }
+  .need-num {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--red);
+  }
+  .topic-aside {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 960px) {
+    .topic-aside {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+  }
+  .topic-box {
+    padding: 22px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .topic-box__title {
+    margin-bottom: 10px;
+    color: var(--ink-900);
+    font-weight: 720;
+  }
+  .topic-box ul {
+    list-style: none;
+    display: grid;
+    gap: 2px;
+  }
+  .topic-box ul a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    color: var(--ink-800);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .topic-box ul a :global(svg) {
+    color: var(--red);
+  }
+  .topic-box ul a:hover {
+    color: var(--red);
+  }
+  .topic-box--dark {
+    background: var(--ink-900);
+    border-color: var(--ink-900);
+    color: #a9b6c3;
+    font-size: var(--fs-sm);
+  }
+  .topic-box--dark .topic-box__title {
+    color: #fff;
+  }
+</style>

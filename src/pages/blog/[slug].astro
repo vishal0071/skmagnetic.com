@@ -1,0 +1,300 @@
+---
+import { render } from 'astro:content';
+import { site } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { formatDate, getPosts, isNoindex, productHref, readingTime, resolve, type Post } from '@/lib/content';
+import { blogUrl, categoryUrl, quoteUrl } from '@/lib/links';
+import { article, breadcrumbs as breadcrumbSchema, faqPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import ContentNotice from '@/components/ui/ContentNotice.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import PostCard from '@/components/ui/PostCard.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+import ProductVisual from '@/components/product/ProductVisual.astro';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post, all: posts } }));
+}
+
+interface Props {
+  post: Post;
+  all: Post[];
+}
+const { post, all } = Astro.props;
+const d = post.data;
+const { Content, headings } = await render(post);
+const [products, categories] = await Promise.all([resolve(d.products), resolve(d.categories)]);
+const url = blogUrl(post.id);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: d.title, href: url },
+];
+const toc = headings.filter((h) => h.depth === 2);
+const more = all.filter((p) => p.id !== post.id).slice(0, 3);
+const coverImages = d.cover ? [{ src: d.cover, alt: d.coverAlt ?? d.title }] : [];
+const firstProduct = products[0];
+---
+
+<BaseLayout
+  title={d.seo.title}
+  description={d.seo.description}
+  type="article"
+  image={d.cover?.src}
+  imageAlt={d.coverAlt}
+  noindex={isNoindex(post)}
+  publishedTime={d.published}
+  modifiedTime={d.updated}
+  schema={[
+    article({
+      title: d.title,
+      description: d.seo.description,
+      url,
+      image: d.cover?.src ?? site.seo.defaultOgImage,
+      published: d.published,
+      updated: d.updated,
+      author: d.author,
+    }),
+    breadcrumbSchema(crumbs),
+    faqPage(d.faqs),
+  ]}
+>
+  <section class="page-hero">
+    <div class="container container--narrow">
+      <Breadcrumbs items={crumbs} />
+      {d.sample && <ContentNotice class="mt-2" />}
+      <p class="post-meta">
+        <span class="badge">{d.type}</span>
+        <time datetime={d.published.toISOString()}>{formatDate(d.published)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{readingTime(post.body)} min read</span>
+      </p>
+      <h1>{d.title}</h1>
+      <p class="lead">{d.excerpt}</p>
+      <p class="post-author">By {d.author}{d.updated && <> · Updated {formatDate(d.updated)}</>}</p>
+    </div>
+  </section>
+
+  <div class="section">
+    <div class="container post-layout">
+      <article class="post-body">
+        <ProductVisual illustration={d.illustration} images={coverImages} alt={d.coverAlt ?? `Illustration for ${d.title}`} wide eager class="post-cover" />
+        {
+          toc.length > 2 && (
+            <nav class="toc" aria-label="In this article">
+              <p class="toc__title">In this article</p>
+              <ol>
+                {toc.map((h) => (
+                  <li>
+                    <a href={`#${h.slug}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          )
+        }
+        <div class="prose">
+          <Content />
+        </div>
+      </article>
+
+      <aside class="post-aside">
+        {
+          products.length > 0 && (
+            <nav class="post-box" aria-label="Products in this article">
+              <p class="post-box__title">Products in this article</p>
+              <ul>
+                {products.map((p) => (
+                  <li>
+                    <a href={productHref(p)}>
+                      {p.data.title}
+                      <Icon name="arrow-right" size={14} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {categories.map((c) => (
+                <a class="link-arrow mt-2" href={categoryUrl(c.id)}>
+                  All {c.data.title.toLowerCase()} <Icon name="arrow-right" size={16} />
+                </a>
+              ))}
+            </nav>
+          )
+        }
+        <div class="post-box post-box--dark">
+          <p class="post-box__title">Need a recommendation?</p>
+          <p>Share your part and magnet details and our engineers will suggest the right configuration.</p>
+          <a
+            class="btn btn--primary btn--block mt-2"
+            href={quoteUrl(firstProduct?.id)}
+            data-track="cta_click"
+            data-location="blog_sidebar"
+            data-product={firstProduct?.data.title}>Get a Quote</a
+          >
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  {
+    d.faqs.length > 0 && (
+      <section class="section section--alt" aria-labelledby="faq-title">
+        <div class="container container--narrow">
+          <SectionHead eyebrow="FAQs" title="Frequently asked questions" id="faq-title" />
+          <Faq faqs={d.faqs} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    products.length > 0 && (
+      <section class="section" aria-labelledby="products-title">
+        <div class="container">
+          <SectionHead eyebrow="Related products" title="Products mentioned in this guide" id="products-title" />
+          <div class="grid">
+            {products.slice(0, 4).map((p) => (
+              <ProductCard product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand
+        title="Talk to our team"
+        text="Have a question about this topic or a specific requirement? Call, WhatsApp or send an enquiry."
+        product={firstProduct ? { name: firstProduct.data.title, slug: firstProduct.id } : undefined}
+        location="blog_cta_band"
+      />
+    </div>
+  </section>
+
+  {
+    more.length > 0 && (
+      <section class="section section--alt" aria-labelledby="more-title">
+        <div class="container">
+          <SectionHead eyebrow="Keep reading" title="More guides" id="more-title" />
+          <div class="grid">
+            {more.map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .page-hero h1 {
+    margin-top: 14px;
+  }
+  .post-author {
+    margin-top: 16px;
+    color: var(--subtle);
+    font-size: var(--fs-sm);
+  }
+  .post-layout {
+    display: grid;
+    gap: 48px;
+  }
+  .post-layout > * {
+    min-width: 0;
+  }
+  @media (min-width: 1024px) {
+    .post-layout {
+      grid-template-columns: minmax(0, 760px) 300px;
+      justify-content: space-between;
+    }
+  }
+  .post-body :global(.post-cover) {
+    margin-bottom: 32px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .toc {
+    margin-bottom: 36px;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius-sm);
+    background: var(--steel-50);
+  }
+  .toc__title {
+    color: var(--ink-900);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .toc ol {
+    padding-left: 1.2em;
+    display: grid;
+    gap: 6px;
+    font-size: var(--fs-sm);
+  }
+  .post-aside {
+    display: grid;
+    gap: 16px;
+    align-content: start;
+  }
+  @media (min-width: 1024px) {
+    .post-aside {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+  }
+  .post-box {
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .post-box__title {
+    margin-bottom: 8px;
+    color: var(--ink-900);
+    font-weight: 720;
+  }
+  .post-box ul {
+    list-style: none;
+  }
+  .post-box ul a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-800);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .post-box ul a:hover {
+    color: var(--red);
+  }
+  .post-box--dark {
+    background: var(--ink-900);
+    border-color: var(--ink-900);
+    color: #a9b6c3;
+    font-size: var(--fs-sm);
+  }
+  .post-box--dark .post-box__title {
+    color: #fff;
+  }
+</style>

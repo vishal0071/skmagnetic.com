@@ -1,0 +1,127 @@
+---
+/**
+ * Testimonials, certifications and client logos.
+ * Renders real items from src/config/trust.ts; empty groups are hidden on the
+ * live site and shown as dashed placeholders while content notices are on.
+ */
+import { site } from '@/config/site';
+import { certifications, clients, testimonials } from '@/config/trust';
+import Icon from '@/components/ui/Icon.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+
+interface Props {
+  alt?: boolean;
+}
+const { alt = false } = Astro.props;
+const notices = site.showContentNotices;
+const hasReal = testimonials.length > 0 || certifications.length > 0 || clients.length > 0;
+const show = hasReal || notices;
+---
+
+{
+  show && (
+    <section class:list={['section', { 'section--alt': alt, 'review-only': !hasReal }]} aria-labelledby="trust-title">
+      <div class="container">
+        <SectionHead
+          eyebrow="Trust & quality"
+          title="Quality, documentation & customer feedback"
+          text="Genuine feedback, certificates and documentation from SK Enterprises."
+          id="trust-title"
+        />
+
+        {testimonials.length > 0 ? (
+          <div class="grid grid--2">
+            {testimonials.map((t) => (
+              <figure class="feature quote">
+                <Icon name="message" size={22} />
+                <blockquote>
+                  <p>{t.quote}</p>
+                </blockquote>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  {(t.role || t.company) && <span>{[t.role, t.company].filter(Boolean).join(', ')}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : (
+          notices && (
+            <div class="placeholder-block review-only">
+              <strong>Customer testimonials</strong>
+              <span>Add genuine customer feedback in src/config/trust.ts — this block is hidden until then.</span>
+            </div>
+          )
+        )}
+
+        <div class="trust-row mt-4">
+          {certifications.length > 0 ? (
+            <ul class="chips">
+              {certifications.map((c) => (
+                <li class="chip">
+                  <Icon name="badge" size={16} />
+                  {c.file ? <a href={c.file}>{c.name}</a> : c.name}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            notices && (
+              <div class="placeholder-block review-only">
+                <strong>Certifications &amp; quality documents</strong>
+                <span>List only real certificates (e.g. ISO, test reports) in src/config/trust.ts.</span>
+              </div>
+            )
+          )}
+          {clients.length > 0 ? (
+            <ul class="logos">
+              {clients.map((c) => (
+                <li>
+                  <img src={c.logo} alt={c.name} loading="lazy" width="140" height="56" />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            notices && (
+              <div class="placeholder-block review-only">
+                <strong>Client logos</strong>
+                <span>Add customer logos only with permission — files go in /public/clients/.</span>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .trust-row {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .trust-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .quote blockquote {
+    margin: 0;
+    color: var(--ink-800);
+    font-size: 1.0625rem;
+  }
+  .quote figcaption {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--fs-sm);
+  }
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    list-style: none;
+  }
+  .logos img {
+    filter: grayscale(1);
+    opacity: 0.75;
+  }
+</style>

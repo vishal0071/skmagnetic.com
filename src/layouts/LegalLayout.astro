@@ -1,0 +1,49 @@
+---
+/** Layout for Markdown policy pages in src/pages/*.md */
+import { site } from '@/config/site';
+import BaseLayout from './BaseLayout.astro';
+import { breadcrumbs as breadcrumbSchema, webPage } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import Ph from '@/components/ui/Ph.astro';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+
+const { frontmatter } = Astro.props as {
+  frontmatter: { title: string; seoTitle: string; description: string; updated: string };
+};
+const url = Astro.url.pathname;
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: frontmatter.title, href: url },
+];
+---
+
+<BaseLayout
+  title={frontmatter.seoTitle}
+  description={frontmatter.description}
+  schema={[webPage({ name: frontmatter.title, description: frontmatter.description, url }), breadcrumbSchema(crumbs)]}
+>
+  <section class="page-hero">
+    <div class="container container--narrow">
+      <Breadcrumbs items={crumbs} />
+      <h1>{frontmatter.title}</h1>
+      <p class:list={['lead', { 'ph-only': isPlaceholderOnly(frontmatter.updated) }]}>Last updated: <Ph text={frontmatter.updated} /></p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container container--narrow">
+      {
+        site.showContentNotices && (
+          <div class="content-notice review-only" role="note" style="margin-bottom: 32px">
+            <p>
+              <strong>Template policy.</strong> Written as a starting point for a B2B supplier. Have it reviewed by a legal adviser and complete every highlighted
+              item before launch.
+            </p>
+          </div>
+        )
+      }
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

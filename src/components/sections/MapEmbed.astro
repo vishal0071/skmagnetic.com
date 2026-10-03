@@ -1,0 +1,65 @@
+---
+import { site } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
+import Ph from '@/components/ui/Ph.astro';
+const { mapsEmbedUrl, address: a } = site.contact;
+---
+
+{
+  mapsEmbedUrl ? (
+    <div class="map">
+      <iframe
+        src={mapsEmbedUrl}
+        title={`Map showing the location of ${site.brand} (${site.legalName})`}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      />
+    </div>
+  ) : (
+    <div class="map map--empty">
+      <Icon name="map-pin" size={32} />
+      <p>
+        <strong>{site.brand}</strong>
+        <br />
+        <Ph text={a.locality} after=", " />{a.region}, {a.country}
+      </p>
+      {site.showContentNotices && <p class="map__note review-only">Add the Google Maps embed URL in src/config/site.ts → contact.mapsEmbedUrl</p>}
+    </div>
+  )
+}
+
+<style>
+  .map {
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--steel-50);
+  }
+  .map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .map--empty {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 12px;
+    padding: 24px;
+    text-align: center;
+    color: var(--muted);
+    background-image:
+      linear-gradient(rgb(27 79 143 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(27 79 143 / 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .map--empty :global(svg) {
+    color: var(--red);
+  }
+  .map__note {
+    font-size: var(--fs-xs);
+    color: #5c4400;
+  }
+</style>

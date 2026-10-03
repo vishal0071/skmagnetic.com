@@ -1,0 +1,32 @@
+---
+import { isPlaceholderOnly, placeholderHtml } from '@/lib/placeholders';
+interface Props {
+  faqs: { q: string; a: string }[];
+  /** Open the first question by default */
+  openFirst?: boolean;
+}
+const { faqs, openFirst = true } = Astro.props;
+---
+
+<div class="faq">
+  {
+    faqs.map((f, i) => (
+      <details open={openFirst && i === 0} class:list={[{ 'ph-only': isPlaceholderOnly(f.a) }]}>
+        <summary>
+          <h3 class="faq__q" set:html={placeholderHtml(f.q)} />
+        </summary>
+        <div class="faq__a">
+          <p set:html={placeholderHtml(f.a)} />
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  .faq__q {
+    font: inherit;
+    color: inherit;
+    letter-spacing: normal;
+  }
+</style>

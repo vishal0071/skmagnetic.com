@@ -1,0 +1,36 @@
+---
+import { placeholderHtml } from '@/lib/placeholders';
+interface Props {
+  caption: string;
+  rows: { label: string; value: string }[];
+  note?: string;
+}
+const { caption, rows, note } = Astro.props;
+---
+
+{
+  rows.length > 0 && (
+    <div>
+      <div class="table-wrap">
+        <table class="spec-table">
+          <caption>{caption}</caption>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <th scope="row">{r.label}</th>
+                <td set:html={placeholderHtml(r.value, 'On request')} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {note && <p class="table-note">{note}</p>}
+    </div>
+  )
+}
+
+<style>
+  .table-wrap {
+    overflow-x: auto;
+  }
+</style>

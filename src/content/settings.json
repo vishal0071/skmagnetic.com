@@ -1,0 +1,53 @@
+{
+  "isLive": false,
+  "showContentNotices": true,
+  "tagline": "Magnetizer Manufacturer",
+  "contact": {
+    "phoneDisplay": "+91 XXXXX XXXXX",
+    "phone": "+91XXXXXXXXXX",
+    "whatsappDisplay": "+91 XXXXX XXXXX",
+    "whatsapp": "91XXXXXXXXXX",
+    "email": "info@skmagnetic.com",
+    "emailConfirmed": false,
+    "street": "{{Street address / building / area}}",
+    "city": "{{City}}",
+    "state": "Maharashtra",
+    "pin": "{{PIN code}}",
+    "mapsEmbedUrl": "",
+    "mapsLink": "",
+    "hours": [
+      {
+        "days": "Monday – Saturday",
+        "time": "{{10:00 AM – 7:00 PM}}"
+      },
+      {
+        "days": "Sunday",
+        "time": "{{Closed}}"
+      }
+    ],
+    "responseTime": "{{within 1 business day}}"
+  },
+  "business": {
+    "gstin": "{{GSTIN}}",
+    "established": "{{Year established}}",
+    "shortDescription": "SK Enterprises manufactures industrial magnetizers — magnet charging machines, magnetizing coils and fixtures — for motor, automotive, audio and magnet manufacturers."
+  },
+  "social": {
+    "linkedin": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "x": ""
+  },
+  "analytics": {
+    "gtmId": "",
+    "ga4Id": ""
+  },
+  "seo": {
+    "googleSiteVerification": "",
+    "bingSiteVerification": ""
+  },
+  "forms": {
+    "endpoint": "/api/enquiry"
+  }
+}

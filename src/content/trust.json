@@ -1,0 +1,55 @@
+{
+  "testimonials": [],
+  "certifications": [],
+  "clients": [],
+  "strengths": [
+    {
+      "icon": "factory",
+      "title": "Manufactured In-House",
+      "text": "Magnetizers, coils and fixtures designed and built by our own team — so you deal directly with the manufacturer."
+    },
+    {
+      "icon": "clipboard",
+      "title": "Engineered for Your Part",
+      "text": "Machine energy, voltage and fixture design matched to your magnet material, part size and pole pattern."
+    },
+    {
+      "icon": "rupee",
+      "title": "Competitive Pricing",
+      "text": "Transparent, factory-direct quotations for single machines, fixtures and repeat requirements."
+    },
+    {
+      "icon": "headset",
+      "title": "Installation & Support",
+      "text": "Help with commissioning, operator guidance and spares after delivery. {{Confirm installation, training and service offered}}"
+    },
+    {
+      "icon": "zap",
+      "title": "Fast Response",
+      "text": "Quick replies to calls, WhatsApp messages and online enquiries, with clear next steps. {{Typical response time, e.g. within 2 working hours}}"
+    },
+    {
+      "icon": "users",
+      "title": "Industrial Focus",
+      "text": "Built for motor, automotive, audio, sensor and magnet manufacturers who magnetize parts every day."
+    }
+  ],
+  "processSteps": [
+    {
+      "title": "Share your part details",
+      "text": "Send the part drawing or sample, magnet material and grade, pole pattern and parts per hour."
+    },
+    {
+      "title": "Application review",
+      "text": "Our engineers work out the energy, voltage and fixture needed to fully magnetize your part."
+    },
+    {
+      "title": "Quotation & approval",
+      "text": "You receive a clear quotation for the machine, fixtures and options, with delivery time."
+    },
+    {
+      "title": "Build, test & deliver",
+      "text": "We manufacture and test the system, then deliver it to your plant. {{Confirm trials, installation and training}}"
+    }
+  ]
+}

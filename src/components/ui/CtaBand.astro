@@ -1,0 +1,37 @@
+---
+import { whatsappMessages } from '@/config/site';
+import { quoteUrl, telHref, whatsappHref } from '@/lib/links';
+import Icon from './Icon.astro';
+
+interface Props {
+  title?: string;
+  text?: string;
+  product?: { name: string; slug: string };
+  location?: string;
+}
+const {
+  title = 'Talk to our engineers about your requirement',
+  text = 'Share what you need to magnetize — part, magnet material, pole pattern and output. We will recommend a machine and send a quotation.',
+  product,
+  location = 'cta_band',
+} = Astro.props;
+const wa = product ? whatsappMessages.product(product.name) : whatsappMessages.general;
+---
+
+<div class="cta-band" data-reveal>
+  <h2>{title}</h2>
+  <p>{text}</p>
+  <div class="btn-row">
+    <a
+      class="btn btn--primary btn--lg"
+      href={quoteUrl(product?.slug)}
+      data-track="cta_click"
+      data-location={location}
+      data-product={product?.name}>Get a Quote</a
+    >
+    <a class="btn btn--wa btn--lg" href={whatsappHref(wa)} target="_blank" rel="noopener" data-track="whatsapp_click" data-location={location} data-product={product?.name}
+      ><Icon name="whatsapp" size={18} />WhatsApp Us</a
+    >
+    <a class="btn btn--light btn--lg" href={telHref()} data-track="phone_click" data-location={location}><Icon name="phone" size={18} />Call Now</a>
+  </div>
+</div>

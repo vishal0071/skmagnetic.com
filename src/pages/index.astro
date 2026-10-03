@@ -1,0 +1,510 @@
+---
+import { site, whatsappMessages } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getApplications, getCatalogue, getIndustries, getPosts, productHref, resolve } from '@/lib/content';
+import { applicationUrl, categoryUrl, industryUrl, telHref, whatsappHref } from '@/lib/links';
+import { faqPage, localBusiness, webPage } from '@/lib/schema';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import LinkCard from '@/components/ui/LinkCard.astro';
+import Ph from '@/components/ui/Ph.astro';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+import PostCard from '@/components/ui/PostCard.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import EnquiryForm from '@/components/forms/EnquiryForm.astro';
+import CategoryCard from '@/components/product/CategoryCard.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+import ContactDetails from '@/components/sections/ContactDetails.astro';
+import ProcessSteps from '@/components/sections/ProcessSteps.astro';
+import TrustSection from '@/components/sections/TrustSection.astro';
+import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+
+const [catalogue, industries, applications, posts] = await Promise.all([getCatalogue(), getIndustries(), getApplications(), getPosts()]);
+const featured = catalogue.flatMap((c) => c.products).filter((p) => p.data.featured);
+const categoryName = new Map(catalogue.map((c) => [c.category.id, c.category.data.title]));
+const industryCards = await Promise.all(
+  industries.map(async (i) => ({ industry: i, products: (await resolve(i.data.products)).slice(0, 2) })),
+);
+
+const title = 'Magnetizer & Magnet Charging Machine Manufacturer in India';
+const description =
+  'SK Enterprises manufactures magnetizer machines, magnet charging machines, magnetizing coils and fixtures in Maharashtra for motor, audio and magnet makers.';
+
+const faqs = [
+  {
+    q: 'What does SK Enterprises manufacture?',
+    a: 'We manufacture industrial magnetizers — capacitor discharge magnet charging machines — together with the magnetizing coils and part-specific fixtures they drive, for rotors, motor housings, loudspeakers and loose magnets. {{Confirm the final product range}}',
+  },
+  {
+    q: 'How do I get a quotation?',
+    a: 'Send an enquiry through the website, WhatsApp us or call. Include the part you need to magnetize (a drawing or photo helps), the magnet material and grade, the pole pattern and your output per shift, and our team will share a quotation.',
+  },
+  {
+    q: 'Can you build a fixture for our specific part?',
+    a: 'Yes — magnetizing fixtures are normally designed around the customer’s part, such as a particular rotor, housing or ring magnet. Share a drawing or sample and we will confirm the design approach. {{Confirm custom fixture process and lead time}}',
+  },
+  {
+    q: 'Do you supply magnetizers outside Maharashtra?',
+    a: '{{Confirm delivery and installation coverage — e.g. we deliver and commission machines for customers across India.}}',
+  },
+  {
+    q: 'Which industries use your magnetizers?',
+    a: 'Magnetizers are used by electric motor manufacturers, automotive and two-wheeler component makers, loudspeaker manufacturers, magnet producers and traders, appliance makers and sensor manufacturers.',
+  },
+];
+
+const a = site.contact.address;
+---
+
+<BaseLayout
+  footerCta={false}
+  title={title}
+  description={description}
+  schema={[webPage({ name: site.brand, description, url: '/' }), localBusiness(), faqPage(faqs)]}
+>
+  <!-- ================= HERO ================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <svg class="hero__field" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke-width="1.2">
+        {
+          [140, 220, 300, 380, 460, 540, 620].map((r, i) => (
+            <ellipse cx="1040" cy="380" rx={r * 1.35} ry={r} stroke={i % 3 === 1 ? 'rgba(255,107,94,.13)' : 'rgba(143,163,184,.12)'} stroke-dasharray={i % 2 ? '2 10' : undefined} />
+          ))
+        }
+      </g>
+    </svg>
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">{site.tagline} · {site.location.state}, {site.location.country}</p>
+        <h1 id="hero-title">Magnetizer &amp; magnet charging machine manufacturer in India</h1>
+        <p class="hero__sub">
+          Capacitor discharge magnetizers, magnetizing coils and custom fixtures — manufactured by {site.brand} for motor, automotive, audio and magnet
+          producers. Get specifications, pricing and delivery details directly from the manufacturer.
+        </p>
+        <div class="btn-row hero__cta">
+          <a class="btn btn--primary btn--lg" href="/get-quote/" data-track="cta_click" data-location="hero">Get a Quote <Icon name="arrow-right" size={18} /></a>
+          <a class="btn btn--light btn--lg" href="/products/" data-track="cta_click" data-location="hero_products">View Products</a>
+        </div>
+        <ul class="hero__quick" aria-label="Contact options">
+          <li>
+            <a href={telHref()} data-track="phone_click" data-location="hero"><Icon name="phone" size={18} />Call {site.contact.phone.display}</a>
+          </li>
+          <li>
+            <a href={whatsappHref(whatsappMessages.general)} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="hero"
+              ><Icon name="whatsapp" size={18} />WhatsApp</a
+            >
+          </li>
+          <li>
+            <a href="#quick-quote" data-track="cta_click" data-location="hero_enquire"><Icon name="send" size={18} />Enquire Now</a>
+          </li>
+        </ul>
+        <ul class="hero__points check-list">
+          <li>Magnet charging machines for ferrite, NdFeB and other magnets</li>
+          <li>Coils and fixtures designed around your rotor, housing or magnet</li>
+          <li>Manufactured in {site.location.state} for customers across {site.location.country}</li>
+        </ul>
+      </div>
+
+      <div class="hero__card surface" id="quick-quote">
+        <p class="hero__card-title">Request a quick quote</p>
+        <p class="hero__card-text">Tell us what you need to magnetize — we’ll call or WhatsApp you back.</p>
+        <EnquiryForm id="hero-quote" type="quote" variant="compact" location="home_hero" submitLabel="Get a Quote" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ASSURANCE BAR ================= -->
+  <div class="assure">
+    <ul class="container assure__list">
+      <li><Icon name="factory" size={22} /><span><strong>Manufacturer</strong> — direct from the factory</span></li>
+      <li><Icon name="clipboard" size={22} /><span><strong>Fixtures designed</strong> for your part</span></li>
+      <li><Icon name="headset" size={22} /><span><strong>Application support</strong> from engineers</span></li>
+      <li><Icon name="message" size={22} /><span><strong>Call, WhatsApp</strong> or email us</span></li>
+    </ul>
+  </div>
+
+  <!-- ================= OUR PRODUCTS ================= -->
+  <section class="section" aria-labelledby="products-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Our products"
+        title="Magnetizing machines, coils and fixtures"
+        text="Each product has its own page with specifications, variants, applications and FAQs — and a direct way to request a quotation."
+        id="products-title"
+      >
+        <a class="btn btn--outline" href="/products/">View all products <Icon name="arrow-right" size={16} /></a>
+      </SectionHead>
+      <nav class="cat-chips" aria-label="Browse by category">
+        {
+          catalogue.map(({ category, products }) => (
+            <a class="chip" href={categoryUrl(category.id)}>
+              {category.data.title} <span class="cat-chips__n">{products.length}</span>
+            </a>
+          ))
+        }
+      </nav>
+      <div class="grid">
+        {featured.map((p) => <ProductCard product={p} categoryName={categoryName.get(p.data.category.id)} />)}
+      </div>
+    </div>
+  </section>
+
+  <WhyChooseUs dark />
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section" aria-labelledby="about-title">
+    <div class="container split split--center">
+      <div>
+        <p class="eyebrow">About us</p>
+        <h2 id="about-title">Magnetizing specialists, from machine to fixture</h2>
+        <div class="stack mt-3 text-muted" style="--stack: 1rem">
+          <p>
+            <strong class="ink">{site.brand}</strong> designs and manufactures industrial magnetizers — magnet charging machines — and the coils and fixtures that
+            go with them, from <Ph text={a.locality} after=", " />{site.location.state}.
+          </p>
+          <p>
+            Our customers magnetize motor rotors and housings, loudspeaker assemblies, sensor magnets and loose magnets on their own production lines. We help
+            them choose the right energy, voltage and fixture so every part comes out fully magnetized.
+          </p>
+        </div>
+        <div class="btn-row mt-4">
+          <a class="btn btn--dark" href="/about/">More about us</a>
+          <a class="btn btn--outline" href="/contact/">Contact our team</a>
+        </div>
+      </div>
+      <dl class="facts" data-reveal>
+        <div><dt>Company</dt><dd>{site.legalName}</dd></div>
+        <div><dt>Location</dt><dd><Ph text={a.locality} after=", " />{site.location.state}, {site.location.country}</dd></div>
+        <div><dt>We manufacture</dt><dd>Magnetizers, magnetizing coils &amp; fixtures</dd></div>
+        <div><dt>We serve</dt><dd>Motor, automotive, audio &amp; magnet manufacturers</dd></div>
+        <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.established) }]}><dt>Established</dt><dd><Ph text={site.business.established} /></dd></div>
+        <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.gstin) }]}><dt>GSTIN</dt><dd><Ph text={site.business.gstin} /></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT RANGE ================= -->
+  <section class="section section--alt" aria-labelledby="range-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Our product range"
+        title="Machines and fixtures, built to work together"
+        text="A magnetizer and its fixture are one system. Choose a category to compare options and read buying guidance."
+        id="range-title"
+      />
+      <div class="grid" style="--min: 420px">
+        {catalogue.map(({ category, products }) => <CategoryCard category={category} products={products} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APPLICATIONS ================= -->
+  <section class="section" aria-labelledby="apps-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Applications"
+        title="What our magnetizers are used for"
+        text="From BLDC rotors to loudspeakers and loose ferrite magnets — explore each application to find the right machine and fixture."
+        id="apps-title"
+      >
+        <a class="link-arrow" href="/applications/">All applications <Icon name="arrow-right" size={16} /></a>
+      </SectionHead>
+      <div class="grid" style="--min: 205px; --gap: 16px">
+        {
+          applications.map((app) => (
+            <LinkCard href={applicationUrl(app.id)} title={app.data.title} text={app.data.summary} icon={app.data.icon} compact />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INDUSTRIES ================= -->
+  <section class="section section--alt" aria-labelledby="industries-title">
+    <div class="container">
+      <SectionHead
+        eyebrow="Industries we serve"
+        title="Magnetizing solutions for your sector"
+        text="Every industry magnetizes different parts — rotors, housings, speaker assemblies or sensor magnets. See what matters for yours."
+        id="industries-title"
+      >
+        <a class="link-arrow" href="/industries/">All industries <Icon name="arrow-right" size={16} /></a>
+      </SectionHead>
+      <div class="grid" style="--min: 320px">
+        {
+          industryCards.map(({ industry, products }) => (
+            <LinkCard
+              href={industryUrl(industry.id)}
+              title={industry.data.title}
+              text={industry.data.summary}
+              icon={industry.data.icon}
+              links={products.map((p) => ({ label: p.data.title, href: productHref(p) }))}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps />
+
+  <TrustSection alt />
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">FAQs</p>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p class="lead mt-2">Quick answers about our magnetizers, fixtures and quotations. Can’t find yours?</p>
+        <div class="btn-row mt-3">
+          <a class="btn btn--wa" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="home_faq"
+            ><Icon name="whatsapp" size={18} />Ask on WhatsApp</a
+          >
+        </div>
+      </div>
+      <Faq faqs={faqs} />
+    </div>
+  </section>
+
+  <!-- ================= BLOG ================= -->
+  {
+    posts.length > 0 && (
+      <section class="section section--alt" aria-labelledby="blog-title">
+        <div class="container">
+          <SectionHead eyebrow="Knowledge centre" title="Buying guides & technical articles" id="blog-title">
+            <a class="link-arrow" href="/blog/">
+              All articles <Icon name="arrow-right" size={16} />
+            </a>
+          </SectionHead>
+          <div class="grid">
+            {posts.slice(0, 3).map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- ================= CONTACT ================= -->
+  <section class="section section--dark home-contact" aria-labelledby="contact-title">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Contact SK Enterprises</p>
+        <h2 id="contact-title">Talk to our engineers about your part</h2>
+        <p class="lead mt-2 on-dark">
+          Send your part drawing, magnet material and output per shift. We’ll recommend a magnetizer and fixture and share a quotation — or call and WhatsApp us
+          directly.
+        </p>
+        <div class="contact-panel surface mt-4">
+          <ContactDetails location="home_contact" />
+        </div>
+      </div>
+      <div class="form-card surface">
+        <h3>Send an enquiry</h3>
+        <p class="text-muted mt-1 mb-form">Fields marked * are required.</p>
+        <EnquiryForm id="home-enquiry" location="home_contact" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(40px, 7vw, 96px) clamp(48px, 7vw, 104px);
+    background:
+      radial-gradient(ellipse at 85% 55%, rgb(198 42 31 / 0.22), transparent 55%),
+      linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+      var(--ink-900);
+    color: #b9c5d0;
+  }
+  .hero__field {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .hero__grid {
+    position: relative;
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+      gap: 64px;
+    }
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: var(--fs-display);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .hero__sub {
+    margin-top: 22px;
+    max-width: 640px;
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    line-height: 1.6;
+  }
+  .hero__cta {
+    margin-top: 32px;
+  }
+  .hero__quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-top: 22px;
+    list-style: none;
+  }
+  .hero__quick a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    border-bottom: 1px solid rgb(255 255 255 / 0.25);
+    padding-bottom: 3px;
+  }
+  .hero__quick a:hover {
+    border-bottom-color: #fff;
+  }
+  .hero__quick :global(svg) {
+    color: #ff8a80;
+  }
+  .hero__points {
+    margin-top: 32px;
+    padding-top: 26px;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    font-size: var(--fs-sm);
+    color: #c9d3dc;
+  }
+  .hero__card {
+    padding: clamp(22px, 3vw, 32px);
+    border-radius: var(--radius-lg);
+    background: #fff;
+    color: var(--text);
+    box-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.6);
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+  .hero__card-title {
+    color: var(--ink-900);
+    font-size: 1.375rem;
+    font-weight: 750;
+    letter-spacing: -0.015em;
+  }
+  .hero__card-text {
+    margin: 4px 0 20px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+
+  /* ---------- Assurance bar ---------- */
+  .assure {
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+  }
+  .assure__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    list-style: none;
+  }
+  .assure__list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 8px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .assure__list strong {
+    color: var(--ink-900);
+  }
+  .assure__list :global(svg) {
+    flex: none;
+    color: var(--red);
+  }
+
+  .cat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -16px 0 28px;
+  }
+  .cat-chips .chip {
+    padding: 8px 14px;
+    font-size: var(--fs-sm);
+  }
+  .cat-chips__n {
+    display: inline-grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--steel-100);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .ink {
+    color: var(--ink-900);
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--line);
+    overflow: hidden;
+  }
+  .facts div {
+    padding: 22px 24px;
+    background: #fff;
+  }
+  .facts dt {
+    color: var(--subtle);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .facts dd {
+    margin: 6px 0 0;
+    color: var(--ink-900);
+    font-weight: 620;
+  }
+
+  .home-contact .on-dark {
+    color: #a9b6c3;
+  }
+  .contact-panel {
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    background: #fff;
+  }
+  .form-card {
+    padding: clamp(22px, 4vw, 40px);
+    background: #fff;
+    border-radius: var(--radius-lg);
+    color: var(--text);
+  }
+  .form-card h3 {
+    font-size: 1.5rem;
+  }
+  .mb-form {
+    margin-bottom: 22px;
+  }
+</style>

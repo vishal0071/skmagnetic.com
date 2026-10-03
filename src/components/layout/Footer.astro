@@ -1,0 +1,293 @@
+---
+import { legalNav, site } from '@/config/site';
+import { getCatalogue, getIndustries, productHref } from '@/lib/content';
+import { categoryUrl, industryUrl, mailHref, telHref, whatsappHref } from '@/lib/links';
+import Logo from './Logo.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Ph from '@/components/ui/Ph.astro';
+import { isPlaceholderOnly } from '@/lib/placeholders';
+
+interface Props {
+  /** Show the "Need a magnetizer" call-to-action box (off on pages that already end with one) */
+  cta?: boolean;
+}
+const { cta = true } = Astro.props;
+const catalogue = await getCatalogue();
+const industries = await getIndustries();
+const featured = catalogue.flatMap((c) => c.products).filter((p) => p.data.featured).slice(0, 6);
+const a = site.contact.address;
+const hoursKnown = site.contact.hours.some((h) => !isPlaceholderOnly(h.time));
+const socials = Object.entries(site.social).filter(([, url]) => url) as [string, string][];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    {cta && <div class="footer-cta">
+      <div>
+        <p class="footer-cta__title">Need a magnetizer for your part?</p>
+        <p>Send your part drawing, magnet material and output per shift — we’ll recommend a machine and share a quotation.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--lg" href="/get-quote/" data-track="cta_click" data-location="footer">Get a Quote</a>
+        <a class="btn btn--wa btn--lg" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="footer"
+          ><Icon name="whatsapp" size={18} />WhatsApp Us</a
+        >
+      </div>
+    </div>}
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <Logo variant="light" />
+        <p>{site.business.shortDescription}</p>
+        <ul class="footer-contact">
+          <li>
+            <Icon name="phone" size={18} />
+            <a href={telHref()} data-track="phone_click" data-location="footer">{site.contact.phone.display}</a>
+          </li>
+          <li>
+            <Icon name="whatsapp" size={18} />
+            <a href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="footer_contact"
+              >{site.contact.whatsapp.display}</a
+            >
+          </li>
+          <li>
+            <Icon name="mail" size={18} />
+            <a href={mailHref()} data-track="email_click" data-location="footer">{site.contact.email.address}</a>
+          </li>
+          <li>
+            <Icon name="map-pin" size={18} />
+            <address>
+              <Ph text={a.street} after=", " /><Ph text={a.locality} after=", " />{a.region}<Ph text={a.postalCode} before=" " />, {a.country}
+            </address>
+          </li>
+        </ul>
+        {
+          socials.length > 0 && (
+            <ul class="footer-social" aria-label="Social media">
+              {socials.map(([name, url]) => (
+                <li>
+                  <a href={url} target="_blank" rel="noopener" aria-label={`${site.brand} on ${name}`}>
+                    <Icon name={name} size={18} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <nav class="footer-col" aria-label="Product categories">
+        <p class="footer-col__title">Products</p>
+        <ul>
+          {
+            catalogue.map(({ category }) => (
+              <li>
+                <a href={categoryUrl(category.id)}>{category.data.title}</a>
+              </li>
+            ))
+          }
+          {
+            featured.map((p) => (
+              <li>
+                <a href={productHref(p)}>{p.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Industries">
+        <p class="footer-col__title">Industries</p>
+        <ul>
+          {
+            industries.map((i) => (
+              <li>
+                <a href={industryUrl(i.id)}>{i.data.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Company">
+        <p class="footer-col__title">Company</p>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/products/">All Products</a></li>
+          <li><a href="/applications/">Applications</a></li>
+          <li><a href="/blog/">Blog &amp; Guides</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/get-quote/">Get a Quote</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <p class:list={['footer-col__title', { 'ph-only': !hoursKnown }]}>Business Hours</p>
+        <ul class:list={['footer-hours', { 'ph-only': !hoursKnown }]}>
+          {
+            site.contact.hours.map((h) => (
+              <li>
+                <span>{h.days}</span>
+                <Ph text={h.time} />
+              </li>
+            ))
+          }
+        </ul>
+        <p class:list={['footer-col__title', { 'mt-3': hoursKnown }]}>Company</p>
+        <ul class="footer-hours">
+          <li><span>Name</span>{site.legalName}</li>
+          <li><span>Location</span><Ph text={a.locality} after=", " />{a.region}, {a.country}</li>
+          <li class:list={[{ 'ph-only': isPlaceholderOnly(site.business.gstin) }]}><span>GSTIN</span><Ph text={site.business.gstin} /></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        © {year}
+        {site.legalName}. All rights reserved.
+      </p>
+      <nav aria-label="Legal">
+        <ul>
+          {
+            legalNav.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-950);
+    color: #9fadba;
+    font-size: var(--fs-sm);
+    padding-top: clamp(48px, 6vw, 72px);
+  }
+  .site-footer a {
+    color: #c9d3dc;
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .footer-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(24px, 4vw, 36px);
+    margin-bottom: clamp(40px, 6vw, 64px);
+    border: 1px solid #1d2c3a;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(120deg, #101c27, #0b141d);
+  }
+  .footer-cta__title {
+    color: #fff;
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+    font-weight: 720;
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+  }
+  .site-footer .footer-cta .btn {
+    color: #fff;
+    text-decoration: none;
+  }
+  .footer-grid {
+    display: grid;
+    gap: 40px 32px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  @media (min-width: 1100px) {
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1fr 0.8fr 1.1fr;
+    }
+  }
+  .footer-brand > p {
+    margin-top: 18px;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+  .footer-contact {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+    list-style: none;
+  }
+  .footer-contact li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .footer-contact :global(svg) {
+    flex: none;
+    margin-top: 2px;
+    color: #ff8a80;
+  }
+  .footer-contact address {
+    font-style: normal;
+    line-height: 1.55;
+  }
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    list-style: none;
+  }
+  .footer-social a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #22313f;
+    border-radius: 50%;
+  }
+  .footer-col__title {
+    margin-bottom: 14px;
+    color: #fff;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .footer-col ul {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+  }
+  .footer-hours li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #c9d3dc;
+  }
+  .footer-hours span:first-child {
+    color: #74869a;
+    font-size: var(--fs-xs);
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    margin-top: clamp(40px, 6vw, 64px);
+    padding-block: 24px;
+    border-top: 1px solid #1a2733;
+    font-size: var(--fs-xs);
+  }
+  .footer-bottom ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    list-style: none;
+  }
+</style>

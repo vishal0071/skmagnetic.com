@@ -1,0 +1,62 @@
+---
+/** Floating WhatsApp button — desktop (mobile uses the sticky action bar). */
+import { whatsappMessages } from '@/config/site';
+import { whatsappHref } from '@/lib/links';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  message?: string;
+  product?: string;
+}
+const { message, product } = Astro.props;
+const text = message ?? (product ? whatsappMessages.product(product) : whatsappMessages.general);
+---
+
+<a
+  class="wa-float"
+  href={whatsappHref(text)}
+  target="_blank"
+  rel="noopener"
+  data-track="whatsapp_click"
+  data-location="floating_button"
+  data-product={product}
+  aria-label="Chat with SK Enterprises on WhatsApp"
+>
+  <Icon name="whatsapp" size={24} />
+  <span>WhatsApp Us</span>
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 60;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px 12px 14px;
+    border-radius: 999px;
+    background: var(--wa);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    text-decoration: none;
+    box-shadow:
+      0 10px 28px -8px rgb(18 128 63 / 0.55),
+      0 2px 6px rgb(11 20 29 / 0.15);
+    transition:
+      transform 0.2s var(--ease),
+      background-color 0.2s;
+  }
+  .wa-float:hover {
+    color: #fff;
+    background: var(--wa-700);
+    transform: translateY(-2px);
+  }
+  @media (min-width: 960px) {
+    .wa-float {
+      display: inline-flex;
+    }
+  }
+</style>

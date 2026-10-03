@@ -1,0 +1,718 @@
+---
+import { getEntry, render } from 'astro:content';
+import { site, whatsappMessages } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPostsFor, getProducts, isNoindex, productHref, resolve, type Product } from '@/lib/content';
+import { applicationUrl, categoryUrl, industryUrl, telHref, whatsappHref } from '@/lib/links';
+import { placeholderHtml } from '@/lib/placeholders';
+import { breadcrumbs as breadcrumbSchema, faqPage, product as productSchema } from '@/lib/schema';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import ContentNotice from '@/components/ui/ContentNotice.astro';
+import CtaBand from '@/components/ui/CtaBand.astro';
+import Faq from '@/components/ui/Faq.astro';
+import Icon from '@/components/ui/Icon.astro';
+import PostCard from '@/components/ui/PostCard.astro';
+import SectionHead from '@/components/ui/SectionHead.astro';
+import EnquiryForm from '@/components/forms/EnquiryForm.astro';
+import ContactDetails from '@/components/sections/ContactDetails.astro';
+import ProductCard from '@/components/product/ProductCard.astro';
+import ProductGallery from '@/components/product/ProductGallery.astro';
+import SpecTable from '@/components/product/SpecTable.astro';
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.map((product) => ({
+    params: { category: product.data.category.id, product: product.id },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+const d = product.data;
+const category = (await getEntry(d.category))!;
+const { Content } = await render(product);
+
+const [related, industries, applications, posts] = await Promise.all([
+  resolve(d.related),
+  resolve(d.industries),
+  resolve(d.relatedApplications),
+  getPostsFor({ product: product.id }),
+]);
+
+const url = productHref(product);
+const crumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products/' },
+  { label: category.data.title, href: categoryUrl(category.id) },
+  { label: d.title, href: url },
+];
+const waMessage = whatsappMessages.product(d.title);
+const image = d.images[0]?.src.src;
+const short = d.title.replace(/\s*\(.*\)$/, '');
+// Quick specs beside the gallery: key spec + two specs that don't repeat it
+const keyWords = d.keySpec.label.toLowerCase().split(/\W+/).filter((w) => w.length > 3 && w !== 'typical');
+const quickSpecs = d.specs.filter((s) => !keyWords.some((w) => s.label.toLowerCase().includes(w))).slice(0, 2);
+const productCtx = { name: d.title, category: category.data.title, slug: product.id };
+
+const sectionNav = [
+  { id: 'overview', label: 'Overview' },
+  d.specs.length || d.supply.length ? { id: 'specifications', label: 'Specifications' } : null,
+  d.applications.length ? { id: 'applications', label: 'Applications' } : null,
+  d.features.length ? { id: 'features', label: 'Features & Benefits' } : null,
+  d.faqs.length ? { id: 'faqs', label: 'FAQs' } : null,
+  { id: 'enquiry', label: 'Get a Quote' },
+].filter(Boolean) as { id: string; label: string }[];
+---
+
+<BaseLayout
+  footerCta={false}
+  title={d.seo.title}
+  description={d.seo.description}
+  image={image}
+  imageAlt={d.images[0]?.alt ?? d.title}
+  noindex={isNoindex(product)}
+  product={productCtx}
+  whatsappMessage={waMessage}
+  schema={[
+    breadcrumbSchema(crumbs),
+    productSchema({
+      name: d.title,
+      description: d.overview,
+      url,
+      image: image ? [image] : [site.seo.defaultOgImage],
+      category: category.data.title,
+      price: d.price,
+    }),
+    faqPage(d.faqs),
+  ]}
+>
+  <section class="product-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      {d.sample && <ContentNotice class="mt-2" />}
+      <div class="product-hero__grid">
+        <ProductGallery title={d.title} illustration={d.illustration} images={d.images} />
+
+        <div class="product-hero__info">
+          <a class="eyebrow product-hero__cat" href={categoryUrl(category.id)}>{category.data.title}</a>
+          <h1>{d.title}</h1>
+          <p class="lead">{d.overview}</p>
+
+          <ul class="check-list product-hero__highlights">
+            {d.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+
+          <dl class="quick-specs">
+            <div>
+              <dt>{d.keySpec.label}</dt>
+              <dd>{d.keySpec.value}</dd>
+            </div>
+            {
+              quickSpecs.map((s) => (
+                <div>
+                  <dt>{s.label}</dt>
+                  <dd set:html={placeholderHtml(s.value)} />
+                </div>
+              ))
+            }
+          </dl>
+
+          <div class="btn-row product-hero__cta">
+            <a class="btn btn--primary btn--lg" href="#enquiry" data-track="cta_click" data-location="product_hero" data-product={d.title}>Get a Quote</a>
+            <a
+              class="btn btn--wa btn--lg"
+              href={whatsappHref(waMessage)}
+              target="_blank"
+              rel="noopener"
+              data-track="whatsapp_click"
+              data-location="product_hero"
+              data-product={d.title}><Icon name="whatsapp" size={18} />WhatsApp for Price</a
+            >
+            <a class="btn btn--outline btn--lg" href={telHref()} data-track="phone_click" data-location="product_hero" data-product={d.title}
+              ><Icon name="phone" size={18} />Call Now</a
+            >
+          </div>
+          <div class="product-hero__links">
+            <a class="link-arrow" href="#enquiry" data-track="cta_click" data-location="product_hero_details" data-product={d.title}>
+              Request Product Details <Icon name="arrow-right" size={16} />
+            </a>
+            {
+              d.datasheet && (
+                <a class="link-arrow" href={d.datasheet} download data-product={d.title} data-location="product_hero">
+                  <Icon name="download" size={16} /> Download datasheet
+                </a>
+              )
+            }
+          </div>
+          <ul class="assurances">
+            <li><Icon name="factory" size={16} /> Direct from manufacturer</li>
+            <li><Icon name="clipboard" size={16} /> Built to your part</li>
+            <li><Icon name="headset" size={16} /> Application support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="section-nav" aria-label="On this page">
+    <div class="container">
+      <ul>
+        {
+          sectionNav.map((s) => (
+            <li>
+              <a href={`#${s.id}`}>{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <div class="section">
+    <div class="container split split--sidebar">
+      <div class="product-main">
+        <section id="overview" aria-labelledby="overview-title">
+          <p class="eyebrow">Product overview</p>
+          <h2 id="overview-title">About {d.title}</h2>
+          <div class="prose mt-3">
+            <Content />
+          </div>
+        </section>
+
+        {
+          (d.specs.length > 0 || d.supply.length > 0) && (
+            <section id="specifications" class="product-block" aria-labelledby="spec-title">
+              <p class="eyebrow">Specifications</p>
+              <h2 id="spec-title">{d.title} specifications</h2>
+              <div class="spec-stack mt-3">
+                <SpecTable
+                  caption="Typical technical specifications"
+                  rows={d.specs}
+                  note="Typical values for this product type, for reference. Exact values depend on grade, size and design — confirm with our team before ordering."
+                />
+                <SpecTable caption={`Models & supply from ${site.brand}`} rows={d.supply} />
+              </div>
+            </section>
+          )
+        }
+
+        {
+          d.variants.length > 0 && (
+            <section class="product-block" aria-labelledby="variants-title">
+              <p class="eyebrow">Sizes &amp; variants</p>
+              <h2 id="variants-title">Common types and variants</h2>
+              <div class="grid mt-3" style="--min: 240px; --gap: 16px">
+                {d.variants.map((v) => (
+                  <div class="feature">
+                    <h3>{v.title}</h3>
+                    <p set:html={placeholderHtml(v.text)} />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          d.applications.length > 0 && (
+            <section id="applications" class="product-block" aria-labelledby="apps-title">
+              <p class="eyebrow">Applications</p>
+              <h2 id="apps-title">Applications of {short}</h2>
+              <ul class="app-list mt-3">
+                {d.applications.map((a) => (
+                  <li>
+                    <span class="icon-tile">
+                      <Icon name="check" size={18} />
+                    </span>
+                    <div>
+                      <h3>{a.title}</h3>
+                      <p set:html={placeholderHtml(a.text)} />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              {applications.length > 0 && (
+                <p class="related-links mt-3">
+                  <span>Application guides:</span>
+                  {applications.map((a) => (
+                    <a class="chip" href={applicationUrl(a.id)}>
+                      {a.data.title}
+                    </a>
+                  ))}
+                </p>
+              )}
+            </section>
+          )
+        }
+
+        {
+          (d.features.length > 0 || d.benefits.length > 0) && (
+            <section id="features" class="product-block" aria-labelledby="features-title">
+              <p class="eyebrow">Features &amp; benefits</p>
+              <h2 id="features-title">{short} features &amp; benefits</h2>
+              <div class="fb-grid mt-3">
+                {d.features.length > 0 && (
+                  <div>
+                    <h3 class="fb-title">Key features</h3>
+                    <ul class="fb-list">
+                      {d.features.map((f) => (
+                        <li>
+                          <strong>{f.title}</strong>
+                          <span set:html={placeholderHtml(f.text)} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {d.benefits.length > 0 && (
+                  <div>
+                    <h3 class="fb-title">Benefits for your business</h3>
+                    <ul class="fb-list">
+                      {d.benefits.map((b) => (
+                        <li>
+                          <strong>{b.title}</strong>
+                          <span set:html={placeholderHtml(b.text)} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          industries.length > 0 && (
+            <section class="product-block" aria-labelledby="industries-title">
+              <p class="eyebrow">Industries served</p>
+              <h2 id="industries-title">Industries that use {short}</h2>
+              <ul class="chips mt-3">
+                {industries.map((i) => (
+                  <li>
+                    <a class="chip industry-chip" href={industryUrl(i.id)}>
+                      <Icon name={i.data.icon} size={16} />
+                      {i.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+
+      <aside class="product-aside" aria-label="Request product details">
+        <div class="aside-card">
+          <p class="aside-card__title">Request product details</p>
+          <p class="aside-card__text">Get price, availability and specifications for <strong>{d.title}</strong>.</p>
+          <a class="btn btn--primary btn--block" href="#enquiry" data-track="cta_click" data-location="product_sidebar" data-product={d.title}>Get a Quote</a>
+          <a
+            class="btn btn--wa btn--block"
+            href={whatsappHref(waMessage)}
+            target="_blank"
+            rel="noopener"
+            data-track="whatsapp_click"
+            data-location="product_sidebar"
+            data-product={d.title}><Icon name="whatsapp" size={18} />WhatsApp Us</a
+          >
+          <a class="btn btn--outline btn--block" href={telHref()} data-track="phone_click" data-location="product_sidebar"
+            ><Icon name="phone" size={18} />{site.contact.phone.display}</a
+          >
+          <p class="aside-card__fine">
+            Manufactured by {site.legalName}, {site.location.state}, {site.location.country}.
+          </p>
+        </div>
+        <nav class="aside-card aside-card--plain" aria-label={`More ${category.data.title}`}>
+          <p class="aside-card__title">{category.data.title}</p>
+          <ul class="aside-links">
+            <li><a href={categoryUrl(category.id)}>All {category.data.title.toLowerCase()} <Icon name="arrow-right" size={14} /></a></li>
+            {
+              related
+                .filter((r) => r.data.category.id === category.id)
+                .map((r) => (
+                  <li>
+                    <a href={productHref(r)}>{r.data.title}</a>
+                  </li>
+                ))
+            }
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <div class="container">
+    <CtaBand
+      title={`Get the right ${short} for your application`}
+      text="Send your part drawing, magnet material and output per shift. Our engineers will recommend the right configuration and send a quotation."
+      product={{ name: d.title, slug: product.id }}
+      location="product_cta_band"
+    />
+  </div>
+
+  {
+    d.faqs.length > 0 && (
+      <section id="faqs" class="section" aria-labelledby="faq-title">
+        <div class="container container--narrow">
+          <SectionHead eyebrow="FAQs" title={`${short} — frequently asked questions`} id="faq-title" />
+          <Faq faqs={d.faqs} />
+        </div>
+      </section>
+    )
+  }
+
+  {
+    related.length > 0 && (
+      <section class="section section--alt" aria-labelledby="related-title">
+        <div class="container">
+          <SectionHead eyebrow="Related products" title="You may also need" id="related-title">
+            <a class="link-arrow" href="/products/">
+              All products <Icon name="arrow-right" size={16} />
+            </a>
+          </SectionHead>
+          <div class="grid">
+            {related.map((r) => (
+              <ProductCard product={r} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    posts.length > 0 && (
+      <section class="section" aria-labelledby="posts-title">
+        <div class="container">
+          <SectionHead eyebrow="Knowledge centre" title={`Guides about ${short}`} id="posts-title" />
+          <div class="grid">
+            {posts.slice(0, 3).map((p) => (
+              <PostCard post={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section id="enquiry" class="section section--alt enquiry-section" aria-labelledby="enquiry-title">
+    <div class="container split">
+      <div class="form-card">
+        <p class="eyebrow">Get a quote</p>
+        <h2 id="enquiry-title">Request details for {d.title}</h2>
+        <p class="text-muted mt-1 mb-form">Fill in what you know — our team will follow up with a recommended configuration, price and delivery time.</p>
+        <EnquiryForm
+          id="product-enquiry"
+          type="quote"
+          product={product.id}
+          location="product_page"
+          submitLabel="Request a Quote"
+        />
+      </div>
+      <div class="enquiry-aside">
+        <h3>Prefer to talk?</h3>
+        <p class="text-muted mt-1">Call or WhatsApp us with your requirement — we’ll help you choose the right magnetizer and fixture.</p>
+        <div class="mt-3">
+          <ContactDetails location="product_enquiry" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .product-hero {
+    padding-block: 24px clamp(40px, 6vw, 72px);
+    background: linear-gradient(180deg, var(--steel-50), #fff 70%);
+    border-bottom: 1px solid var(--line);
+  }
+  .product-hero__grid {
+    display: grid;
+    gap: clamp(28px, 4vw, 56px);
+    margin-top: 24px;
+    align-items: start;
+  }
+  @media (min-width: 960px) {
+    .product-hero__grid {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    }
+  }
+  .product-hero__cat {
+    text-decoration: none;
+  }
+  .product-hero h1 {
+    font-size: clamp(2rem, 1.45rem + 2.2vw, 3.125rem);
+  }
+  .product-hero__info .lead {
+    font-size: 1.125rem;
+  }
+  @media (min-width: 960px) {
+    .product-hero__grid > :first-child {
+      position: sticky;
+      top: calc(var(--header-h) + 20px);
+    }
+  }
+  .product-hero__info .lead {
+    margin-top: 16px;
+  }
+  .product-hero__highlights {
+    margin-top: 22px;
+    font-size: var(--fs-sm);
+  }
+  .quick-specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    margin-top: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--line);
+    overflow: hidden;
+  }
+  .quick-specs div {
+    padding: 12px 14px;
+    background: #fff;
+  }
+  .quick-specs dt {
+    color: var(--subtle);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .quick-specs dd {
+    margin: 4px 0 0;
+    color: var(--ink-900);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .product-hero__cta {
+    margin-top: 26px;
+  }
+  @media (max-width: 559px) {
+    .product-hero__cta .btn {
+      flex: 1 1 100%;
+    }
+  }
+  .product-hero__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 16px;
+  }
+  .assurances {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    list-style: none;
+    color: var(--muted);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+  }
+  .assurances li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .assurances :global(svg) {
+    color: var(--red);
+  }
+
+  .section-nav {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 40;
+    background: rgb(255 255 255 / 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .section-nav ul {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    list-style: none;
+    scrollbar-width: none;
+  }
+  .section-nav ul::-webkit-scrollbar {
+    display: none;
+  }
+  .section-nav a {
+    display: block;
+    padding: 14px 12px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .section-nav a:hover {
+    color: var(--ink-900);
+    border-bottom-color: var(--red);
+  }
+
+  .product-block {
+    margin-top: clamp(48px, 6vw, 72px);
+    padding-top: clamp(40px, 5vw, 56px);
+    border-top: 1px solid var(--line);
+  }
+  .product-main h2 {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  }
+  .spec-stack {
+    display: grid;
+    gap: 24px;
+  }
+  .app-list {
+    display: grid;
+    gap: 14px;
+    list-style: none;
+  }
+  .app-list li {
+    display: flex;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .app-list h3 {
+    font-size: 1.0625rem;
+  }
+  .app-list p {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .app-list .icon-tile {
+    width: 36px;
+    height: 36px;
+    color: var(--red);
+  }
+  .related-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-sm);
+    color: var(--muted);
+  }
+  .fb-grid {
+    display: grid;
+    gap: 32px;
+  }
+  @media (min-width: 720px) {
+    .fb-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .fb-title {
+    font-size: 1.125rem;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink-900);
+  }
+  .fb-list {
+    list-style: none;
+  }
+  .fb-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .fb-list strong {
+    color: var(--ink-900);
+  }
+  .fb-list span {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .industry-chip {
+    padding: 8px 14px;
+    font-size: var(--fs-sm);
+  }
+  .industry-chip :global(svg) {
+    color: var(--red);
+  }
+
+  .product-aside {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 960px) {
+    .product-aside {
+      position: sticky;
+      top: calc(var(--header-h) + 72px);
+    }
+  }
+  .aside-card {
+    display: grid;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+  .aside-card--plain {
+    box-shadow: none;
+    background: var(--steel-50);
+  }
+  .aside-card__title {
+    color: var(--ink-900);
+    font-size: 1.125rem;
+    font-weight: 720;
+  }
+  .aside-card__text,
+  .aside-card__fine {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+  .aside-card__fine {
+    font-size: var(--fs-xs);
+    text-align: center;
+  }
+  .aside-links {
+    list-style: none;
+    display: grid;
+    gap: 2px;
+  }
+  .aside-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    color: var(--ink-800);
+    font-size: var(--fs-sm);
+    text-decoration: none;
+  }
+  .aside-links a:hover {
+    color: var(--red);
+  }
+
+  .form-card {
+    padding: clamp(22px, 4vw, 40px);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .form-card h2 {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  }
+  .mb-form {
+    margin-bottom: 24px;
+  }
+  .enquiry-aside {
+    padding-top: 8px;
+  }
+</style>

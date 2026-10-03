@@ -1,0 +1,80 @@
+---
+import { processSteps } from '@/config/trust';
+import { placeholderHtml } from '@/lib/placeholders';
+import SectionHead from '@/components/ui/SectionHead.astro';
+
+interface Props {
+  title?: string;
+  alt?: boolean;
+}
+const { title = 'From your part drawing to a working magnetizer', alt = false } = Astro.props;
+---
+
+<section class:list={['section', { 'section--alt': alt }]} aria-labelledby="process-title">
+  <div class="container">
+    <SectionHead eyebrow="How we work" title={title} id="process-title" />
+    <ol class="steps">
+      {
+        processSteps.map((s, i) => (
+          <li class="step" data-reveal>
+            <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p set:html={placeholderHtml(s.text)} />
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    display: grid;
+    gap: 16px;
+    list-style: none;
+    counter-reset: step;
+  }
+  @media (min-width: 720px) {
+    .steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .steps {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .step {
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px 24px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .step::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 40px;
+    height: 3px;
+    background: var(--red);
+  }
+  .step__num {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--subtle);
+  }
+  .step h3 {
+    font-size: 1.125rem;
+  }
+  .step p {
+    color: var(--muted);
+    font-size: var(--fs-sm);
+  }
+</style>

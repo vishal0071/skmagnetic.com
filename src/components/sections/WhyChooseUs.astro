@@ -1,0 +1,107 @@
+---
+import { strengths } from '@/config/trust';
+import { placeholderHtml } from '@/lib/placeholders';
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  dark?: boolean;
+  title?: string;
+  text?: string;
+}
+const {
+  dark = false,
+  title = 'Why manufacturers choose SK Enterprises',
+  text = 'A magnetizer manufacturer that understands production: the right machine for your part, clear technical information and quick answers.',
+} = Astro.props;
+---
+
+<section class:list={['section', 'why', { 'section--dark': dark }]} aria-labelledby="why-title">
+  <div class="container why__grid">
+    <div class="why__intro">
+      <p class="eyebrow">Why choose us</p>
+      <h2 id="why-title">{title}</h2>
+      <p class="why__lead">{text}</p>
+      <a class:list={['btn', dark ? 'btn--light' : 'btn--outline', 'mt-4']} href="/about/">About SK Enterprises <Icon name="arrow-right" size={16} /></a>
+    </div>
+    <ul class="why__list">
+      {
+        strengths.map((s) => (
+          <li data-reveal>
+            <span class="why__icon">
+              <Icon name={s.icon} size={24} />
+            </span>
+            <div>
+              <h3>{s.title}</h3>
+              <p set:html={placeholderHtml(s.text)} />
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why__grid {
+    display: grid;
+    gap: 48px;
+  }
+  @media (min-width: 1024px) {
+    .why__grid {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+      gap: 80px;
+      align-items: start;
+    }
+    .why__intro {
+      position: sticky;
+      top: calc(var(--header-h) + 32px);
+    }
+  }
+  .why__lead {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: var(--fs-lg);
+  }
+  .section--dark .why__lead {
+    color: #a9b6c3;
+  }
+  .why__list {
+    display: grid;
+    gap: 0 48px;
+    list-style: none;
+  }
+  @media (min-width: 720px) {
+    .why__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .why__list li {
+    display: flex;
+    gap: 18px;
+    padding: 26px 0;
+    border-top: 1px solid var(--line);
+  }
+  .section--dark .why__list li {
+    border-top-color: #1f3142;
+  }
+  .why__icon {
+    flex: none;
+    color: var(--red);
+    margin-top: 2px;
+  }
+  .section--dark .why__icon {
+    color: #ff8a80;
+  }
+  .why__list h3 {
+    font-size: 1.125rem;
+  }
+  .why__list p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+  }
+  .section--dark .why__list p {
+    color: #a9b6c3;
+  }
+</style>

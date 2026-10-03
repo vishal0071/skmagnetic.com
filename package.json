@@ -1,0 +1,36 @@
+{
+  "name": "skmagnetic.com",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "assets": "node --experimental-strip-types --no-warnings scripts/generate-assets.mjs",
+    "check:site": "node scripts/check-site.mjs",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "qa": "astro build && node scripts/check-site.mjs",
+    "astro": "astro",
+    "admin": "node --env-file-if-exists=.env admin/server.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.2",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@hono/node-server": "^2.1.3",
+    "astro": "^7.3.5",
+    "hono": "^4.13.12",
+    "nodemailer": "^10.0.13",
+    "satteri": "^0.10.5",
+    "sharp": "^0.35.5",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@expo-google-fonts/archivo": "^0.4.2",
+    "opentype.js": "^2.0.0",
+    "typescript": "^6.0.3"
+  }
+}
