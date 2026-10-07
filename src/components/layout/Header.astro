@@ -108,46 +108,48 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
       </button>
     </div>
   </div>
-
-  <div class="mobile-nav" id="mobile-nav" hidden>
-    <nav class="container" aria-label="Mobile">
-      <ul class="mobile-nav__list">
-        {
-          mainNav.map((item) => (
-            <li>
-              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-                {item.label}
-                <Icon name="chevron-right" size={18} />
-              </a>
-              {'hasMenu' in item && item.hasMenu && (
-                <ul class="mobile-nav__sub">
-                  {catalogue.map(({ category }) => (
-                    <li>
-                      <a href={categoryUrl(category.id)}>{category.data.title}</a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))
-        }
-        <li><a href="/applications/">Applications <Icon name="chevron-right" size={18} /></a></li>
-      </ul>
-      <div class="mobile-nav__cta">
-        <a class="btn btn--primary btn--block btn--lg" href="/get-quote/" data-track="cta_click" data-location="mobile_menu">Get a Quote</a>
-        <div class="mobile-nav__row">
-          <a class="btn btn--outline" href={telHref()} data-track="phone_click" data-location="mobile_menu"><Icon name="phone" size={18} />Call</a>
-          <a class="btn btn--wa" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="mobile_menu"
-            ><Icon name="whatsapp" size={18} />WhatsApp</a
-          >
-        </div>
-        <p class="mobile-nav__mail">
-          <a href={mailHref()} data-track="email_click" data-location="mobile_menu">{site.contact.email.address}</a>
-        </p>
-      </div>
-    </nav>
-  </div>
 </header>
+
+<!-- Outside <header>: the header's backdrop-filter would become the containing block of this fixed
+     panel, and Safari then collapses the open menu to 0 height. -->
+<div class="mobile-nav" id="mobile-nav" hidden>
+  <nav class="container" aria-label="Mobile">
+    <ul class="mobile-nav__list">
+      {
+        mainNav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              {item.label}
+              <Icon name="chevron-right" size={18} />
+            </a>
+            {'hasMenu' in item && item.hasMenu && (
+              <ul class="mobile-nav__sub">
+                {catalogue.map(({ category }) => (
+                  <li>
+                    <a href={categoryUrl(category.id)}>{category.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+      <li><a href="/applications/">Applications <Icon name="chevron-right" size={18} /></a></li>
+    </ul>
+    <div class="mobile-nav__cta">
+      <a class="btn btn--primary btn--block btn--lg" href="/get-quote/" data-track="cta_click" data-location="mobile_menu">Get a Quote</a>
+      <div class="mobile-nav__row">
+        <a class="btn btn--outline" href={telHref()} data-track="phone_click" data-location="mobile_menu"><Icon name="phone" size={18} />Call</a>
+        <a class="btn btn--wa" href={whatsappHref()} target="_blank" rel="noopener" data-track="whatsapp_click" data-location="mobile_menu"
+          ><Icon name="whatsapp" size={18} />WhatsApp</a
+        >
+      </div>
+      <p class="mobile-nav__mail">
+        <a href={mailHref()} data-track="email_click" data-location="mobile_menu">{site.contact.email.address}</a>
+      </p>
+    </div>
+  </nav>
+</div>
 
 <style>
   .topbar {
@@ -411,10 +413,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   .mobile-nav {
     position: fixed;
     inset: var(--header-h) 0 0;
+    z-index: 50;
     overflow-y: auto;
     background: #fff;
     border-top: 1px solid var(--line);
-    padding-bottom: 32px;
+    /* Clear the fixed bottom action bar (MobileActionBar) */
+    padding-bottom: calc(32px + var(--mobile-bar-h) + env(safe-area-inset-bottom));
   }
   .mobile-nav__list {
     list-style: none;
