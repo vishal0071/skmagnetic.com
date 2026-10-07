@@ -110,8 +110,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   </div>
 </header>
 
-<!-- Outside <header>: the header's backdrop-filter would become the containing block of this fixed
-     panel, and Safari then collapses the open menu to 0 height. -->
+{/* Outside <header>: the header's backdrop-filter would become the containing block of this fixed
+    panel, and Safari then collapses the open menu to 0 height. */}
 <div class="mobile-nav" id="mobile-nav" hidden>
   <nav class="container" aria-label="Mobile">
     <ul class="mobile-nav__list">
