@@ -73,6 +73,18 @@ const markSvg = mark.replace('<svg ', '<svg class="logo__mark" width="44" height
   .logo:hover {
     color: inherit;
   }
+  @media (max-width: 479.98px) {
+    .logo {
+      gap: 10px;
+    }
+    .logo :global(.logo__mark) {
+      width: 40px;
+      height: 40px;
+    }
+    .logo__name {
+      font-size: 1.125rem;
+    }
+  }
   @media (max-width: 380px) {
     .logo__line {
       display: none;

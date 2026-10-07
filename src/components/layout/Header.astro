@@ -98,7 +98,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
         </span>
       </a>
       <a class="btn btn--primary header-quote" href="/get-quote/" data-track="cta_click" data-location="header">Get a Quote</a>
-      <a class="icon-btn mobile-only" href={telHref()} data-track="phone_click" data-location="header_mobile" aria-label="Call SK Enterprises">
+      <a class="icon-btn mobile-only header-call" href={telHref()} data-track="phone_click" data-location="header_mobile" aria-label="Call SK Enterprises">
         <Icon name="phone" size={20} />
       </a>
       <button class="icon-btn mobile-only" type="button" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
@@ -391,6 +391,25 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     display: block;
   }
 
+  /* Narrow phones: tighten the header so the logo and buttons fit without sideways scrolling */
+  @media (max-width: 479.98px) {
+    .site-header__inner {
+      gap: 12px;
+    }
+    .site-header__actions {
+      gap: 6px;
+    }
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+  /* Smallest phones: the bottom action bar already has Call */
+  @media (max-width: 359.98px) {
+    .header-call {
+      display: none;
+    }
+  }
   @media (min-width: 640px) {
     .header-quote {
       display: inline-flex;

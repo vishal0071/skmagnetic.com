@@ -491,6 +491,15 @@ const sectionNav = [
     font-weight: 600;
     line-height: 1.4;
   }
+  @media (max-width: 559.98px) {
+    /* Two columns on phones; an odd last tile spans both instead of leaving an empty cell */
+    .quick-specs {
+      grid-template-columns: 1fr 1fr;
+    }
+    .quick-specs div:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
   .product-hero__cta {
     margin-top: 26px;
   }
@@ -521,6 +530,12 @@ const sectionNav = [
     display: inline-flex;
     align-items: center;
     gap: 6px;
+  }
+  @media (max-width: 559.98px) {
+    .assurances {
+      flex-direction: column;
+      gap: 10px;
+    }
   }
   .assurances :global(svg) {
     color: var(--red);

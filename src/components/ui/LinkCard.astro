@@ -81,12 +81,17 @@ const { href, title, text, icon, links = [], headingLevel: H = 'h3', compact = f
     font-size: var(--fs-xs);
   }
   .link-card__links a {
+    display: inline-flex;
+    gap: 6px;
+    padding-block: 3px;
     color: var(--ink-800);
     font-weight: 600;
     text-decoration: none;
   }
+  /* Arrow in its own column, so a wrapped label lines up under the text, not the arrow */
   .link-card__links a::before {
-    content: '→ ';
+    content: '→';
+    flex: none;
     color: var(--red);
   }
   .link-card__links a:hover {

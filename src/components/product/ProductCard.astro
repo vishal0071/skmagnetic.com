@@ -3,7 +3,6 @@ import type { Product } from '@/lib/content';
 import { productHref } from '@/lib/content';
 import { quoteUrl } from '@/lib/links';
 import ProductVisual from './ProductVisual.astro';
-import Icon from '@/components/ui/Icon.astro';
 
 interface Props {
   product: Product;
@@ -29,13 +28,21 @@ const uses = d.applications.slice(0, 3).map((a) => a.title);
     {
       uses.length > 0 && (
         <p class="product-card__uses">
-          <span>Applications</span>
-          {uses.join(' · ')}
+          <span class="product-card__uses-label">Applications</span>
+          {/* Each item keeps its separator, so a line never starts with "·" */}
+          {uses.map((u, i) => (
+            <>
+              <span class="product-card__use">
+                {u}
+                {i < uses.length - 1 && ' ·'}
+              </span>{' '}
+            </>
+          ))}
         </p>
       )
     }
     <div class="card__actions product-card__actions">
-      <a class="link-arrow" href={href} aria-label={`View ${d.title}`} tabindex="-1">View product <Icon name="arrow-right" size={16} /></a>
+      <a class="btn btn--outline btn--sm" href={href} aria-label={`View ${d.title}`} tabindex="-1">View product</a>
       <a
         class="btn btn--outline-red btn--sm"
         href={quoteUrl(product.id)}
@@ -64,7 +71,10 @@ const uses = d.applications.slice(0, 3).map((a) => a.title);
     font-size: var(--fs-xs);
     line-height: 1.55;
   }
-  .product-card__uses span {
+  .product-card__use {
+    white-space: nowrap;
+  }
+  .product-card__uses-label {
     display: block;
     margin-bottom: 2px;
     color: var(--subtle);
@@ -73,13 +83,11 @@ const uses = d.applications.slice(0, 3).map((a) => a.title);
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+  /* Two equal buttons, so both edges line up in every card */
   .product-card__actions {
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-top: 16px;
-  }
-  .product-card__actions .btn {
-    flex: none;
   }
   .product-card :global(.media) {
     border-bottom: 1px solid var(--line);

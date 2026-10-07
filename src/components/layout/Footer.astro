@@ -77,7 +77,7 @@ const year = new Date().getFullYear();
         }
       </div>
 
-      <nav class="footer-col" aria-label="Product categories">
+      <nav class="footer-col footer-col--wide" aria-label="Product categories">
         <p class="footer-col__title">Products</p>
         <ul>
           {
@@ -122,7 +122,7 @@ const year = new Date().getFullYear();
         </ul>
       </nav>
 
-      <div class="footer-col">
+      <div class="footer-col footer-col--wide">
         <p class:list={['footer-col__title', { 'ph-only': !hoursKnown }]}>Business Hours</p>
         <ul class:list={['footer-hours', { 'ph-only': !hoursKnown }]}>
           {
@@ -134,7 +134,7 @@ const year = new Date().getFullYear();
             ))
           }
         </ul>
-        <p class:list={['footer-col__title', { 'mt-3': hoursKnown }]}>Company</p>
+        <p class:list={['footer-col__title', { 'mt-3': hoursKnown }]}>Business details</p>
         <ul class="footer-hours">
           <li><span>Name</span>{site.legalName}</li>
           <li><span>Location</span><Ph text={a.locality} after=", " />{a.region}, {a.country}</li>
@@ -205,6 +205,17 @@ const year = new Date().getFullYear();
     display: grid;
     gap: 40px 32px;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  @media (max-width: 559.98px) {
+    /* Phones: short link lists side by side; brand, products and details full width */
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 20px;
+    }
+    .footer-brand,
+    .footer-col--wide {
+      grid-column: 1 / -1;
+    }
   }
   @media (min-width: 1100px) {
     .footer-grid {

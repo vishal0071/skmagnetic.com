@@ -36,7 +36,7 @@
   --fs-xs: 0.8125rem;
   --fs-sm: 0.9375rem;
   --fs-base: 1.0625rem;
-  --fs-lg: 1.1875rem;
+  --fs-lg: clamp(1.0625rem, 1rem + 0.4vw, 1.1875rem);
   --fs-h4: 1.1875rem;
   --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
   --fs-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.375rem);
@@ -140,7 +140,13 @@ h4 {
 }
 p {
   margin: 0;
-  text-wrap: pretty;
+}
+/* Safari's "pretty" evens out every line, which leaves narrow phone columns visibly short and
+   ragged; on phones paragraphs wrap normally and fill the column. */
+@media (min-width: 960px) {
+  p {
+    text-wrap: pretty;
+  }
 }
 a {
   color: var(--blue);
@@ -410,6 +416,16 @@ table {
   flex-wrap: wrap;
   gap: 12px;
 }
+@media (max-width: 639.98px) {
+  /* Phones: buttons share a row equally when they fit, otherwise each takes the full width,
+     so both edges always line up. */
+  .btn-row > .btn {
+    flex: 1 1 0;
+  }
+  .btn--sm {
+    min-height: 44px;
+  }
+}
 .link-arrow {
   display: inline-flex;
   align-items: center;
@@ -472,6 +488,9 @@ table {
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.card__meta time {
+  white-space: nowrap;
 }
 .card__actions {
   display: flex;
@@ -796,6 +815,10 @@ textarea.input {
 select.input {
   appearance: none;
   padding-right: 42px;
+  /* A long selected option would otherwise widen the page on iPhone */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23546474' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
@@ -945,6 +968,12 @@ input[type='file'].input:hover::file-selector-button {
 .media--wide {
   aspect-ratio: 16 / 9;
 }
+@media (max-width: 639.98px) {
+  /* Shorter card images on phones so listings don't become endless scrolls */
+  .card > .media:not(.media--wide) {
+    aspect-ratio: 16 / 10;
+  }
+}
 
 /* ---------- Breadcrumbs ---------- */
 .breadcrumbs ol {
@@ -976,6 +1005,17 @@ input[type='file'].input:hover::file-selector-button {
 .breadcrumbs [aria-current] {
   color: var(--ink-900);
   font-weight: 600;
+}
+/* A long page name stays on one line (truncated) instead of wrapping under its separator */
+.breadcrumbs li:last-child {
+  flex: 1 1 8em;
+  min-width: 0;
+}
+.breadcrumbs li:last-child [aria-current] {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* ---------- Page hero (inner pages) ---------- */
@@ -1059,6 +1099,11 @@ input[type='file'].input:hover::file-selector-button {
 .faq .faq__a {
   padding: 0 48px 22px 0;
   color: var(--muted);
+}
+@media (max-width: 639.98px) {
+  .faq .faq__a {
+    padding-right: 0;
+  }
 }
 
 /* ---------- CTA band ---------- */

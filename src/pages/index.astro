@@ -348,6 +348,12 @@ const a = site.contact.address;
     letter-spacing: -0.03em;
     line-height: 1.05;
   }
+  @media (max-width: 639.98px) {
+    /* Keep the Get a Quote button on the first phone screen */
+    .hero h1 {
+      font-size: 2rem;
+    }
+  }
   .hero__sub {
     margin-top: 22px;
     max-width: 640px;
@@ -380,6 +386,12 @@ const a = site.contact.address;
   }
   .hero__quick :global(svg) {
     color: #ff8a80;
+  }
+  @media (max-width: 959.98px) {
+    /* The fixed bottom bar already offers Call, WhatsApp and Enquire */
+    .hero__quick {
+      display: none;
+    }
   }
   .hero__points {
     margin-top: 32px;
