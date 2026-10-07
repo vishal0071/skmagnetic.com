@@ -15,6 +15,9 @@ const crumbs = [
   { label: 'Home', href: '/' },
   { label: 'Contact', href: '/contact/' },
 ];
+const at = site.contact.email.address.indexOf('@');
+const emailUser = site.contact.email.address.slice(0, at);
+const emailDomain = site.contact.email.address.slice(at);
 const title = 'Contact SK Enterprises | Magnetizer Manufacturer, Maharashtra';
 const description =
   'Contact SK Enterprises, magnetizer manufacturer in Maharashtra. Call, WhatsApp, email or send an enquiry about magnet charging machines and fixtures.';
@@ -42,7 +45,8 @@ const description =
         </a>
         <a class="qc" href={mailHref('Enquiry from website')} data-track="email_click" data-location="contact_quick">
           <span class="icon-tile"><Icon name="mail" size={22} /></span>
-          <span><small>Email</small><strong>{site.contact.email.address}</strong></span>
+          {/* A long address breaks before the "@", not mid-word */}
+          <span><small>Email</small><strong>{emailUser}<wbr />{emailDomain}</strong></span>
         </a>
       </div>
     </div>

@@ -3,16 +3,16 @@
   "showContentNotices": true,
   "tagline": "Magnetizer Manufacturer",
   "contact": {
-    "phoneDisplay": "+91 XXXXX XXXXX",
-    "phone": "+91XXXXXXXXXX",
-    "whatsappDisplay": "+91 XXXXX XXXXX",
-    "whatsapp": "91XXXXXXXXXX",
-    "email": "info@skmagnetic.com",
-    "emailConfirmed": false,
-    "street": "{{Street address / building / area}}",
-    "city": "{{City}}",
+    "phoneDisplay": "+91 99751 09052",
+    "phone": "+919975109052",
+    "whatsappDisplay": "+91 99751 09052",
+    "whatsapp": "919975109052",
+    "email": "skenterprises3105@outlook.com",
+    "emailConfirmed": true,
+    "street": "Shop No. A16, Ground Floor, Laxmipuram Building, Nawa Wada, Near Balaji Mandir, Nana Peth",
+    "city": "Pune",
     "state": "Maharashtra",
-    "pin": "{{PIN code}}",
+    "pin": "411002",
     "mapsEmbedUrl": "",
     "mapsLink": "",
     "hours": [
@@ -28,7 +28,7 @@
     "responseTime": "{{within 1 business day}}"
   },
   "business": {
-    "gstin": "{{GSTIN}}",
+    "gstin": "27HFWPK6842E1ZS",
     "established": "{{Year established}}",
     "shortDescription": "SK Enterprises manufactures industrial magnetizers — magnet charging machines, magnetizing coils and fixtures — for motor, automotive, audio and magnet manufacturers."
   },
