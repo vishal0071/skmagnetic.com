@@ -68,7 +68,7 @@ export async function auditSite(dist) {
       if (title) titles.set(title, [...(titles.get(title) || []), url]);
       if (description) descs.set(description, [...(descs.get(description) || []), url]);
     }
-    for (const m of html.matchAll(/<img\b[^>]*>/g)) if (!/\salt=/.test(m[0])) problems.push(`${url}: <img> without alt text`);
+    for (const m of html.matchAll(/<img\b[^>]*>/g)) if (!/\salt(=|[\s/>])/.test(m[0])) problems.push(`${url}: <img> without alt text`);
 
     for (const m of html.matchAll(/\s(?:href|src)="(\/[^"#?]*)/g)) {
       const link = m[1];

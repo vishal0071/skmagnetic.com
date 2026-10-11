@@ -3,7 +3,7 @@ import { html, raw } from './html.mjs';
 import { renderFields } from './forms.mjs';
 import { COLLECTIONS } from './content.mjs';
 
-const MARK = raw(`<svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0b141d"/><path d="M14 15.5Q32 4 50 15.5M14 48.5Q32 60 50 48.5" fill="none" stroke="#8fa3b8" stroke-width="2.2" stroke-linecap="round" opacity=".6"/><text x="11" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="25" fill="#ff5a4e">S</text><text x="37" y="42" font-family="Arial Black,Arial" font-weight="900" font-size="25" fill="#d6e0ea">K</text><path d="M34 17L27 33h4.4L29 46.5l7.4-17h-4.3L35 17Z" fill="#ffb21f"/></svg>`);
+const MARK = raw(`<img src="/admin/assets/emblem.png" width="59" height="34" alt="" />`);
 
 const fmtDate = (iso) =>
   iso ? new Date(iso).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Kolkata' }) : '—';
@@ -29,7 +29,7 @@ export function layout({ title, active, body, flash, newEnquiries = 0, publish, 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>${title} · SK Enterprises admin</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
     <link rel="stylesheet" href="/admin/assets/admin.css" />
   </head>
   <body>
@@ -84,7 +84,7 @@ export function loginPage({ error, next }) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Sign in · SK Enterprises admin</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png" />
     <link rel="stylesheet" href="/admin/assets/admin.css" />
   </head>
   <body class="login-body">

@@ -2,7 +2,7 @@
 layout: ../layouts/LegalLayout.astro
 title: Terms & Conditions
 seoTitle: Terms & Conditions | SK Enterprises
-description: Terms for using skmagnetic.com and for quotations and orders placed with SK Enterprises, manufacturer of industrial magnetizers.
+description: Terms for using skmagnetic.com and for quotations and orders placed with SK Enterprises, manufacturer of industrial magnetizers and magnetic instruments.
 updated: "{{DD Month YYYY}}"
 ---
 
@@ -10,7 +10,7 @@ These terms apply to the use of **skmagnetic.com** and to quotations issued by *
 
 ## About us
 
-The website is operated by SK Enterprises, manufacturer of industrial magnetizers, magnetizing coils and fixtures. {{Registered address and GSTIN}}
+The website is operated by SK Enterprises, manufacturer of industrial magnetizers, magnetic instruments, magnetizing coils and fixtures. {{Registered address and GSTIN}}
 
 ## Product information
 

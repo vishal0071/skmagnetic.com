@@ -1,7 +1,7 @@
 # skmagnetic.com — SK Enterprises
 
 Lead-generation website and admin panel for **SK Enterprises**, manufacturer of industrial magnetizers
-(magnet charging machines), magnetizing coils and fixtures — Maharashtra, India.
+and magnetic instruments (magnet charging machines, magnetizing coils and fixtures) — Maharashtra, India.
 
 - **Website:** static [Astro](https://astro.build) site. About 6 KB of JavaScript, a self-hosted font, and SEO and structured data built in.
 - **Admin panel** (`/admin`): edit settings and content, upload photos, receive enquiries, read the SEO report, and publish.
@@ -167,7 +167,7 @@ Dockerfile                nginx image (website)
 Dockerfile.admin          Node image (admin)
 docker-compose.yml        Both services + Traefik labels
 deploy/nginx.conf         Clean URLs, caching, 404
-public/brand/             Logo files (SVG/PNG, light and dark)
+public/brand/             Logo files (PNG, light and dark)
 ```
 
 ### Adding a product without the admin
@@ -191,6 +191,7 @@ In GA4, mark `generate_lead`, `quote_request`, `whatsapp_click` and `phone_click
 
 ## Brand
 
-`public/brand/` holds the logo: the **S⚡K mark** (S and K as two magnetic poles with a charging pulse between them) and the
-**SK ENTERPRISES** wordmark with "Magnetizer Manufacturer", as SVG (outlined, renders everywhere) and PNG. Regenerate with
-`npm run assets` after editing `scripts/brand.mjs`.
+`public/brand/` holds the logo: the **S⚡K emblem** (navy oval, red S, yellow bolt, white K) on a transparent background,
+a square icon, and the **SK ENTERPRISES** wordmark lockup with "Magnetizer Manufacturer" (PNG, light and dark). The emblem
+artwork is `scripts/brand-source/sk-emblem.png`; replace it and run `npm run assets` to regenerate the logo files, favicons,
+app icons and the social share image.

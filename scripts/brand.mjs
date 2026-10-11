@@ -1,11 +1,13 @@
 /**
  * SK Enterprises brand kit.
- * The mark: "S" and "K" as the two poles of a magnet, a charging pulse (bolt)
- * between them and field lines around — magnetizing / magnet charging machines.
- * Letters are outlined from Archivo ExtraBold so files render identically everywhere.
+ * The emblem: a navy oval with a red "S", a white "K" and a yellow lightning bolt
+ * (the charging pulse) between them. The artwork is scripts/brand-source/sk-emblem.png;
+ * emblem() cuts it out of its white background so it works on any colour.
+ * Wordmark letters are outlined from Archivo so files render identically everywhere.
  */
 import { readFileSync } from 'node:fs';
 import opentype from 'opentype.js';
+import sharp from 'sharp';
 
 const load = (w) => {
   const b = readFileSync(new URL(`../node_modules/@expo-google-fonts/archivo/${w}/Archivo_${w}.ttf`, import.meta.url));
@@ -41,47 +43,97 @@ export function text(font, str, x, y, size, fill, tracking = 0) {
 
 export const colors = {
   ink: '#0b141d',
+  navy: '#012d5d',
   red: '#c62a1f',
   redLight: '#ff5a4e',
-  steel: '#d6e0ea',
-  field: '#8fa3b8',
-  bolt: '#ffb21f',
   muted: '#546474',
 };
 
-/** The mark on a 64×64 grid (no outer <svg>). */
-export function markInner({ bg = colors.ink, rounded = true } = {}) {
-  const size = 31;
-  const S = text(fonts.xb, 'S', 0, 0, size, '#000');
-  const K = text(fonts.xb, 'K', 0, 0, size, '#000');
-  const gap = 12;
-  const x0 = (64 - (S.width + gap + K.width)) / 2;
-  const base = 43;
-  const s = text(fonts.xb, 'S', x0, base, size, colors.redLight);
-  const k = text(fonts.xb, 'K', x0 + S.width + gap, base, size, colors.steel);
-  const bx = x0 + S.width + gap / 2;
-  return (
-    (bg ? `<rect width="64" height="64" rx="${rounded ? 14 : 0}" fill="${bg}"/>` : '') +
-    `<path d="M${n(x0 + 2)} 15.5Q32 3.5 ${n(64 - x0 - 2)} 15.5" fill="none" stroke="${colors.field}" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>` +
-    `<path d="M${n(x0 + 2)} 48.5Q32 60.5 ${n(64 - x0 - 2)} 48.5" fill="none" stroke="${colors.field}" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>` +
-    s.svg +
-    k.svg +
-    `<path d="M${n(bx + 2.8)} 16.5L${n(bx - 4.2)} 33H${n(bx + 0.2)}L${n(bx - 2)} 46.5L${n(bx + 5.4)} 29.5H${n(bx + 1.1)}L${n(bx + 4)} 16.5Z" fill="${colors.bolt}"/>`
-  );
+const EMBLEM_SOURCE = new URL('./brand-source/sk-emblem.png', import.meta.url).pathname;
+
+/**
+ * The emblem as a transparent PNG trimmed to the oval → { png, width, height }.
+ * Background = near-white pixels connected to the image edge, so the white K inside
+ * the oval stays opaque. The oval's anti-aliased rim is un-blended from white.
+ */
+export async function emblem() {
+  const { data, info } = await sharp(EMBLEM_SOURCE).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: W, height: H } = info;
+  const N = W * H;
+
+  const bg = new Uint8Array(N);
+  const isWhite = (i) => Math.min(data[i * 3], data[i * 3 + 1], data[i * 3 + 2]) >= 235;
+  const stack = [];
+  for (let x = 0; x < W; x++) stack.push(x, (H - 1) * W + x);
+  for (let y = 0; y < H; y++) stack.push(y * W, y * W + W - 1);
+  while (stack.length) {
+    const i = stack.pop();
+    if (bg[i] || !isWhite(i)) continue;
+    bg[i] = 1;
+    const x = i % W;
+    if (x > 0) stack.push(i - 1);
+    if (x < W - 1) stack.push(i + 1);
+    if (i >= W) stack.push(i - W);
+    if (i < N - W) stack.push(i + W);
+  }
+  const nearBg = (i) => {
+    const x = i % W;
+    const y = (i - x) / W;
+    for (let dy = -2; dy <= 2; dy++)
+      for (let dx = -2; dx <= 2; dx++) {
+        const xx = x + dx;
+        const yy = y + dy;
+        if (xx >= 0 && xx < W && yy >= 0 && yy < H && bg[yy * W + xx]) return true;
+      }
+    return false;
+  };
+
+  const navy = [1, 45, 93];
+  const out = Buffer.alloc(N * 4);
+  let [x0, y0, x1, y1] = [W, H, 0, 0];
+  for (let i = 0; i < N; i++) {
+    let rgb = [data[i * 3], data[i * 3 + 1], data[i * 3 + 2]];
+    let a = 1;
+    if (bg[i]) a = 0;
+    else if (nearBg(i)) {
+      a = Math.min(1, Math.max(0, (765 - rgb[0] - rgb[1] - rgb[2]) / (765 - navy[0] - navy[1] - navy[2])));
+      rgb = rgb.map((c) => Math.min(255, Math.max(0, Math.round((c - (1 - a) * 255) / (a || 1)))));
+    }
+    out.set([...rgb, Math.round(a * 255)], i * 4);
+    if (a > 0) {
+      const x = i % W;
+      const y = (i - x) / W;
+      x0 = Math.min(x0, x);
+      x1 = Math.max(x1, x);
+      y0 = Math.min(y0, y);
+      y1 = Math.max(y1, y);
+    }
+  }
+  const width = x1 - x0 + 1;
+  const height = y1 - y0 + 1;
+  const png = await sharp(out, { raw: { width: W, height: H, channels: 4 } })
+    .extract({ left: x0, top: y0, width, height })
+    .png()
+    .toBuffer();
+  return { png, width, height };
 }
 
-export const markSvg = (opts) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">${markInner(opts)}</svg>`;
-
-/** Horizontal lockup: mark + SK ENTERPRISES + descriptor. variant 'light' for dark backgrounds. */
-export function lockupSvg({ variant = 'dark', tagline = 'MAGNETIZER MANUFACTURER' } = {}) {
+/**
+ * Horizontal lockup: emblem + SK ENTERPRISES + descriptor. variant 'light' for dark backgrounds.
+ * `mark` is { uri, width, height } for the emblem PNG (a data: URI).
+ */
+export function lockupSvg({ mark, variant = 'dark', tagline = 'MAGNETIZER MANUFACTURER' }) {
   const onDark = variant === 'light';
-  const SK = text(fonts.xb, 'SK', 84, 46, 40, onDark ? colors.redLight : colors.red);
-  const M = text(fonts.bd, 'ENTERPRISES', 84 + SK.width + 10, 46, 40, onDark ? '#ffffff' : colors.ink, 1.2);
-  const tag = text(fonts.sb, tagline, 86, 70, 12.5, onDark ? '#9fb0c0' : colors.muted, 1.9);
-  const w = Math.ceil(84 + SK.width + 10 + M.width + 8);
+  const mh = 64;
+  const mw = Math.round((mark.width / mark.height) * mh);
+  const tx = 4 + mw + 16;
+  const SK = text(fonts.xb, 'SK', tx, 46, 40, onDark ? colors.redLight : colors.red);
+  const M = text(fonts.bd, 'ENTERPRISES', tx + SK.width + 10, 46, 40, onDark ? '#ffffff' : colors.ink, 1.2);
+  const tag = text(fonts.sb, tagline, tx + 2, 70, 12.5, onDark ? '#9fb0c0' : colors.muted, 1.9);
+  const w = Math.ceil(tx + SK.width + 10 + M.width + 8);
   return {
     width: w,
     height: 80,
-    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} 80" width="${w}" height="80" role="img" aria-label="SK Enterprises — Magnetizer Manufacturer"><title>SK Enterprises</title><g transform="translate(4 8)">${markInner()}</g>${SK.svg}${M.svg}${tag.svg}</svg>`,
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} 80" width="${w}" height="80"><image x="4" y="8" width="${mw}" height="${mh}" href="${mark.uri}"/>${SK.svg}${M.svg}${tag.svg}</svg>`,
   };
 }
