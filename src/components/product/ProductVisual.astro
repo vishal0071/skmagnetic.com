@@ -21,7 +21,7 @@ const { illustration, images = [], alt, eager = false, sizes = '(min-width: 1100
 const photo = images[0];
 ---
 
-<div class:list={['media', { 'media--wide': wide }, className]}>
+<div class:list={['media', { 'media--wide': wide, 'media--photo': photo }, className]}>
   {
     photo ? (
       <Picture

@@ -88,7 +88,11 @@ export async function deleteItem(col, slug) {
   await rm(fileOf(col, slug));
 }
 
-/** Pages that link to this item through a reference field (deleting it would break them). */
+/**
+ * Pages that link to this item through a reference field. `list` links (related products,
+ * industries served…) are removed automatically on delete; a single link (a product's
+ * category) blocks the delete until it is changed.
+ */
 export async function findReferences(col, slug) {
   const found = [];
   for (const [fromCol, fields] of Object.entries(REFERENCES)) {
@@ -98,11 +102,48 @@ export async function findReferences(col, slug) {
       if (fromCol === col && item.slug === slug) continue;
       for (const [field] of targets) {
         const v = item.data[field];
-        if (v === slug || (Array.isArray(v) && v.includes(slug))) found.push({ col: fromCol, slug: item.slug, title: item.data.title, field });
+        if (v === slug || (Array.isArray(v) && v.includes(slug))) found.push({ col: fromCol, slug: item.slug, title: item.data.title, field, list: Array.isArray(v) });
       }
     }
   }
   return found;
+}
+
+/** Markdown links to `url` (relative or on skmagnetic.com, with or without the trailing slash) → their plain text. */
+function unlinkText(value, url) {
+  const path = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\/$/, '/?');
+  const re = new RegExp(`\\[([^\\]]+)\\]\\((?:https?://(?:www\\.)?skmagnetic\\.com)?${path}(?:#[^)]*)?\\)`, 'g');
+  const walk = (v) =>
+    typeof v === 'string'
+      ? v.replace(re, '$1')
+      : Array.isArray(v)
+        ? v.map(walk)
+        : v && typeof v === 'object'
+          ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]))
+          : v;
+  return walk(value);
+}
+
+/**
+ * Delete an item without leaving broken links: it is removed from every list that links to
+ * it, and links to it in other pages' text become plain text. False if a single link blocks it.
+ */
+export async function deleteAndUnlink(col, slug) {
+  const refs = await findReferences(col, slug);
+  if (refs.some((r) => !r.list)) return false;
+  const url = COLLECTIONS[col].url((await readItem(col, slug)).data, slug);
+  for (const other of Object.keys(COLLECTIONS)) {
+    for (const item of await listItems(other)) {
+      if (other === col && item.slug === slug) continue;
+      const before = await readItem(other, item.slug);
+      const data = unlinkText(before.data, url);
+      for (const r of refs) if (r.col === other && r.slug === item.slug) data[r.field] = data[r.field].filter((s) => s !== slug);
+      const body = unlinkText(before.body, url);
+      if (body !== before.body || JSON.stringify(data) !== JSON.stringify(before.data)) await writeItem(other, item.slug, data, body);
+    }
+  }
+  await deleteItem(col, slug);
+  return true;
 }
 
 // ---- JSON documents (settings.json, trust.json) ----

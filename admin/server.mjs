@@ -27,7 +27,7 @@ import {
   sameOrigin,
   startSession,
 } from './lib/auth.mjs';
-import { COLLECTIONS, SLUG_RE, contentStatus, deleteItem, findReferences, isCollection, itemExists, listItems, readItem, readJson, slugify, writeItem, writeJson } from './lib/content.mjs';
+import { COLLECTIONS, SLUG_RE, contentStatus, deleteAndUnlink, findReferences, isCollection, itemExists, listItems, readItem, readJson, slugify, writeItem, writeJson } from './lib/content.mjs';
 import { FIELDS, SETTINGS_FIELDS, TRUST_FIELDS, cleanPayload } from './lib/fields.mjs';
 import { attachmentPath, createEnquiry, deleteEnquiry, getEnquiry, listEnquiries, setStatus, toCsv } from './lib/enquiries.mjs';
 import { currentRelease, lastPublish, listReleases, publish, publishState, rollback, seoReport } from './lib/publish.mjs';
@@ -241,8 +241,7 @@ app.post('/admin/c/:col/:slug', async (c) => {
 app.post('/admin/c/:col/:slug/delete', async (c) => {
   const { col, slug } = c.req.param();
   if (!isCollection(col) || !SLUG_RE.test(slug)) return c.notFound();
-  if ((await findReferences(col, slug)).length) return c.redirect(`/admin/c/${col}/${slug}`);
-  await deleteItem(col, slug);
+  if (!(await deleteAndUnlink(col, slug))) return c.redirect(`/admin/c/${col}/${slug}`);
   return c.redirect(`/admin/c/${col}?deleted=1`);
 });
 

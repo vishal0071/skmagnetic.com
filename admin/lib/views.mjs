@@ -211,11 +211,24 @@ export function editPage({ col, slug, isNew, data, defs, ctx, errors = [], refsT
     </form>
     ${isNew
       ? ''
-      : html`<form class="danger-zone" method="post" action="${`/admin/c/${col}/${slug}/delete`}" data-confirm="Delete this ${c.singular.toLowerCase()} permanently?">
-          ${refsTo.length
-            ? html`<p class="muted small">Cannot delete: linked from ${refsTo.map((r, i) => html`${i ? ', ' : ''}<a href="${`/admin/c/${r.col}/${r.slug}`}">${r.title}</a>`)}. Remove those links first.</p>`
-            : html`<button class="btn btn--danger btn--sm" type="submit">Delete ${c.singular.toLowerCase()}</button>`}
-        </form>`}`;
+      : dangerZone(col, slug, c, refsTo)}`;
+}
+
+function dangerZone(col, slug, c, refsTo) {
+  const what = c.singular.toLowerCase();
+  const links = (refs) => refs.map((r, i) => html`${i ? ', ' : ''}<a href="${`/admin/c/${r.col}/${r.slug}`}">${r.title}</a>`);
+  const blocking = refsTo.filter((r) => !r.list);
+  const unlink = [...new Map(refsTo.filter((r) => r.list).map((r) => [`${r.col}/${r.slug}`, r])).values()];
+  const confirm = `Delete this ${what} permanently?${unlink.length ? ` It will also be removed from ${unlink.length} linked page${unlink.length > 1 ? 's' : ''}.` : ''}`;
+  return html`<form class="danger-zone" method="post" action="${`/admin/c/${col}/${slug}/delete`}" data-confirm="${confirm}">
+    ${blocking.length
+      ? html`<p class="muted small">Cannot delete: ${links(blocking)} ${blocking.length > 1 ? 'are' : 'is'} in this ${what}. Move ${blocking.length > 1 ? 'them' : 'it'} to another ${what} first.</p>`
+      : html`<p class="muted small">
+            ${unlink.length ? html`Deleting also removes it from ${unlink.length} linked page${unlink.length > 1 ? 's' : ''}: ${links(unlink)}. ` : ''}Links to it in the text of
+            other pages become plain text, so nothing is left broken.
+          </p>
+          <button class="btn btn--danger btn--sm" type="submit">Delete ${what}</button>`}
+  </form>`;
 }
 
 export function docPage({ action, defs, data, errors = [], intro }) {

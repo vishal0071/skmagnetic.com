@@ -965,6 +965,13 @@ input[type='file'].input:hover::file-selector-button {
 .media > svg {
   object-fit: contain;
 }
+/* Real photos are never cropped: any shape (tall machine, wide line) fits whole, on white */
+.media--photo {
+  background: var(--white);
+}
+.media--photo > picture > img {
+  object-fit: contain;
+}
 .media--wide {
   aspect-ratio: 16 / 9;
 }
