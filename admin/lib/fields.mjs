@@ -3,7 +3,7 @@
  * text · textarea · markdown · number · date · bool · select · ref · refs ·
  * strings · list (of sub-fields) · group (object) · images
  */
-const ILLUSTRATIONS = ['magnetizer', 'coil', 'fixture', 'rotor', 'speaker', 'housing', 'block', 'disc', 'ring', 'arc', 'horseshoe', 'pot', 'rod', 'grill', 'plate', 'lifter', 'cluster'];
+const ILLUSTRATIONS = ['magnetizer', 'meter', 'tester', 'coil', 'fixture', 'rotor', 'speaker', 'housing', 'block', 'disc', 'ring', 'arc', 'horseshoe', 'pot', 'rod', 'grill', 'plate', 'lifter', 'cluster'];
 const ICONS = ['motor', 'gear', 'speaker', 'magnet', 'bolt', 'sensor', 'zap', 'factory', 'clipboard', 'rupee', 'headset', 'users', 'badge', 'shield', 'truck', 'layers', 'wrench', 'lift', 'food', 'pharma', 'recycle', 'grain'];
 const BLOG_TYPES = ['Buying Guide', 'Comparison', 'Specifications Explained', 'Application Guide', 'Maintenance', 'Glossary', 'Industry Insight'];
 

@@ -4,16 +4,11 @@ seo:
   title: Magnetizers for Loudspeaker Makers | SK Enterprises
   description: Magnetize loudspeaker magnet assemblies after gluing with a speaker magnetizer, for ferrite and neodymium drivers, consistent output and clean voice coil gaps.
 summary: Speaker magnetizers that magnetize the complete magnet assembly after gluing, for consistent sensitivity and clean voice coil gaps.
-intro: >-
-  In loudspeaker production, the magnet and steel plates are normally glued together
-  unmagnetized and then magnetized as one assembly. SK Enterprises builds speaker magnetizers
-  that do this in a single pulse, so the speakers in a batch get a consistent field in the
-  voice coil gap.
+intro: In loudspeaker production, the magnet and steel plates are normally glued together unmagnetized and then magnetized as one assembly. SK Enterprises builds speaker magnetizers that do this in a single pulse, so the speakers in a batch get a consistent field in the voice coil gap.
 icon: speaker
 products:
   - speaker-magnetizer
   - magnet-charging-machine
-  - magnetizing-coil
 applications:
   - magnet-recharging
   - loose-magnet-magnetizing

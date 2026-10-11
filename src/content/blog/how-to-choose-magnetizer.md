@@ -11,7 +11,6 @@ products:
   - magnet-charging-machine
   - rotor-magnetizer
   - speaker-magnetizer
-  - magnetizing-coil
 categories:
   - magnetizing-machines
   - magnetizing-fixtures-coils
@@ -77,7 +76,7 @@ Industrial capacitor discharge magnetizers commonly offer adjustable charging vo
 
 | Part | Typical tooling |
 | --- | --- |
-| Loose discs, blocks and rings magnetized through their thickness | Solenoid [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/) |
+| Loose discs, blocks and rings magnetized through their thickness | Solenoid magnetizing coil |
 | BLDC and PMSM rotors | Part-specific rotor fixture, often supplied with a [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) |
 | DC motor housings with arc magnets | [Motor housing magnetizing fixture](/products/magnetizing-fixtures-coils/motor-housing-magnetizing-fixture/) |
 | Ring and encoder magnets | Multi-pole fixture matched to pole count and pitch |

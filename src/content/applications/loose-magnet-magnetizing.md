@@ -4,15 +4,10 @@ seo:
   title: Loose Magnet Magnetizing & Magnet Charging | SK Enterprises
   description: Charge loose ferrite, NdFeB and SmCo magnets through their thickness with a magnetizing coil and capacitor discharge magnetizer, singly or in small batches.
 summary: Charging individual ferrite, NdFeB and other magnets in a magnetizing coil, one at a time or in small batches.
-intro: >-
-  Loose magnet magnetizing, usually called magnet charging, means magnetizing individual
-  magnets before they are packed, sold or assembled. It is the simplest magnetizing job: a
-  solenoid coil, a capacitor discharge magnetizer and a holder that keeps each magnet in the
-  right orientation.
+intro: "Loose magnet magnetizing, usually called magnet charging, means magnetizing individual magnets before they are packed, sold or assembled. It is the simplest magnetizing job: a solenoid coil, a capacitor discharge magnetizer and a holder that keeps each magnet in the right orientation."
 icon: magnet
 products:
   - magnet-charging-machine
-  - magnetizing-coil
 industries:
   - magnet-manufacturers
   - sensors-electronics
@@ -39,7 +34,7 @@ sample: true
 
 ## How it works
 
-The magnet sits in the bore of a [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/), a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds, magnetizing the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
+The magnet sits in the bore of a magnetizing coil, a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds, magnetizing the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
 ### How much field is needed?
 

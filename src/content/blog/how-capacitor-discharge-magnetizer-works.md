@@ -9,7 +9,6 @@ published: 2026-09-08
 illustration: magnetizer
 products:
   - magnet-charging-machine
-  - magnetizing-coil
   - multipole-magnetizing-fixture
 categories:
   - magnetizing-machines
@@ -56,7 +55,7 @@ When the operator presses the fire button, or a PLC sends the signal, a switch c
 
 ### 4. Coil or fixture
 
-The [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/) or part-specific fixture converts current into magnetic field. In a simple solenoid, the field is proportional to ampere-turns: the number of turns multiplied by the current. Fixtures for rotors, housings and multi-pole parts shape the field into a particular pattern; the [magnetizing fixtures and coils](/products/magnetizing-fixtures-coils/) range shows the main types.
+The magnetizing coil or part-specific fixture converts current into magnetic field. In a simple solenoid, the field is proportional to ampere-turns: the number of turns multiplied by the current. Fixtures for rotors, housings and multi-pole parts shape the field into a particular pattern; the [magnetizing fixtures and coils](/products/magnetizing-fixtures-coils/) range shows the main types.
 
 ## One magnetizing cycle, step by step
 

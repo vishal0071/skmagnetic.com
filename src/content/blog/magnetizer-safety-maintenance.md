@@ -9,7 +9,6 @@ published: 2026-10-01
 illustration: magnetizer
 products:
   - magnet-charging-machine
-  - magnetizing-coil
   - multipole-magnetizing-fixture
 categories:
   - magnetizing-machines

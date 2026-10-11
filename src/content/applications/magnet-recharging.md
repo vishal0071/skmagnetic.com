@@ -4,14 +4,10 @@ seo:
   title: Magnet Recharging & Re-magnetizing Machines | SK Enterprises
   description: Restore weakened magnets in motors, speakers and assemblies with a magnetizer. Learn what causes demagnetization, what can be recovered and its limits.
 summary: Restoring magnets and assemblies that have lost strength through heat, opposing fields or handling, using a magnetizer and the right coil or fixture.
-intro: >-
-  Magnets can lose part of their strength in service, during rework or in storage. In many
-  cases a magnetizer can bring them back to full strength, but not always, and knowing the
-  difference saves time and rejected parts.
+intro: Magnets can lose part of their strength in service, during rework or in storage. In many cases a magnetizer can bring them back to full strength, but not always, and knowing the difference saves time and rejected parts.
 icon: zap
 products:
   - magnet-charging-machine
-  - magnetizing-coil
   - rotor-magnetizer
   - speaker-magnetizer
 industries:
@@ -52,7 +48,7 @@ Re-magnetizing restores magnetization, not material. Magnets that are corroded (
 
 The process is the same as first-time magnetizing, using a [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) with the right coil or fixture:
 
-- **Loose magnets** are recharged in a [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/), in the same direction and polarity as before.
+- **Loose magnets** are recharged in a magnetizing coil, in the same direction and polarity as before.
 - **Rotors and housings** need a fixture that matches the original pole count, with the part aligned so the new poles land exactly where the old ones were.
 - **Loudspeakers** are recharged as a complete assembly, just as in [speaker production](/industries/loudspeakers-audio/).
 

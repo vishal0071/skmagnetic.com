@@ -8,13 +8,7 @@ seo:
   title: Speaker Magnetizer Machine | Speaker Magnet Charging
   description: Speaker magnetizer machine for charging ferrite and neodymium loudspeaker magnet circuits after assembly, for a clean voice-coil gap and consistent output.
 summary: Magnetizer and speaker fixture for charging the magnet circuit of loudspeakers and drivers after assembly, for both ferrite ring and neodymium designs.
-overview: >-
-  A speaker magnetizer machine charges the magnet inside a speaker's motor assembly — the
-  magnet, the back plate with its pole piece, and the top plate — once the parts have been
-  glued and centred. Building speakers with an unmagnetized magnet keeps steel particles out
-  of the voice-coil gap and makes the assembly far easier to handle. SK Enterprises
-  manufactures speaker magnetizers and matching fixtures in Maharashtra for audio
-  manufacturers across India.
+overview: A speaker magnetizer machine charges the magnet inside a speaker's motor assembly — the magnet, the back plate with its pole piece, and the top plate — once the parts have been glued and centred. Building speakers with an unmagnetized magnet keeps steel particles out of the voice-coil gap and makes the assembly far easier to handle. SK Enterprises manufactures speaker magnetizers and matching fixtures in Maharashtra for audio manufacturers across India.
 keySpec:
   label: Magnetized part
   value: Assembled speaker magnet circuit
@@ -84,7 +78,7 @@ features:
   - title: Repeatable charging
     text: The same voltage setting gives the same pulse, so gap flux stays consistent from one driver to the next.
   - title: Operator protection
-    text: "Enclosed fixtures and controlled firing keep the operator away from the pulse. {{Confirm guarding and safety interlocks supplied}}"
+    text: Enclosed fixtures and controlled firing keep the operator away from the pulse. {{Confirm guarding and safety interlocks supplied}}
 benefits:
   - title: Cleaner voice-coil gap
     text: Unmagnetized parts do not pull steel particles into the gap, a common cause of rub and buzz.
@@ -101,7 +95,6 @@ relatedApplications:
   - magnet-recharging
 related:
   - magnet-charging-machine
-  - magnetizing-coil
   - rotor-magnetizer
 faqs:
   - q: Why are loudspeakers magnetized after assembly?

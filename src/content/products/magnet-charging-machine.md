@@ -8,12 +8,7 @@ seo:
   title: Magnet Charging Machine | Capacitor Discharge Magnetizer
   description: Magnet charging machine (capacitor discharge magnetizer) for ferrite and NdFeB magnets, rotors and assemblies, with energy and fixture matched to your part.
 summary: Industrial capacitor discharge magnetizer that charges ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizing setup.
-overview: >-
-  A magnet charging machine — technically a capacitor discharge magnetizer — stores energy
-  in a capacitor bank and releases it through a magnetizing coil or fixture as a short,
-  very high-current pulse. The resulting magnetic field saturates the magnet in a fraction
-  of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor,
-  automotive, audio and magnet manufacturers in Maharashtra and across India.
+overview: A magnet charging machine — technically a capacitor discharge magnetizer — stores energy in a capacitor bank and releases it through a magnetizing coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio and magnet manufacturers in Maharashtra and across India.
 keySpec:
   label: Magnetizing method
   value: Capacitor discharge pulse
@@ -104,7 +99,6 @@ relatedApplications:
   - motor-housing-magnetizing
   - magnet-recharging
 related:
-  - magnetizing-coil
   - multipole-magnetizing-fixture
   - rotor-magnetizer
   - speaker-magnetizer
@@ -145,7 +139,7 @@ The energy rating (in kilojoules) and maximum voltage must be enough to drive th
 
 ### Fixture or coil
 
-A [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/) suits loose magnets magnetized through their thickness. Rotors, housings and multi-pole parts need a part-specific [magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/).
+A magnetizing coil suits loose magnets magnetized through their thickness. Rotors, housings and multi-pole parts need a part-specific [magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/).
 
 ### Production rate and monitoring
 

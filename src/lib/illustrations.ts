@@ -284,6 +284,8 @@ let counter = 0;
 
 export type IllustrationKind =
   | 'magnetizer'
+  | 'meter'
+  | 'tester'
   | 'coil'
   | 'fixture'
   | 'rotor'
@@ -323,6 +325,42 @@ export function renderIllustration(kind: IllustrationKind): string {
       // Coil fixture on its stand
       sc.box([128, 30, 0], [84, 84, 16], M.darksteel);
       sc.ring([170, 72, 16], 32, 14, 30, M.copper);
+      break;
+    }
+    case 'meter': {
+      // Bench instrument (gaussmeter / fluxmeter) with a digital display
+      sc.box([0, 0, 0], [130, 84, 66], M.cabinet);
+      sc.faceRect(84, 8, 8, 122, 58, '#1b2733');
+      sc.faceRect(84, 16, 28, 86, 50, '#2ec4a6', 'rgba(255,255,255,.35)');
+      sc.faceRect(84, 16, 14, 34, 21, '#3a4a5a', 'none');
+      sc.faceRect(84, 40, 14, 58, 21, '#3a4a5a', 'none');
+      sc.faceRect(84, 64, 14, 82, 21, '#3a4a5a', 'none');
+      sc.faceDot([104, 84, 40], 9, '#d6e0ea');
+      sc.faceDot([104, 84, 16], 4, '#e5483c');
+      // Cable to the probe lying in front
+      sc.path3([[130, 50, 22], [150, 66, 10], [160, 92, 4], [172, 112, 4]], '#1b2733', 4);
+      // Probe: handle and thin stem
+      sc.box([166, 104, 0], [44, 16, 12], M.rubber);
+      sc.box([210, 109, 3], [46, 6, 4], M.steel);
+      break;
+    }
+    case 'tester': {
+      // Residual-current test set wired to a breaker under test
+      sc.box([0, 0, 0], [120, 90, 112], M.cabinet);
+      sc.faceRect(90, 8, 8, 112, 104, '#1b2733');
+      sc.faceRect(90, 16, 68, 104, 96, '#2ec4a6', 'rgba(255,255,255,.35)');
+      sc.faceDot([34, 90, 44], 11, '#d6e0ea');
+      sc.faceDot([66, 90, 44], 6, '#2fbf71');
+      sc.faceDot([88, 90, 44], 6, '#e5483c');
+      sc.faceRect(90, 16, 16, 104, 24, '#3a4a5a', 'none');
+      // Breaker (RCCB) on a DIN rail
+      sc.box([164, 60, 0], [70, 10, 8], M.darksteel);
+      sc.box([180, 50, 8], [38, 30, 76], M.steel);
+      sc.faceRect(80, 188, 40, 210, 56, '#1b4f8f');
+      sc.faceDot([199, 80, 70], 4, '#ffb21f');
+      // Test leads from the test set to the breaker terminals
+      sc.path3([[120, 62, 72], [150, 70, 104], [190, 66, 84]], '#e5483c', 3.5);
+      sc.path3([[120, 44, 78], [156, 52, 112], [208, 58, 84]], '#1b2733', 3.5);
       break;
     }
     case 'coil':

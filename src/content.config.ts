@@ -33,6 +33,8 @@ const specRow = z.object({ label: z.string(), value: z.string() });
 /** Built-in SVG illustrations used until real product photography is added */
 export const illustrations = [
   'magnetizer',
+  'meter',
+  'tester',
   'coil',
   'fixture',
   'rotor',

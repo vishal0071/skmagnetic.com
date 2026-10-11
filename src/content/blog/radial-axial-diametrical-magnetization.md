@@ -9,7 +9,6 @@ published: 2026-10-03
 illustration: fixture
 products:
   - multipole-magnetizing-fixture
-  - magnetizing-coil
   - rotor-magnetizer
 categories:
   - magnetizing-fixtures-coils
@@ -45,7 +44,7 @@ A ring or disc magnet looks the same whichever way it is magnetized, but where i
 
 ## Axial magnetization
 
-Axial is the most common direction for loose discs, rings and cylinders. The field runs along the axis of the part, so one flat face becomes north and the other south. A [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/) produces exactly this field: the part sits in the bore with its axis along the coil, and one pulse magnetizes it through its thickness. Batches of identical parts can be charged together if they fit in the uniform central zone of the coil, which is why axial charging is the backbone of [loose magnet magnetizing](/applications/loose-magnet-magnetizing/).
+Axial is the most common direction for loose discs, rings and cylinders. The field runs along the axis of the part, so one flat face becomes north and the other south. A magnetizing coil produces exactly this field: the part sits in the bore with its axis along the coil, and one pulse magnetizes it through its thickness. Batches of identical parts can be charged together if they fit in the uniform central zone of the coil, which is why axial charging is the backbone of [loose magnet magnetizing](/applications/loose-magnet-magnetizing/).
 
 Axial magnetization is also used in axial-flux motors, where magnet segments on a flat disc are magnetized through their thickness with alternating polarity.
 

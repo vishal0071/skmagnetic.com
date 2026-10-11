@@ -1,5 +1,5 @@
 ---
-title: "Magnetizing Field Requirements for Ferrite, NdFeB, SmCo and Alnico"
+title: Magnetizing Field Requirements for Ferrite, NdFeB, SmCo and Alnico
 seo:
   title: Magnetizing Field for Ferrite, NdFeB, SmCo & Alnico Magnets
   description: Approximate magnetizing fields to saturate ferrite, NdFeB, SmCo and alnico magnets, the 3× coercivity rule of thumb, unit conversions and saturation tests.
@@ -9,7 +9,6 @@ published: 2026-09-22
 illustration: block
 products:
   - magnet-charging-machine
-  - magnetizing-coil
 categories:
   - magnetizing-machines
 faqs:
@@ -85,7 +84,7 @@ Alnico needs comparatively little field, but its low coercivity means it is also
 
 A coil's nominal field figure is not the field inside your magnet. The field actually reaching the material depends on:
 
-- **Fixture geometry.** A [magnetizing coil](/products/magnetizing-fixtures-coils/magnetizing-coil/) for loose magnets gives a fairly uniform field, while radial and multi-pole fixtures concentrate it in specific regions.
+- **Fixture geometry.** A magnetizing coil for loose magnets gives a fairly uniform field, while radial and multi-pole fixtures concentrate it in specific regions.
 - **Air gaps.** Clearance between the winding and the magnet reduces the field at the part.
 - **Surrounding steel.** Rotor cores and housings can help guide flux, or can divert it away from the magnet if the fixture is not designed around them.
 - **Eddy currents.** In conductive magnets and steel, they oppose short pulses and delay penetration of the field.
