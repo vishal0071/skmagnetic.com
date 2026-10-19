@@ -75,7 +75,7 @@ Each basic direction has a multi-pole form:
 - **Radial multi-pole** — several alternating poles around the outer or inner diameter of a ring or rotor, as used in BLDC motors.
 - **Face (axial) multi-pole** — alternating poles on the flat face of a disc or ring, as used in encoders and axial sensors.
 
-These patterns are created in one pulse by a [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) with conductors set at each pole boundary. For assembled motor rotors, the fixture is supplied as part of a [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/). Our article on [multi-pole magnetizing](/blog/multipole-magnetizing-explained/) explains pole count, pole pitch and skew in more detail.
+These patterns are created in one pulse by a [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) with conductors set at each pole boundary. For assembled motor rotors, the fixture is supplied as part of a [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/). Our article on [multi-pole magnetizing](/blog/multipole-magnetizing-explained/) explains pole count, pole pitch and skew in more detail.
 
 ## Orientation decides what is possible
 

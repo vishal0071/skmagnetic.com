@@ -57,7 +57,7 @@ Direct-drive washing machine motors are usually large outer-rotor designs with m
 
 ## Matching the station to production
 
-For most appliance rotors, a [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/), where the machine and fixture are designed together, is the simplest route. Pole count, pole accuracy and fixture cooling should be settled at the design stage, along with how each part will be checked. Peak-current monitoring on every pulse and a flux or gauss test on sample rotors are common choices.
+For most appliance rotors, a [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/), where the machine and fixture are designed together, is the simplest route. Pole count, pole accuracy and fixture cooling should be settled at the design stage, along with how each part will be checked. Peak-current monitoring on every pulse and a flux or gauss test on sample rotors are common choices.
 
 To understand how fixtures create fine pole patterns, read [multi-pole magnetizing explained](/blog/multipole-magnetizing-explained/), or see our page on [rotor magnetizing](/applications/rotor-magnetizing/).
 

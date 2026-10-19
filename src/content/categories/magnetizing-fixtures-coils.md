@@ -7,7 +7,11 @@ seo:
   title: Magnetizing Fixtures, Coils & Yokes | SK Enterprises
   description: Magnetizing coils, fixtures and yokes for axial, radial and multi-pole magnetizing of magnets, rotors and motor housings, matched to your magnetizer and part.
 summary: Coils and custom fixtures that shape the magnetizing field for axial, radial and multi-pole magnetizing of magnets and assemblies.
-intro: The magnetizing coil or fixture is where the magnetic field is created. Its shape decides the pole pattern, its winding decides the field strength, and its construction decides how long it lasts in production. SK Enterprises designs and manufactures coils, fixtures and yokes matched to your part and to the magnetizer that drives them.
+intro: >-
+  The magnetizing coil or fixture is where the magnetic field is created. Its shape decides
+  the pole pattern, its winding decides the field strength, and its construction decides how
+  long it lasts in production. SK Enterprises designs and manufactures coils, fixtures and
+  yokes matched to your part and to the magnetizer that drives them.
 illustration: fixture
 faqs:
   - q: What is the difference between a magnetizing coil and a fixture?
@@ -19,16 +23,18 @@ faqs:
   - q: How long does a magnetizing fixture last?
     a: Life depends on the energy per pulse, the cycle rate and cooling. Fixtures designed with the right margins and cooling can run for very large numbers of pulses; overloading them shortens life sharply.
   - q: What do you need to design a fixture?
-    a: A part drawing, the magnet material and grade, the required pole pattern and number of poles, and your production rate. A sample part helps. {{Confirm design inputs and lead time}}
+    a: "A part drawing, the magnet material and grade, the required pole pattern and number of poles, and your production rate. A sample part helps. {{Confirm design inputs and lead time}}"
 ---
 
 ## Choosing the right coil or fixture
 
 | Type | Typical use |
 | --- | --- |
-| Magnetizing coil | Loose ferrite and NdFeB magnets, axial magnetizing, magnet charging in batches |
 | [Multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) | Ring magnets, encoder magnets, rotors with several poles |
+| [BLDC rotor magnetizing fixture](/products/magnetizing-fixtures-coils/rotor-magnetizer/) | Assembled BLDC and PMSM rotors, radial multi-pole magnetizing after assembly |
+| [Speaker magnetizing fixture](/products/magnetizing-fixtures-coils/speaker-magnetizer/) | Loudspeaker magnet circuits, ferrite ring and neodymium designs, magnetized after assembly |
 | [Motor housing magnetizing fixture](/products/magnetizing-fixtures-coils/motor-housing-magnetizing-fixture/) | DC motor housings and stators with arc magnets, magnetized after assembly |
+| Magnetizing coil | Loose ferrite and NdFeB magnets, axial magnetizing, magnet charging in batches |
 
 ### Coil, fixture or magnetizing yoke?
 

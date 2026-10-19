@@ -12,7 +12,8 @@ intro: >-
   magnet or magnet assembly into a working permanent magnet with a short, powerful magnetic
   pulse. SK Enterprises designs and manufactures industrial magnetizing machines for
   manufacturers who magnetize parts on their own production lines, from motor rotors and
-  housings to loudspeaker assemblies and loose magnets.
+  housings to loudspeaker assemblies and loose magnets. The range also includes capacitive
+  discharge impulse demagnetizers and RCCB / ELCB calibrators.
 illustration: magnetizer
 faqs:
   - q: What is a magnetizer machine?

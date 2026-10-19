@@ -1,6 +1,6 @@
 ---
-title: Speaker Magnetizer Machine
-category: magnetizing-machines
+title: Speaker Magnetizing Fixture
+category: magnetizing-fixtures-coils
 sample: true
 featured: true
 order: 3
@@ -17,6 +17,9 @@ highlights:
   - Suits the magnet circuit alone or the complete driver, depending on fixture
   - Fixtures sized to the yoke, top plate and frame of your speaker
   - Assemble unmagnetized for a cleaner voice-coil gap
+images:
+  - src: ../media/products/speaker-magnetizer-mv42eh8j.png
+    alt: Speaker Magnetizing Fixture
 illustration: speaker
 specs:
   - label: Operating principle
@@ -89,8 +92,8 @@ benefits:
   - title: Consistent sensitivity
     text: Fully saturated magnet circuits give consistent gap flux, helping keep sensitivity within tolerance.
 industries:
-  - loudspeakers-audio
   - automotive-components
+  - loudspeakers-audio
 relatedApplications:
   - magnet-recharging
 related:

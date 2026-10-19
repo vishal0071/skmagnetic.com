@@ -77,10 +77,10 @@ Industrial capacitor discharge magnetizers commonly offer adjustable charging vo
 | Part | Typical tooling |
 | --- | --- |
 | Loose discs, blocks and rings magnetized through their thickness | Solenoid magnetizing coil |
-| BLDC and PMSM rotors | Part-specific rotor fixture, often supplied with a [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) |
+| BLDC and PMSM rotors | Part-specific rotor fixture, often supplied with a [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) |
 | DC motor housings with arc magnets | [Motor housing magnetizing fixture](/products/magnetizing-fixtures-coils/motor-housing-magnetizing-fixture/) |
 | Ring and encoder magnets | Multi-pole fixture matched to pole count and pitch |
-| Loudspeaker magnet assemblies | Coil or fixture sized to the magnet circuit, driven by a [speaker magnetizer](/products/magnetizing-machines/speaker-magnetizer/) |
+| Loudspeaker magnet assemblies | Coil or fixture sized to the magnet circuit, driven by a [speaker magnetizer](/products/magnetizing-fixtures-coils/speaker-magnetizer/) |
 
 The fixture is usually the most part-specific item in the system and the one that wears. When you introduce a new product, you often change the fixture rather than the machine. Ask how the fixture locates the part, how it is cooled, what limits its life, and how quickly it can be changed over.
 

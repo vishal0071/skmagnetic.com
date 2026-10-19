@@ -3,12 +3,18 @@ title: Multi-pole Magnetizing Fixtures
 category: magnetizing-fixtures-coils
 sample: true
 featured: true
-order: 5
+order: 1
 seo:
   title: Multi-pole Magnetizing Fixture for Ring Magnets & Rotors
   description: Custom multi-pole magnetizing fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count, accuracy and skew you need.
 summary: Custom fixtures that form alternating north and south poles on ring, disc, encoder and rotor magnets in one pulse — on the outer diameter, inner diameter or face.
-overview: A multi-pole magnetizing fixture creates a pattern of alternating north and south poles on a magnet with a single pulse from a magnetizer. Conductors set into precisely machined slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing and pole specification.
+overview: >-
+  A multi-pole magnetizing fixture creates a pattern of alternating north and south poles on
+  a magnet with a single pulse from a magnetizer. Conductors set into precisely machined
+  slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch
+  and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for
+  ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing
+  and pole specification.
 keySpec:
   label: Pole positions
   value: OD, ID or face multi-pole
@@ -151,7 +157,7 @@ For motor rings, the poles can be skewed along the part length to reduce cogging
 
 Isotropic bonded NdFeB and isotropic ferrite can be magnetized with almost any pole pattern. Anisotropic rings are oriented during pressing, either radially or in a polar pattern, and must be magnetized to suit that orientation. A polar-oriented ring works only with the pole count and alignment it was pressed for.
 
-The same principles sit at the heart of a [BLDC rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) and of [multi-pole magnetizing](/applications/multipole-magnetizing/) for sensor and motor parts in general.
+The same principles sit at the heart of a [BLDC rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) and of [multi-pole magnetizing](/applications/multipole-magnetizing/) for sensor and motor parts in general.
 
 ## Multi-pole magnetizing fixture manufacturer in Maharashtra, India
 

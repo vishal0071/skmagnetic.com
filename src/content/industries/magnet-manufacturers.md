@@ -4,7 +4,11 @@ seo:
   title: Magnet Charging Machines for Magnet Makers & Traders
   description: Charge ferrite and NdFeB magnets before dispatch, test samples and re-charge weakened stock in-house with a magnet charging machine and magnetizing coil.
 summary: Magnet charging machines and coils for magnet makers and traders who charge ferrite and NdFeB magnets before dispatch or re-charge stock.
-intro: Magnet manufacturers and traders often hold stock unmagnetized and charge it only when an order is confirmed, or need to re-charge magnets that have weakened. SK Enterprises builds magnet charging machines and coils that let you magnetize in-house instead of sending parts out.
+intro: >-
+  Magnet manufacturers and traders often hold stock unmagnetized and charge it only when an
+  order is confirmed, or need to re-charge magnets that have weakened. SK Enterprises builds
+  magnet charging machines and coils that let you magnetize in-house instead of sending
+  parts out.
 icon: magnet
 products:
   - magnet-charging-machine
@@ -30,7 +34,7 @@ faqs:
   - q: Can weakened magnets be fully restored?
     a: Magnets that lost strength through an opposing field or moderate overheating can usually be re-charged to full strength. Magnets that are chipped, corroded or structurally damaged by heat may not recover fully.
   - q: How many magnets can be charged at once?
-    a: It depends on the coil bore, the magnet size and the machine's energy. Small magnets can often be charged several at a time in a non-magnetic holder. {{Confirm coil bore sizes and batch capacities SK Enterprises offers}}
+    a: "It depends on the coil bore, the magnet size and the machine's energy. Small magnets can often be charged several at a time in a non-magnetic holder. {{Confirm coil bore sizes and batch capacities SK Enterprises offers}}"
 order: 4
 sample: true
 ---

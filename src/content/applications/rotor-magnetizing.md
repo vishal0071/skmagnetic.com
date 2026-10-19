@@ -57,7 +57,7 @@ Pole positions depend on how precisely the fixture conductors are placed and how
 - **Cycle rate:** fixture cooling, more than the pulse itself, sets how often the station can fire.
 - **Pole count:** high pole counts need finer fixture conductors; see [multi-pole magnetizing](/applications/multipole-magnetizing/) for the trade-offs.
 
-A purpose-built [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) combines the machine and fixture as one matched system, which is usually the simplest way to set up a production station.
+A purpose-built [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) combines the machine and fixture as one matched system, which is usually the simplest way to set up a production station.
 
 ## Enquire about rotor magnetizing
 

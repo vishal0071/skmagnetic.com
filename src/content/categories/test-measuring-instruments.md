@@ -5,13 +5,11 @@ sample: true
 order: 3
 seo:
   title: Testing & Measuring Instruments | Gaussmeter, Fluxmeter
-  description: Digital gaussmeters, fluxmeters and RCCB / ELCB calibrators from SK Enterprises — instruments to measure magnets and test residual current circuit breakers.
-summary: Digital gaussmeters and fluxmeters for measuring magnets and magnetized parts, and RCCB / ELCB calibrators for testing residual current circuit breakers.
+  description: Digital gaussmeters and fluxmeters from SK Enterprises — instruments to measure the field and flux of magnets and to check parts after magnetizing.
+summary: Digital gaussmeters and fluxmeters for measuring magnets and checking magnetized parts.
 intro: >-
   SK Enterprises manufactures testing and measuring instruments alongside its magnetizers:
-  digital gaussmeters and fluxmeters to measure magnets and check magnetized parts, and
-  RCCB / ELCB calibrators to test the tripping current and trip time of residual current
-  circuit breakers.
+  digital gaussmeters and fluxmeters to measure magnets and check magnetized parts.
 illustration: meter
 faqs:
   - q: What is the difference between a gaussmeter and a fluxmeter?
@@ -28,7 +26,6 @@ faqs:
 | --- | --- | --- |
 | **[Digital gaussmeter](/products/test-measuring-instruments/digital-gaussmeter/)** | Magnetic flux density at one point (gauss, tesla) | Surface field of magnets, pole patterns, air gaps, residual magnetism |
 | **[Digital fluxmeter](/products/test-measuring-instruments/digital-fluxmeter/)** | Total magnetic flux through a coil (weber, maxwell) | Comparing magnets and magnetized assemblies, confirming saturation |
-| **[RCCB / ELCB calibrator](/products/test-measuring-instruments/rccb-elcb-calibrator/)** | Tripping current and trip time of a residual current breaker | Production calibration, final testing and laboratory checks of RCCBs and RCBOs |
 
 ## Made by SK Enterprises
 

@@ -91,7 +91,7 @@ A Hall-probe scan typically rotates the part under a fixed probe and records the
 
 ## Choosing the machine
 
-Multi-pole work usually needs more energy and voltage than magnetizing a simple shape of the same size, because the field has to be driven through narrow pole regions and steel paths. A dedicated [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) pairs the machine with the fixture so pulse length, peak current and cooling suit the part. The [multi-pole magnetizing application](/applications/multipole-magnetizing/) page outlines typical set-ups.
+Multi-pole work usually needs more energy and voltage than magnetizing a simple shape of the same size, because the field has to be driven through narrow pole regions and steel paths. A dedicated [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) pairs the machine with the fixture so pulse length, peak current and cooling suit the part. The [multi-pole magnetizing application](/applications/multipole-magnetizing/) page outlines typical set-ups.
 
 ## Need help choosing?
 

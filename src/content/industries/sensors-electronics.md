@@ -4,7 +4,10 @@ seo:
   title: Magnetizers for Sensor & Encoder Magnets | SK Enterprises
   description: Multi-pole fixtures and magnet charging machines for encoder rings, Hall sensor magnets, reed switch magnets and meters, with accurate, repeatable poles.
 summary: Multi-pole fixtures and charging machines for the small, precise magnets used in encoders, Hall sensors, reed switches and meters.
-intro: Sensor magnets are small, but their pole pattern is the signal. SK Enterprises builds magnetizing fixtures and charging machines for encoder rings, Hall sensor magnets and reed switch magnets, where pole position and strength must repeat from part to part.
+intro: >-
+  Sensor magnets are small, but their pole pattern is the signal. SK Enterprises builds
+  magnetizing fixtures and charging machines for encoder rings, Hall sensor magnets and reed
+  switch magnets, where pole position and strength must repeat from part to part.
 icon: sensor
 products:
   - multipole-magnetizing-fixture

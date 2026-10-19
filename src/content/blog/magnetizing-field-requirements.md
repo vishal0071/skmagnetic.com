@@ -1,5 +1,5 @@
 ---
-title: Magnetizing Field Requirements for Ferrite, NdFeB, SmCo and Alnico
+title: "Magnetizing Field Requirements for Ferrite, NdFeB, SmCo and Alnico"
 seo:
   title: Magnetizing Field for Ferrite, NdFeB, SmCo & Alnico Magnets
   description: Approximate magnetizing fields to saturate ferrite, NdFeB, SmCo and alnico magnets, the 3× coercivity rule of thumb, unit conversions and saturation tests.

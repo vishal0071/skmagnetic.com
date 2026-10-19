@@ -1,6 +1,6 @@
 ---
-title: BLDC Rotor Magnetizer & Rotor Magnetizing Machine
-category: magnetizing-machines
+title: BLDC Rotor Magnetizing Fixture
+category: magnetizing-fixtures-coils
 sample: true
 featured: true
 order: 2
@@ -8,13 +8,7 @@ seo:
   title: Rotor Magnetizer for BLDC Motors & Fans | SK Enterprises
   description: "Rotor magnetizing machine for BLDC ceiling fan, pump, hub motor and EV rotors: radial multi-pole magnetizing of ferrite and NdFeB magnets after rotor assembly."
 summary: A magnetizer and rotor fixture built as one system to magnetize assembled BLDC and PMSM rotors with the radial multi-pole pattern your motor design calls for.
-overview: >-
-  A BLDC rotor magnetizer combines a capacitor discharge magnetizer with a fixture built
-  around one rotor design. The assembled rotor — core, magnets and usually the shaft — is
-  loaded into the fixture, and a single pulse forms the north and south poles together in a
-  radial multi-pole pattern. SK Enterprises manufactures rotor magnetizers in Maharashtra for
-  companies making BLDC ceiling fan, pump, hub motor, e-rickshaw, EV and servo motors who
-  want to magnetize rotors on their own assembly line.
+overview: A BLDC rotor magnetizer combines a capacitor discharge magnetizer with a fixture built around one rotor design. The assembled rotor — core, magnets and usually the shaft — is loaded into the fixture, and a single pulse forms the north and south poles together in a radial multi-pole pattern. SK Enterprises manufactures rotor magnetizers in Maharashtra for companies making BLDC ceiling fan, pump, hub motor, e-rickshaw, EV and servo motors who want to magnetize rotors on their own assembly line.
 keySpec:
   label: Pole pattern
   value: Radial multi-pole, matched to rotor
@@ -23,6 +17,9 @@ highlights:
   - Rotor is assembled unmagnetized and magnetized as the final step
   - Fixture pole count and position matched to your magnet layout
   - Straight or skewed poles to suit the motor design
+images:
+  - src: ../media/products/rotor-magnetizer-mv425kam.png
+    alt: BLDC Rotor Magnetizing Fixture
 illustration: rotor
 specs:
   - label: System
@@ -88,7 +85,7 @@ features:
   - title: Machine and fixture matched
     text: Energy, voltage and fixture design are chosen together so the pulse saturates the magnets without overloading the fixture.
   - title: Ready for production use
-    text: "Cooling and loading are specified for your output per shift. {{Confirm loading method, cooling options and guarding supplied}}"
+    text: Cooling and loading are specified for your output per shift. {{Confirm loading method, cooling options and guarding supplied}}
 benefits:
   - title: Clean rotor assembly
     text: Unmagnetized magnets can be glued, sleeved and balanced without collecting steel particles or snapping onto tooling.
@@ -100,8 +97,8 @@ benefits:
     text: Changing the fixture lets the same magnetizer move from one rotor design to the next.
 industries:
   - electric-motors
-  - home-appliances
   - automotive-components
+  - home-appliances
 relatedApplications:
   - rotor-magnetizing
   - multipole-magnetizing

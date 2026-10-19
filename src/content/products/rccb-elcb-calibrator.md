@@ -1,6 +1,6 @@
 ---
 title: RCCB / ELCB Calibrator
-category: test-measuring-instruments
+category: magnetizing-machines
 sample: true
 order: 3
 seo:

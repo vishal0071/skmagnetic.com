@@ -49,7 +49,7 @@ Most permanent magnet motor manufacturers assemble their magnets unmagnetized an
 
 ### BLDC and PMSM motors
 
-Inner-rotor BLDC and PMSM motors are magnetized in a fixture that surrounds the rotor. Outer-rotor designs use a fixture placed inside the rotor cup. A dedicated [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) pairs the machine and fixture for this job. Pole count, pole accuracy and skew are all set by the fixture design.
+Inner-rotor BLDC and PMSM motors are magnetized in a fixture that surrounds the rotor. Outer-rotor designs use a fixture placed inside the rotor cup. A dedicated [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) pairs the machine and fixture for this job. Pole count, pole accuracy and skew are all set by the fixture design.
 
 ### PMDC motors
 

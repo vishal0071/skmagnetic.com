@@ -3,12 +3,17 @@ title: Motor Housing Magnetizing Fixture for PMDC Motors
 category: magnetizing-fixtures-coils
 sample: true
 featured: true
-order: 6
+order: 4
 seo:
   title: Motor Housing Magnetizing Fixture for DC Motors
   description: Fixtures to magnetize PMDC motor housings with ferrite arc magnets after assembly, in 2-pole and 4-pole layouts, for wiper, blower, starter and fan motors.
 summary: Fixtures that magnetize the ferrite arc magnets of a DC motor housing from the inside, after the arcs are fitted — for 2-pole and 4-pole PMDC motors.
-overview: A motor housing magnetizing fixture fits inside the steel housing of a permanent magnet DC (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse from the magnetizer drives a radial field through each arc, with the housing itself carrying the return flux. SK Enterprises designs and manufactures housing fixtures in Maharashtra for automotive, two-wheeler and appliance motor makers across India.
+overview: >-
+  A motor housing magnetizing fixture fits inside the steel housing of a permanent magnet DC
+  (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse
+  from the magnetizer drives a radial field through each arc, with the housing itself
+  carrying the return flux. SK Enterprises designs and manufactures housing fixtures in
+  Maharashtra for automotive, two-wheeler and appliance motor makers across India.
 keySpec:
   label: Pole configuration
   value: 2-pole or 4-pole, radial from inside
@@ -78,7 +83,7 @@ features:
   - title: Pulse-rated construction
     text: Conductors and pole pieces are supported against the forces of each pulse.
   - title: Straightforward loading
-    text: The housing slides over the fixture and seats against a stop. {{Confirm loading method — manual, pneumatic or automatic}}
+    text: "The housing slides over the fixture and seats against a stop. {{Confirm loading method — manual, pneumatic or automatic}}"
 benefits:
   - title: Easier arc fitting
     text: Unmagnetized arcs do not snap onto the housing or each other, so brittle ferrite is less likely to chip.
@@ -144,7 +149,7 @@ Cycle rate is limited by capacitor recharge time and by the heat that builds up 
 
 ### Checking the result
 
-A gauss reading at the centre of each arc, peak-current monitoring of every pulse and a no-load speed and current test on the finished motor are common ways to confirm full, correctly aligned magnetization. For BLDC motors, where the magnets sit on the rotor rather than in the housing, see our [BLDC rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/).
+A gauss reading at the centre of each arc, peak-current monitoring of every pulse and a no-load speed and current test on the finished motor are common ways to confirm full, correctly aligned magnetization. For BLDC motors, where the magnets sit on the rotor rather than in the housing, see our [BLDC rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/).
 
 ## Motor housing magnetizing fixtures for manufacturers in Maharashtra and India
 

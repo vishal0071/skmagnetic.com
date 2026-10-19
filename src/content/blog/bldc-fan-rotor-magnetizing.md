@@ -79,7 +79,7 @@ The [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multip
 
 ## Sizing the magnetizer
 
-The [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizing-machines/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
+The [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
 
 ## Checking the result
 

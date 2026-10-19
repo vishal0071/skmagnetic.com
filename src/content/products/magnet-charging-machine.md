@@ -1,22 +1,25 @@
 ---
-title: Magnet Charging Machine (Capacitor Discharge Magnetizer)
+title: Capacitive Discharge Impulse Magnetizers
 category: magnetizing-machines
 sample: true
 featured: true
 order: 1
 seo:
-  title: Magnet Charging Machine | Capacitor Discharge Magnetizer
-  description: Magnet charging machine (capacitor discharge magnetizer) for ferrite and NdFeB magnets, rotors and assemblies, with energy and fixture matched to your part.
-summary: Industrial capacitor discharge magnetizer that charges ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizing setup.
-overview: A magnet charging machine — technically a capacitor discharge magnetizer — stores energy in a capacitor bank and releases it through a magnetizing coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio and magnet manufacturers in Maharashtra and across India.
+  title: Capacitive Discharge Impulse Magnetizers
+  description: Capacitive Discharge Impulse Magnetizers for ferrite and NdFeB magnets, rotors and assemblies, with energy and fixture matched to your part.
+summary: Industrial capacitive Discharge Impulse Magnetizers that charge ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizing setup.
+overview: A magnet charging machine — technically a capacitive discharge impulse magnetizer — stores energy in a capacitor bank and releases it through a magnetizing coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio, and magnet manufacturers in Maharashtra and across India.
 keySpec:
   label: Magnetizing method
-  value: Capacitor discharge pulse
+  value: capacitive Discharge Impulse Magnetizers
 highlights:
   - Magnetizes ferrite, NdFeB, SmCo and alnico magnets and assemblies
   - Adjustable charging voltage for repeatable, controlled pulses
   - Works with interchangeable coils and part-specific fixtures
   - Built-in safety interlocks and automatic capacitor discharge
+images:
+  - src: ../media/products/magnet-charging-machine-mv40h02s.png
+    alt: Capacitive Discharge Impulse Magnetizers
 illustration: magnetizer
 specs:
   - label: Operating principle
@@ -95,13 +98,13 @@ industries:
   - magnet-manufacturers
 relatedApplications:
   - rotor-magnetizing
-  - loose-magnet-magnetizing
   - motor-housing-magnetizing
+  - loose-magnet-magnetizing
   - magnet-recharging
 related:
-  - multipole-magnetizing-fixture
   - rotor-magnetizer
   - speaker-magnetizer
+  - multipole-magnetizing-fixture
 faqs:
   - q: What is a magnet charging machine?
     a: It is the common name for a magnetizer (also spelt magnetiser) — a machine that magnetizes (charges) permanent magnets. A capacitor discharge magnetizer stores energy in capacitors and releases it through a coil or fixture as a short, powerful pulse that saturates the magnet.
@@ -129,7 +132,7 @@ The pulse is so short that the coil carries enormous current without overheating
 
 Many manufacturers buy magnets **unmagnetized** and charge them after assembly. This avoids the problems of handling strong magnets on the line — parts snapping together, chipped magnets and steel swarf sticking to every surface — and makes sure each finished product is fully magnetized. A magnet charger machine at the end of the line becomes the single point where every part receives the same, controlled pulse.
 
-Typical examples include [BLDC rotors](/products/magnetizing-machines/rotor-magnetizer/), DC motor housings, loudspeaker magnet assemblies and magnets for sensors.
+Typical examples include [BLDC rotors](/products/magnetizing-fixtures-coils/rotor-magnetizer/), DC motor housings, loudspeaker magnet assemblies and magnets for sensors.
 
 ## Choosing the right magnetizer
 

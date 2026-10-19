@@ -4,7 +4,11 @@ seo:
   title: Loose Magnet Magnetizing & Magnet Charging | SK Enterprises
   description: Charge loose ferrite, NdFeB and SmCo magnets through their thickness with a magnetizing coil and capacitor discharge magnetizer, singly or in small batches.
 summary: Charging individual ferrite, NdFeB and other magnets in a magnetizing coil, one at a time or in small batches.
-intro: "Loose magnet magnetizing, usually called magnet charging, means magnetizing individual magnets before they are packed, sold or assembled. It is the simplest magnetizing job: a solenoid coil, a capacitor discharge magnetizer and a holder that keeps each magnet in the right orientation."
+intro: >-
+  Loose magnet magnetizing, usually called magnet charging, means magnetizing individual
+  magnets before they are packed, sold or assembled. It is the simplest magnetizing job: a
+  solenoid coil, a capacitor discharge magnetizer and a holder that keeps each magnet in the
+  right orientation.
 icon: magnet
 products:
   - magnet-charging-machine

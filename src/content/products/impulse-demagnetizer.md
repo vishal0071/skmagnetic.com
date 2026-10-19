@@ -2,7 +2,8 @@
 title: Capacitive Discharge Impulse Demagnetizer
 category: magnetizing-machines
 sample: true
-order: 4
+featured: false
+order: 2
 seo:
   title: Impulse Demagnetizer | Capacitive Discharge Demagnetizer
   description: Capacitive discharge impulse demagnetizer for magnets, rotors and steel parts. A decaying alternating pulse removes magnetization for rework and testing.
@@ -16,6 +17,9 @@ highlights:
   - Alternating field that decays to near zero for a low, even residual level
   - Adjustable charging voltage to suit the part and magnet grade
   - Built-in safety interlocks and automatic capacitor discharge
+images:
+  - src: ../media/products/impulse-demagnetizer-mv41xery.png
+    alt: Impulse Demagnetizer | Capacitive Discharge Demagnetizer
 illustration: magnetizer
 specs:
   - label: Operating principle
@@ -84,14 +88,14 @@ benefits:
   - title: Direct from the manufacturer
     text: Work with the team that builds the machine for configuration, spares and support.
 industries:
-  - magnet-manufacturers
   - electric-motors
   - automotive-components
   - loudspeakers-audio
+  - magnet-manufacturers
 relatedApplications:
-  - magnet-recharging
   - rotor-magnetizing
   - loose-magnet-magnetizing
+  - magnet-recharging
 related:
   - magnet-charging-machine
   - rotor-magnetizer
