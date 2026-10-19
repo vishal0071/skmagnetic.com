@@ -8,7 +8,7 @@ type: Specifications Explained
 published: 2026-09-22
 illustration: block
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 categories:
   - magnetizer-machines
 faqs:
@@ -105,6 +105,6 @@ A saturation test is simple and needs no special theory:
 
 ## Need help choosing?
 
-If you are unsure whether your current set-up saturates your parts, or you are planning to magnetize a new material, share the magnet grade, part drawing and output required. The SK Enterprises team can recommend a [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) and coil or fixture to suit. {{Confirm whether SK Enterprises can run saturation tests on customer samples.}}
+If you are unsure whether your current set-up saturates your parts, or you are planning to magnetize a new material, share the magnet grade, part drawing and output required. The SK Enterprises team can recommend a [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) and coil or fixture to suit. {{Confirm whether SK Enterprises can run saturation tests on customer samples.}}
 
-[Ask for a quotation](/get-quote/?product=magnet-charging-machine) or [contact our team](/contact/).
+[Ask for a quotation](/get-quote/?product=capacitive-discharge-impulse-magnetizer) or [contact our team](/contact/).

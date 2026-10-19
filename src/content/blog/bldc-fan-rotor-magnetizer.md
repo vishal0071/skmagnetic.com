@@ -10,7 +10,7 @@ illustration: rotor
 products:
   - rotor-magnetizer
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 categories:
   - magnetizer-machines
 faqs:
@@ -78,7 +78,7 @@ The [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipol
 
 ## Sizing the magnetizer
 
-The [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
+The [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
 
 ## Checking the result
 

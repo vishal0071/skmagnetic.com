@@ -12,7 +12,7 @@ intro: >-
 icon: gear
 products:
   - motor-housing-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 industries:
   - automotive-components
   - electric-motors
@@ -34,7 +34,7 @@ Housing (or stator) magnetizers are used wherever a PMDC motor has its magnets f
 
 ## How it works
 
-A [motor housing magnetizer fixture](/products/magnetizer-fixtures-coils/motor-housing-magnetizer-fixture/) is shaped to fit inside the housing, with conductors arranged to create the required poles. A [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) fires a pulse of a few milliseconds through it to magnetize the arcs radially from the inside, while the steel housing completes the magnetic path.
+A [motor housing magnetizer fixture](/products/magnetizer-fixtures-coils/motor-housing-magnetizer-fixture/) is shaped to fit inside the housing, with conductors arranged to create the required poles. A [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) fires a pulse of a few milliseconds through it to magnetize the arcs radially from the inside, while the steel housing completes the magnetic path.
 
 ### Two-pole and four-pole housings
 

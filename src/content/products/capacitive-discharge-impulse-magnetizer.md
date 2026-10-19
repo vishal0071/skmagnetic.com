@@ -3,11 +3,12 @@ title: Capacitive Discharge Impulse Magnetizers
 category: magnetizer-machines
 featured: true
 order: 1
+updated: 2026-10-20
 seo:
-  title: Capacitive Discharge Impulse Magnetizer | Magnet Charging Machine
-  description: Capacitive discharge impulse magnetizers (magnet charging machines) for ferrite and NdFeB magnets and assemblies, with energy and fixture matched to your part.
+  title: Capacitive Discharge Impulse Magnetizers | Magnet Charging Machine
+  description: Capacitive discharge impulse magnetizers made by SK Enterprises, Pune — magnet charging machines for ferrite and NdFeB magnets, rotors and assemblies.
 summary: Industrial capacitive discharge impulse magnetizers that charge ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizer setup.
-overview: A magnet charging machine — technically a capacitive discharge impulse magnetizer — stores energy in a capacitor bank and releases it through a magnetizer coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio, and magnet manufacturers in Maharashtra and across India.
+overview: A capacitive discharge impulse magnetizer — also called a magnet charging machine — stores energy in a capacitor bank and releases it through a magnetizer coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures them in Pune, Maharashtra, for motor, automotive, audio and magnet manufacturers across India.
 keySpec:
   label: Magnetizer type
   value: Capacitive discharge impulse
@@ -18,7 +19,7 @@ highlights:
   - Built-in safety interlocks and automatic capacitor discharge
 images:
   - src: ../media/products/magnet-charging-machine-mv40h02s.png
-    alt: Capacitive Discharge Impulse Magnetizers
+    alt: Capacitive discharge impulse magnetizer made by SK Enterprises
 illustration: magnetizer
 specs:
   - label: Operating principle
@@ -105,6 +106,8 @@ related:
   - speaker-magnetizer
   - multipole-magnetizer-fixture
 faqs:
+  - q: What is a capacitive discharge impulse magnetizer?
+    a: It is an industrial magnetizer that charges a bank of capacitors and then discharges it through a magnetizer coil or fixture as one short, high-current impulse. The impulse creates a magnetic field strong enough to saturate ferrite, NdFeB, SmCo and alnico magnets. It is also called a capacitor discharge magnetizer, an impulse magnetizer or a magnet charging machine.
   - q: What is a magnet charging machine?
     a: It is the common name for a magnetizer (also spelt magnetiser) — a machine that magnetizes (charges) permanent magnets. A capacitor discharge magnetizer stores energy in capacitors and releases it through a coil or fixture as a short, powerful pulse that saturates the magnet.
   - q: How does a magnetizer machine work?
@@ -121,9 +124,9 @@ faqs:
     a: There is no fixed list price, because each machine is configured for the part it will magnetize. The price depends mainly on the energy rating, maximum voltage, the coil or fixtures needed, cooling and cycle time, controls and monitoring, any automation, and installation and training. Send your part drawing, magnet grade and output per shift and we will quote for the right configuration.
 ---
 
-## What is a capacitor discharge magnetizer?
+## What is a capacitive discharge impulse magnetizer?
 
-A capacitor discharge (CD) magnetizer is the most widely used type of industrial magnetizer. It charges a **bank of capacitors** to a set voltage and then discharges it through a **magnetizer coil or fixture** using a high-current switch. The current rises to thousands of amperes for a few milliseconds, and the coil turns that current into an intense magnetic field. Because the energy arrives as one short impulse, the same machine is also called an impulse magnetizer or a pulse magnetizer.
+A capacitive discharge impulse magnetizer — also known as a capacitor discharge (CD) magnetizer — is the most widely used type of industrial magnetizer. It charges a **bank of capacitors** to a set voltage and then discharges it through a **magnetizer coil or fixture** using a high-current switch. The current rises to thousands of amperes for a few milliseconds, and the coil turns that current into an intense magnetic field. Because the energy arrives as one short impulse, it is also called an impulse magnetizer or a pulse magnetizer.
 
 The pulse is so short that the coil carries enormous current without overheating — which is how a machine on a normal power supply can create fields strong enough to saturate even [NdFeB magnets](/blog/magnetizer-field-requirements/).
 
@@ -147,9 +150,9 @@ A magnetizer coil suits loose magnets magnetized through their thickness. Rotors
 
 For production use, consider cycle time, fixture cooling and whether you need peak-current monitoring to confirm that every part received a full pulse. Our guide on [how to choose a magnetizer](/blog/how-to-choose-magnetizer/) covers these points in detail.
 
-## Built by SK Enterprises in Maharashtra
+## Capacitive discharge impulse magnetizer manufacturer in Pune
 
-SK Enterprises designs and manufactures these machines for production lines, tool rooms and laboratories. Tell us what you magnetize, the magnet material and your output per shift, and we will propose a machine and fixture combination. {{Add details of standard models, installation, training and service support once confirmed.}}
+SK Enterprises designs and manufactures capacitive discharge impulse magnetizers in Pune, Maharashtra, for production lines, tool rooms and laboratories across India. Tell us what you magnetize, the magnet material and your output per shift, and we will propose a machine and fixture combination. {{Add details of standard models, installation, training and service support once confirmed.}}
 
 ## What decides the price of a magnet charging machine?
 
@@ -167,4 +170,4 @@ There is no single list price, because every machine is configured around the pa
 
 Comparing quotations on energy rating alone can mislead: a cheaper machine that cannot saturate your most demanding part, or a fixture that overheats at your production rate, soon costs more in rejects and downtime. Our article on [magnet charging machine price in India](/blog/magnet-charging-machine-price/) explains each factor in more detail.
 
-For an accurate figure, share your part drawing, magnet material and grade, pole pattern and output per shift. [Request a quotation for a magnet charging machine](/get-quote/?product=magnet-charging-machine).
+For an accurate figure, share your part drawing, magnet material and grade, pole pattern and output per shift. [Request a quotation for a capacitive discharge impulse magnetizer](/get-quote/?product=capacitive-discharge-impulse-magnetizer).

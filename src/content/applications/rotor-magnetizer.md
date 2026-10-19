@@ -12,7 +12,7 @@ icon: motor
 products:
   - rotor-magnetizer
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 industries:
   - electric-motors
   - home-appliances
@@ -35,7 +35,7 @@ Fitting magnetized segments to a rotor is slow and awkward. Magnets jump out of 
 
 ## How a rotor magnetizer works
 
-A [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) sends a pulse lasting a few milliseconds through a fixture shaped around the rotor. Conductors in the fixture create alternating north and south poles at fixed positions, so the fixture alone decides the pole count and layout.
+A [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) sends a pulse lasting a few milliseconds through a fixture shaped around the rotor. Conductors in the fixture create alternating north and south poles at fixed positions, so the fixture alone decides the pole count and layout.
 
 ### Inner and outer rotors
 

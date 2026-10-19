@@ -102,7 +102,7 @@ relatedApplications:
   - rotor-magnetizer
   - multipole-magnetizer
 related:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - multipole-magnetizer-fixture
   - motor-housing-magnetizer-fixture
 faqs:
@@ -124,7 +124,7 @@ faqs:
 
 ## How a rotor magnetizer works
 
-A rotor magnetizer is a magnet charging machine for BLDC rotors: a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) paired with a fixture made for one rotor design. Conductors run along the length of the fixture at every pole boundary, and the current direction alternates from one conductor to the next. When the capacitor bank fires, several kiloamperes flow for a few milliseconds and the field between each pair of neighbouring conductors drives the magnet beneath it north or south.
+A rotor magnetizer is a magnet charging machine for BLDC rotors: a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) paired with a fixture made for one rotor design. Conductors run along the length of the fixture at every pole boundary, and the current direction alternates from one conductor to the next. When the capacitor bank fires, several kiloamperes flow for a few milliseconds and the field between each pair of neighbouring conductors drives the magnet beneath it north or south.
 
 Because the pole pattern comes from the fixture's geometry, pole position does not depend on how an operator places pre-magnetized magnets. That is a big reason why magnetization after assembly is standard practice in volume BLDC production — magnets can be glued and sleeved, and the rotor balanced, while everything is still unmagnetized and free of clinging steel particles. The page on [rotor magnetizers](/applications/rotor-magnetizer/) shows where this step sits on a motor line.
 

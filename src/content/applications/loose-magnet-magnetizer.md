@@ -11,7 +11,7 @@ intro: >-
   right orientation.
 icon: magnet
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 industries:
   - magnet-manufacturers
   - sensors-electronics
@@ -37,7 +37,7 @@ order: 3
 
 ## How it works
 
-The magnet sits in the bore of a magnetizer coil, a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds to magnetize the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
+The magnet sits in the bore of a magnetizer coil, a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds to magnetize the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
 ### How much field is needed?
 

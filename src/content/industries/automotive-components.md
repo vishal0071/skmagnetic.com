@@ -13,7 +13,7 @@ icon: gear
 products:
   - motor-housing-magnetizer-fixture
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
 applications:
   - motor-housing-magnetizer
@@ -58,7 +58,7 @@ Speed and position sensors use small ring, disc or block magnets, often with a p
 
 ## Building a magnetizer station
 
-A typical station pairs a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) with one fixture per part type. The pulse lasts only a few milliseconds, but at automotive volumes fixture cooling and capacitor recharge time decide the real cycle rate. Peak-current monitoring can flag any part that did not receive a full pulse, and a gauss check at each pole confirms the result.
+A typical station pairs a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) with one fixture per part type. The pulse lasts only a few milliseconds, but at automotive volumes fixture cooling and capacitor recharge time decide the real cycle rate. Peak-current monitoring can flag any part that did not receive a full pulse, and a gauss check at each pole confirms the result.
 
 Before specifying a station, it helps to settle the magnet material, the hardest part to magnetize, the output per shift and the checks your customer expects. Our guide on [how to choose a magnetizer](/blog/how-to-choose-magnetizer/) walks through these decisions.
 

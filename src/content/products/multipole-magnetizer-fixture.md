@@ -1,19 +1,14 @@
 ---
 title: Multi-pole Magnetizer Fixtures
 category: magnetizer-fixtures-coils
+sample: false
 featured: true
 order: 1
 seo:
   title: Multi-pole Magnetizer Fixture for Ring Magnets & Rotors
   description: Custom multi-pole magnetizer fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count, accuracy and skew you need.
 summary: Custom fixtures that form alternating north and south poles on ring, disc, encoder and rotor magnets in one pulse — on the outer diameter, inner diameter or face.
-overview: >-
-  A multi-pole magnetizer fixture creates a pattern of alternating north and south poles on
-  a magnet with a single pulse from a magnetizer. Conductors set into precisely machined
-  slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch
-  and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for
-  ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing
-  and pole specification.
+overview: A multi-pole magnetizer fixture creates a pattern of alternating north and south poles on a magnet with a single pulse from a magnetizer. Conductors set into precisely machined slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing and pole specification.
 keySpec:
   label: Pole positions
   value: OD, ID or face multi-pole
@@ -22,6 +17,9 @@ highlights:
   - Pole count and pole pitch built to your drawing
   - Straight or skewed poles for motor and sensor magnets
   - Matched to the energy and current of your magnetizer
+images:
+  - src: ../media/products/multipole-magnetizer-fixture-mvflndhf.png
+    alt: Multi-pole Magnetizer Fixtures
 illustration: fixture
 specs:
   - label: Pole arrangement
@@ -93,14 +91,14 @@ benefits:
     text: Different ring and encoder designs need only a new fixture, not a new machine.
 industries:
   - electric-motors
-  - sensors-electronics
   - automotive-components
   - magnet-manufacturers
+  - sensors-electronics
 relatedApplications:
-  - multipole-magnetizer
   - rotor-magnetizer
+  - multipole-magnetizer
 related:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
   - motor-housing-magnetizer-fixture
 faqs:
@@ -122,7 +120,7 @@ faqs:
 
 ## How a multi-pole magnetizer fixture works
 
-A multi-pole fixture is a precision-machined body with slots around the surface that faces the magnet. A conductor runs through each slot, and the current direction alternates from one slot to the next. When a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) fires through the fixture, the fields of neighbouring conductors add together in the region between them, forming a north pole at one position and a south pole at the next. The conductors sit at the pole boundaries, so the number of slots sets the number of poles — always an even number.
+A multi-pole fixture is a precision-machined body with slots around the surface that faces the magnet. A conductor runs through each slot, and the current direction alternates from one slot to the next. When a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) fires through the fixture, the fields of neighbouring conductors add together in the region between them, forming a north pole at one position and a south pole at the next. The conductors sit at the pole boundaries, so the number of slots sets the number of poles — always an even number.
 
 Because every pole is formed in the same pulse, the pattern is fixed by the fixture's machining rather than by assembling separate magnets. That makes multi-pole fixtures the standard way to magnetize one-piece ring and encoder magnets. The basics are covered in [multi-pole magnetizers explained](/blog/multipole-magnetizer-explained/).
 

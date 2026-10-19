@@ -12,7 +12,7 @@ intro: >-
 icon: speaker
 products:
   - speaker-magnetizer
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 applications:
   - magnet-recharging
   - loose-magnet-magnetizer

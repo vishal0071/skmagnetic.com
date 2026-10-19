@@ -13,7 +13,7 @@ icon: bolt
 products:
   - rotor-magnetizer
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 applications:
   - rotor-magnetizer
   - multipole-magnetizer

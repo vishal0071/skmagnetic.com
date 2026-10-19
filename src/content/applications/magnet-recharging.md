@@ -10,7 +10,7 @@ intro: >-
   difference saves time and rejected parts.
 icon: zap
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
   - speaker-magnetizer
 industries:
@@ -48,7 +48,7 @@ Recharging with a magnetizer restores magnetization, not material. Magnets that 
 
 ## How magnet recharging is done
 
-The process is the same as first-time magnetization, using a [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) with the right coil or fixture:
+The process is the same as first-time magnetization, using a [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) with the right coil or fixture:
 
 - **Loose magnets** are recharged in a magnetizer coil, in the same direction and polarity as before.
 - **Rotors and housings** need a fixture that matches the original pole count, with the part aligned so the new poles land exactly where the old ones were.

@@ -96,7 +96,7 @@ relatedApplications:
   - loose-magnet-magnetizer
   - magnet-recharging
 related:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
 faqs:
   - q: What is an impulse demagnetizer?
@@ -113,7 +113,7 @@ faqs:
 
 ## What is a capacitive discharge impulse demagnetizer?
 
-A capacitive discharge (CD) impulse demagnetizer is built on the same principle as a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/). A **bank of capacitors** is charged to a set voltage and then discharged through a **coil**. The difference is the shape of the pulse. A magnetizer sends a single pulse in one direction to saturate the magnet. A demagnetizer lets the current swing back and forth, so the field **reverses polarity again and again while it dies away**.
+A capacitive discharge (CD) impulse demagnetizer is built on the same principle as a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/). A **bank of capacitors** is charged to a set voltage and then discharged through a **coil**. The difference is the shape of the pulse. A magnetizer sends a single pulse in one direction to saturate the magnet. A demagnetizer lets the current swing back and forth, so the field **reverses polarity again and again while it dies away**.
 
 ## How the decaying pulse removes magnetization
 

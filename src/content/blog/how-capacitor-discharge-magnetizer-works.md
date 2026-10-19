@@ -8,7 +8,7 @@ type: Specifications Explained
 published: 2026-09-08
 illustration: magnetizer
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - multipole-magnetizer-fixture
 categories:
   - magnetizer-machines
@@ -110,6 +110,6 @@ Once the circuit is clear, specification becomes easier. The magnet material set
 
 ## Need help choosing?
 
-If you plan to magnetize parts in-house, share your part drawing, magnet material and grade, and expected output per shift. The SK Enterprises team can suggest a suitable [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) with a matching coil or fixture. {{Add standard model energy ratings and voltage range once confirmed.}}
+If you plan to magnetize parts in-house, share your part drawing, magnet material and grade, and expected output per shift. The SK Enterprises team can suggest a suitable [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) with a matching coil or fixture. {{Add standard model energy ratings and voltage range once confirmed.}}
 
-[Request a quotation](/get-quote/?product=magnet-charging-machine) or [contact our team](/contact/) with your questions.
+[Request a quotation](/get-quote/?product=capacitive-discharge-impulse-magnetizer) or [contact our team](/contact/) with your questions.

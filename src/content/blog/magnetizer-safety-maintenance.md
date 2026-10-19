@@ -8,7 +8,7 @@ type: Maintenance
 published: 2026-10-01
 illustration: magnetizer
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - multipole-magnetizer-fixture
 categories:
   - magnetizer-machines
@@ -104,6 +104,6 @@ A simple log for each fixture, recording pulse count, peak-current trend, mainte
 
 ## Need help choosing?
 
-If you need advice on servicing, a replacement fixture or a new [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) with built-in monitoring, the SK Enterprises team can help. {{Confirm service, spares and annual maintenance support offered by SK Enterprises.}}
+If you need advice on servicing, a replacement fixture or a new [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) with built-in monitoring, the SK Enterprises team can help. {{Confirm service, spares and annual maintenance support offered by SK Enterprises.}}
 
-[Contact our team](/contact/) or [request a quotation](/get-quote/?product=magnet-charging-machine).
+[Contact our team](/contact/) or [request a quotation](/get-quote/?product=capacitive-discharge-impulse-magnetizer).

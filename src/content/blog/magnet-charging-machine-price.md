@@ -8,7 +8,7 @@ type: Buying Guide
 published: 2026-10-02
 illustration: magnetizer
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
   - speaker-magnetizer
 categories:
@@ -76,7 +76,7 @@ Commissioning, operator training, recommended spares and after-sales support sho
 
 ## How the application shifts the cost
 
-The application often decides which of these factors matter most. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) for BLDC fans or hub motors is dominated by fixture design, pole accuracy and cycle time. A [speaker magnetizer](/products/magnetizer-fixtures-coils/speaker-magnetizer/) depends heavily on the largest magnet circuit and whether neodymium drivers are included. A general-purpose [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) for loose magnets is driven mainly by energy rating and coil size.
+The application often decides which of these factors matter most. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) for BLDC fans or hub motors is dominated by fixture design, pole accuracy and cycle time. A [speaker magnetizer](/products/magnetizer-fixtures-coils/speaker-magnetizer/) depends heavily on the largest magnet circuit and whether neodymium drivers are included. A general-purpose [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) for loose magnets is driven mainly by energy rating and coil size.
 
 ## Comparing quotations fairly
 

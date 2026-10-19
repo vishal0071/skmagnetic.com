@@ -14,7 +14,7 @@ products:
   - rotor-magnetizer
   - multipole-magnetizer-fixture
   - motor-housing-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 applications:
   - rotor-magnetizer
   - motor-housing-magnetizer
@@ -42,7 +42,7 @@ order: 1
 
 ## Magnetizers in motor production
 
-Most permanent magnet motor manufacturers assemble their magnets unmagnetized and magnetize the finished rotor or housing as one of the last steps. Unmagnetized magnets do not snap together, chip or collect steel swarf, so they are easier to store, handle and feed into automated assembly. The part is then magnetized by a single pulse from a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/). The pulse typically lasts a few milliseconds.
+Most permanent magnet motor manufacturers assemble their magnets unmagnetized and magnetize the finished rotor or housing as one of the last steps. Unmagnetized magnets do not snap together, chip or collect steel swarf, so they are easier to store, handle and feed into automated assembly. The part is then magnetized by a single pulse from a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/). The pulse typically lasts a few milliseconds.
 
 ## Motor types and what they need
 

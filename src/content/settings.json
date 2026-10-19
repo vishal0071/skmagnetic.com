@@ -1,6 +1,6 @@
 {
   "isLive": true,
-  "showContentNotices": false,
+  "showContentNotices": true,
   "tagline": "Magnetizer Manufacturer",
   "contact": {
     "phoneDisplay": "+91 99751 09052",
@@ -25,11 +25,11 @@
         "time": "{{Closed}}"
       }
     ],
-    "responseTime": "{{within 1 business day}}"
+    "responseTime": "2"
   },
   "business": {
     "gstin": "27HFWPK6842E1ZS",
-    "established": "{{Year established}}",
+    "established": "2026",
     "shortDescription": "SK Enterprises manufactures capacitive discharge impulse magnetizers and demagnetizers, magnetizer fixtures, digital gaussmeters and fluxmeters, and RCCB / ELCB calibrators."
   },
   "social": {

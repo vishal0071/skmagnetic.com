@@ -11,7 +11,7 @@ intro: >-
   parts out.
 icon: magnet
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - multipole-magnetizer-fixture
 applications:
   - loose-magnet-magnetizer
@@ -42,7 +42,7 @@ order: 4
 
 Many ferrite and NdFeB magnets leave the sintering and grinding stages unmagnetized. Whether you make magnets or trade them, charging is often the last step before dispatch, and doing it in-house means you control the timing, the polarity and the result.
 
-The standard setup for loose magnets is a [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) paired with a magnetizer coil. The magnet sits in the coil bore and is charged through its thickness by a pulse lasting a few milliseconds. Our explainer on [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/) covers the principle.
+The standard setup for loose magnets is a [magnet charging machine](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) paired with a magnetizer coil. The magnet sits in the coil bore and is charged through its thickness by a pulse lasting a few milliseconds. Our explainer on [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/) covers the principle.
 
 ## Common jobs for a charging setup
 

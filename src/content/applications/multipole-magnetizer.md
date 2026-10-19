@@ -11,7 +11,7 @@ intro: >-
 icon: sensor
 products:
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
 industries:
   - electric-motors
@@ -39,7 +39,7 @@ order: 4
 
 ## How a multi-pole fixture works
 
-A multi-pole fixture carries conductors arranged around the part so that current flows in opposite directions in neighbouring conductors. When a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) fires a pulse of a few milliseconds through it, the region between each pair of conductors becomes a north or south pole. Depending on the part, the fixture can act on the outer diameter, the inner diameter or one face.
+A multi-pole fixture carries conductors arranged around the part so that current flows in opposite directions in neighbouring conductors. When a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) fires a pulse of a few milliseconds through it, the region between each pair of conductors becomes a north or south pole. Depending on the part, the fixture can act on the outer diameter, the inner diameter or one face.
 
 Because the pattern is fixed by the fixture's construction, each [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) is made for a specific part and pole layout.
 

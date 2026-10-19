@@ -96,7 +96,7 @@ industries:
 relatedApplications:
   - magnet-recharging
 related:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
 faqs:
   - q: Why are loudspeakers magnetized after assembly?
@@ -115,7 +115,7 @@ faqs:
 
 ## How a speaker magnetizer works
 
-The motor of a loudspeaker is a small magnetic circuit: the magnet, a back plate with its centre pole piece, and a top plate. Together they concentrate flux into the narrow gap where the voice coil moves. In production these parts are glued and centred while the magnet is still unmagnetized. The finished assembly — or the complete driver — then goes into a fixture connected to a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/), and a single pulse lasting a few milliseconds magnetizes the magnet through its thickness.
+The motor of a loudspeaker is a small magnetic circuit: the magnet, a back plate with its centre pole piece, and a top plate. Together they concentrate flux into the narrow gap where the voice coil moves. In production these parts are glued and centred while the magnet is still unmagnetized. The finished assembly — or the complete driver — then goes into a fixture connected to a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/), and a single pulse lasting a few milliseconds magnetizes the magnet through its thickness.
 
 The steel plates sit in the field path during the pulse, so the fixture has to be designed around the whole assembly rather than the bare magnet. In other words, a speaker magnet charging machine is really a matched pair of machine and fixture. If the principle is new to you, read [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 

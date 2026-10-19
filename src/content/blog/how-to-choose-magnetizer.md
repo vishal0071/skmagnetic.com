@@ -8,7 +8,7 @@ type: Buying Guide
 published: 2026-09-15
 illustration: coil
 products:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - rotor-magnetizer
   - speaker-magnetizer
 categories:
@@ -118,4 +118,4 @@ Manual loading with a foot switch or two-hand control suits lower volumes. For h
 
 Send us your part drawing, magnet material and grade, pole pattern and target output, and the SK Enterprises team will propose a machine and fixture combination for your application. {{Confirm whether sample magnetizer trials are offered before an order is placed.}}
 
-[Request a quotation for a magnet charging machine](/get-quote/?product=magnet-charging-machine) or [contact us](/contact/) to discuss your requirement.
+[Request a quotation for a magnet charging machine](/get-quote/?product=capacitive-discharge-impulse-magnetizer) or [contact us](/contact/) to discuss your requirement.

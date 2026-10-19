@@ -11,7 +11,7 @@ intro: >-
 icon: sensor
 products:
   - multipole-magnetizer-fixture
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
 applications:
   - multipole-magnetizer
   - loose-magnet-magnetizer

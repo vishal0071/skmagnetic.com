@@ -1,18 +1,14 @@
 ---
 title: Motor Housing Magnetizer Fixture for PMDC Motors
 category: magnetizer-fixtures-coils
+sample: false
 featured: true
 order: 4
 seo:
   title: Motor Housing Magnetizer Fixture for DC Motors
   description: Fixtures to magnetize PMDC motor housings with ferrite arc magnets after assembly, in 2-pole and 4-pole layouts, for wiper, blower, starter and fan motors.
 summary: Fixtures that magnetize the ferrite arc magnets of a DC motor housing from the inside, after the arcs are fitted — for 2-pole and 4-pole PMDC motors.
-overview: >-
-  A motor housing magnetizer fixture fits inside the steel housing of a permanent magnet DC
-  (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse
-  from the magnetizer drives a radial field through each arc, with the housing itself
-  carrying the return flux. SK Enterprises designs and manufactures housing fixtures in
-  Maharashtra for automotive, two-wheeler and appliance motor makers across India.
+overview: A motor housing magnetizer fixture fits inside the steel housing of a permanent magnet DC (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse from the magnetizer drives a radial field through each arc, with the housing itself carrying the return flux. SK Enterprises designs and manufactures housing fixtures in Maharashtra for automotive, two-wheeler and appliance motor makers across India.
 keySpec:
   label: Pole configuration
   value: 2-pole or 4-pole, radial from inside
@@ -21,6 +17,9 @@ highlights:
   - 2-pole and 4-pole fixtures matched to your arc layout
   - Housing located so each pole is centred on its arc
   - Built to run with a capacitor discharge magnetizer
+images:
+  - src: ../media/products/motor-housing-magnetizer-fixture-mvflog9f.jpg
+    alt: Motor Housing Magnetizer Fixture for PMDC Motors
 illustration: housing
 specs:
   - label: Typical parts
@@ -82,7 +81,7 @@ features:
   - title: Pulse-rated construction
     text: Conductors and pole pieces are supported against the forces of each pulse.
   - title: Straightforward loading
-    text: "The housing slides over the fixture and seats against a stop. {{Confirm loading method — manual, pneumatic or automatic}}"
+    text: The housing slides over the fixture and seats against a stop. {{Confirm loading method — manual, pneumatic or automatic}}
 benefits:
   - title: Easier arc fitting
     text: Unmagnetized arcs do not snap onto the housing or each other, so brittle ferrite is less likely to chip.
@@ -93,13 +92,13 @@ benefits:
   - title: Lower handling cost
     text: Unmagnetized arcs are easier to store, ship and feed to the assembly line.
 industries:
-  - automotive-components
   - electric-motors
+  - automotive-components
   - home-appliances
 relatedApplications:
   - motor-housing-magnetizer
 related:
-  - magnet-charging-machine
+  - capacitive-discharge-impulse-magnetizer
   - multipole-magnetizer-fixture
   - rotor-magnetizer
 faqs:
@@ -119,7 +118,7 @@ faqs:
 
 ## How a motor housing magnetizer works
 
-In a permanent magnet DC (PMDC) motor, ferrite arc magnets are glued or clipped to the inside of a steel housing, which forms the stator. A housing magnetizer fixture is an insert that slides into the housing bore. When a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) fires through it, the fixture drives a radial field through each arc, and the steel housing carries the flux back round — just as it does in the running motor.
+In a permanent magnet DC (PMDC) motor, ferrite arc magnets are glued or clipped to the inside of a steel housing, which forms the stator. A housing magnetizer fixture is an insert that slides into the housing bore. When a [capacitive discharge impulse magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) fires through it, the fixture drives a radial field through each arc, and the steel housing carries the flux back round — just as it does in the running motor.
 
 The housing is usually magnetized as a sub-assembly, after the arcs are fixed and before the armature goes in. This keeps steel debris off the magnets and stops brittle ferrite arcs from snapping onto tooling or chipping during fitting. On most DC motor lines, this fixture and a magnetizer together form the DC motor magnet charging station. See [motor housing magnetizers](/applications/motor-housing-magnetizer/) for how the step fits into the line.
 

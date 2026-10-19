@@ -1,18 +1,14 @@
 ---
 title: RCCB / ELCB Calibrator
 category: magnetizer-machines
+sample: false
+featured: false
 order: 3
 seo:
   title: RCCB / ELCB Calibrator | Trip Current & Trip Time Tester
   description: RCCB / ELCB calibrator that injects a controlled residual current to measure the tripping current and trip time of RCCBs, ELCBs and RCBOs in production.
 summary: Test set that injects a controlled residual (earth leakage) current to measure the tripping current and trip time of RCCBs, ELCBs and RCBOs — for production, calibration and labs.
-overview: >-
-  An RCCB / ELCB calibrator tests residual current breakers — RCCBs, ELCBs and RCBOs — the
-  way they work in service. It passes a controlled residual (earth leakage) current through
-  the breaker and measures the current at which it trips and how quickly it trips.
-  Manufacturers use it to set and check the tripping sensitivity of every breaker, and test
-  laboratories use it to verify breakers against their rated values. SK Enterprises
-  manufactures RCCB / ELCB calibrators for switchgear manufacturers and testing laboratories.
+overview: An RCCB / ELCB calibrator tests residual current breakers — RCCBs, ELCBs and RCBOs — the way they work in service. It passes a controlled residual (earth leakage) current through the breaker and measures the current at which it trips and how quickly it trips. Manufacturers use it to set and check the tripping sensitivity of every breaker, and test laboratories use it to verify breakers against their rated values. SK Enterprises manufactures RCCB / ELCB calibrators for switchgear manufacturers and testing laboratories.
 keySpec:
   label: Tests
   value: Trip current & trip time
@@ -21,6 +17,9 @@ highlights:
   - Measures the tripping current and the trip time
   - For RCCBs, ELCBs and RCBOs used in homes, buildings and industry
   - Digital display of test current and trip time
+images:
+  - src: ../media/products/rccb-elcb-calibrator-mvfljldp.jpg
+    alt: RCCB / ELCB Calibrator
 illustration: tester
 specs:
   - label: Breakers tested

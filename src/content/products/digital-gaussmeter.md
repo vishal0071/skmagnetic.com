@@ -1,17 +1,14 @@
 ---
 title: Digital Gaussmeter
 category: test-measuring-instruments
+sample: false
+featured: false
 order: 1
 seo:
   title: Digital Gaussmeter | Hall Effect Magnetic Field Meter
   description: Digital gaussmeter with a Hall effect probe to measure flux density in gauss or tesla — for magnets, magnetized parts, pole checks and residual magnetism.
 summary: Hall-effect gaussmeter that measures magnetic flux density at a point in gauss, millitesla or tesla — for checking magnets, pole patterns and residual magnetism.
-overview: >-
-  A digital gaussmeter measures magnetic flux density — the strength of a magnetic field at
-  one point — with a Hall-effect probe. Hold the probe on or near a magnet, in an air gap or
-  inside a coil, and the meter shows the reading in gauss, millitesla or tesla together with
-  its polarity, north or south. SK Enterprises manufactures digital gaussmeters for magnet
-  makers, motor and loudspeaker manufacturers and quality laboratories.
+overview: A digital gaussmeter measures magnetic flux density — the strength of a magnetic field at one point — with a Hall-effect probe. Hold the probe on or near a magnet, in an air gap or inside a coil, and the meter shows the reading in gauss, millitesla or tesla together with its polarity, north or south. SK Enterprises manufactures digital gaussmeters for magnet makers, motor and loudspeaker manufacturers and quality laboratories.
 keySpec:
   label: Measures
   value: Flux density (G / mT / T)
@@ -20,6 +17,9 @@ highlights:
   - Reads in gauss, millitesla or tesla, with north / south polarity
   - Checks surface field, pole patterns and residual magnetism
   - Digital display for quick, repeatable readings
+images:
+  - src: ../media/products/digital-gaussmeter-mvflflvs.png
+    alt: Digital Gaussmeter
 illustration: meter
 specs:
   - label: Sensor
@@ -88,17 +88,17 @@ benefits:
   - title: Direct from the manufacturer
     text: Work with the team that builds the instrument for probes, calibration and support.
 industries:
-  - magnet-manufacturers
   - electric-motors
   - loudspeakers-audio
+  - magnet-manufacturers
   - sensors-electronics
 relatedApplications:
   - multipole-magnetizer
   - magnet-recharging
 related:
-  - digital-fluxmeter
+  - capacitive-discharge-impulse-magnetizer
   - impulse-demagnetizer
-  - magnet-charging-machine
+  - digital-fluxmeter
 faqs:
   - q: What does a gaussmeter measure?
     a: It measures magnetic flux density — how strong the magnetic field is at the tip of the probe. The reading is shown in gauss, millitesla or tesla, with a sign that tells you whether the field is from a north or a south pole.

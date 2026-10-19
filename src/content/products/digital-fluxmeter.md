@@ -1,18 +1,14 @@
 ---
 title: Digital Fluxmeter
 category: test-measuring-instruments
+sample: false
+featured: false
 order: 2
 seo:
   title: Digital Fluxmeter | Magnetic Flux Meter with Search Coil
   description: Digital fluxmeter measuring the total magnetic flux of magnets and magnetized parts with a search or Helmholtz coil — for quality checks after magnetization.
 summary: Integrating fluxmeter that measures the total magnetic flux of a magnet or magnetized part through a search coil or Helmholtz coil — for quality checks after magnetization.
-overview: >-
-  A digital fluxmeter measures magnetic flux — the total magnetism a magnet or magnetized
-  part produces — rather than the field at a single point. It works with a search coil or a
-  Helmholtz coil: as the part is moved into or out of the coil, the changing flux induces a
-  small voltage, and the fluxmeter integrates that voltage to give the flux in webers or
-  maxwells. SK Enterprises manufactures digital fluxmeters for magnet makers and for
-  manufacturers who check magnetized parts on their own lines.
+overview: "A digital fluxmeter measures magnetic flux — the total magnetism a magnet or magnetized part produces — rather than the field at a single point. It works with a search coil or a Helmholtz coil: as the part is moved into or out of the coil, the changing flux induces a small voltage, and the fluxmeter integrates that voltage to give the flux in webers or maxwells. SK Enterprises manufactures digital fluxmeters for magnet makers and for manufacturers who check magnetized parts on their own lines."
 keySpec:
   label: Measures
   value: Total flux (Wb / Mx)
@@ -21,6 +17,9 @@ highlights:
   - Works with search coils, Helmholtz coils and part-specific test coils
   - Reads in webers, milliwebers or maxwells
   - Zero adjustment for repeatable readings, batch after batch
+images:
+  - src: ../media/products/digital-fluxmeter-mvflhq3j.png
+    alt: Digital Fluxmeter
 illustration: meter
 specs:
   - label: Principle
@@ -85,17 +84,17 @@ benefits:
   - title: Direct from the manufacturer
     text: Work with the team that builds the instrument for coils, calibration and support.
 industries:
-  - magnet-manufacturers
   - electric-motors
-  - loudspeakers-audio
   - automotive-components
+  - loudspeakers-audio
+  - magnet-manufacturers
 relatedApplications:
   - rotor-magnetizer
   - loose-magnet-magnetizer
   - magnet-recharging
 related:
+  - capacitive-discharge-impulse-magnetizer
   - digital-gaussmeter
-  - magnet-charging-machine
   - impulse-demagnetizer
 faqs:
   - q: What does a fluxmeter measure?
@@ -120,7 +119,7 @@ With a **Helmholtz coil**, a fluxmeter measures the **magnetic moment** of a mag
 
 ## Using a fluxmeter after magnetization
 
-A fluxmeter is the simplest way to prove that a [magnetizer](/products/magnetizer-machines/magnet-charging-machine/) setting is right. Magnetize test parts at increasing charging voltages and measure each one: when the flux stops rising, the part is saturated. In production, measuring parts in a test coil and comparing the result with limits shows straight away if a part was not fully magnetized. Learn more about [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
+A fluxmeter is the simplest way to prove that a [magnetizer](/products/magnetizer-machines/capacitive-discharge-impulse-magnetizer/) setting is right. Magnetize test parts at increasing charging voltages and measure each one: when the flux stops rising, the part is saturated. In production, measuring parts in a test coil and comparing the result with limits shows straight away if a part was not fully magnetized. Learn more about [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
 ## Made by SK Enterprises
 
