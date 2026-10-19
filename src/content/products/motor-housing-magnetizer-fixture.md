@@ -1,15 +1,14 @@
 ---
-title: Motor Housing Magnetizing Fixture for PMDC Motors
-category: magnetizing-fixtures-coils
-sample: true
+title: Motor Housing Magnetizer Fixture for PMDC Motors
+category: magnetizer-fixtures-coils
 featured: true
 order: 4
 seo:
-  title: Motor Housing Magnetizing Fixture for DC Motors
+  title: Motor Housing Magnetizer Fixture for DC Motors
   description: Fixtures to magnetize PMDC motor housings with ferrite arc magnets after assembly, in 2-pole and 4-pole layouts, for wiper, blower, starter and fan motors.
 summary: Fixtures that magnetize the ferrite arc magnets of a DC motor housing from the inside, after the arcs are fitted — for 2-pole and 4-pole PMDC motors.
 overview: >-
-  A motor housing magnetizing fixture fits inside the steel housing of a permanent magnet DC
+  A motor housing magnetizer fixture fits inside the steel housing of a permanent magnet DC
   (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse
   from the magnetizer drives a radial field through each arc, with the housing itself
   carrying the return flux. SK Enterprises designs and manufactures housing fixtures in
@@ -26,7 +25,7 @@ illustration: housing
 specs:
   - label: Typical parts
     value: PMDC motor housings (stators) with ferrite arc segments; bonded magnet rings in some compact motors
-  - label: Magnetizing direction
+  - label: Magnetization direction
     value: Radial, from inside the housing; the steel housing forms the flux return path
   - label: Pole count
     value: Commonly 2 or 4 poles, matched to the number and placement of the arcs
@@ -36,7 +35,7 @@ specs:
     value: Housing located from its own features so each pole centres on an arc
   - label: Construction
     value: Conductors and pole pieces on an insert sized to the housing bore, encapsulated and reinforced against pulse forces
-  - label: Magnetizing stage
+  - label: Magnetization stage
     value: Commonly the housing sub-assembly, before the armature is fitted
   - label: Cooling
     value: Natural, forced-air or water cooling to suit the cycle rate
@@ -98,31 +97,31 @@ industries:
   - electric-motors
   - home-appliances
 relatedApplications:
-  - motor-housing-magnetizing
+  - motor-housing-magnetizer
 related:
   - magnet-charging-machine
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
   - rotor-magnetizer
 faqs:
   - q: Why magnetize the housing after the arcs are fitted?
-    a: Fitting unmagnetized arcs is quicker and cleaner — they do not jump onto the housing, attract steel chips or chip against each other. Magnetizing the finished sub-assembly in one pulse also gives every housing the same treatment.
+    a: Fitting unmagnetized arcs is quicker and cleaner — they do not jump onto the housing, attract steel chips or chip against each other. A single magnetizer pulse on the finished sub-assembly also gives every housing the same treatment.
   - q: What is the difference between a 2-pole and a 4-pole housing fixture?
     a: A 2-pole fixture creates one north and one south pole for a housing with two arcs; a 4-pole fixture creates four alternating poles for four arcs. The fixture must match the number and position of the arcs, so one cannot be used in place of the other.
   - q: Can one fixture handle housings of different lengths?
     a: Often yes, if the housings share the same inner diameter, arc layout and pole count and the fixture is long enough for the longest stack of arcs. Housings with a different bore or arc arrangement need their own fixture.
   - q: Is the housing magnetized before or after the armature is fitted?
-    a: Commonly before. The fixture needs the housing bore to be free, so magnetizing the housing sub-assembly and then fitting the armature is the usual sequence. Magnetizing a fully assembled motor is a different approach and needs to be assessed for each design.
+    a: Commonly before. The fixture needs the housing bore to be free, so the usual sequence is to magnetize the housing sub-assembly and then fit the armature. Magnetization of a fully assembled motor is a different approach and needs to be assessed for each design.
   - q: How do we check that a housing is correctly magnetized?
     a: Typical checks are a gauss reading at the centre of each arc, peak-current monitoring of every pulse and a no-load speed and current test on the finished motor. Comparing with a reference housing shows up weak or misaligned poles.
   - q: Can a housing fixture be used with our existing magnetizer?
     a: Yes, if it is designed for that machine's voltage, current and energy. Share the magnetizer make and ratings with your housing drawing so the fixture can be matched to it.
 ---
 
-## How motor housing magnetizing works
+## How a motor housing magnetizer works
 
-In a permanent magnet DC (PMDC) motor, ferrite arc magnets are glued or clipped to the inside of a steel housing, which forms the stator. A housing magnetizing fixture is an insert that slides into the housing bore. When a [capacitor discharge magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) fires through it, the fixture drives a radial field through each arc, and the steel housing carries the flux back round — just as it does in the running motor.
+In a permanent magnet DC (PMDC) motor, ferrite arc magnets are glued or clipped to the inside of a steel housing, which forms the stator. A housing magnetizer fixture is an insert that slides into the housing bore. When a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) fires through it, the fixture drives a radial field through each arc, and the steel housing carries the flux back round — just as it does in the running motor.
 
-The housing is usually magnetized as a sub-assembly, after the arcs are fixed and before the armature goes in. This keeps steel debris off the magnets and stops brittle ferrite arcs from snapping onto tooling or chipping during fitting. On most DC motor lines, this fixture and a magnetizer together form the DC motor magnet charging station. See [motor housing magnetizing](/applications/motor-housing-magnetizing/) for how the step fits into the line.
+The housing is usually magnetized as a sub-assembly, after the arcs are fixed and before the armature goes in. This keeps steel debris off the magnets and stops brittle ferrite arcs from snapping onto tooling or chipping during fitting. On most DC motor lines, this fixture and a magnetizer together form the DC motor magnet charging station. See [motor housing magnetizers](/applications/motor-housing-magnetizer/) for how the step fits into the line.
 
 ## 2-pole and 4-pole housings
 
@@ -149,10 +148,10 @@ Cycle rate is limited by capacitor recharge time and by the heat that builds up 
 
 ### Checking the result
 
-A gauss reading at the centre of each arc, peak-current monitoring of every pulse and a no-load speed and current test on the finished motor are common ways to confirm full, correctly aligned magnetization. For BLDC motors, where the magnets sit on the rotor rather than in the housing, see our [BLDC rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/).
+A gauss reading at the centre of each arc, peak-current monitoring of every pulse and a no-load speed and current test on the finished motor are common ways to confirm full, correctly aligned magnetization. For BLDC motors, where the magnets sit on the rotor rather than in the housing, see our [BLDC rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/).
 
-## Motor housing magnetizing fixtures for manufacturers in Maharashtra and India
+## Motor housing magnetizer fixtures for manufacturers in Maharashtra and India
 
-SK Enterprises designs and manufactures housing fixtures within its [magnetizing fixtures and coils](/products/magnetizing-fixtures-coils/) range, for makers of wiper, blower, starter, fan and two-wheeler motors in Maharashtra and across India. The price of a motor housing magnetizing fixture depends on housing size, pole count, cooling and loading method, so send your drawing for a quotation. {{Add supported housing sizes, pole configurations and loading options once confirmed.}}
+SK Enterprises designs and manufactures housing fixtures within its [magnetizer fixtures and coils](/products/magnetizer-fixtures-coils/) range, for makers of wiper, blower, starter, fan and two-wheeler motors in Maharashtra and across India. The price of a motor housing magnetizer fixture depends on housing size, pole count, cooling and loading method, so send your drawing for a quotation. {{Add supported housing sizes, pole configurations and loading options once confirmed.}}
 
-[Request a quotation for a motor housing magnetizing fixture](/get-quote/?product=motor-housing-magnetizing-fixture).
+[Request a quotation for a motor housing magnetizer fixture](/get-quote/?product=motor-housing-magnetizer-fixture).

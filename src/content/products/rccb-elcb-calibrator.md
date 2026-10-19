@@ -1,7 +1,6 @@
 ---
 title: RCCB / ELCB Calibrator
-category: magnetizing-machines
-sample: true
+category: magnetizer-machines
 order: 3
 seo:
   title: RCCB / ELCB Calibrator | Trip Current & Trip Time Tester

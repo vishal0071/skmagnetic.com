@@ -9,10 +9,10 @@ published: 2026-10-01
 illustration: magnetizer
 products:
   - magnet-charging-machine
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
 categories:
-  - magnetizing-machines
-  - magnetizing-fixtures-coils
+  - magnetizer-machines
+  - magnetizer-fixtures-coils
 faqs:
   - q: How often should a magnetizer be serviced?
     a: It depends on how hard the machine works. A plant firing thousands of pulses per shift needs closer attention than a laboratory unit used a few times a week. Follow the machine manual, use routine operator checks to catch early signs of trouble, and arrange a detailed inspection by a qualified technician at least once a year.
@@ -22,10 +22,9 @@ faqs:
     a: People with pacemakers, defibrillators or other active medical implants should not work at or near a magnetizer, or handle freshly magnetized parts, without specific medical advice. Mark the area with clear warning signs so visitors and contractors are also aware.
   - q: What should I do if a fixture keeps overheating?
     a: Reduce the pulse rate and check that the cooling is working. Then confirm that the voltage and energy settings are within the fixture's rating. Repeated overheating ages the insulation quickly, so if the fixture cannot keep up with the required output, it may need better cooling, a redesign or a second fixture used alternately.
-sample: true
 ---
 
-An industrial magnetizer is a safe machine when it is well designed, correctly installed and looked after. It is also a machine that combines high voltage, stored energy, very large currents and strong magnetic forces, so good habits matter. This checklist brings together the points the SK Enterprises team recommends for operators and maintenance staff working with [industrial magnetizers](/products/magnetizing-machines/). It supplements your machine's manual rather than replacing it.
+An industrial magnetizer is a safe machine when it is well designed, correctly installed and looked after. It is also a machine that combines high voltage, stored energy, very large currents and strong magnetic forces, so good habits matter. This checklist brings together the points the SK Enterprises team recommends for operators and maintenance staff working with [industrial magnetizers](/products/magnetizer-machines/). It supplements your machine's manual rather than replacing it.
 
 ## Key takeaways
 
@@ -88,9 +87,9 @@ The schedule below is a starting point. Adjust the intervals to your machine man
 
 ## Looking after coils and fixtures
 
-[Magnetizing coils and fixtures](/products/magnetizing-fixtures-coils/) take the brunt of every pulse, so they need the most attention.
+[Magnetizer coils and fixtures](/products/magnetizer-fixtures-coils/) take the brunt of every pulse, so they need the most attention.
 
-- **Respect the duty cycle.** Run within the rated pulse rate and allow cooling time. Fine-pitch tooling such as a [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) can be especially sensitive to heat.
+- **Respect the duty cycle.** Run within the rated pulse rate and allow cooling time. Fine-pitch tooling such as a [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) can be especially sensitive to heat.
 - **Keep it clean.** Magnetic particles collect in the bore and on pole faces. With the machine isolated, remove them with adhesive tape or a non-magnetic brush.
 - **Watch for warning signs.** A change in peak current at the same voltage, in either direction, inconsistent magnetization, a different pulse sound, a smell of hot insulation, cracked or discoloured potting, or any visible movement of conductors.
 - **Plan for wear.** For critical lines, plan fixture rebuilds in advance or keep a spare fixture so production does not stop.
@@ -105,6 +104,6 @@ A simple log for each fixture, recording pulse count, peak-current trend, mainte
 
 ## Need help choosing?
 
-If you need advice on servicing, a replacement fixture or a new [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) with built-in monitoring, the SK Enterprises team can help. {{Confirm service, spares and annual maintenance support offered by SK Enterprises.}}
+If you need advice on servicing, a replacement fixture or a new [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) with built-in monitoring, the SK Enterprises team can help. {{Confirm service, spares and annual maintenance support offered by SK Enterprises.}}
 
 [Contact our team](/contact/) or [request a quotation](/get-quote/?product=magnet-charging-machine).

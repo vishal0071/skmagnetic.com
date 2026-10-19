@@ -1,12 +1,11 @@
 ---
-title: Speaker Magnetizing Fixture
-category: magnetizing-fixtures-coils
-sample: true
+title: Speaker Magnetizer Fixture
+category: magnetizer-fixtures-coils
 featured: true
 order: 3
 seo:
-  title: Speaker Magnetizer Machine | Speaker Magnet Charging
-  description: Speaker magnetizer machine for charging ferrite and neodymium loudspeaker magnet circuits after assembly, for a clean voice-coil gap and consistent output.
+  title: Speaker Magnetizer Fixture | Speaker Magnet Charging
+  description: Speaker magnetizer fixture for charging ferrite and neodymium loudspeaker magnet circuits after assembly, for a clean voice-coil gap and consistent output.
 summary: Magnetizer and speaker fixture for charging the magnet circuit of loudspeakers and drivers after assembly, for both ferrite ring and neodymium designs.
 overview: A speaker magnetizer machine charges the magnet inside a speaker's motor assembly — the magnet, the back plate with its pole piece, and the top plate — once the parts have been glued and centred. Building speakers with an unmagnetized magnet keeps steel particles out of the voice-coil gap and makes the assembly far easier to handle. SK Enterprises manufactures speaker magnetizers and matching fixtures in Maharashtra for audio manufacturers across India.
 keySpec:
@@ -19,12 +18,12 @@ highlights:
   - Assemble unmagnetized for a cleaner voice-coil gap
 images:
   - src: ../media/products/speaker-magnetizer-mv42eh8j.png
-    alt: Speaker Magnetizing Fixture
+    alt: Speaker Magnetizer Fixture
 illustration: speaker
 specs:
   - label: Operating principle
-    value: Capacitor discharge pulse through a speaker magnetizing fixture
-  - label: Magnetizing direction
+    value: Capacitor discharge pulse through a speaker magnetizer fixture
+  - label: Magnetization direction
     value: Axial, through the magnet thickness, with the steel plates in place
   - label: Speaker designs
     value: External-magnet (ferrite ring) and internal-magnet (NdFeB or ferrite disc in a steel cup)
@@ -55,7 +54,7 @@ supply:
     value: "{{X weeks from order confirmation}}"
 variants:
   - title: Magnet-circuit magnetizers
-    text: For magnetizing the motor assembly — magnet, plates and pole piece — before it is joined to the frame and cone.
+    text: To magnetize the motor assembly — magnet, plates and pole piece — before it is joined to the frame and cone.
   - title: Complete-driver magnetizers
     text: Fixtures with clearance for the basket and cone, so the finished speaker is magnetized as the last step.
   - title: Ferrite speaker setups
@@ -70,8 +69,8 @@ applications:
   - title: Multimedia and TV speakers
     text: Small drivers produced in high volumes, where cycle time matters.
   - title: Tweeters and compact drivers
-    text: Neodymium internal-magnet designs that need a strong magnetizing field.
-  - title: Service re-magnetizing
+    text: Neodymium internal-magnet designs that need a strong magnetizer field.
+  - title: Service re-magnetization
     text: Recharging speaker magnets that have weakened, such as in older alnico drivers.
 features:
   - title: Fixture shaped to your speaker
@@ -116,7 +115,7 @@ faqs:
 
 ## How a speaker magnetizer works
 
-The motor of a loudspeaker is a small magnetic circuit: the magnet, a back plate with its centre pole piece, and a top plate. Together they concentrate flux into the narrow gap where the voice coil moves. In production these parts are glued and centred while the magnet is still unmagnetized. The finished assembly — or the complete driver — then goes into a fixture connected to a [capacitor discharge magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/), and a single pulse lasting a few milliseconds magnetizes the magnet through its thickness.
+The motor of a loudspeaker is a small magnetic circuit: the magnet, a back plate with its centre pole piece, and a top plate. Together they concentrate flux into the narrow gap where the voice coil moves. In production these parts are glued and centred while the magnet is still unmagnetized. The finished assembly — or the complete driver — then goes into a fixture connected to a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/), and a single pulse lasting a few milliseconds magnetizes the magnet through its thickness.
 
 The steel plates sit in the field path during the pulse, so the fixture has to be designed around the whole assembly rather than the bare magnet. In other words, a speaker magnet charging machine is really a matched pair of machine and fixture. If the principle is new to you, read [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
@@ -138,7 +137,7 @@ Because neodymium needs a much higher field, a line that runs both designs shoul
 - **Easier gluing and centring.** Plates and magnet do not jump together while the adhesive is wet, so the gap stays concentric.
 - **Simpler handling.** Unmagnetized motor assemblies can be stacked, stored and moved between workstations without sticking to each other or to tooling.
 
-## Setting up a speaker magnetizing station
+## Setting up a speaker magnetizer station
 
 ### Fixture and location
 
@@ -150,11 +149,11 @@ Energy is chosen for the largest and most demanding magnet circuit on the line. 
 
 ### Checking the result
 
-A gaussmeter probe in the gap gives a direct reading of gap flux density that can be compared with a reference speaker, while peak-current monitoring confirms every assembly received a full pulse. With a suitable fixture, the same setup can also handle [re-magnetizing weakened speaker magnets](/applications/magnet-recharging/), as with older alnico drivers.
+A gaussmeter probe in the gap gives a direct reading of gap flux density that can be compared with a reference speaker, while peak-current monitoring confirms every assembly received a full pulse. With a suitable fixture, the same setup can also handle [recharging weakened speaker magnets](/applications/magnet-recharging/), as with older alnico drivers.
 
 ## Speaker magnetizers made in Maharashtra, India
 
-SK Enterprises manufactures speaker magnetizers and fixtures as part of its range of [industrial magnetizing machines](/products/magnetizing-machines/), for audio and automotive speaker producers in Maharashtra and across India. {{Add supported speaker sizes, fixture types and gap flux checking options once confirmed.}}
+SK Enterprises manufactures speaker magnetizers and fixtures as part of its range of [industrial magnetizer machines](/products/magnetizer-machines/), for audio and automotive speaker producers in Maharashtra and across India. {{Add supported speaker sizes, fixture types and gap flux checking options once confirmed.}}
 
 ## What decides the price of a speaker magnetizer?
 

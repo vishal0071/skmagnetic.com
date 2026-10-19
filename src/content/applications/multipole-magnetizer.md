@@ -1,16 +1,16 @@
 ---
-title: Multi-pole Magnetizing
+title: Multi-pole Magnetizer
 seo:
-  title: Multi-pole Magnetizing of Rings, Rotors & Encoders
+  title: Multi-pole Magnetizers for Rings, Rotors & Encoders
   description: Create multiple north and south poles on ring magnets, rotors and encoder magnets with a custom fixture. Pole count, pole accuracy and skew explained.
 summary: Creating several alternating poles on one magnet or assembly, for rotors, encoder rings and sensor magnets, with a custom fixture.
 intro: >-
-  Multi-pole magnetizing puts several alternating north and south poles on a single ring,
+  A multi-pole magnetizer puts several alternating north and south poles on a single ring,
   disc or rotor in one pulse. The pattern is set entirely by the fixture, so pole count, pole
   width and accuracy have to be designed in from the start.
 icon: sensor
 products:
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
   - magnet-charging-machine
   - rotor-magnetizer
 industries:
@@ -28,10 +28,9 @@ faqs:
   - q: Can you make a fixture for our existing magnetizer?
     a: "Often, if the magnetizer's voltage, energy and current suit the fixture design. Share the magnetizer details along with your part drawing. {{Confirm whether SK Enterprises builds fixtures for magnetizers from other makers}}"
 order: 4
-sample: true
 ---
 
-## Where multi-pole magnetizing is used
+## Where multi-pole magnetizers are used
 
 - BLDC, PMSM and servo motor rotors, including outer-rotor fan and hub motors.
 - Encoder and speed-sensor rings, including rubber-bonded ferrite encoder tracks.
@@ -40,9 +39,9 @@ sample: true
 
 ## How a multi-pole fixture works
 
-A multi-pole fixture carries conductors arranged around the part so that current flows in opposite directions in neighbouring conductors. When a [capacitor discharge magnetizer](/products/magnetizing-machines/magnet-charging-machine/) fires a pulse of a few milliseconds through it, the region between each pair of conductors becomes a north or south pole. Depending on the part, the fixture can act on the outer diameter, the inner diameter or one face.
+A multi-pole fixture carries conductors arranged around the part so that current flows in opposite directions in neighbouring conductors. When a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/) fires a pulse of a few milliseconds through it, the region between each pair of conductors becomes a north or south pole. Depending on the part, the fixture can act on the outer diameter, the inner diameter or one face.
 
-Because the pattern is fixed by the fixture's construction, each [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) is made for a specific part and pole layout.
+Because the pattern is fixed by the fixture's construction, each [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) is made for a specific part and pole layout.
 
 ## Key design parameters
 
@@ -62,8 +61,8 @@ Some rotors need poles magnetized at an angle along their length, often to reduc
 
 The fixture must still reach saturation, roughly 1–1.5 T for ferrite and 2.5–3.5 T for sintered NdFeB, while carrying very high current in fine conductors. Cooling decides how often it can fire.
 
-Read [multi-pole magnetizing explained](/blog/multipole-magnetizing-explained/) for more on fixture design, or see how these fixtures are used for [rotor magnetizing](/applications/rotor-magnetizing/).
+Read [multi-pole magnetizers explained](/blog/multipole-magnetizer-explained/) for more on fixture design, or see how these fixtures are used in a [rotor magnetizer](/applications/rotor-magnetizer/).
 
-## Enquire about multi-pole magnetizing
+## Enquire about multi-pole magnetizers
 
 SK Enterprises designs and manufactures multi-pole fixtures and magnetizers in Maharashtra, India. Send your part drawing, magnet material, pole count and any skew or accuracy requirements. {{Confirm the pole counts, part sizes and pole accuracy SK Enterprises' fixtures can achieve.}} [Request a quotation](/get-quote/) for your fixture.

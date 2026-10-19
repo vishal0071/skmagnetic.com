@@ -1,6 +1,6 @@
 {
-  "isLive": false,
-  "showContentNotices": true,
+  "isLive": true,
+  "showContentNotices": false,
   "tagline": "Magnetizer Manufacturer",
   "contact": {
     "phoneDisplay": "+91 99751 09052",
@@ -30,7 +30,7 @@
   "business": {
     "gstin": "27HFWPK6842E1ZS",
     "established": "{{Year established}}",
-    "shortDescription": "SK Enterprises manufactures industrial magnetizers — magnet charging machines, magnetizing coils and fixtures — for motor, automotive, audio and magnet manufacturers."
+    "shortDescription": "SK Enterprises manufactures capacitive discharge impulse magnetizers and demagnetizers, magnetizer fixtures, digital gaussmeters and fluxmeters, and RCCB / ELCB calibrators."
   },
   "social": {
     "linkedin": "",

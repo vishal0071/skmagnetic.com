@@ -20,20 +20,18 @@ import TrustSection from '@/components/sections/TrustSection.astro';
 import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
 
 const [catalogue, industries, applications, posts] = await Promise.all([getCatalogue(), getIndustries(), getApplications(), getPosts()]);
-const featured = catalogue.flatMap((c) => c.products).filter((p) => p.data.featured);
-const categoryName = new Map(catalogue.map((c) => [c.category.id, c.category.data.title]));
 const industryCards = await Promise.all(
   industries.map(async (i) => ({ industry: i, products: (await resolve(i.data.products)).slice(0, 2) })),
 );
 
 const title = 'Magnetizer & Magnet Charging Machine Manufacturer in India';
 const description =
-  'SK Enterprises manufactures magnetizer machines, magnet charging machines, magnetizing coils and fixtures in Maharashtra for motor, audio and magnet makers.';
+  'SK Enterprises, Pune: capacitive discharge impulse magnetizers and demagnetizers, magnetizer fixtures, gaussmeters, fluxmeters and RCCB / ELCB calibrators.';
 
 const faqs = [
   {
     q: 'What does SK Enterprises manufacture?',
-    a: 'We manufacture industrial magnetizers — capacitor discharge magnet charging machines — together with the magnetizing coils and part-specific fixtures they drive, for rotors, motor housings, loudspeakers and loose magnets. {{Confirm the final product range}}',
+    a: 'We manufacture capacitive discharge impulse magnetizers and demagnetizers, RCCB / ELCB calibrators, magnetizer fixtures for multi-pole parts, BLDC rotors, speakers and PMDC motor housings, and digital gaussmeters and fluxmeters.',
   },
   {
     q: 'How do I get a quotation?',
@@ -41,7 +39,7 @@ const faqs = [
   },
   {
     q: 'Can you build a fixture for our specific part?',
-    a: 'Yes — magnetizing fixtures are normally designed around the customer’s part, such as a particular rotor, housing or ring magnet. Share a drawing or sample and we will confirm the design approach. {{Confirm custom fixture process and lead time}}',
+    a: 'Yes — magnetizer fixtures are normally designed around the customer’s part, such as a particular rotor, housing or ring magnet. Share a drawing or sample and we will confirm the design approach. {{Confirm custom fixture process and lead time}}',
   },
   {
     q: 'Do you supply magnetizers outside Maharashtra?',
@@ -78,7 +76,7 @@ const a = site.contact.address;
         <p class="eyebrow">{site.tagline} · {site.location.state}, {site.location.country}</p>
         <h1 id="hero-title">Magnetizer &amp; magnet charging machine manufacturer in India</h1>
         <p class="hero__sub">
-          Capacitor discharge magnetizers, magnetizing coils and custom fixtures — manufactured by {site.brand} for motor, automotive, audio and magnet
+          Capacitive discharge impulse magnetizers, magnetizer fixtures and measuring instruments — manufactured by {site.brand} for motor, automotive, audio and magnet
           producers. Get specifications, pricing and delivery details directly from the manufacturer.
         </p>
         <div class="btn-row hero__cta">
@@ -128,24 +126,31 @@ const a = site.contact.address;
     <div class="container">
       <SectionHead
         eyebrow="Our products"
-        title="Magnetizing machines, coils and fixtures"
+        title="Our products by category"
         text="Each product has its own page with specifications, variants, applications and FAQs — and a direct way to request a quotation."
         id="products-title"
       >
         <a class="btn btn--outline" href="/products/">View all products <Icon name="arrow-right" size={16} /></a>
       </SectionHead>
-      <nav class="cat-chips" aria-label="Browse by category">
-        {
-          catalogue.map(({ category, products }) => (
-            <a class="chip" href={categoryUrl(category.id)}>
-              {category.data.title} <span class="cat-chips__n">{products.length}</span>
-            </a>
-          ))
-        }
-      </nav>
-      <div class="grid">
-        {featured.map((p) => <ProductCard product={p} categoryName={categoryName.get(p.data.category.id)} />)}
-      </div>
+      {
+        catalogue.map(({ category, products }) => (
+          <div class="cat-group" id={`category-${category.id}`}>
+            <div class="cat-group__head">
+              <h3 class="cat-group__title">
+                <a href={categoryUrl(category.id)}>{category.data.title}</a>
+              </h3>
+              <a class="link-arrow" href={categoryUrl(category.id)}>
+                View category <Icon name="arrow-right" size={16} />
+              </a>
+            </div>
+            <div class="grid">
+              {products.map((p) => (
+                <ProductCard product={p} headingLevel="h4" />
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -156,7 +161,7 @@ const a = site.contact.address;
     <div class="container split split--center">
       <div>
         <p class="eyebrow">About us</p>
-        <h2 id="about-title">Magnetizing specialists, from machine to fixture</h2>
+        <h2 id="about-title">Magnetizer specialists, from machine to fixture</h2>
         <div class="stack mt-3 text-muted" style="--stack: 1rem">
           <p>
             <strong class="ink">{site.brand}</strong> designs and manufactures industrial magnetizers — magnet charging machines — and the coils and fixtures that
@@ -175,7 +180,7 @@ const a = site.contact.address;
       <dl class="facts" data-reveal>
         <div><dt>Company</dt><dd>{site.legalName}</dd></div>
         <div><dt>Location</dt><dd><Ph text={a.locality} after=", " />{site.location.state}, {site.location.country}</dd></div>
-        <div><dt>We manufacture</dt><dd>Magnetizers, magnetizing coils &amp; fixtures</dd></div>
+        <div><dt>We manufacture</dt><dd>Magnetizers, magnetizer fixtures &amp; instruments</dd></div>
         <div><dt>We serve</dt><dd>Motor, automotive, audio &amp; magnet manufacturers</dd></div>
         <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.established) }]}><dt>Established</dt><dd><Ph text={site.business.established} /></dd></div>
         <div class:list={[{ 'ph-only': isPlaceholderOnly(site.business.gstin) }]}><dt>GSTIN</dt><dd><Ph text={site.business.gstin} /></dd></div>
@@ -224,7 +229,7 @@ const a = site.contact.address;
     <div class="container">
       <SectionHead
         eyebrow="Industries we serve"
-        title="Magnetizing solutions for your sector"
+        title="Magnetizer solutions for your sector"
         text="Every industry magnetizes different parts — rotors, housings, speaker assemblies or sensor magnets. See what matters for yours."
         id="industries-title"
       >
@@ -447,26 +452,28 @@ const a = site.contact.address;
     color: var(--red);
   }
 
-  .cat-chips {
+  .cat-group + .cat-group {
+    margin-top: clamp(40px, 5vw, 56px);
+  }
+  .cat-group__head {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: -16px 0 28px;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
   }
-  .cat-chips .chip {
-    padding: 8px 14px;
-    font-size: var(--fs-sm);
+  .cat-group__title {
+    font-size: var(--fs-h3);
   }
-  .cat-chips__n {
-    display: inline-grid;
-    place-items: center;
-    min-width: 22px;
-    height: 22px;
-    padding: 0 6px;
-    border-radius: 999px;
-    background: var(--steel-100);
-    font-size: 0.75rem;
-    font-weight: 700;
+  .cat-group__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .cat-group__title a:hover {
+    color: var(--red);
   }
 
   .ink {

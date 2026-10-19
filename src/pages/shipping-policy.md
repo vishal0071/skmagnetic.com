@@ -2,7 +2,7 @@
 layout: ../layouts/LegalLayout.astro
 title: Shipping Policy
 seoTitle: Shipping & Dispatch Policy | SK Enterprises
-description: How SK Enterprises dispatches magnetizers, coils and fixtures to business customers — delivery timelines, freight terms, packaging, installation and transit damage.
+description: How SK Enterprises dispatches magnetizers, fixtures and instruments to business customers — delivery times, freight terms, packaging and installation.
 updated: "{{DD Month YYYY}}"
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Digital Gaussmeter
 category: test-measuring-instruments
-sample: true
 order: 1
 seo:
   title: Digital Gaussmeter | Hall Effect Magnetic Field Meter
@@ -64,12 +63,12 @@ variants:
 applications:
   - title: Incoming magnet inspection
     text: Check the surface field of ferrite and NdFeB magnets from suppliers against your specification.
-  - title: After magnetizing
+  - title: After magnetization
     text: Confirm that rotors, housings and loose magnets are magnetized and that the pole pattern and polarity are correct.
   - title: Residual magnetism
-    text: Measure what is left on steel parts or magnets after demagnetizing.
+    text: Measure what is left on steel parts or magnets after demagnetization.
   - title: Air gaps and coils
-    text: Measure the field in a loudspeaker gap, between pole pieces or inside a magnetizing coil.
+    text: Measure the field in a loudspeaker gap, between pole pieces or inside a magnetizer coil.
 features:
   - title: Hall-effect sensing
     text: A small sensor at the probe tip measures the field at a precise point.
@@ -94,7 +93,7 @@ industries:
   - loudspeakers-audio
   - sensors-electronics
 relatedApplications:
-  - multipole-magnetizing
+  - multipole-magnetizer
   - magnet-recharging
 related:
   - digital-fluxmeter
@@ -120,7 +119,7 @@ The probe carries a small **Hall-effect sensor**: a thin semiconductor element w
 ## Transverse and axial probes
 
 - A **transverse probe** is flat, with the sensor at its tip. It measures fields that pass through the flat face — on the surface of a magnet, between pole pieces or in a narrow air gap.
-- An **axial probe** measures fields along its length, such as the field inside a solenoid or a [magnetizing coil](/products/magnetizing-fixtures-coils/).
+- An **axial probe** measures fields along its length, such as the field inside a solenoid or a [magnetizer coil](/products/magnetizer-fixtures-coils/).
 
 ## Getting repeatable readings
 

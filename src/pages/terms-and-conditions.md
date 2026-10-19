@@ -10,11 +10,11 @@ These terms apply to the use of **skmagnetic.com** and to quotations issued by *
 
 ## About us
 
-The website is operated by SK Enterprises, manufacturer of industrial magnetizers, magnetic instruments, magnetizing coils and fixtures. {{Registered address and GSTIN}}
+The website is operated by SK Enterprises, manufacturer of industrial magnetizers, magnetic instruments, magnetizer coils and fixtures. {{Registered address and GSTIN}}
 
 ## Product information
 
-We aim to keep product information accurate and up to date. Specifications shown on the website — including energy ratings, voltages, currents, magnetizing fields and fixture details — are **typical values for reference**. Actual specifications depend on the configuration supplied and are confirmed in our quotation or order documents. Please check suitability for your parts with our team before ordering.
+We aim to keep product information accurate and up to date. Specifications shown on the website — including energy ratings, voltages, currents, magnetizer fields and fixture details — are **typical values for reference**. Actual specifications depend on the configuration supplied and are confirmed in our quotation or order documents. Please check suitability for your parts with our team before ordering.
 
 Product images and illustrations are representative and may differ from the item supplied.
 
@@ -25,7 +25,7 @@ Product images and illustrations are representative and may differ from the item
 - An order is confirmed only when we accept it in writing (including by email or WhatsApp).
 - Custom or made-to-order items may require advance payment and cannot be cancelled once production or procurement has started. {{Confirm}}
 
-## Safe use of magnetizing equipment
+## Safe use of magnetizer equipment
 
 Magnetizers operate at high voltage and store significant energy in their capacitors, and magnetized parts can be very strong. Equipment must be installed, operated and maintained as described in our manual, only by trained personnel, and with all safety interlocks in place. Do not modify machines or fixtures, or use fixtures beyond their rated voltage and energy.
 

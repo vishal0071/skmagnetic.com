@@ -1,11 +1,10 @@
 ---
 title: Testing & Measuring Instruments
 navLabel: Instruments
-sample: true
 order: 3
 seo:
   title: Testing & Measuring Instruments | Gaussmeter, Fluxmeter
-  description: Digital gaussmeters and fluxmeters from SK Enterprises — instruments to measure the field and flux of magnets and to check parts after magnetizing.
+  description: Digital gaussmeters and fluxmeters from SK Enterprises — instruments to measure the field and flux of magnets and to check parts after magnetization.
 summary: Digital gaussmeters and fluxmeters for measuring magnets and checking magnetized parts.
 intro: >-
   SK Enterprises manufactures testing and measuring instruments alongside its magnetizers:
@@ -15,7 +14,7 @@ faqs:
   - q: What is the difference between a gaussmeter and a fluxmeter?
     a: A gaussmeter measures the flux density at one point, at the tip of a Hall-effect probe, in gauss or tesla. A fluxmeter measures the total flux of a whole magnet or part through a search coil, in webers or maxwells. Use a gaussmeter for surface fields, pole patterns and residual magnetism, and a fluxmeter to compare whole magnets and assemblies in quality control.
   - q: Can a fluxmeter or gaussmeter be used with a magnetizer?
-    a: "Yes. Measuring parts after magnetizing confirms they are fully magnetized, and a fluxmeter can also be built into a magnetizer panel to check each part. {{Confirm which instruments can be built into SK Enterprises magnetizers}}"
+    a: "Yes. Measuring parts after magnetization confirms they are fully magnetized, and a fluxmeter can also be built into a magnetizer panel to check each part. {{Confirm which instruments can be built into SK Enterprises magnetizers}}"
   - q: Are the instruments supplied with a calibration certificate?
     a: "{{Confirm whether instruments are supplied with a calibration certificate and what it is traceable to}}"
 ---

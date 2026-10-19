@@ -12,11 +12,11 @@ intro: >-
 icon: bolt
 products:
   - rotor-magnetizer
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
   - magnet-charging-machine
 applications:
-  - rotor-magnetizing
-  - multipole-magnetizing
+  - rotor-magnetizer
+  - multipole-magnetizer
 needs:
   - title: Fixtures for outer-rotor designs
     text: BLDC ceiling fans and direct-drive washing machine motors typically use an outer rotor, so the fixture sits inside the rotor and magnetizes the magnets from within.
@@ -32,11 +32,10 @@ faqs:
   - q: Can we use the same magnetizer for fan rotors and pump rotors?
     a: Often, yes, with a separate fixture for each rotor design, as long as the magnetizer has enough energy for the most demanding part.
   - q: Why magnetize after assembly instead of buying magnetized segments?
-    a: Unmagnetized segments are easier to place and glue without jumping out of position or collecting debris, and magnetizing the whole rotor at once gives a consistent pole pattern.
+    a: Unmagnetized segments are easier to place and glue without jumping out of position or collecting debris, and magnetization of the whole rotor at once gives a consistent pole pattern.
   - q: Can inverter compressor rotors be magnetized after assembly?
-    a: "Compressor rotors usually have magnets buried in the laminations, which makes magnetizing after assembly more demanding. {{Confirm whether SK Enterprises supplies fixtures for interior-magnet compressor rotors}}"
+    a: "Compressor rotors usually have magnets buried in the laminations, which makes magnetization after assembly more demanding. {{Confirm whether SK Enterprises supplies fixtures for interior-magnet compressor rotors}}"
 order: 5
-sample: true
 ---
 
 ## Permanent magnet motors in appliances
@@ -45,7 +44,7 @@ Appliance makers are moving from induction and universal motors to BLDC motors t
 
 ### BLDC ceiling fans
 
-Most are outer-rotor motors with ferrite or NdFeB magnets on the inside of the rotor shell. The fixture sits inside the rotor and creates the full pole pattern in one pulse of a few milliseconds. [Multi-pole magnetizing fixtures](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) are built around each rotor design. For a step-by-step view of the process, read [how BLDC ceiling fan rotor magnets are magnetized](/blog/bldc-fan-rotor-magnetizing/).
+Most are outer-rotor motors with ferrite or NdFeB magnets on the inside of the rotor shell. The fixture sits inside the rotor and creates the full pole pattern in one pulse of a few milliseconds. [Multi-pole magnetizer fixtures](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) are built around each rotor design. For a step-by-step view of the process, read [how BLDC ceiling fan rotor magnets are magnetized](/blog/bldc-fan-rotor-magnetizer/).
 
 ### Pumps
 
@@ -53,14 +52,14 @@ Solar pumps and BLDC domestic pumps use permanent magnet rotors, and many small 
 
 ### Washing machine and compressor motors
 
-Direct-drive washing machine motors are usually large outer-rotor designs with many poles. Inverter compressor rotors typically have magnets embedded in the laminations, which makes magnetizing them after assembly more demanding.
+Direct-drive washing machine motors are usually large outer-rotor designs with many poles. Inverter compressor rotors typically have magnets embedded in the laminations, which makes their magnetization after assembly more demanding.
 
 ## Matching the station to production
 
-For most appliance rotors, a [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/), where the machine and fixture are designed together, is the simplest route. Pole count, pole accuracy and fixture cooling should be settled at the design stage, along with how each part will be checked. Peak-current monitoring on every pulse and a flux or gauss test on sample rotors are common choices.
+For most appliance rotors, a [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/), where the machine and fixture are designed together, is the simplest route. Pole count, pole accuracy and fixture cooling should be settled at the design stage, along with how each part will be checked. Peak-current monitoring on every pulse and a flux or gauss test on sample rotors are common choices.
 
-To understand how fixtures create fine pole patterns, read [multi-pole magnetizing explained](/blog/multipole-magnetizing-explained/), or see our page on [rotor magnetizing](/applications/rotor-magnetizing/).
+To understand how fixtures create fine pole patterns, read [multi-pole magnetizers explained](/blog/multipole-magnetizer-explained/), or see our page on [rotor magnetizers](/applications/rotor-magnetizer/).
 
-## Enquire about appliance motor magnetizing
+## Enquire about magnetizers for appliance motors
 
 SK Enterprises designs and manufactures magnetizers and fixtures in Maharashtra, India. Share your rotor drawing, magnet type, pole count and expected output, and we will suggest a suitable setup. {{Add the appliance rotor types and sizes SK Enterprises has built fixtures for, once confirmed.}} [Request a quotation](/get-quote/) for your rotor.

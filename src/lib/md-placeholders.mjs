@@ -3,8 +3,14 @@
  * <span class="ph">…</span>. Placeholders are hidden from visitors and highlighted in review
  * mode (?review=1). A ", " directly after a placeholder is hidden with it, so
  * "based in {{City}}, Maharashtra" reads "based in Maharashtra" until the city is filled in.
+ * With review tools off (settings.showContentNotices false) placeholders are left out of the
+ * HTML entirely, so search engines never read them.
  */
+import { readFileSync } from 'node:fs';
 import { defineMdastPlugin } from 'satteri';
+
+const settings = JSON.parse(readFileSync(new URL('../content/settings.json', import.meta.url), 'utf8'));
+const review = settings.showContentNotices !== false;
 
 const RE = /\{\{([^{}]+)\}\}(, )?/g;
 const escapeHtml = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -17,14 +23,15 @@ export const placeholders = defineMdastPlugin({
     let last = 0;
     for (const match of node.value.matchAll(RE)) {
       if (match.index > last) parts.push({ type: 'text', value: node.value.slice(last, match.index) });
-      parts.push({
-        type: 'html',
-        value: `<span class="ph" title="Placeholder — replace before launch">${escapeHtml(match[1].trim() + (match[2] || ''))}</span>`,
-      });
+      if (review)
+        parts.push({
+          type: 'html',
+          value: `<span class="ph" title="Placeholder — replace before launch">${escapeHtml(match[1].trim() + (match[2] || ''))}</span>`,
+        });
       last = match.index + match[0].length;
     }
-    if (!parts.length) return;
+    if (!last) return;
     if (last < node.value.length) parts.push({ type: 'text', value: node.value.slice(last) });
-    ctx.replaceNode(node, parts);
+    ctx.replaceNode(node, parts.length ? parts : [{ type: 'text', value: '' }]);
   },
 });

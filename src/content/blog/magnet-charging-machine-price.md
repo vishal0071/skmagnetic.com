@@ -12,7 +12,7 @@ products:
   - rotor-magnetizer
   - speaker-magnetizer
 categories:
-  - magnetizing-machines
+  - magnetizer-machines
 faqs:
   - q: Why do quotations for magnetizers vary so much?
     a: Quotations often describe different systems. One may include a part-specific fixture, peak-current monitoring, cooling and installation, while another covers only the basic machine. Compare what each quotation includes and whether it has been sized to saturate your most demanding part at your production rate.
@@ -22,7 +22,6 @@ faqs:
     a: Often, yes. A single magnetizer can drive several fixtures, so adding a new product may only need a new fixture. The machine must then be sized for the most demanding part in the range, and fixture changeovers take time, so high-volume lines sometimes justify a dedicated machine per line.
   - q: What information do I need to get an accurate quotation?
     a: A part drawing, the magnet material and grade, the magnetization direction or pole pattern, your output per hour or shift, the power supply available, and details of any existing magnetizer. A sample part, unmagnetized and if possible a correctly magnetized reference, makes the quotation more reliable.
-sample: true
 ---
 
 "What does a magnet charging machine cost?" is one of the first questions buyers ask, and the honest answer is that it depends on what the machine has to do. A compact unit for small ferrite magnets and a production system for NdFeB motor rotors go by the same name, yet they share little beyond the operating principle. This guide explains what decides the cost, so you can compare quotations on equal terms.
@@ -55,17 +54,17 @@ Two machines with the same energy rating can still differ widely in price. One m
 
 ### Energy rating and voltage
 
-The energy rating has to be high enough to saturate your most demanding part through the chosen fixture. NdFeB needs a much stronger field than ferrite, and large parts, batches and multi-pole patterns all push the requirement up. Our guide to [magnetizing field requirements](/blog/magnetizing-field-requirements/) gives approximate figures for each material. Voltage and energy go together: a higher-voltage machine needs components rated for that voltage throughout.
+The energy rating has to be high enough to saturate your most demanding part through the chosen fixture. NdFeB needs a much stronger field than ferrite, and large parts, batches and multi-pole patterns all push the requirement up. Our guide to [magnetizer field requirements](/blog/magnetizer-field-requirements/) gives approximate figures for each material. Voltage and energy go together: a higher-voltage machine needs components rated for that voltage throughout.
 
 It is also worth allowing a sensible margin. A machine sized exactly for today's part may not cope with a larger rotor or a higher-grade magnet next year, while a moderate margin lets the same machine take on new fixtures later.
 
 ### Coil or fixture
 
-A plain solenoid magnetizing coil for loose magnets is the simplest tooling. Rotor, motor housing and multi-pole fixtures are designed for one part and machined to its drawing, so they cost more, and each additional part design usually needs its own fixture.
+A plain solenoid magnetizer coil for loose magnets is the simplest tooling. Rotor, motor housing and multi-pole fixtures are designed for one part and machined to its drawing, so they cost more, and each additional part design usually needs its own fixture.
 
 ### Cooling and cycle time
 
-Every pulse leaves heat in the fixture winding. A laboratory machine fired a few times an hour needs no special cooling, while a fan or motor line magnetizing parts continuously may need a larger charger plus forced-air or water cooling to keep pace. A larger charger can also call for a three-phase supply, so check the connection available at your site early.
+Every pulse leaves heat in the fixture winding. A laboratory machine fired a few times an hour needs no special cooling, while a fan or motor line that magnetizes parts continuously may need a larger charger plus forced-air or water cooling to keep pace. A larger charger can also call for a three-phase supply, so check the connection available at your site early.
 
 ### Controls, monitoring and automation
 
@@ -77,7 +76,7 @@ Commissioning, operator training, recommended spares and after-sales support sho
 
 ## How the application shifts the cost
 
-The application often decides which of these factors matter most. A [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) for BLDC fans or hub motors is dominated by fixture design, pole accuracy and cycle time. A [speaker magnetizer](/products/magnetizing-fixtures-coils/speaker-magnetizer/) depends heavily on the largest magnet circuit and whether neodymium drivers are included. A general-purpose [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) for loose magnets is driven mainly by energy rating and coil size.
+The application often decides which of these factors matter most. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) for BLDC fans or hub motors is dominated by fixture design, pole accuracy and cycle time. A [speaker magnetizer](/products/magnetizer-fixtures-coils/speaker-magnetizer/) depends heavily on the largest magnet circuit and whether neodymium drivers are included. A general-purpose [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) for loose magnets is driven mainly by energy rating and coil size.
 
 ## Comparing quotations fairly
 
@@ -93,6 +92,6 @@ A lower price that leaves parts under-magnetized, or a fixture that overheats at
 
 ## Need help choosing?
 
-Send your part drawing, magnet material and grade, pole pattern, output per shift and power supply details, and the SK Enterprises team will propose a configuration and prepare a quotation for it. {{Confirm whether trial magnetizing of sample parts is offered before an order is placed.}}
+Send your part drawing, magnet material and grade, pole pattern, output per shift and power supply details, and the SK Enterprises team will propose a configuration and prepare a quotation for it. {{Confirm whether a magnetizer trial on sample parts is offered before an order is placed.}}
 
 [Request a quotation](/get-quote/) or [contact us](/contact/) to discuss your requirement.

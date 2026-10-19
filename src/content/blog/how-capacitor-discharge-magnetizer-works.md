@@ -9,10 +9,10 @@ published: 2026-09-08
 illustration: magnetizer
 products:
   - magnet-charging-machine
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
 categories:
-  - magnetizing-machines
-  - magnetizing-fixtures-coils
+  - magnetizer-machines
+  - magnetizer-fixtures-coils
 faqs:
   - q: Why do magnetizers use capacitors instead of drawing power straight from the mains?
     a: A normal factory supply cannot deliver thousands of amperes on demand. Capacitors collect energy gradually over a few seconds and release it in a few milliseconds, so the supply only sees a modest, steady load while the coil receives a very large, very short burst of current.
@@ -22,14 +22,13 @@ faqs:
     a: Only up to the point of saturation. Raising the voltage increases current and field, but once the magnet is fully saturated it cannot become any stronger. Extra voltage beyond that point simply adds heat and mechanical stress to the fixture, and exceeding the fixture's rated voltage can damage its insulation.
   - q: Can a capacitor discharge magnetizer handle every magnet material?
     a: In principle it can magnetize ferrite, NdFeB, samarium cobalt and alnico. In practice the machine's energy and voltage, and the design of the coil or fixture, must be matched to the most demanding material and part size you intend to run.
-sample: true
 ---
 
 Most permanent magnets in motors, loudspeakers and sensors are magnetized by the same kind of machine: a capacitor discharge (CD) magnetizer. From the outside it looks like a control cabinet with a coil or fixture attached. Inside, it does something quite simple. It stores electrical energy slowly, then releases it all at once.
 
 ## Key takeaways
 
-- A CD magnetizer has four main building blocks: a charger, a capacitor bank, a high-current switch (usually a thyristor, also called an SCR) and a magnetizing coil or fixture.
+- A CD magnetizer has four main building blocks: a charger, a capacitor bank, a high-current switch (usually a thyristor, also called an SCR) and a magnetizer coil or fixture.
 - Stored energy follows E = ½CV², so the charging voltage has the biggest influence on how much energy each pulse carries.
 - A typical pulse lasts a few milliseconds, with peak currents from a few kiloamps to tens of kiloamps.
 - The coil or fixture is part of the electrical circuit. Its inductance and resistance set the height, length and shape of the pulse.
@@ -55,9 +54,9 @@ When the operator presses the fire button, or a PLC sends the signal, a switch c
 
 ### 4. Coil or fixture
 
-The magnetizing coil or part-specific fixture converts current into magnetic field. In a simple solenoid, the field is proportional to ampere-turns: the number of turns multiplied by the current. Fixtures for rotors, housings and multi-pole parts shape the field into a particular pattern; the [magnetizing fixtures and coils](/products/magnetizing-fixtures-coils/) range shows the main types.
+The magnetizer coil or part-specific fixture converts current into magnetic field. In a simple solenoid, the field is proportional to ampere-turns: the number of turns multiplied by the current. Fixtures for rotors, housings and multi-pole parts shape the field into a particular pattern; the [magnetizer fixtures and coils](/products/magnetizer-fixtures-coils/) range shows the main types.
 
-## One magnetizing cycle, step by step
+## One magnetizer cycle, step by step
 
 1. **Load.** The unmagnetized part is placed in the coil or fixture and located correctly.
 2. **Charge.** The charger raises the capacitor bank to the set voltage and stops when the setpoint is reached.
@@ -77,7 +76,7 @@ For a lightly damped circuit, the peak current is roughly V ÷ √(L/C), reached
 
 ### Eddy currents and pulse length
 
-A changing magnetic field induces eddy currents in any electrically conductive material. Sintered NdFeB, samarium cobalt and alnico are conductive; ferrite is not. Steel rotor cores and motor housings are conductive too. Eddy currents generate their own field that opposes the change, so with a very short pulse the field may not fully penetrate the part before it starts to fall. A longer pulse, or more energy, compensates. For thick NdFeB magnets, or magnets inside steel assemblies such as those used in [rotor magnetizing](/applications/rotor-magnetizing/), pulse length is a design parameter rather than an afterthought.
+A changing magnetic field induces eddy currents in any electrically conductive material. Sintered NdFeB, samarium cobalt and alnico are conductive; ferrite is not. Steel rotor cores and motor housings are conductive too. Eddy currents generate their own field that opposes the change, so with a very short pulse the field may not fully penetrate the part before it starts to fall. A longer pulse, or more energy, compensates. For thick NdFeB magnets, or magnets inside steel assemblies such as those processed on a [rotor magnetizer](/applications/rotor-magnetizer/), pulse length is a design parameter rather than an afterthought.
 
 ### Heat
 
@@ -107,10 +106,10 @@ These points are covered in more depth in our [magnetizer safety and maintenance
 
 ## How this affects what you specify
 
-Once the circuit is clear, specification becomes easier. The magnet material sets the field required (see [how much field ferrite, NdFeB, SmCo and alnico need](/blog/magnetizing-field-requirements/)). The part sets the fixture. The fixture and production rate then set the energy, voltage and charger power. Our guide on [how to choose a magnetizer](/blog/how-to-choose-magnetizer/) works through those decisions step by step.
+Once the circuit is clear, specification becomes easier. The magnet material sets the field required (see [how much field ferrite, NdFeB, SmCo and alnico need](/blog/magnetizer-field-requirements/)). The part sets the fixture. The fixture and production rate then set the energy, voltage and charger power. Our guide on [how to choose a magnetizer](/blog/how-to-choose-magnetizer/) works through those decisions step by step.
 
 ## Need help choosing?
 
-If you plan to magnetize parts in-house, share your part drawing, magnet material and grade, and expected output per shift. The SK Enterprises team can suggest a suitable [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) with a matching coil or fixture. {{Add standard model energy ratings and voltage range once confirmed.}}
+If you plan to magnetize parts in-house, share your part drawing, magnet material and grade, and expected output per shift. The SK Enterprises team can suggest a suitable [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) with a matching coil or fixture. {{Add standard model energy ratings and voltage range once confirmed.}}
 
 [Request a quotation](/get-quote/?product=magnet-charging-machine) or [contact our team](/contact/) with your questions.

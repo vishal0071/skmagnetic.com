@@ -15,19 +15,19 @@ products:
   - magnet-charging-machine
 applications:
   - magnet-recharging
-  - loose-magnet-magnetizing
+  - loose-magnet-magnetizer
 needs:
   - title: A clean voice coil gap
-    text: Magnetizing after assembly stops steel particles being pulled into the narrow gap, where they can cause rubbing and buzzing.
+    text: Magnetization after assembly stops steel particles being pulled into the narrow gap, where they can cause rubbing and buzzing.
   - title: Consistent gap flux
     text: Fully saturating every magnet keeps sensitivity consistent from one speaker to the next.
   - title: Coils sized to the assembly
     text: Large ferrite rings in woofers and small neodymium magnets in compact drivers need different coil sizes and energy levels.
   - title: Quick, simple operation
-    text: Speaker lines need fast loading and a short cycle so magnetizing never holds up assembly.
+    text: Speaker lines need fast loading and a short cycle so the magnetizer never holds up assembly.
 faqs:
   - q: Why are speakers magnetized after assembly?
-    a: Unmagnetized parts are easier to glue and centre, and they do not attract steel dust into the voice coil gap. Magnetizing the finished magnet assembly in one pulse is cleaner and more consistent.
+    a: Unmagnetized parts are easier to glue and centre, and they do not attract steel dust into the voice coil gap. Magnetization of the finished magnet assembly in one pulse is cleaner and more consistent.
   - q: Can the same machine magnetize ferrite and neodymium speakers?
     a: It can, if the machine has enough energy for the neodymium parts and a suitable coil or fixture is used for each size. Neodymium needs a considerably stronger field than ferrite.
   - q: Can old or weakened speakers be re-magnetized?
@@ -35,12 +35,11 @@ faqs:
   - q: What speaker sizes can your magnetizers handle?
     a: "{{Confirm the range of speaker and magnet diameters SK Enterprises' speaker magnetizers can accept}}"
 order: 3
-sample: true
 ---
 
-## How speaker magnetizing works
+## How a speaker magnetizer works
 
-A moving-coil loudspeaker has a magnet held between steel plates and a pole piece, forming a magnetic circuit with a narrow gap for the voice coil. Many manufacturers glue this circuit together with the magnet unmagnetized. The complete assembly, or the finished speaker, is then placed in a coil or fixture and charged by a [speaker magnetizer](/products/magnetizing-fixtures-coils/speaker-magnetizer/). The pulse lasts only a few milliseconds.
+A moving-coil loudspeaker has a magnet held between steel plates and a pole piece, forming a magnetic circuit with a narrow gap for the voice coil. Many manufacturers glue this circuit together with the magnet unmagnetized. The complete assembly, or the finished speaker, is then placed in a coil or fixture and charged by a [speaker magnetizer](/products/magnetizer-fixtures-coils/speaker-magnetizer/). The pulse lasts only a few milliseconds.
 
 ## Ferrite and neodymium speakers
 
@@ -50,7 +49,7 @@ Most conventional woofers and full-range drivers use a ferrite ring magnet outsi
 
 ### Neodymium magnets
 
-Compact and lightweight drivers often use neodymium (NdFeB) magnets, usually inside the voice coil. NdFeB needs a much stronger field, typically around 2.5–3.5 T, so the magnetizer and coil must be specified for it. Our guide to [magnetizing field requirements](/blog/magnetizing-field-requirements/) explains why.
+Compact and lightweight drivers often use neodymium (NdFeB) magnets, usually inside the voice coil. NdFeB needs a much stronger field, typically around 2.5–3.5 T, so the magnetizer and coil must be specified for it. Our guide to [magnetizer field requirements](/blog/magnetizer-field-requirements/) explains why.
 
 ## Practical points for a speaker line
 
@@ -60,7 +59,7 @@ Compact and lightweight drivers often use neodymium (NdFeB) magnets, usually ins
 - **Cycle time:** fixture cooling and capacitor recharge time set how many speakers can be magnetized per hour.
 - **Checks:** a gauss reading in the gap, or a sensitivity test on the finished speaker, confirms the result.
 
-The same machine is useful for [re-magnetizing speakers](/applications/magnet-recharging/) that come back for rework or repair.
+The same machine is useful for [recharging speakers](/applications/magnet-recharging/) that come back for rework or repair.
 
 ## Enquire about a speaker magnetizer
 

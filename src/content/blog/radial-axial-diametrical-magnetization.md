@@ -8,10 +8,10 @@ type: Specifications Explained
 published: 2026-10-03
 illustration: fixture
 products:
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
   - rotor-magnetizer
 categories:
-  - magnetizing-fixtures-coils
+  - magnetizer-fixtures-coils
 faqs:
   - q: Is radial magnetization the same as diametrical magnetization?
     a: No. In diametrical magnetization the field runs straight across the part, so one half of the curved surface is north and the other half is south. In radial magnetization the field runs outward from the centre, so the whole outer surface is one pole and the bore or centre is the other.
@@ -21,7 +21,6 @@ faqs:
     a: Magnetic viewing film shows the pole layout as light and dark areas. A gaussmeter probe moved over the surface shows where the field is strongest and its polarity, and a simple compass identifies north and south. For multi-pole parts, a Hall-probe scan around the part gives the full pattern.
   - q: Which magnetization direction gives the strongest magnet?
     a: None is stronger in itself. Performance depends on the magnet material, whether it is oriented in that direction, its length along the magnetization direction and the steel around it in the final assembly. The right direction is the one the product design needs, made from material oriented to match.
-sample: true
 ---
 
 A ring or disc magnet looks the same whichever way it is magnetized, but where its north and south poles sit changes how it behaves in a motor, sensor or holding device. Magnet drawings use terms such as axial, diametrical and radial for this, and each one calls for a different coil or fixture. This guide explains the differences in plain terms.
@@ -38,13 +37,13 @@ A ring or disc magnet looks the same whichever way it is magnetized, but where i
 
 | Pattern | Where the poles sit | Field inside the magnet | Typical parts | Typical tooling |
 | --- | --- | --- | --- | --- |
-| Axial | One flat face north, the other south | Parallel to the axis, through the thickness | Holding magnets, reed and Hall switch magnets, speaker rings | Solenoid magnetizing coil |
+| Axial | One flat face north, the other south | Parallel to the axis, through the thickness | Holding magnets, reed and Hall switch magnets, speaker rings | Solenoid magnetizer coil |
 | Diametrical | One side of the curved surface north, the opposite side south | Straight across the diameter | Rotary angle sensor magnets, small two-pole rotors, couplings | Fixture or yoke with pole pieces on opposite sides |
 | Radial | Outer surface one pole, inner surface or centre the other | Outward (or inward) from the axis | Some motor and coupling rings, arc segments | Special radial fixture |
 
 ## Axial magnetization
 
-Axial is the most common direction for loose discs, rings and cylinders. The field runs along the axis of the part, so one flat face becomes north and the other south. A magnetizing coil produces exactly this field: the part sits in the bore with its axis along the coil, and one pulse magnetizes it through its thickness. Batches of identical parts can be charged together if they fit in the uniform central zone of the coil, which is why axial charging is the backbone of [loose magnet magnetizing](/applications/loose-magnet-magnetizing/).
+Axial is the most common direction for loose discs, rings and cylinders. The field runs along the axis of the part, so one flat face becomes north and the other south. A magnetizer coil produces exactly this field: the part sits in the bore with its axis along the coil, and one pulse magnetizes it through its thickness. Batches of identical parts can be charged together if they fit in the uniform central zone of the coil, which is why axial charging is the backbone of [loose magnet magnetizers](/applications/loose-magnet-magnetizer/).
 
 Axial magnetization is also used in axial-flux motors, where magnet segments on a flat disc are magnetized through their thickness with alternating polarity.
 
@@ -75,7 +74,7 @@ Each basic direction has a multi-pole form:
 - **Radial multi-pole** — several alternating poles around the outer or inner diameter of a ring or rotor, as used in BLDC motors.
 - **Face (axial) multi-pole** — alternating poles on the flat face of a disc or ring, as used in encoders and axial sensors.
 
-These patterns are created in one pulse by a [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) with conductors set at each pole boundary. For assembled motor rotors, the fixture is supplied as part of a [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/). Our article on [multi-pole magnetizing](/blog/multipole-magnetizing-explained/) explains pole count, pole pitch and skew in more detail.
+These patterns are created in one pulse by a [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) with conductors set at each pole boundary. For assembled motor rotors, the fixture is supplied as part of a [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/). Our article on [multi-pole magnetizers](/blog/multipole-magnetizer-explained/) explains pole count, pole pitch and skew in more detail.
 
 ## Orientation decides what is possible
 

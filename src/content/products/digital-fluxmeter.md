@@ -1,12 +1,11 @@
 ---
 title: Digital Fluxmeter
 category: test-measuring-instruments
-sample: true
 order: 2
 seo:
   title: Digital Fluxmeter | Magnetic Flux Meter with Search Coil
-  description: Digital fluxmeter that measures the total magnetic flux of magnets and magnetized parts with a search or Helmholtz coil — for quality checks after magnetizing.
-summary: Integrating fluxmeter that measures the total magnetic flux of a magnet or magnetized part through a search coil or Helmholtz coil — for quality checks after magnetizing.
+  description: Digital fluxmeter measuring the total magnetic flux of magnets and magnetized parts with a search or Helmholtz coil — for quality checks after magnetization.
+summary: Integrating fluxmeter that measures the total magnetic flux of a magnet or magnetized part through a search coil or Helmholtz coil — for quality checks after magnetization.
 overview: >-
   A digital fluxmeter measures magnetic flux — the total magnetism a magnet or magnetized
   part produces — rather than the field at a single point. It works with a search coil or a
@@ -91,8 +90,8 @@ industries:
   - loudspeakers-audio
   - automotive-components
 relatedApplications:
-  - rotor-magnetizing
-  - loose-magnet-magnetizing
+  - rotor-magnetizer
+  - loose-magnet-magnetizer
   - magnet-recharging
 related:
   - digital-gaussmeter
@@ -119,9 +118,9 @@ A fluxmeter is connected to a **search coil** — a coil of wire that surrounds 
 
 With a **Helmholtz coil**, a fluxmeter measures the **magnetic moment** of a magnet. Dividing the moment by the magnet's volume gives its magnetization, which can be compared with the values expected for its grade. This is a quick way to check incoming magnets or to compare suppliers without cutting or destroying samples.
 
-## Using a fluxmeter after magnetizing
+## Using a fluxmeter after magnetization
 
-A fluxmeter is the simplest way to prove that a [magnetizer](/products/magnetizing-machines/magnet-charging-machine/) setting is right. Magnetize test parts at increasing charging voltages and measure each one: when the flux stops rising, the part is saturated. In production, measuring parts in a test coil and comparing the result with limits shows straight away if a part was not fully magnetized. Learn more about [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
+A fluxmeter is the simplest way to prove that a [magnetizer](/products/magnetizer-machines/magnet-charging-machine/) setting is right. Magnetize test parts at increasing charging voltages and measure each one: when the flux stops rising, the part is saturated. In production, measuring parts in a test coil and comparing the result with limits shows straight away if a part was not fully magnetized. Learn more about [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
 ## Made by SK Enterprises
 

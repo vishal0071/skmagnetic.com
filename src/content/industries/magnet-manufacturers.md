@@ -2,7 +2,7 @@
 title: Magnet Manufacturers & Traders
 seo:
   title: Magnet Charging Machines for Magnet Makers & Traders
-  description: Charge ferrite and NdFeB magnets before dispatch, test samples and re-charge weakened stock in-house with a magnet charging machine and magnetizing coil.
+  description: Charge ferrite and NdFeB magnets before dispatch, test samples and re-charge weakened stock in-house with a magnet charging machine and magnetizer coil.
 summary: Magnet charging machines and coils for magnet makers and traders who charge ferrite and NdFeB magnets before dispatch or re-charge stock.
 intro: >-
   Magnet manufacturers and traders often hold stock unmagnetized and charge it only when an
@@ -12,11 +12,11 @@ intro: >-
 icon: magnet
 products:
   - magnet-charging-machine
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
 applications:
-  - loose-magnet-magnetizing
+  - loose-magnet-magnetizer
   - magnet-recharging
-  - multipole-magnetizing
+  - multipole-magnetizer
 needs:
   - title: Flexibility across sizes and grades
     text: One machine often has to charge small discs, large blocks and rings, in both ferrite and NdFeB, by changing coils.
@@ -36,14 +36,13 @@ faqs:
   - q: How many magnets can be charged at once?
     a: "It depends on the coil bore, the magnet size and the machine's energy. Small magnets can often be charged several at a time in a non-magnetic holder. {{Confirm coil bore sizes and batch capacities SK Enterprises offers}}"
 order: 4
-sample: true
 ---
 
 ## Charging magnets in-house
 
 Many ferrite and NdFeB magnets leave the sintering and grinding stages unmagnetized. Whether you make magnets or trade them, charging is often the last step before dispatch, and doing it in-house means you control the timing, the polarity and the result.
 
-The standard setup for loose magnets is a [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) paired with a magnetizing coil. The magnet sits in the coil bore and is charged through its thickness by a pulse lasting a few milliseconds. Our explainer on [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/) covers the principle.
+The standard setup for loose magnets is a [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) paired with a magnetizer coil. The magnet sits in the coil bore and is charged through its thickness by a pulse lasting a few milliseconds. Our explainer on [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/) covers the principle.
 
 ## Common jobs for a charging setup
 

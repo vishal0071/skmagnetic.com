@@ -1,12 +1,12 @@
 ---
-title: Loose Magnet Magnetizing (Magnet Charging)
+title: Loose Magnet Magnetizer (Magnet Charging)
 seo:
-  title: Loose Magnet Magnetizing & Magnet Charging | SK Enterprises
-  description: Charge loose ferrite, NdFeB and SmCo magnets through their thickness with a magnetizing coil and capacitor discharge magnetizer, singly or in small batches.
-summary: Charging individual ferrite, NdFeB and other magnets in a magnetizing coil, one at a time or in small batches.
+  title: Loose Magnet Magnetizer & Magnet Charging | SK Enterprises
+  description: Charge loose ferrite, NdFeB and SmCo magnets through their thickness with a magnetizer coil and capacitor discharge magnetizer, singly or in small batches.
+summary: Charging individual ferrite, NdFeB and other magnets in a magnetizer coil, one at a time or in small batches.
 intro: >-
-  Loose magnet magnetizing, usually called magnet charging, means magnetizing individual
-  magnets before they are packed, sold or assembled. It is the simplest magnetizing job: a
+  Loose magnet magnetization, usually called magnet charging, means that individual magnets
+  are magnetized before they are packed, sold or assembled. It is the simplest magnetizer job: a
   solenoid coil, a capacitor discharge magnetizer and a holder that keeps each magnet in the
   right orientation.
 icon: magnet
@@ -26,7 +26,6 @@ faqs:
   - q: What coil sizes are available?
     a: "{{Confirm standard coil bore sizes and maximum magnet dimensions SK Enterprises offers}}"
 order: 3
-sample: true
 ---
 
 ## When loose magnet charging is used
@@ -38,7 +37,7 @@ sample: true
 
 ## How it works
 
-The magnet sits in the bore of a magnetizing coil, a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds, magnetizing the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
+The magnet sits in the bore of a magnetizer coil, a solenoid that produces a near-uniform field along its axis. A [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) discharges its capacitor bank through the coil in a pulse lasting a few milliseconds to magnetize the magnet through its thickness or length. For the physics behind the pulse, see [how a capacitor discharge magnetizer works](/blog/how-capacitor-discharge-magnetizer-works/).
 
 ### How much field is needed?
 
@@ -51,7 +50,7 @@ As a rough guide, ferrite saturates at about 1–1.5 T, sintered NdFeB at about 
 - **Handling after charging:** charged magnets attract each other and any nearby steel. Collect them in non-magnetic trays with spacers to avoid chipping and pinched fingers.
 - **Checking:** a gauss meter reading on the face, or a fluxmeter with a Helmholtz coil, confirms that a batch is fully charged.
 
-A coil magnetizes in one direction only. If your part needs several poles on one face or around its edge, it needs a shaped fixture instead; see [multi-pole magnetizing](/applications/multipole-magnetizing/).
+A coil magnetizes in one direction only. If your part needs several poles on one face or around its edge, it needs a shaped fixture instead; see [multi-pole magnetizers](/applications/multipole-magnetizer/).
 
 ## Enquire about magnet charging
 

@@ -1,17 +1,16 @@
 ---
 title: Capacitive Discharge Impulse Magnetizers
-category: magnetizing-machines
-sample: true
+category: magnetizer-machines
 featured: true
 order: 1
 seo:
-  title: Capacitive Discharge Impulse Magnetizers
-  description: Capacitive Discharge Impulse Magnetizers for ferrite and NdFeB magnets, rotors and assemblies, with energy and fixture matched to your part.
-summary: Industrial capacitive Discharge Impulse Magnetizers that charge ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizing setup.
-overview: A magnet charging machine — technically a capacitive discharge impulse magnetizer — stores energy in a capacitor bank and releases it through a magnetizing coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio, and magnet manufacturers in Maharashtra and across India.
+  title: Capacitive Discharge Impulse Magnetizer | Magnet Charging Machine
+  description: Capacitive discharge impulse magnetizers (magnet charging machines) for ferrite and NdFeB magnets and assemblies, with energy and fixture matched to your part.
+summary: Industrial capacitive discharge impulse magnetizers that charge ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizer setup.
+overview: A magnet charging machine — technically a capacitive discharge impulse magnetizer — stores energy in a capacitor bank and releases it through a magnetizer coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures capacitor discharge magnetizers for motor, automotive, audio, and magnet manufacturers in Maharashtra and across India.
 keySpec:
-  label: Magnetizing method
-  value: capacitive Discharge Impulse Magnetizers
+  label: Magnetizer type
+  value: Capacitive discharge impulse
 highlights:
   - Magnetizes ferrite, NdFeB, SmCo and alnico magnets and assemblies
   - Adjustable charging voltage for repeatable, controlled pulses
@@ -61,17 +60,17 @@ variants:
   - title: Magnetizers with monitoring
     text: Machines that record peak current for every pulse so incorrectly magnetized parts can be rejected.
   - title: Line-integrated magnetizers
-    text: Machines with PLC interfaces for automatic loading and magnetizing on assembly lines.
+    text: Machines with PLC interfaces for automatic loading and magnetization on assembly lines.
 applications:
   - title: Motor rotors and housings
-    text: Magnetizing BLDC and PMSM rotors and DC motor housings after the magnets are assembled.
+    text: Magnetization of BLDC and PMSM rotors and DC motor housings after the magnets are assembled.
   - title: Loose magnet charging
     text: Charging ferrite and NdFeB magnets in batches through a solenoid coil before dispatch or assembly.
   - title: Loudspeaker assemblies
-    text: Magnetizing the magnet circuit of a speaker after it is glued and assembled.
+    text: Magnetization of a speaker's magnet circuit after it is glued and assembled.
   - title: Sensors and encoders
     text: Creating precise pole patterns in small ring and disc magnets with multi-pole fixtures.
-  - title: Re-magnetizing
+  - title: Re-magnetization
     text: Restoring the magnetization of magnets and assemblies that have weakened in service or rework.
 features:
   - title: Controlled, repeatable pulse
@@ -97,21 +96,21 @@ industries:
   - loudspeakers-audio
   - magnet-manufacturers
 relatedApplications:
-  - rotor-magnetizing
-  - motor-housing-magnetizing
-  - loose-magnet-magnetizing
+  - rotor-magnetizer
+  - motor-housing-magnetizer
+  - loose-magnet-magnetizer
   - magnet-recharging
 related:
   - rotor-magnetizer
   - speaker-magnetizer
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
 faqs:
   - q: What is a magnet charging machine?
     a: It is the common name for a magnetizer (also spelt magnetiser) — a machine that magnetizes (charges) permanent magnets. A capacitor discharge magnetizer stores energy in capacitors and releases it through a coil or fixture as a short, powerful pulse that saturates the magnet.
   - q: How does a magnetizer machine work?
-    a: A charger slowly fills a capacitor bank to the voltage set by the operator. When the machine fires, a thyristor (SCR) switch discharges the bank through the magnetizing coil or fixture, so a current of several thousand amperes flows for a few milliseconds. That current creates a magnetic field strong enough to saturate the magnet, which keeps its magnetization once the pulse ends. The capacitors then recharge for the next part.
+    a: A charger slowly fills a capacitor bank to the voltage set by the operator. When the machine fires, a thyristor (SCR) switch discharges the bank through the magnetizer coil or fixture, so a current of several thousand amperes flows for a few milliseconds. That current creates a magnetic field strong enough to saturate the magnet, which keeps its magnetization once the pulse ends. The capacitors then recharge for the next part.
   - q: Can the same machine magnetize ferrite and NdFeB magnets?
-    a: Often yes, if the machine has enough energy and voltage for the NdFeB parts. NdFeB needs a much stronger magnetizing field than ferrite, so the machine and fixture must be sized for the most demanding magnet you plan to charge.
+    a: Often yes, if the machine has enough energy and voltage for the NdFeB parts. NdFeB needs a much stronger magnetizer field than ferrite, so the machine and fixture must be sized for the most demanding magnet you plan to charge.
   - q: How much energy (kJ) do I need?
     a: It depends on the magnet material, the size and number of magnets, and the fixture design. Share your part drawing and magnet grade and we will recommend a suitable energy rating.
   - q: How fast can a magnetizer cycle?
@@ -124,15 +123,15 @@ faqs:
 
 ## What is a capacitor discharge magnetizer?
 
-A capacitor discharge (CD) magnetizer is the most widely used type of industrial magnetizer. It charges a **bank of capacitors** to a set voltage and then discharges it through a **magnetizing coil or fixture** using a high-current switch. The current rises to thousands of amperes for a few milliseconds, and the coil turns that current into an intense magnetic field. Because the energy arrives as one short impulse, the same machine is also called an impulse magnetizer or a pulse magnetizer.
+A capacitor discharge (CD) magnetizer is the most widely used type of industrial magnetizer. It charges a **bank of capacitors** to a set voltage and then discharges it through a **magnetizer coil or fixture** using a high-current switch. The current rises to thousands of amperes for a few milliseconds, and the coil turns that current into an intense magnetic field. Because the energy arrives as one short impulse, the same machine is also called an impulse magnetizer or a pulse magnetizer.
 
-The pulse is so short that the coil carries enormous current without overheating — which is how a machine on a normal power supply can create fields strong enough to saturate even [NdFeB magnets](/blog/magnetizing-field-requirements/).
+The pulse is so short that the coil carries enormous current without overheating — which is how a machine on a normal power supply can create fields strong enough to saturate even [NdFeB magnets](/blog/magnetizer-field-requirements/).
 
 ## Why manufacturers magnetize in-house
 
 Many manufacturers buy magnets **unmagnetized** and charge them after assembly. This avoids the problems of handling strong magnets on the line — parts snapping together, chipped magnets and steel swarf sticking to every surface — and makes sure each finished product is fully magnetized. A magnet charger machine at the end of the line becomes the single point where every part receives the same, controlled pulse.
 
-Typical examples include [BLDC rotors](/products/magnetizing-fixtures-coils/rotor-magnetizer/), DC motor housings, loudspeaker magnet assemblies and magnets for sensors.
+Typical examples include [BLDC rotors](/products/magnetizer-fixtures-coils/rotor-magnetizer/), DC motor housings, loudspeaker magnet assemblies and magnets for sensors.
 
 ## Choosing the right magnetizer
 
@@ -142,7 +141,7 @@ The energy rating (in kilojoules) and maximum voltage must be enough to drive th
 
 ### Fixture or coil
 
-A magnetizing coil suits loose magnets magnetized through their thickness. Rotors, housings and multi-pole parts need a part-specific [magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/).
+A magnetizer coil suits loose magnets magnetized through their thickness. Rotors, housings and multi-pole parts need a part-specific [magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/).
 
 ### Production rate and monitoring
 

@@ -1,16 +1,15 @@
 ---
 title: Capacitive Discharge Impulse Demagnetizer
-category: magnetizing-machines
-sample: true
+category: magnetizer-machines
 featured: false
 order: 2
 seo:
   title: Impulse Demagnetizer | Capacitive Discharge Demagnetizer
   description: Capacitive discharge impulse demagnetizer for magnets, rotors and steel parts. A decaying alternating pulse removes magnetization for rework and testing.
-summary: Capacitive discharge demagnetizer that removes magnetization from magnets, assemblies and steel parts with a decaying, alternating impulse — for rework, re-magnetizing and testing.
+summary: Capacitive discharge demagnetizer that removes magnetization from magnets, assemblies and steel parts with a decaying, alternating impulse — for rework, re-magnetization and testing.
 overview: A capacitive discharge impulse demagnetizer stores energy in a capacitor bank, like a magnetizer, but releases it through the coil as an alternating pulse that dies away. The magnetic field reverses direction again and again, each time a little weaker, so the magnet or part is taken down to a low residual level instead of being saturated. SK Enterprises manufactures impulse demagnetizers in Maharashtra for magnet makers and for motor and assembly manufacturers who need to correct, rework or test magnetized parts.
 keySpec:
-  label: Demagnetizing method
+  label: Demagnetization method
   value: Decaying alternating impulse
 highlights:
   - Removes magnetization from magnets, magnetized assemblies and steel parts
@@ -40,7 +39,7 @@ supply:
   - label: Models / energy ratings
     value: "{{List SK Enterprises demagnetizer models with energy (kJ) and max. voltage}}"
   - label: Coils supplied
-    value: "{{Standard demagnetizing coil included? Bore sizes? Custom coils quoted separately?}}"
+    value: "{{Standard demagnetizer coil included? Bore sizes? Custom coils quoted separately?}}"
   - label: Combined magnetizer / demagnetizer
     value: "{{Is a machine that both magnetizes and demagnetizes available?}}"
   - label: Input supply options
@@ -59,12 +58,12 @@ variants:
   - title: Magnetizer–demagnetizer combinations
     text: One machine that can magnetize or demagnetize, chosen for each job. {{Confirm availability}}
 applications:
-  - title: Correcting magnetizing errors
+  - title: Correcting magnetization errors
     text: Demagnetize rotors, housings or magnets magnetized with the wrong pole pattern or polarity, then magnetize them again correctly.
   - title: Rework and repair
     text: Demagnetize assemblies so magnets can be removed, parts reworked and steel debris cleaned off safely.
   - title: Testing and quality control
-    text: Return samples to a known, unmagnetized state before measuring them or repeating a magnetizing trial.
+    text: Return samples to a known, unmagnetized state before measuring them or repeating a magnetizer trial.
   - title: Steel parts and tooling
     text: Remove residual magnetism from hardened steel parts, tools and dies so chips and dust do not stick to them.
   - title: Magnet recycling and shipping
@@ -84,7 +83,7 @@ benefits:
   - title: Safer handling
     text: Unmagnetized parts do not snap together or pick up steel swarf during rework and assembly.
   - title: Reliable test results
-    text: Start every measurement or magnetizing trial from the same, demagnetized state.
+    text: Start every measurement or magnetizer trial from the same, demagnetized state.
   - title: Direct from the manufacturer
     text: Work with the team that builds the machine for configuration, spares and support.
 industries:
@@ -93,8 +92,8 @@ industries:
   - loudspeakers-audio
   - magnet-manufacturers
 relatedApplications:
-  - rotor-magnetizing
-  - loose-magnet-magnetizing
+  - rotor-magnetizer
+  - loose-magnet-magnetizer
   - magnet-recharging
 related:
   - magnet-charging-machine
@@ -107,26 +106,26 @@ faqs:
   - q: Can it demagnetize NdFeB magnets?
     a: NdFeB has very high coercivity, so the first reversals of the field must be about as strong as the field used to magnetize it. With enough energy and a suitable coil this is possible. Share the magnet grade and size and we will confirm the right machine and coil.
   - q: How do I check that a part is demagnetized?
-    a: Measure the residual field on the part with a gaussmeter or flux meter before and after demagnetizing. Repeat on a few parts from each batch to confirm the result is consistent.
+    a: Measure the residual field on the part with a gaussmeter or flux meter before and after demagnetization. Repeat on a few parts from each batch to confirm the result is consistent.
   - q: What is the price of an impulse demagnetizer?
     a: There is no fixed list price, because each machine is configured for the parts it will demagnetize. The price depends mainly on the energy rating, maximum voltage, coil size, controls and any automation. Send your part details and quantities and we will quote for the right configuration.
 ---
 
 ## What is a capacitive discharge impulse demagnetizer?
 
-A capacitive discharge (CD) impulse demagnetizer is built on the same principle as a [capacitor discharge magnetizer](/products/magnetizing-machines/magnet-charging-machine/). A **bank of capacitors** is charged to a set voltage and then discharged through a **coil**. The difference is the shape of the pulse. A magnetizer sends a single pulse in one direction to saturate the magnet. A demagnetizer lets the current swing back and forth, so the field **reverses polarity again and again while it dies away**.
+A capacitive discharge (CD) impulse demagnetizer is built on the same principle as a [capacitor discharge magnetizer](/products/magnetizer-machines/magnet-charging-machine/). A **bank of capacitors** is charged to a set voltage and then discharged through a **coil**. The difference is the shape of the pulse. A magnetizer sends a single pulse in one direction to saturate the magnet. A demagnetizer lets the current swing back and forth, so the field **reverses polarity again and again while it dies away**.
 
 ## How the decaying pulse removes magnetization
 
 Each reversal of the field drives the magnet a little way in the opposite direction, and each one is weaker than the one before. The magnetization follows the field down until almost nothing is left. Because the whole process takes only a fraction of a second, the part is left at a low, even residual level, ready to be reworked, tested or magnetized again.
 
-The first reversals must be strong enough to overcome the magnet's coercivity. That is why high-coercivity materials such as [NdFeB](/blog/magnetizing-field-requirements/) need a machine and coil with enough energy, while ferrite and alnico parts need much less.
+The first reversals must be strong enough to overcome the magnet's coercivity. That is why high-coercivity materials such as [NdFeB](/blog/magnetizer-field-requirements/) need a machine and coil with enough energy, while ferrite and alnico parts need much less.
 
 ## Where manufacturers use a demagnetizer
 
 - **Correcting mistakes:** a rotor or housing magnetized with the wrong pole pattern can be demagnetized and [magnetized again](/applications/magnet-recharging/) instead of being scrapped.
 - **Rework:** unmagnetized assemblies are easier and safer to take apart, clean and rebuild.
-- **Testing:** samples can be returned to a known starting state before each measurement or magnetizing trial.
+- **Testing:** samples can be returned to a known starting state before each measurement or magnetizer trial.
 - **Steel parts and tooling:** residual magnetism is removed so chips and dust do not cling to the part.
 
 ## Choosing a demagnetizer

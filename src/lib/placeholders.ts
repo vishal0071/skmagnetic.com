@@ -5,7 +5,10 @@
  * Visitors never see placeholders: they are wrapped in <span class="ph"> and hidden
  * by CSS. In review mode (?review=1) they are highlighted instead. Optional fallback
  * text (class "ph-alt") is shown to visitors in place of a missing value.
+ * With review tools off (site.showContentNotices false) placeholders are left out of the HTML.
  */
+import { site } from '@/config/site';
+
 export const PLACEHOLDER_RE = /\{\{([^{}]+)\}\}(, )?/g;
 
 export const hasPlaceholder = (value?: string | null): boolean => !!value && /\{\{[^{}]+\}\}/.test(value);
@@ -32,6 +35,10 @@ const span = (inner: string) => `<span class="ph" title="Placeholder — replace
  * `fallback` is shown to visitors when the whole value is a placeholder.
  */
 export const placeholderHtml = (value: string, fallback?: string): string => {
+  if (!site.showContentNotices) {
+    if (fallback && isPlaceholderOnly(value)) return escapeHtml(fallback);
+    return escapeHtml(stripPlaceholders(value));
+  }
   const html = escapeHtml(value).replace(PLACEHOLDER_RE, (_, inner: string, comma = '') => span(inner.trim() + comma));
   return fallback && isPlaceholderOnly(value) ? `${html}<span class="ph-alt">${escapeHtml(fallback)}</span>` : html;
 };

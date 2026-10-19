@@ -1,11 +1,13 @@
 ---
+import { site } from '@/config/site';
 import { isPlaceholderOnly, placeholderHtml } from '@/lib/placeholders';
 interface Props {
   faqs: { q: string; a: string }[];
   /** Open the first question by default */
   openFirst?: boolean;
 }
-const { faqs, openFirst = true } = Astro.props;
+const { faqs: all, openFirst = true } = Astro.props;
+const faqs = site.showContentNotices ? all : all.filter((f) => !isPlaceholderOnly(f.a));
 ---
 
 <div class="faq">

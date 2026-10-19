@@ -1,15 +1,14 @@
 ---
-title: Multi-pole Magnetizing Fixtures
-category: magnetizing-fixtures-coils
-sample: true
+title: Multi-pole Magnetizer Fixtures
+category: magnetizer-fixtures-coils
 featured: true
 order: 1
 seo:
-  title: Multi-pole Magnetizing Fixture for Ring Magnets & Rotors
-  description: Custom multi-pole magnetizing fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count, accuracy and skew you need.
+  title: Multi-pole Magnetizer Fixture for Ring Magnets & Rotors
+  description: Custom multi-pole magnetizer fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count, accuracy and skew you need.
 summary: Custom fixtures that form alternating north and south poles on ring, disc, encoder and rotor magnets in one pulse — on the outer diameter, inner diameter or face.
 overview: >-
-  A multi-pole magnetizing fixture creates a pattern of alternating north and south poles on
+  A multi-pole magnetizer fixture creates a pattern of alternating north and south poles on
   a magnet with a single pulse from a magnetizer. Conductors set into precisely machined
   slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch
   and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for
@@ -35,7 +34,7 @@ specs:
     value: Depends on slot machining, part location and magnet uniformity; can be specified and checked by pole scanning
   - label: Skew
     value: Straight or skewed poles, as specified by the motor or sensor designer
-  - label: Magnetizing depth
+  - label: Magnetization depth
     value: Reduces as pole pitch gets smaller — fine-pitch patterns are concentrated near the magnet surface
   - label: Suitable magnets
     value: Isotropic bonded NdFeB, bonded, rubber and sintered ferrite; anisotropic parts only to suit their orientation
@@ -98,12 +97,12 @@ industries:
   - automotive-components
   - magnet-manufacturers
 relatedApplications:
-  - multipole-magnetizing
-  - rotor-magnetizing
+  - multipole-magnetizer
+  - rotor-magnetizer
 related:
   - magnet-charging-machine
   - rotor-magnetizer
-  - motor-housing-magnetizing-fixture
+  - motor-housing-magnetizer-fixture
 faqs:
   - q: How many poles can a multi-pole fixture produce?
     a: It depends on the part diameter, magnet thickness and material. More poles on the same diameter means a narrower pitch, less room for each conductor and shallower magnetization, so the practical limit is assessed for each part from its drawing.
@@ -111,21 +110,21 @@ faqs:
     a: No. The pole count is fixed by the number of conductor slots, so a different pole count needs a different fixture. Parts with the same diameter and pole count but different heights can often share one fixture.
   - q: How is pole accuracy checked?
     a: By pole scanning — a Hall probe measures the field around the part as it rotates, giving the position, width and strength of each pole. The results are compared with the tolerance on the part drawing.
-  - q: What is skewed multi-pole magnetizing?
+  - q: What is skewed multi-pole magnetization?
     a: The poles run at a slight angle along the length of the part rather than parallel to its axis. Motor designers use skew to reduce cogging torque; the angle is often chosen in relation to the stator slot pitch and is machined into the fixture.
   - q: Can anisotropic ring magnets be multi-pole magnetized?
     a: Yes, but only to suit their orientation. Anisotropic rings are oriented radially or in a polar pattern during pressing, and a polar-oriented ring must be magnetized with the pole count and alignment it was made for. Isotropic bonded NdFeB and isotropic ferrite rings can take almost any pattern.
   - q: What is the difference between radial and axial magnetization?
     a: In axial magnetization the poles sit on the flat faces of a disc or ring, with the field running through its thickness — a simple solenoid coil does this. In radial magnetization the field runs outward from the centre, so one pole is on the outer diameter and the other on the inner diameter. Multi-pole parts take this further, with several alternating poles around the outer or inner diameter, which needs a fixture shaped around the part.
-  - q: What affects the price of a multi-pole magnetizing fixture?
+  - q: What affects the price of a multi-pole magnetizer fixture?
     a: Part size, pole count, required pole accuracy, skew, cooling and the cycle rate it must sustain. Send the part drawing and pole specification and we will review feasibility and quote.
 ---
 
-## How a multi-pole magnetizing fixture works
+## How a multi-pole magnetizer fixture works
 
-A multi-pole fixture is a precision-machined body with slots around the surface that faces the magnet. A conductor runs through each slot, and the current direction alternates from one slot to the next. When a [capacitor discharge magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) fires through the fixture, the fields of neighbouring conductors add together in the region between them, forming a north pole at one position and a south pole at the next. The conductors sit at the pole boundaries, so the number of slots sets the number of poles — always an even number.
+A multi-pole fixture is a precision-machined body with slots around the surface that faces the magnet. A conductor runs through each slot, and the current direction alternates from one slot to the next. When a [capacitor discharge magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) fires through the fixture, the fields of neighbouring conductors add together in the region between them, forming a north pole at one position and a south pole at the next. The conductors sit at the pole boundaries, so the number of slots sets the number of poles — always an even number.
 
-Because every pole is formed in the same pulse, the pattern is fixed by the fixture's machining rather than by assembling separate magnets. That makes multi-pole fixtures the standard way to magnetize one-piece ring and encoder magnets. The basics are covered in [multi-pole magnetizing explained](/blog/multipole-magnetizing-explained/).
+Because every pole is formed in the same pulse, the pattern is fixed by the fixture's machining rather than by assembling separate magnets. That makes multi-pole fixtures the standard way to magnetize one-piece ring and encoder magnets. The basics are covered in [multi-pole magnetizers explained](/blog/multipole-magnetizer-explained/).
 
 ## Outer, inner and face multi-pole fixtures
 
@@ -157,10 +156,10 @@ For motor rings, the poles can be skewed along the part length to reduce cogging
 
 Isotropic bonded NdFeB and isotropic ferrite can be magnetized with almost any pole pattern. Anisotropic rings are oriented during pressing, either radially or in a polar pattern, and must be magnetized to suit that orientation. A polar-oriented ring works only with the pole count and alignment it was pressed for.
 
-The same principles sit at the heart of a [BLDC rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) and of [multi-pole magnetizing](/applications/multipole-magnetizing/) for sensor and motor parts in general.
+The same principles sit at the heart of a [BLDC rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) and of [multi-pole magnetizers](/applications/multipole-magnetizer/) for sensor and motor parts in general.
 
-## Multi-pole magnetizing fixture manufacturer in Maharashtra, India
+## Multi-pole magnetizer fixture manufacturer in Maharashtra, India
 
-SK Enterprises designs and manufactures multi-pole fixtures within its range of [magnetizing fixtures and coils](/products/magnetizing-fixtures-coils/), for motor, sensor and magnet manufacturers across India. Send the part drawing, magnet material, pole count and any pitch or skew tolerance, and we will review feasibility and quote a price. {{Add pole count range, achievable accuracy and pole scanning options once confirmed.}}
+SK Enterprises designs and manufactures multi-pole fixtures within its range of [magnetizer fixtures and coils](/products/magnetizer-fixtures-coils/), for motor, sensor and magnet manufacturers across India. Send the part drawing, magnet material, pole count and any pitch or skew tolerance, and we will review feasibility and quote a price. {{Add pole count range, achievable accuracy and pole scanning options once confirmed.}}
 
-[Request a quotation for a multi-pole magnetizing fixture](/get-quote/?product=multipole-magnetizing-fixture).
+[Request a quotation for a multi-pole magnetizer fixture](/get-quote/?product=multipole-magnetizer-fixture).

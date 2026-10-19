@@ -9,20 +9,19 @@ published: 2026-10-03
 illustration: rotor
 products:
   - rotor-magnetizer
-  - multipole-magnetizing-fixture
+  - multipole-magnetizer-fixture
   - magnet-charging-machine
 categories:
-  - magnetizing-machines
+  - magnetizer-machines
 faqs:
   - q: Can ferrite and NdFeB fan rotors be magnetized on the same machine?
     a: Usually, yes. The magnetizer has to be sized for the NdFeB rotors, which need a much stronger field, and it can then run ferrite rotors at a lower voltage setting. Each rotor design normally has its own fixture.
   - q: Is the fan rotor magnetized before or after it is fitted over the stator?
-    a: Before. In an outer-rotor fan motor the stator sits inside the rotor, and the magnetizing fixture needs that same space. The rotor is magnetized as a sub-assembly and then fitted over the stator, usually with a guide or jig because the magnetized rotor pulls strongly towards the stator core.
+    a: Before. In an outer-rotor fan motor the stator sits inside the rotor, and the magnetizer fixture needs that same space. The rotor is magnetized as a sub-assembly and then fitted over the stator, usually with a guide or jig because the magnetized rotor pulls strongly towards the stator core.
   - q: Do different fan models need different fixtures?
     a: A fixture is built for one rotor inner diameter and pole count. Fan models that share the same rotor diameter, magnet layout and pole count can often share a fixture, even if the blades or covers differ. A different diameter or pole count needs a new fixture, but not a new magnetizer.
   - q: How many fan rotors can be magnetized per hour?
     a: It depends on the loading method, the energy per pulse, how fast the capacitors recharge and how much heat the fixture can shed. Manual loading usually sets the pace on small lines; automatic loading with a cooled fixture suits high volumes. Share your target output so the station can be sized for it.
-sample: true
 ---
 
 BLDC ceiling fans have become a major product for Indian appliance makers because they use far less power than conventional induction fans. At the heart of every BLDC fan is a permanent magnet rotor, and in volume production those magnets are almost always magnetized after the rotor is assembled. This guide explains how that is done and what decides whether it is done well.
@@ -41,15 +40,15 @@ A BLDC fan motor is usually built inside out compared with a conventional motor.
 
 Because the fan turns slowly and drives the blades directly, these motors generally use a relatively high pole count, set by the motor designer.
 
-| Magnet option | Typical form | Approx. field to saturate | Notes for magnetizing |
+| Magnet option | Typical form | Approx. field to saturate | Notes for magnetization |
 | --- | --- | --- | --- |
 | Sintered ferrite | Arc segments bonded in the ring | 1–1.5 T | Lower energy; poles must line up with the gaps between arcs |
 | Bonded NdFeB | One-piece ring | 2.5–3.5 T, grade dependent | Usually isotropic, so the pole pattern is set entirely by the fixture |
-| Sintered NdFeB | Arc segments | 2.5–3.5 T, grade dependent | Highest field; arcs must be oriented to suit radial magnetizing |
+| Sintered NdFeB | Arc segments | 2.5–3.5 T, grade dependent | Highest field; arcs must be oriented to suit radial magnetization |
 
 ## Why fan rotors are magnetized after assembly
 
-Fitting strong magnets one by one into a steel ring is slow and risky: they jump into place, chip, attract steel particles and make adhesive joints hard to control. Fitting unmagnetized magnets avoids all of this. The rotor can be bonded, cured and inspected while the magnets are inert, and the whole pole pattern is then created in one controlled step. The result is a cleaner rotor and a more consistent pattern from one fan to the next. Our page on [rotor magnetizing](/applications/rotor-magnetizing/) shows where this step sits on a motor line.
+Fitting strong magnets one by one into a steel ring is slow and risky: they jump into place, chip, attract steel particles and make adhesive joints hard to control. Fitting unmagnetized magnets avoids all of this. The rotor can be bonded, cured and inspected while the magnets are inert, and the whole pole pattern is then created in one controlled step. The result is a cleaner rotor and a more consistent pattern from one fan to the next. Our page on [rotor magnetizers](/applications/rotor-magnetizer/) shows where this step sits on a motor line.
 
 ## The process step by step
 
@@ -75,11 +74,11 @@ The magnetized rotor is lowered over the stator using a guide, because it pulls 
 
 ## Designing the fixture
 
-The [multi-pole magnetizing fixture](/products/magnetizing-fixtures-coils/multipole-magnetizing-fixture/) is the most rotor-specific part of the station. Its outer diameter matches the magnet bore with a small clearance, and its conductor slots set the pole count and pole pitch. Any skew specified by the motor designer is machined into the slots. High pole counts on a given diameter leave less room for conductors and magnetize a shallower layer, which matters with thicker magnets; our article on [multi-pole magnetizing](/blog/multipole-magnetizing-explained/) explains why. For continuous fan production, forced-air or water cooling keeps the fixture within temperature.
+The [multi-pole magnetizer fixture](/products/magnetizer-fixtures-coils/multipole-magnetizer-fixture/) is the most rotor-specific part of the station. Its outer diameter matches the magnet bore with a small clearance, and its conductor slots set the pole count and pole pitch. Any skew specified by the motor designer is machined into the slots. High pole counts on a given diameter leave less room for conductors and magnetize a shallower layer, which matters with thicker magnets; our article on [multi-pole magnetizers](/blog/multipole-magnetizer-explained/) explains why. For continuous fan production, forced-air or water cooling keeps the fixture within temperature.
 
 ## Sizing the magnetizer
 
-The [magnet charging machine](/products/magnetizing-machines/magnet-charging-machine/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizing-fixtures-coils/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
+The [magnet charging machine](/products/magnetizer-machines/magnet-charging-machine/) behind the fixture must deliver enough energy and voltage to saturate the most demanding rotor on the line — usually an NdFeB design if the plant builds both types. Cycle time is then set by loading, capacitor recharge and fixture heating rather than by the pulse itself. A [rotor magnetizer](/products/magnetizer-fixtures-coils/rotor-magnetizer/) supplied as a matched machine-and-fixture system avoids mismatches between the two.
 
 ## Checking the result
 
@@ -92,6 +91,6 @@ Uneven poles often show up as noise or vibration in the finished fan, so a consi
 
 ## Need help choosing?
 
-To propose a fan rotor magnetizing station, we need the rotor drawing, magnet type and grade, pole count, any skew, how the rotor is located and your target output per shift. {{Confirm the fan rotor sizes and pole counts SK Enterprises has supplied fixtures for.}}
+To propose a fan rotor magnetizer station, we need the rotor drawing, magnet type and grade, pole count, any skew, how the rotor is located and your target output per shift. {{Confirm the fan rotor sizes and pole counts SK Enterprises has supplied fixtures for.}}
 
 [Request a quotation](/get-quote/) or [contact us](/contact/) to discuss your fan rotor.
