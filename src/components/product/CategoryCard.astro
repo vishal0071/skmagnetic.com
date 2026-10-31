@@ -2,7 +2,6 @@
 import type { Category, Product } from '@/lib/content';
 import { productHref } from '@/lib/content';
 import { categoryUrl } from '@/lib/links';
-import ProductVisual from './ProductVisual.astro';
 import Icon from '@/components/ui/Icon.astro';
 
 interface Props {
@@ -14,7 +13,6 @@ const d = category.data;
 ---
 
 <article class="card card--hover category-card" data-reveal>
-  <ProductVisual illustration={d.illustration} images={d.images} alt={`${d.title} — category illustration`} wide />
   <div class="card__body">
     <p class="card__meta">{products.length} {products.length === 1 ? 'product' : 'products'}</p>
     <h3 class="card__title"><a href={categoryUrl(category.id)}>{d.title}</a></h3>
