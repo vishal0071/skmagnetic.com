@@ -4,8 +4,8 @@ category: magnetizer-machines
 featured: false
 order: 2
 seo:
-  title: Impulse Demagnetizer | Capacitive Discharge Demagnetizer
-  description: Capacitive discharge impulse demagnetizer for magnets, rotors and steel parts. A decaying alternating pulse removes magnetization for rework and testing.
+  title: Impulse Demagnetizer Machine for Magnets & Rotors
+  description: Capacitive discharge impulse demagnetizer machine for magnets, rotors and steel parts. A decaying alternating pulse removes magnetization for rework.
 summary: Capacitive discharge demagnetizer that removes magnetization from magnets, assemblies and steel parts with a decaying, alternating impulse — for rework, re-magnetization and testing.
 overview: A capacitive discharge impulse demagnetizer stores energy in a capacitor bank, like a magnetizer, but releases it through the coil as an alternating pulse that dies away. The magnetic field reverses direction again and again, each time a little weaker, so the magnet or part is taken down to a low residual level instead of being saturated. SK Enterprises manufactures impulse demagnetizers in Maharashtra for magnet makers and for motor and assembly manufacturers who need to correct, rework or test magnetized parts.
 keySpec:

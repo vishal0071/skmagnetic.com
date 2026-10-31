@@ -4,8 +4,9 @@ category: magnetizer-fixtures-coils
 featured: true
 order: 3
 seo:
-  title: Speaker Magnetizer Fixture | Speaker Magnet Charging
-  description: Speaker magnetizer fixture for charging ferrite and neodymium loudspeaker magnet circuits after assembly, for a clean voice-coil gap and consistent output.
+  title: Speaker Magnetizer | Speaker Magnet Charging Machine
+  description: Speaker magnetizer and fixture for charging ferrite and neodymium loudspeaker magnets after assembly, for a clean voice-coil gap and consistent output.
+  heading: Speaker Magnetizer (Speaker Magnet Charging Fixture)
 summary: Magnetizer and speaker fixture for charging the magnet circuit of loudspeakers and drivers after assembly, for both ferrite ring and neodymium designs.
 overview: A speaker magnetizer machine charges the magnet inside a speaker's motor assembly — the magnet, the back plate with its pole piece, and the top plate — once the parts have been glued and centred. Building speakers with an unmagnetized magnet keeps steel particles out of the voice-coil gap and makes the assembly far easier to handle. SK Enterprises manufactures speaker magnetizers and matching fixtures in Maharashtra for audio manufacturers across India.
 keySpec:

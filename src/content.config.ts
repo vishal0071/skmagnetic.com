@@ -24,6 +24,8 @@ const seo = z.object({
   title: z.string().min(10).max(70),
   /** Meta description — aim for 140–160 characters. */
   description: z.string().min(50).max(170),
+  /** Optional H1 with search phrases, e.g. "Speaker Magnetizer (Speaker Magnet Charging Fixture)". Empty → the name. */
+  heading: z.string().optional(),
 });
 
 const faq = z.object({ q: z.string(), a: z.string() });

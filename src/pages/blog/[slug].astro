@@ -73,7 +73,7 @@ const firstProduct = products[0];
         <span aria-hidden="true">·</span>
         <span>{readingTime(post.body)} min read</span>
       </p>
-      <h1>{d.title}</h1>
+      <h1>{d.seo.heading || d.title}</h1>
       <p class="lead">{d.excerpt}</p>
       <p class="post-author">By {d.author}{d.updated && <> · Updated {formatDate(d.updated)}</>}</p>
     </div>

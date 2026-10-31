@@ -3,8 +3,9 @@ title: Testing & Measuring Instruments
 navLabel: Instruments
 order: 3
 seo:
-  title: Testing & Measuring Instruments | Gaussmeter, Fluxmeter
-  description: Digital gaussmeters and fluxmeters from SK Enterprises — instruments to measure the field and flux of magnets and to check parts after magnetization.
+  title: Gauss Meters & Magnetic Flux Meters | SK Enterprises
+  description: Digital gauss meters (tesla meters) and magnetic flux meters made by SK Enterprises, Pune, for checking magnets and parts after magnetization.
+  heading: Gauss Meters & Flux Meters for Magnet Testing
 summary: Digital gaussmeters and fluxmeters for measuring magnets and checking magnetized parts.
 intro: >-
   SK Enterprises manufactures testing and measuring instruments alongside its magnetizers:

@@ -5,10 +5,11 @@ sample: false
 featured: false
 order: 2
 seo:
-  title: Digital Fluxmeter | Magnetic Flux Meter with Search Coil
-  description: Digital fluxmeter measuring the total magnetic flux of magnets and magnetized parts with a search or Helmholtz coil — for quality checks after magnetization.
+  title: Digital Flux Meter | Magnetic Fluxmeter for Magnet Testing
+  description: Digital magnetic flux meter that measures the total flux of magnets and magnetized parts with a search or Helmholtz coil, for checks after magnetization.
+  heading: Digital Fluxmeter (Magnetic Flux Meter)
 summary: Integrating fluxmeter that measures the total magnetic flux of a magnet or magnetized part through a search coil or Helmholtz coil — for quality checks after magnetization.
-overview: "A digital fluxmeter measures magnetic flux — the total magnetism a magnet or magnetized part produces — rather than the field at a single point. It works with a search coil or a Helmholtz coil: as the part is moved into or out of the coil, the changing flux induces a small voltage, and the fluxmeter integrates that voltage to give the flux in webers or maxwells. SK Enterprises manufactures digital fluxmeters for magnet makers and for manufacturers who check magnetized parts on their own lines."
+overview: "A digital fluxmeter, or magnetic flux meter, measures magnetic flux — the total magnetism a magnet or magnetized part produces — rather than the field at a single point. It works with a search coil or a Helmholtz coil: as the part is moved into or out of the coil, the changing flux induces a small voltage, and the fluxmeter integrates that voltage to give the flux in webers or maxwells. SK Enterprises manufactures digital fluxmeters for magnet makers and for manufacturers who check magnetized parts on their own lines."
 keySpec:
   label: Measures
   value: Total flux (Wb / Mx)

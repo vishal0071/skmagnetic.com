@@ -5,10 +5,11 @@ sample: false
 featured: true
 order: 1
 seo:
-  title: Multi-pole Magnetizer Fixture for Ring Magnets & Rotors
-  description: Custom multi-pole magnetizer fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count, accuracy and skew you need.
+  title: Multipole Magnetizing Fixture for Ring Magnets & Rotors
+  description: Custom multi-pole magnetizing fixtures for ring, encoder and rotor magnets, with OD, ID or face pole patterns and the pole count and skew you need.
+  heading: Multi-pole Magnetizing Fixtures for Rings, Rotors & Encoders
 summary: Custom fixtures that form alternating north and south poles on ring, disc, encoder and rotor magnets in one pulse — on the outer diameter, inner diameter or face.
-overview: A multi-pole magnetizer fixture creates a pattern of alternating north and south poles on a magnet with a single pulse from a magnetizer. Conductors set into precisely machined slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing and pole specification.
+overview: A multi-pole magnetizer fixture — also called a multipole magnetizing fixture — creates a pattern of alternating north and south poles on a magnet with a single pulse from a magnetizer. Conductors set into precisely machined slots fix where each pole forms, so the fixture itself decides the pole count, pole pitch and any skew. SK Enterprises designs and manufactures multi-pole fixtures in Maharashtra for ring magnets, encoder and sensor magnets and motor rotor rings, built to the part drawing and pole specification.
 keySpec:
   label: Pole positions
   value: OD, ID or face multi-pole

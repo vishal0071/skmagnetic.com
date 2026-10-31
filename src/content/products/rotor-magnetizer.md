@@ -4,8 +4,9 @@ category: magnetizer-fixtures-coils
 featured: true
 order: 2
 seo:
-  title: BLDC Rotor Magnetizer Fixture for Fans, Pumps & EV Motors
-  description: "Rotor magnetizer fixture for BLDC ceiling fan, pump, hub motor and EV rotors: radial multi-pole magnetization of ferrite and NdFeB magnets after rotor assembly."
+  title: BLDC Rotor Magnetizer | Motor Magnet Charging Fixture
+  description: "BLDC rotor magnetizer for ceiling fan, pump, hub motor, e-rickshaw and EV rotors: multi-pole magnet charging of ferrite and NdFeB rotors after assembly."
+  heading: BLDC Rotor Magnetizer Fixture for Fan, Hub & EV Motors
 summary: A magnetizer and rotor fixture built as one system to magnetize assembled BLDC and PMSM rotors with the radial multi-pole pattern your motor design calls for.
 overview: A BLDC rotor magnetizer combines a capacitor discharge magnetizer with a fixture built around one rotor design. The assembled rotor — core, magnets and usually the shaft — is loaded into the fixture, and a single pulse forms the north and south poles together in a radial multi-pole pattern. SK Enterprises manufactures rotor magnetizers in Maharashtra for companies making BLDC ceiling fan, pump, hub motor, e-rickshaw, EV and servo motors who want to magnetize rotors on their own assembly line.
 keySpec:

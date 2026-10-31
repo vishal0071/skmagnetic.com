@@ -5,10 +5,11 @@ sample: false
 featured: false
 order: 1
 seo:
-  title: Digital Gaussmeter | Hall Effect Magnetic Field Meter
-  description: Digital gaussmeter with a Hall effect probe to measure flux density in gauss or tesla — for magnets, magnetized parts, pole checks and residual magnetism.
+  title: Digital Gauss Meter Manufacturer in India | Gaussmeter
+  description: Digital gauss meter (gaussmeter / tesla meter) with a Hall effect probe to measure magnets in gauss, mT or tesla, for pole and residual magnetism checks.
+  heading: Digital Gauss Meter (Hall Effect Gaussmeter)
 summary: Hall-effect gaussmeter that measures magnetic flux density at a point in gauss, millitesla or tesla — for checking magnets, pole patterns and residual magnetism.
-overview: A digital gaussmeter measures magnetic flux density — the strength of a magnetic field at one point — with a Hall-effect probe. Hold the probe on or near a magnet, in an air gap or inside a coil, and the meter shows the reading in gauss, millitesla or tesla together with its polarity, north or south. SK Enterprises manufactures digital gaussmeters for magnet makers, motor and loudspeaker manufacturers and quality laboratories.
+overview: A digital gaussmeter — also called a gauss meter or tesla meter — measures magnetic flux density — the strength of a magnetic field at one point — with a Hall-effect probe. Hold the probe on or near a magnet, in an air gap or inside a coil, and the meter shows the reading in gauss, millitesla or tesla together with its polarity, north or south. SK Enterprises manufactures digital gaussmeters for magnet makers, motor and loudspeaker manufacturers and quality laboratories.
 keySpec:
   label: Measures
   value: Flux density (G / mT / T)

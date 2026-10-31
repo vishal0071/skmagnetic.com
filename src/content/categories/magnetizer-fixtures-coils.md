@@ -3,11 +3,11 @@ title: Magnetizer Fixtures, Coils & Yokes
 navLabel: Fixtures & Coils
 order: 2
 seo:
-  title: Magnetizer Fixtures, Coils & Yokes | SK Enterprises
-  description: Magnetizer coils, fixtures and yokes for axial, radial and multi-pole magnetization of magnets, rotors and motor housings, matched to your magnetizer and part.
+  title: Magnetizing Fixtures, Coils & Yokes | SK Enterprises
+  description: Custom magnetizing fixtures, coils and yokes for multi-pole rings, BLDC rotors, speakers and PMDC motor housings, matched to your part and magnetizer.
 summary: Coils and custom fixtures that shape the magnetizer field for axial, radial and multi-pole magnetization of magnets and assemblies.
 intro: >-
-  The magnetizer coil or fixture is where the magnetic field is created. Its shape decides
+  The magnetizer coil or fixture — also called a magnetizing coil, fixture or yoke — is where the magnetic field is created. Its shape decides
   the pole pattern, its winding decides the field strength, and its construction decides how
   long it lasts in production. SK Enterprises designs and manufactures coils, fixtures and
   yokes matched to your part and to the magnetizer that drives them.

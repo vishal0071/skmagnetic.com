@@ -98,7 +98,7 @@ const sectionNav = [
 
         <div class="product-hero__info">
           <a class="eyebrow product-hero__cat" href={categoryUrl(category.id)}>{category.data.title}</a>
-          <h1>{d.title}</h1>
+          <h1>{d.seo.heading || d.title}</h1>
           <p class="lead">{d.overview}</p>
 
           <ul class="check-list product-hero__highlights">
@@ -348,7 +348,13 @@ const sectionNav = [
   <div class="container">
     <CtaBand
       title={`Get the right ${short} for your application`}
-      text="Send your part drawing, magnet material and output per shift. Our engineers will recommend the right configuration and send a quotation."
+      text={
+        d.illustration === 'tester'
+          ? 'Tell us the types and ratings of breakers you test and your daily quantity. Our engineers will recommend the right configuration and send a quotation.'
+          : d.illustration === 'meter'
+            ? 'Tell us what you need to measure and the size of your parts. Our engineers will recommend the right model and send a quotation.'
+            : 'Send your part drawing, magnet material and output per shift. Our engineers will recommend the right configuration and send a quotation.'
+      }
       product={{ name: d.title, slug: product.id }}
       location="product_cta_band"
     />

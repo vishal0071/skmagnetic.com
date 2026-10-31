@@ -5,8 +5,8 @@ sample: false
 featured: true
 order: 4
 seo:
-  title: Motor Housing Magnetizer Fixture for DC Motors
-  description: Fixtures to magnetize PMDC motor housings with ferrite arc magnets after assembly, in 2-pole and 4-pole layouts, for wiper, blower, starter and fan motors.
+  title: PMDC Motor Housing Magnetizer | DC Motor Magnet Charging
+  description: Magnetizing fixtures for PMDC motor housings with ferrite arc magnets, 2-pole and 4-pole, for wiper, blower, starter and fan motors. Made in Pune.
 summary: Fixtures that magnetize the ferrite arc magnets of a DC motor housing from the inside, after the arcs are fitted — for 2-pole and 4-pole PMDC motors.
 overview: A motor housing magnetizer fixture fits inside the steel housing of a permanent magnet DC (PMDC) motor and magnetizes the arc magnets already glued or clipped in place. One pulse from the magnetizer drives a radial field through each arc, with the housing itself carrying the return flux. SK Enterprises designs and manufactures housing fixtures in Maharashtra for automotive, two-wheeler and appliance motor makers across India.
 keySpec:

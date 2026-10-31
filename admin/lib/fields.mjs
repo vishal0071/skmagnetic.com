@@ -15,6 +15,7 @@ const seo = {
   fields: [
     { key: 'title', type: 'text', label: 'SEO title', required: true, min: 10, max: 70, ideal: [45, 60] },
     { key: 'description', type: 'textarea', label: 'Meta description', required: true, min: 50, max: 170, ideal: [140, 160], rows: 3 },
+    { key: 'heading', type: 'text', label: 'Page heading (H1) — optional', help: 'Main heading on the page. Leave empty to use the name. The name is still used on cards and menus.' },
   ],
 };
 const sample = { key: 'sample', type: 'bool', label: 'Sample content — not yet confirmed (kept out of Google until unticked)' };

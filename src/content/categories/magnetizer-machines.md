@@ -3,11 +3,12 @@ title: Magnetizer Machines
 navLabel: Magnetizers
 order: 1
 seo:
-  title: Magnetizer Machines | Impulse Magnetizers & Demagnetizers
-  description: Magnetizer machines that charge ferrite and NdFeB magnets in rotors, motor housings, speakers and loose parts, using a capacitor discharge pulse and fixture.
+  title: Magnetizer Machines | Industrial Magnetizing Machines, Pune
+  description: Capacitor discharge magnetizer machines, impulse demagnetizers and RCCB / ELCB calibrators, designed and built in Pune for production lines across India.
+  heading: Magnetizer Machines (Magnetizing & Magnet Charging Machines)
 summary: Capacitor discharge magnetizers and magnet charging machines that magnetize ferrite, NdFeB and other magnets after assembly or in production.
 intro: >-
-  A magnetizer machine — often called a magnet charging machine — turns an unmagnetized
+  A magnetizer machine — often called a magnetizing machine or magnet charging machine — turns an unmagnetized
   magnet or magnet assembly into a working permanent magnet with a short, powerful magnetic
   pulse. SK Enterprises designs and manufactures industrial magnetizer machines for
   manufacturers who magnetize parts on their own production lines, from motor rotors and

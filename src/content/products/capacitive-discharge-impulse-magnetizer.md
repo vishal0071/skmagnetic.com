@@ -6,7 +6,8 @@ order: 1
 updated: 2026-10-20
 seo:
   title: Capacitive Discharge Impulse Magnetizers | Magnet Charging Machine
-  description: Capacitive discharge impulse magnetizers made by SK Enterprises, Pune — magnet charging machines for ferrite and NdFeB magnets, rotors and assemblies.
+  description: Capacitor discharge impulse magnetizers (magnet charging machines) made in Pune for ferrite and NdFeB magnets, BLDC rotors, motor housings and speakers.
+  heading: Capacitive Discharge Impulse Magnetizers (Magnet Charging Machines)
 summary: Industrial capacitive discharge impulse magnetizers that charge ferrite, NdFeB and other magnets with a controlled high-energy pulse — the core of any magnetizer setup.
 overview: A capacitive discharge impulse magnetizer — also called a magnet charging machine — stores energy in a capacitor bank and releases it through a magnetizer coil or fixture as a short, very high-current pulse. The resulting magnetic field saturates the magnet in a fraction of a second. SK Enterprises manufactures them in Pune, Maharashtra, for motor, automotive, audio and magnet manufacturers across India.
 keySpec:

@@ -5,10 +5,11 @@ sample: false
 featured: false
 order: 3
 seo:
-  title: RCCB / ELCB Calibrator | Trip Current & Trip Time Tester
-  description: RCCB / ELCB calibrator that injects a controlled residual current to measure the tripping current and trip time of RCCBs, ELCBs and RCBOs in production.
+  title: RCCB / ELCB Calibrator | RCCB Testing Machine, Pune
+  description: RCCB / ELCB calibrator and testing machine that measures the tripping current and trip time of RCCBs, ELCBs and RCBOs, for switchgear makers and labs.
+  heading: RCCB / ELCB Calibrator & Testing Machine
 summary: Test set that injects a controlled residual (earth leakage) current to measure the tripping current and trip time of RCCBs, ELCBs and RCBOs — for production, calibration and labs.
-overview: An RCCB / ELCB calibrator tests residual current breakers — RCCBs, ELCBs and RCBOs — the way they work in service. It passes a controlled residual (earth leakage) current through the breaker and measures the current at which it trips and how quickly it trips. Manufacturers use it to set and check the tripping sensitivity of every breaker, and test laboratories use it to verify breakers against their rated values. SK Enterprises manufactures RCCB / ELCB calibrators for switchgear manufacturers and testing laboratories.
+overview: An RCCB / ELCB calibrator is an RCCB testing machine that tests residual current breakers — RCCBs, ELCBs and RCBOs — the way they work in service. It passes a controlled residual (earth leakage) current through the breaker and measures the current at which it trips and how quickly it trips. Manufacturers use it to set and check the tripping sensitivity of every breaker, and test laboratories use it to verify breakers against their rated values. SK Enterprises manufactures RCCB / ELCB calibrators for switchgear manufacturers and testing laboratories.
 keySpec:
   label: Tests
   value: Trip current & trip time
