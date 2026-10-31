@@ -303,6 +303,7 @@ const f = (name: string) => `${id}-${name}`;
   import { track } from '@/scripts/track';
 
   const params = new URLSearchParams(location.search);
+  const hashParams = new URLSearchParams(location.hash.slice(1));
 
   document.querySelectorAll<HTMLFormElement>('form[data-enquiry]').forEach((form) => {
     const root = form.closest<HTMLElement>('[data-enquiry-root]')!;
@@ -320,8 +321,8 @@ const f = (name: string) => `${id}-${name}`;
 
     form.querySelector<HTMLInputElement>('[data-page-url]')!.value = window.location.href;
 
-    // Preselect product from ?product=slug (e.g. links from product pages)
-    const slug = params.get('product');
+    // Preselect product from #product=slug (links from product pages) or the older ?product=slug
+    const slug = hashParams.get('product') || params.get('product');
     if (select && slug && !select.value) {
       const opt = select.querySelector<HTMLOptionElement>(`option[data-slug="${CSS.escape(slug)}"]`);
       if (opt) opt.selected = true;

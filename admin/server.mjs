@@ -49,6 +49,8 @@ app.use('*', async (c, next) => {
     c.header('X-Content-Type-Options', 'nosniff');
     c.header('Referrer-Policy', 'same-origin');
     c.header('Cache-Control', 'no-store');
+    // Keeps these out of Google. robots.txt must NOT block them, or Google never sees this header.
+    c.header('X-Robots-Tag', 'noindex, nofollow');
     c.header(
       'Content-Security-Policy',
       "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'",

@@ -898,13 +898,16 @@ input[type='file'].input:hover::file-selector-button {
   align-items: center;
   gap: 10px;
   padding: 8px 14px;
+  border: 0;
   border-radius: 999px;
   background: #3d2d00;
   color: #ffe08a;
+  font: inherit;
   font-size: var(--fs-xs);
   font-weight: 650;
   text-decoration: none;
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 .review-badge:hover {
   color: #fff;

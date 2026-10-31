@@ -10,14 +10,13 @@ import { getRoutes } from '@/lib/routes';
 export const GET: APIRoute = async () => {
   // Empty until the website is LIVE; afterwards only confirmed (non-sample) pages are listed.
   const routes = site.isLive ? (await getRoutes()).filter((r) => !r.sample) : [];
-  const buildDate = new Date().toISOString().slice(0, 10);
+  // lastmod only where the content records a real date — a build date on every page teaches Google to ignore it
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
   .map(
     (r) => `  <url>
-    <loc>${absoluteUrl(r.url)}</loc>
-    <lastmod>${r.lastmod ? r.lastmod.toISOString().slice(0, 10) : buildDate}</lastmod>
+    <loc>${absoluteUrl(r.url)}</loc>${r.lastmod ? `\n    <lastmod>${r.lastmod.toISOString().slice(0, 10)}</lastmod>` : ''}
     <priority>${r.priority.toFixed(1)}</priority>
   </url>`,
   )

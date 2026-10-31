@@ -178,9 +178,13 @@ const { gtmId, ga4Id } = site.analytics;
     <MobileActionBar whatsappMessage={whatsappMessage} product={product} />
     {
       site.showContentNotices && (
-        <a class="review-badge review-only" href="?review=0">
+        <button
+          type="button"
+          class="review-badge review-only"
+          onclick="try { localStorage.removeItem('skReview'); } catch (e) {} document.documentElement.removeAttribute('data-review');"
+        >
           Review mode — placeholders highlighted · Exit
-        </a>
+        </button>
       )
     }
     <WhatsAppFloat message={whatsappMessage} product={product?.name} />

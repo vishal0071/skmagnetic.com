@@ -13,6 +13,7 @@ export const categoryUrl = (categorySlug: string) => `/products/${categorySlug}/
 export const industryUrl = (slug: string) => `/industries/${slug}/`;
 export const applicationUrl = (slug: string) => `/applications/${slug}/`;
 export const blogUrl = (slug: string) => `/blog/${slug}/`;
-export const quoteUrl = (productSlug?: string) => (productSlug ? `/get-quote/?product=${productSlug}` : '/get-quote/');
+// Product goes in the #fragment, not ?query, so Google doesn't crawl a duplicate of /get-quote/ per product
+export const quoteUrl = (productSlug?: string) => (productSlug ? `/get-quote/#product=${productSlug}` : '/get-quote/');
 
 export const absoluteUrl = (path: string) => new URL(path, site.url).toString();

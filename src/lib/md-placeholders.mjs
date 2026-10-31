@@ -34,4 +34,9 @@ export const placeholders = defineMdastPlugin({
     if (last < node.value.length) parts.push({ type: 'text', value: node.value.slice(last) });
     ctx.replaceNode(node, parts.length ? parts : [{ type: 'text', value: '' }]);
   },
+  // /get-quote/?product=x → /get-quote/#product=x, matching quoteUrl() in src/lib/links.ts:
+  // a ?query makes Google crawl a duplicate of /get-quote/ for every product
+  link(node, ctx) {
+    if (node.url.startsWith('/get-quote/?')) ctx.setProperty(node, 'url', node.url.replace('?', '#'));
+  },
 });
