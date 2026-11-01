@@ -149,7 +149,12 @@ export function product(opts: {
   category: string;
   sku?: string;
   price?: { amount: number; unit: string };
-}): Json {
+}): Json | null {
+  // Google rejects Product data without offers, review or aggregateRating
+  // (Search Console "Product snippets"). Prices are quote-based and there are
+  // no genuine reviews yet, so a product only gets Product data once a price is
+  // published — never invented.
+  if (!opts.price) return null;
   return clean({
     '@type': 'Product',
     '@id': `${absoluteUrl(opts.url)}#product`,
@@ -161,17 +166,14 @@ export function product(opts: {
     sku: opts.sku,
     brand: { '@type': 'Brand', name: site.brand },
     manufacturer: { '@id': ORG_ID },
-    // Offers are only included when a published price exists — never invented.
-    offers: opts.price
-      ? {
-          '@type': 'Offer',
-          price: opts.price.amount,
-          priceCurrency: 'INR',
-          availability: 'https://schema.org/InStock',
-          url: absoluteUrl(opts.url),
-          seller: { '@id': ORG_ID },
-        }
-      : undefined,
+    offers: {
+      '@type': 'Offer',
+      price: opts.price.amount,
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      url: absoluteUrl(opts.url),
+      seller: { '@id': ORG_ID },
+    },
   });
 }
 
